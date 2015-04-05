@@ -1,0 +1,379 @@
+@import "../base/common-web-component";
+@import "touch-navbar";
+
+///@private
+@mixin _ui-navbar($component:null,
+$height:null,
+$margin:null,
+$font-size:null,
+$nav-height:null,
+$nav-font-size:null,
+$section-padding:null,
+$section-height:null,
+$section-justification:null,
+$section-alignment:null,
+$brand-font:null,
+$brand-alignment:null,
+$brand-justification:null,
+$brand-margin:null,
+$brand-padding:null,
+$stacked-height:null,
+$stacked-brand-font:null,
+$stacked-brand-alignment:null,
+$stacked-brand-justification:null,
+$stacked-brand-margin:null,
+$stacked-brand-padding:null,
+$stacked-brand-height:null,
+$stacked-brand-background:null,
+$stacked-section-height:null
+
+){
+
+  $_ui-navbar-contained-to-grid: $grid-width - $grid-column-gutter;
+
+  width: 100%;
+  position: relative;
+  max-height:$height;
+  display:block;
+  font-size:$font-size;
+  nav{
+    width:100%;
+    margin: $margin;
+    height: $nav-height;
+    min-height: 45px;
+    position: relative;
+    font-size:$nav-font-size;
+    @include web-component-base($component:$component,$include-font:false);
+    ul{
+      list-style: none;
+    }
+    &>section{
+      position:relative;
+      padding: $section-padding;
+      margin:0 auto;
+      width:100%;
+      max-width: $_ui-navbar-contained-to-grid;
+      @include flexbox($justification:$section-justification,$alignment:$section-alignment);
+      @if $section-height != null{
+        height:$section-height;
+      }
+      &.center{
+        @include flexbox($justification:center,$alignment:center);
+      }
+    }
+    &> ui-brand{
+      @extend %#{$component}-font !optional;
+      @include flexbox($alignment:$brand-alignment,$justification:$brand-justification);
+      margin: $brand-margin;
+      padding: $brand-padding;
+      .logo{
+        &:hover{
+          cursor:pointer;
+        }
+      }
+      &>section{
+        position:relative;
+        margin:0 auto;
+        width:100%;
+        max-width: $_ui-navbar-contained-to-grid;
+      }
+    }
+    ///stacked navbar(brand stacked above the menu)
+    &.stacked {
+      height: $stacked-height;
+      &>.touch-brand{
+        display:none;
+      }
+      &> ui-brand{
+        @extend %#{$component}-font !optional;
+        font: $stacked-brand-font;
+        @include flexbox($alignment:$stacked-brand-alignment,$justification:$stacked-brand-justification);
+        margin: $stacked-brand-margin;
+        padding: $stacked-brand-padding;
+        height: $stacked-brand-height;
+        background:$stacked-brand-background;
+        &.center{
+          @include flexbox($justification:center,$alignment:center);
+        }
+        &>section{
+          ul{
+            display:block;
+            float:left;
+          }
+        }
+      }
+      &>section{
+        height:$stacked-section-height;
+        padding:0;
+        &.center{
+          @include flexbox($justification:center,$alignment:center);
+        }
+      }
+    }
+    ///when the screen width matches grid width, we must further subtract gutter width from the max-width and use gutter width as the margin
+    @media only screen and (max-width:$grid-width){
+      &>section{
+        left:0;
+        margin:0;
+        max-width:$grid-width - $grid-column-gutter - $grid-column-gutter;
+        padding: 0 $grid-column-gutter/2 !important;
+      }
+      &>.brand{
+        &>section{
+          padding: 0 $grid-column-gutter/2 !important;
+          max-width:100% !important;
+        }
+      }
+    }
+  }
+}
+
+
+
+///@public
+/// @param {String} $component
+/// @param {String} $touch-component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+// $map:(
+//         height:<value>,
+//         margin:<value>,
+//         font-size:<value>,
+//         nav:(
+//                 height:<value>,
+//                 font-size:<value>
+//         ),
+//         section:(
+//                 padding:<value>,
+//                 height:<value>,
+//                 justification:<value>,
+//                 alignment:<value>
+//         ),
+//         brand:(
+//                 font:<value>,
+//                 alignment:<value>,
+//                 justification:<value>,
+//                 margin:<value>,
+//                 padding:<value>
+//         ),
+//         stacked:(
+//                 height:<value>,
+//                 brand-font:<value>,
+//                 brand-alignment:<value>,
+//                 brand-justification:<value>,
+//                 brand-margin:<value>,
+//                 brand-padding:<value>,
+//                 brand-height:<value>,
+//                 brand-background:<value>,
+//                 section-height:<value>
+//         ),
+//         touch:(
+//                 position:<value>,
+//                 height:<value>,
+//                 font-size:<value>,
+//                 z-index:<value>,
+//                 brand-font:<value>,
+//                 brand-margin:<value>,
+//                 icon-font-size:<value>,
+//                 icon-margin:<value>
+//         )
+// )
+@mixin ui-navbar($component:null,$touch-component:css-touch,$tags:null,$template-tag:null,$class:null,$map:()){
+
+  $_touch-height:map-get($Component,touch-bar-height);
+  $height: map-get-default($map,height,none);
+  $margin: map-get-default($map,margin,0 auto);
+  $font-size:map-get-default($map,font-size,1em);
+  $nav-height:map-nested-get-default($map,nav,height,65px);
+  $nav-font-size:map-nested-get-default($map,nav,font-size,1em);
+  $section-padding:map-nested-get-default($map,section,padding,0);
+  $section-height:map-nested-get($map,section,height);
+  $section-justification:map-nested-get-default($map,section,justification,space-between);
+  $section-alignment:map-nested-get-default($map,section,alignment,center);
+  $brand-font:map-nested-get-default($map,brand,font,1.5em);
+  $brand-alignment:map-nested-get-default($map,brand,justification,flex-start);
+  $brand-justification:map-nested-get-default($map,brand,alignment,center);
+  $brand-margin:map-nested-get-default($map,brand,margin,0);
+  $brand-padding:map-nested-get-default($map,brand,padding,0);
+  $stacked-height:map-nested-get-default($map,stacked,height,auto);
+  $stacked-brand-font:map-nested-get-default($map,stacked,brand-font,inherit);
+  $stacked-brand-alignment:map-nested-get-default($map,stacked,brand-alignment,flex-start);
+  $stacked-brand-justification:map-nested-get-default($map,stacked,brand-justification,center);
+  $stacked-brand-margin:map-nested-get-default($map,stacked,brand-margin,0);
+  $stacked-brand-padding:map-nested-get-default($map,stacked,brand-padding,0);
+  $stacked-brand-height:map-nested-get-default($map,stacked,brand-height,75px);
+  $stacked-brand-background:map-nested-get-default($map,stacked,brand-background,inherit);
+  $stacked-section-height:map-nested-get-default($map,stacked,section-height,45px);
+  $touch-position:map-nested-get-default($map,touch,position,fixed);
+  $touch-height:map-nested-get-default($map,touch,height,$_touch-height);
+  $touch-z-index:map-nested-get-default($map,touch,z-index,get-z-index() + 9999);
+  $touch-font-size:map-nested-get-default($map,touch,font-size,1em);
+  $touch-brand-font:map-nested-get-default($map,touch,brand-font,inherit);
+  $touch-brand-margin:map-nested-get-default($map,touch,brand-margin,0);
+  $touch-icon-font-size:map-nested-get-default($map,touch,icon-font-size,22px);
+  $touch-icon-margin:map-nested-get-default($map,touch,icon-margin,.8em);
+
+
+  $tag:ui-navbar;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-navbar($component,
+            $height,
+            $margin,
+            $font-size,
+            $nav-height,
+            $nav-font-size,
+            $section-padding,
+            $section-height,
+            $section-justification,
+            $section-alignment,
+            $brand-font,
+            $brand-alignment,
+            $brand-justification,
+            $brand-margin,
+            $brand-padding,
+            $stacked-height,
+            $stacked-brand-font,
+            $stacked-brand-alignment,
+            $stacked-brand-justification,
+            $stacked-brand-margin,
+            $stacked-brand-padding,
+            $stacked-brand-height,
+            $stacked-brand-background,
+            $stacked-section-height
+
+    );
+    @content;
+  }
+
+  @include desktop-content(){
+    ui-navbar{
+      touch-ui-brand,touch-icons{
+        display:none;
+      }
+    }
+  }
+  @media #{$breakpoint-touch}{
+    ui-navbar ui-topbar + *{
+      margin-top:0 !important;
+    }
+    ui-navbar{
+      &>ui-topbar{
+        display:none !important;
+      }
+      &>nav{
+        &>ui-brand{
+          display:none;
+        }
+        &>section{
+          display:none;
+        }
+        &.stacked{
+          &>ui-brand{
+            display:none !important;
+          }
+          &>section{
+            display:none;
+          }
+        }
+      }
+
+      @if $class != null{
+        &.#{$class} {
+          @include _touch-ui-navbar($touch-component,
+            $touch-position,
+            $touch-height,
+            $touch-z-index,
+            $touch-brand-font,
+            $touch-brand-margin,
+            $touch-icon-font-size,
+            $touch-icon-margin
+          );
+        }
+
+      }@else{
+        @include _touch-ui-navbar($touch-component,
+          $touch-position,
+          $touch-height,
+          $touch-z-index,
+          $touch-font-size,
+          $touch-brand-font,
+          $touch-brand-margin,
+          $touch-icon-font-size,
+          $touch-icon-margin
+        );
+      }
+
+    }
+
+    @if $touch-position != relative{
+      [data-role=navigation] + *{
+        padding-top:$touch-height;
+      }
+      @if $class != null {
+        ui-navbar.#{$class} + *{
+          padding-top:$touch-height;
+        }
+      }@else{
+        ui-navbar + *{
+          padding-top:$touch-height;
+        }
+      }
+    }
+  }
+}
+
+///@public
+@mixin navbar-brand(){
+  &>nav{
+    &.stacked{
+      &>ui-brand{
+        @content;
+      }
+    }
+  }
+}
+
+///@public
+@mixin navbar-stacked-brand(){
+    &>nav{
+      &.stacked{
+        &>ui-brand{
+          @content;
+        }
+      }
+    }
+}
+
+///@public
+@mixin phone-navbar-brand(){
+  @media #{$breakpoint-phone}{
+    touch-ui-brand{
+      @content;
+    }
+  }
+}
+
+///@public
+@mixin touch-navbar-brand(){
+  @media #{$breakpoint-touch}{
+    touch-ui-brand{
+      @content;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

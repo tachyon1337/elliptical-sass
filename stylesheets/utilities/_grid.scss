@@ -1,0 +1,81 @@
+@import "../settings/grid";
+@import "breakpoints";
+@import "../css3/flexbox";
+
+@mixin gutter-bleed(){
+  $_column-gutter:map-get($Grid,column-gutter);
+  margin-right: - $_column-gutter/2 !important;
+  margin-left: - $_column-gutter/2 !important;
+}
+
+@mixin gutter-bleed-padding(){
+  $_column-gutter:map-get($Grid,column-gutter);
+  margin-right: - $_column-gutter/2 !important;
+  margin-left: - $_column-gutter/2 !important;
+  padding-right: $_column-gutter/2 !important;
+  padding-left: $_column-gutter/2 !important;
+}
+
+@mixin gutter-collapse(){
+  padding-left:0;
+  padding-right:0;
+}
+
+@mixin touch-gutter-bleed(){
+  @include touch-content(){
+    @include gutter-bleed();
+  }
+}
+
+@mixin touch-gutter-collapse(){
+  @include touch-content(){
+    @include gutter-collapse();
+  }
+}
+
+@mixin gutter-collapse-m(){
+  @include gutter-bleed();
+  width:110%;
+  padding-left:1.5em;
+  padding-right:1.5em;
+}
+
+
+
+@mixin utilities-grid() {
+  .contain-to-grid {
+    max-width: map-get($Grid,width) - map-get($Grid,column-gutter);
+    margin: 0 auto;
+  }
+
+  .gutter-bleed {
+    @include touch-gutter-bleed();
+  }
+
+  .gutter-collapse {
+    @include touch-gutter-collapse();
+  }
+
+  .screen-gutter-bleed{
+    @include gutter-bleed();
+  }
+
+  .screen-gutter-collapse{
+    @include gutter-collapse();
+  }
+
+  @include touch-content(){
+    .gutter-collapse-m{
+      @include gutter-collapse-m();
+    }
+  }
+
+  @include tablet-content(){
+    .tablet-flex{
+      @include flexbox($justification:center);
+
+    }
+  }
+
+}
+

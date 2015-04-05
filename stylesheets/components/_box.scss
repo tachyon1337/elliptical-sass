@@ -1,0 +1,76 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-box($component:null,
+$margin:null,
+$padding:null,
+$height:null,
+$width:null,
+$border-radius:null,
+$justification:null,
+$alignment:null
+){
+
+  @include flexbox-column($justification:$justification,$alignment:$alignment);
+  height:$height;
+  padding:$padding;
+  width:$width;
+  margin:$margin;
+  @if $component != null{
+    @include web-component-default($component:$component,$include-disabled:false);
+  }
+
+  @if $border-radius != null{
+    border-radius:$border-radius;
+  }
+
+  .bottom{
+    margin-top:auto;
+  }
+
+  @include phone-content(){
+    max-width:100%;
+    border-radius:0;
+  }
+  div{
+    width:100%;
+    p{
+      width:100%;
+    }
+  }
+}
+
+
+///@public
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         margin:<value>,
+///         padding:<value>,
+///         height:<value>,
+///         width:<value>,
+///         border-radius:<value>,
+///         justification:<value>,
+///         alignment:<value>
+/// )
+@mixin ui-box($component: null,$tags:null,$template-tag:null,$class:null,$map:()){
+
+  $_border-radius:get-border-radius();
+  $margin:map-get-default($map,margin,0);
+  $padding:map-get-default($map,padding,.5em 1em);
+  $height:map-get-default($map,padding,18.75em);
+  $width:map-get-default($map,width,18.75em);
+  $border-radius:map-get-default($map,width,$_border-radius);
+  $justification:map-get-default($map,justification,space-between);
+  $alignment:map-get-default($map,alignment,center);
+
+  $tag:ui-box;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-box($component,$margin,$padding,$height,$width,$border-radius, $justification, $alignment);
+    @content;
+  }
+}

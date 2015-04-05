@@ -1,0 +1,117 @@
+@import "../base/common-web-component";
+
+
+///@private
+@mixin _ui-pagination($component: null, $active-component: null,
+$border-radius: null,
+$margin: null,
+$page-margin: null,
+$page-padding: null,
+$page-font-size:null,
+$touch-font-size:null
+) {
+
+  list-style: none;
+  margin: $margin;
+  @include flexbox($alignment:center);
+  width:100%;
+  .page-info{
+    font-size:$page-font-size;
+    .page-no,.page-count{
+      font-weight:bold;
+    }
+  }
+  ul {
+    list-style: none;
+    & > li {
+      &.hide{
+        display:none;
+      }
+      &.next {
+        margin-left: .5rem
+      }
+      &.prev {
+        margin-right: .5rem;
+      }
+      & > a {
+        line-height:1 !important;
+        padding: $page-padding;
+        margin: $page-margin;
+        position: relative;
+        cursor: pointer;
+        font-size:1em;
+        border-radius: $border-radius;
+        @include web-component($component,$include-active:false);
+        &.active,&:active{
+          @include web-component-base($active-component);
+          &:hover{
+            @include web-component-base($active-component);
+          }
+        }
+      }
+    }
+    &.right {
+      @include flexbox($justification:flex-end);
+      margin-left:auto;
+    }
+  }
+
+  @include phone-content(){
+    font-size:$touch-font-size;
+    .page-info{
+      display:none;
+    }
+    ul {
+      & > li {
+        &[data-touch]{
+          display:none;
+        }
+        a {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+}
+
+
+///@public
+///@param {String} $component
+///@param {String} $active-component
+///@param {List} $tags
+/// @param {String} $template-tag
+///@param {String} $class
+///@param {Map} $map
+// $map:(
+//        border-radius:<value>,
+//        margin:<value>,
+//        page:(
+//                margin:<value>,
+//                padding:<value>,
+//                font-size:<value>
+//        ),
+//        touch:(
+//                font-size:<value>
+//        )
+// )
+@mixin ui-pagination($component: default, $active-component: inverse,$tags:null,$template-tag:null,$class:null,$map:()) {
+
+  $_border-radius:get-border-radius();
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $margin:map-get-default($map,border-radius,1em 0 2em 0);
+  $page-margin:map-nested-get-default($map,page,margin,0 0 0 .5em);
+  $page-padding:map-nested-get-default($map,page,padding,.5em .7em .5em .7em);
+  $page-font-size:map-nested-get-default($map,page,font-size,1em);
+  $touch-font-size:mmap-nested-get-default($map,touch,font-size,.8em);
+
+
+  $tag:ui-pagination;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-pagination($component, $active-component, $border-radius, $margin, $page-margin,
+            $page-padding,$page-font-size,$touch-font-size);
+    @content;
+  }
+
+
+}

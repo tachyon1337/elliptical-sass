@@ -1,0 +1,426 @@
+@import "../css3/animation";
+@import "../css3/transform";
+
+//transitions
+
+@mixin transit-dissolveIn() {
+  $name: DissolveIn;
+  @include keyframes($name) {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin transit-dissolveOut() {
+  $name: DissolveOut;
+  @include keyframes($name) {
+    5% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin transit-slideLeftIn() {
+  $name: SlideLeftIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(translate3d(100%,0,0));
+      opacity:1;
+    }
+    100% {
+      @include transform(translate3d(0,0,0));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-slideLeftOut() {
+  $name: SlideLeftOut;
+  @include keyframes($name) {
+    0% {
+      @include transform(translate3d(0,0,0));
+      opacity:1;
+    }
+    100% {
+      @include transform(translate3d(-100%,0,0));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-slideRightIn() {
+  $name: SlideRightIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(translate3d(-100%,0,0));
+      opacity:1;
+    }
+    100% {
+      @include transform(translate3d(0,0,0));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-slideRightOut() {
+  $name: SlideRightOut;
+  @include keyframes($name) {
+    0% {
+      @include transform(translate3d(0,0,0));
+      opacity:1;
+    }
+    100% {
+      @include transform(translate3d(100%,0,0));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-fadeSlideLeftIn() {
+  $name: FadeSlideLeftIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(translate3d(100%,0,0));
+      opacity:0;
+    }
+    100% {
+      @include transform(translate3d(0,0,0));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-fadeSlideLeftOut() {
+  $name: FadeSlideLeftIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(translate3d(0,0,0));
+      opacity:1;
+    }
+    100% {
+      @include transform(translate3d(-100%,0,0));
+      opacity:0;
+    }
+  }
+}
+
+@mixin transit-fadeSlideRightIn() {
+  $name: FadeSlideRightIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(translate3d(-100%,0,0));
+      opacity:0;
+    }
+    100% {
+      @include transform(translate3d(0,0,0));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-fadeSlideRightOut() {
+  $name: FadeSlideRightIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(translate3d(0,0,0));
+      opacity:1;
+    }
+    100% {
+      @include transform(translate3d(100%,0,0));
+      opacity:0;
+    }
+  }
+}
+
+@mixin transit-popIn() {
+  $name: PopIn;
+  @include keyframes($name) {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      @include transform(scale(.2));
+      opacity: 0;
+    }
+    100% {
+      @include transform(scale(1));
+      opacity: 1;
+    }
+  }
+}
+
+@mixin transit-popOut() {
+  $name: PopOut;
+  @include keyframes($name) {
+    5% {
+      @include transform(scale(1));
+      opacity: 1;
+    }
+    100% {
+      @include transform(scale(.2));
+      opacity: 0;
+    }
+  }
+}
+
+@mixin transit-flipLeftIn() {
+  $name: FlipLeftIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(rotateY(-180deg) scale(1));
+      opacity:0;
+    }
+    50% {
+      @include transform(rotateY(-90deg) scale(1));
+      opacity:0;
+    }
+    51% {
+      @include transform(rotateY(-89deg) scale(1));
+      opacity:1;
+    }
+    100% {
+      @include transform(rotateY(0deg) scale(1));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-flipLeftOut() {
+  $name: FlipLeftOut;
+  @include keyframes($name) {
+    0% {
+      @include transform(rotateY(0deg) scale(1));
+      opacity:1;
+    }
+    50% {
+      @include transform(rotateY(90deg) scale(1));
+      opacity:1;
+    }
+    51% {
+      @include transform(rotateY(91deg) scale(1));
+      opacity:0;
+    }
+    100% {
+      @include transform(rotateY(180deg) scale(1));
+      opacity:0;
+    }
+  }
+}
+
+
+@mixin transit-flipRightIn() {
+  $name: FlipRightIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(rotateY(180deg) scale(1));
+      opacity:0;
+    }
+    50% {
+      @include transform(rotateY(90deg) scale(1));
+      opacity:0;
+    }
+    51% {
+      @include transform(rotateY(89deg) scale(1));
+      opacity:1;
+    }
+    100% {
+      @include transform(rotateY(0deg) scale(1));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-flipRightOut() {
+  $name: FlipRightOut;
+  @include keyframes($name) {
+    0% {
+      @include transform(rotateY(0deg) scale(1));
+      opacity:1;
+    }
+    50% {
+      @include transform(rotateY(90deg) scale(1));
+      opacity:1;
+    }
+    51% {
+      @include transform(rotateY(91deg) scale(1));
+      opacity:0;
+    }
+    100% {
+      @include transform(rotateY(180deg) scale(1));
+      opacity:0;
+    }
+  }
+}
+
+
+//smartphone
+@mixin transit-cubeLeftIn() {
+  $name: CubeLeftIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(rotateY(90deg) translateZ(320px));
+      opacity:1;
+    }
+
+    95% {
+      @include transform(rotateY(0deg) translateZ(0) translateX(0));
+      opacity:0;
+    }
+  }
+}
+
+@mixin transit-cubeLeftOut() {
+  $name: CubeLeftOut;
+  @include keyframes($name) {
+    0% {
+      @include transform(rotateY(0deg) translateZ(0) translateX(0));
+      opacity:1;
+    }
+
+    95% {
+      @include transform(rotateY(-90deg) translateZ(320px));
+      opacity:0;
+    }
+    100%{
+      display:none;
+    }
+  }
+}
+
+@mixin transit-cubeRightIn() {
+  $name: CubeRightIn;
+  @include keyframes($name) {
+    0% {
+      @include transform(rotateY(-90deg) translateZ(320px));
+      opacity:0;
+    }
+
+    95% {
+      @include transform(rotateY(0deg) translateZ(0) translateX(0));
+      opacity:1;
+    }
+  }
+}
+
+@mixin transit-cubeRightOut() {
+  $name: CubeRightOut;
+  @include keyframes($name) {
+    0% {
+      @include transform(rotateY(0deg) translateZ(0) translateX(0));
+      opacity:0;
+    }
+
+    95% {
+      @include transform(rotateY(90deg) translateZ(320px));
+      opacity:1;
+    }
+    100%{
+      display:none;
+    }
+  }
+}
+
+@mixin transit-swapLeftIn() {
+  $name: SwapLeftIn;
+  @include keyframes($name) {
+    0% {
+      opacity:0;
+    }
+    5% {
+      @include transform(translate3d(0px, 0px, -800px) rotateY(-70deg));
+      opacity: 0;
+    }
+    35% {
+      @include transform(translate3d(180px, 0px, -400px) rotateY(-20deg));
+      opacity: 1;
+    }
+    95% {
+      @include transform(translate3d(0px, 0px, 0px) rotateY(0deg));
+      opacity: 1;
+    }
+
+  }
+}
+
+@mixin transit-swapLeftOut() {
+  $name: SwapLeftOut;
+  @include keyframes($name) {
+    5% {
+      @include transform(translate3d(0px, 0px, 0px) rotateY(0deg));
+      opacity:1;
+    }
+
+    35% {
+      @include transform(translate3d(-180px, 0px, -400px) rotateY(20deg));
+      opacity: .5;
+    }
+    95% {
+      @include transform(translate3d(0px, 0px, -800px) rotateY(70deg));
+      opacity: 1;
+    }
+
+  }
+}
+
+@mixin transit-swapRightIn() {
+  $name: SwapRightIn;
+  @include keyframes($name) {
+    0% {
+      opacity:0;
+    }
+    5% {
+      @include transform(translate3d(0px, 0px, -800px) rotateY(70deg));
+      opacity: 0;
+    }
+    35% {
+      @include transform(translate3d(-180px, 0px, -400px) rotateY(20deg));
+      opacity: 1;
+    }
+    95% {
+      @include transform(translate3d(0px, 0px, 0px) rotateY(0deg));
+      opacity: 1;
+    }
+
+  }
+}
+
+@mixin transit-swapRightOut() {
+  $name: SwapRightOut;
+  @include keyframes($name) {
+    5% {
+      @include transform(translate3d(0px, 0px, 0px) rotateY(0deg));
+      opacity:1;
+    }
+
+    35% {
+      @include transform(translate3d(180px, 0px, -400px) rotateY(-20deg));
+      opacity: .5;
+    }
+    95% {
+      @include transform(translate3d(0px, 0px, -800px) rotateY(-70deg));
+      opacity: 1;
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

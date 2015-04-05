@@ -1,0 +1,63 @@
+@import "base";
+
+$document-background: map-get($Base,white) !default;
+$document-line-height: 150% !default;
+$document-font: 'ubuntulight' !default;
+$document-font-size: 16px !default;
+$document-font-color: #777 !default;
+$document-font-weight: normal !default;
+$document-font-smoothing: antialiased !default;
+$document-margin: 0 !default;
+$document-padding: 0 !default;
+$document-link-font-size: $document-font-size !default;
+$document-link-color: #888 !default;
+$document-link-color-hover: darken($document-link-color, 15%) !default;
+$document-link-font-weight: normal !default;
+$document-link-font-weight-hover: normal !default;
+$document-link-text-decoration: none !default;
+$document-link-text-decoration-hover: none !default;
+$document-link-text-transform: none !default;
+$document-link-text-transform-hover: none !default;
+$document-link-line-height: inherit !default;
+$document-button-line-height: 1 !default;
+$document-outline: thin dotted map-get($Base,gray) !default;
+$document-touch-outline: thin solid transparent !default;
+$document-list-line-height: 1.25 !default;
+$document-list-style-position: inside !default;
+$document-list-margin: 1em !default;
+$document-highlight-color: #c7254e !default;
+$document-highlight-background: map-get($Base,off-white) !default;
+$document-code-font-weight: normal !default;
+$document-code-border-radius: 3px !default;
+
+$Document: (
+        background:$document-background,
+        line-height:$document-line-height,
+        font:$document-font,
+        font-size:$document-font-size,
+        font-color:$document-font-color,
+        font-weight:$document-font-weight,
+        font-smoothing:$document-font-smoothing,
+        margin:$document-margin,
+        padding:$document-padding,
+        link-font-size:$document-font-size,
+        link-color:$document-link-color,
+        link-color-hover:$document-link-color-hover,
+        link-font-weight:$document-link-font-weight,
+        link-font-weight-hover:$document-link-font-weight-hover,
+        link-text-decoration:$document-link-text-decoration,
+        link-text-decoration-hover:$document-link-text-decoration-hover,
+        link-text-transform:$document-link-text-transform,
+        link-text-transform-hover:$document-link-text-transform-hover,
+        link-line-height:$document-link-line-height,
+        button-line-height:$document-button-line-height,
+        outline:$document-outline,
+        touch-outline:$document-touch-outline,
+        list-line-height:$document-list-line-height,
+        list-style-position:$document-list-style-position,
+        list-margin:$document-list-margin,
+        highlight-color:$document-highlight-color,
+        highlight-background:$document-highlight-background,
+        code-font-weight:$document-code-font-weight,
+        code-border-radius:$document-code-border-radius
+);

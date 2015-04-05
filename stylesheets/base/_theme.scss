@@ -1,0 +1,487 @@
+@import "../settings/base";
+@import "../settings/core";
+@import "../settings/component";
+@import "../settings/document";
+@import "../base/component";
+@import "../settings/core";
+@import "../settings/semantic";
+@import "../settings/theme";
+@import "../settings/touch";
+
+
+/// create sass component theme
+
+/// @private
+/// create the core sass component theme from the $Core Map
+@mixin _core-theme(){
+
+  ///default
+  @include component($component:default,$map:(
+          background: map-get($Core,background),
+          font-color: map-get($Core,font-color),
+          border: map-get($Core,border),
+          text-shadow: map-get($Core,text-shadow)
+  ));
+
+  ///primary
+  @include component($component:primary,$map:(
+          background: map-nested-get($Core,primary,background),
+          font-color: map-nested-get($Core,primary,font-color),
+          border: map-nested-get($Core,primary,border),
+          text-shadow: map-nested-get($Core,primary,text-shadow)
+  ));
+
+  ///secondary
+  @include component($component:secondary,$map:(
+          background: map-nested-get($Core,secondary,background),
+          font-color: map-nested-get($Core,secondary,font-color),
+          border: map-nested-get($Core,secondary,border),
+          text-shadow: map-nested-get($Core,secondary,text-shadow)
+  ));
+
+  ///inverse
+  @include component($component:inverse,$map:(
+          background: map-nested-get($Core,inverse,background),
+          font-color: map-nested-get($Core,inverse,font-color),
+          border: map-nested-get($Core,inverse,border),
+          text-shadow: map-nested-get($Core,inverse,text-shadow)
+  ));
+
+  ///transparent
+  @include component($component:transparent,$map:(
+          background: none,
+          font-color: map-nested-get($Core,inverse,font-color),
+          border: 0,
+          text-shadow: none,
+          box-shadow:none,
+          hover:(
+                  background:none,
+                  border:0,
+                  font-color: map-nested-get($Core,inverse,font-color),
+                  text-shadow: none,
+                  box-shadow:none
+          ),
+          active:(
+                  background:none,
+                  border:0,
+                  font-color: map-nested-get($Core,inverse,font-color),
+                  text-shadow: none,
+                  box-shadow:none
+          )
+  ));
+
+}
+
+/// @private
+/// create the semantic sass component theme from the $Semantic Map
+@mixin _semantic-theme(){
+  ///error
+  @include component($component:error,$map:(
+          background: map-nested-get($Semantic,error,background),
+          font-color: map-nested-get($Semantic,error,font-color),
+          border: map-nested-get($Semantic,error,border),
+          text-shadow: map-nested-get($Semantic,error,text-shadow)
+  ));
+
+  ///info
+  @include component($component:info,$map:(
+          background: map-nested-get($Semantic,info,background),
+          font-color: map-nested-get($Semantic,info,font-color),
+          border: map-nested-get($Semantic,info,border),
+          text-shadow: map-nested-get($Semantic,info,text-shadow)
+  ));
+
+  ///success
+  @include component($component:success,$map:(
+          background: map-nested-get($Semantic,success,background),
+          font-color: map-nested-get($Semantic,success,font-color),
+          border: map-nested-get($Semantic,success,border),
+          text-shadow: map-nested-get($Semantic,success,text-shadow)
+  ));
+
+  ///warning
+  @include component($component:warning,$map:(
+          background: map-nested-get($Semantic,warning,background),
+          font-color: map-nested-get($Semantic,warning,font-color),
+          border: map-nested-get($Semantic,warning,border),
+          text-shadow: map-nested-get($Semantic,warning,text-shadow)
+  ));
+}
+
+
+/// returns a component map
+/// @param {String} $key
+/// @param {String} $touch-theme
+/// @param {Map} $touch <optional>
+@function touch-map($key,$touch-theme,$touch){
+  @if($touch !=null and map-has-key($touch, $key)){
+    @return map-get($touch,$key);
+  }@else{
+    @if $touch-theme==white{
+      $touch:$Touch-White;
+    }@else if($touch-theme==black){
+      $touch:$Touch-Black;
+    }@else{
+      $touch:$Touch;
+    }
+    @return map-get($touch,$key);
+  }
+}
+
+/// returns a component map
+/// @param {String} $key
+/// @param {String} $touch-theme
+/// @param {Map} $touch-menu <optional>
+@function touch-menu-map($key,$touch-theme,$touch-menu){
+  @if($touch-menu !=null and map-has-key($touch-menu, $key)){
+    @return map-get($touch-menu,$key);
+  }@else{
+    @if $touch-theme==white and $key==search{
+      $key:search-white
+    }
+    @return map-get($Touch-Menu,$key);
+  }
+}
+
+/// @private
+/// create sass touch components from passed params
+/// @param {String} $touch-theme
+/// @param {Map} $touch <optional>
+/// @param {Map} $touch-menu <optional>
+@mixin _create-touch-components($touch-theme:null,$touch:null,$touch-menu:null){
+
+  $Css-Touch:touch-map(bar,$touch-theme,$touch);
+  $Css-Toggle:touch-map(toggle,$touch-theme,$touch);
+  $Css-Touch-Drawer-Header:touch-map(drawer-header,$touch-theme,$touch);
+  $Css-Touch-Drawer:touch-map(drawer,$touch-theme,$touch);
+  $Css-Touch-Menu:touch-menu-map(menu,$touch-theme,$touch-menu);
+  $Css-Touch-Dropdown:touch-menu-map(dropdown,$touch-theme,$touch-menu);
+  $Css-Touch-Input:touch-menu-map(input,$touch-theme,$touch-menu);
+  $Css-Touch-Search:touch-menu-map(search,$touch-theme,$touch-menu);
+
+  @include touch-component($component:css-touch,$map:$Css-Touch);
+  @include touch-component($component:css-toggle,$map:$Css-Toggle);
+  @include touch-component($component:css-touch-drawer,$map:$Css-Touch-Drawer);
+  @include touch-component($component:css-touch-drawer-header,$map:$Css-Touch-Drawer-Header);
+  @include touch-component($component:css-touch-menu,$map:$Css-Touch-Menu);
+  @include touch-component($component:css-touch-dropdown,$map:$Css-Touch-Dropdown);
+  @include touch-component($component:css-touch-input,$map:$Css-Touch-Input);
+  @include touch-component($component:css-touch-search,$map:$Css-Touch-Search);
+
+
+}
+
+/// @private
+/// create sass components from a passed theme
+/// @param {Map} $Theme
+@mixin _create-components-from-theme($Theme:()){
+
+  @include extend-component($component:css-white,$extend-component:default,$map:(
+          background:map-get($Base,white),
+          box-shadow:none,
+          border:1px solid map-nested-get($Theme,input,border)
+  ));
+
+
+  ///input
+  @include component($component:css-input,$map:(
+          background: map-nested-get($Theme,input,background),
+          font-color:map-nested-get($Theme,input,color),
+          border: map-nested-get($Theme,input,border),
+          icon-color:map-nested-get($Theme,input,icon-color),
+          icon-text-shadow:map-nested-get($Theme,input,icon-text-shadow),
+          placeholder-color:map-nested-get($Theme,input,placeholder-color),
+          hover:(
+               border: map-nested-get($Theme,input,border-hover)
+          )
+  ));
+
+
+  ///input-alt
+  @include extend-component($component:css-input-alt,$extend-component:css-input,$map:(
+          box-shadow:map-nested-get($Theme,input,alt-box-shadow)
+  ));
+
+
+  ///checkbox
+  @include extend-component($component:css-checkbox,$extend-component:css-input,$map:(
+          font-color:map-nested-get($Theme,checkbox,color),
+          border: map-nested-get($Theme,checkbox,border),
+          icon-color:map-nested-get($Theme,checkbox,icon-color)
+  ));
+
+
+  ///file input
+  @include component($component:css-input-file,$map:(
+          background: map-nested-get($Theme,input-file,background),
+          font-color:map-nested-get($Theme,input-file,font-color),
+          border: map-nested-get($Theme,input-file,border),
+          hover:(
+                  border:map-nested-get($Theme,input-file,border-hover)
+          ),
+          active:(
+                  font-color:map-nested-get($Theme,input-file,font-color-active)
+          )
+  ));
+
+
+  ///switch
+  @include component($component:css-switch,$map:(
+          background: map-nested-get($Theme,switch,background),
+          border: map-nested-get($Theme,switch,border),
+          active:(
+                  background: map-nested-get($Theme,switch,background-active),
+                  border: map-nested-get($Theme,switch,border-active)
+          )
+  ));
+
+
+  ///switch-toggle
+  @include component($component:css-switch-toggle,$map:(
+          background: map-nested-get($Theme,input,background),
+          border: map-nested-get($Theme,checkbox,border),
+          active:(
+                  background: map-nested-get($Theme,input,background),
+                  border: map-nested-get($Theme,switch-toggle,border-active)
+          )
+  ));
+
+
+  ///dropdown
+  @include component($component:css-dropdown,$map:(
+          background: map-nested-get($Theme,dropdown,background),
+          font-color: map-nested-get($Theme,dropdown,font-color),
+          border: map-nested-get($Theme,dropdown,border),
+          disabled:(
+                  background:map-nested-get($Theme,dropdown,background-disabled)
+          )
+  ));
+
+  ///divider
+  @include component($component:css-divider,$map:(
+          background: map-nested-get($Theme,divider,background),
+          border: map-nested-get($Theme,divider,border)
+  ));
+
+
+  ///rating
+  @include component($component:css-rating,$map:(
+          background: none,
+          font-color: map-nested-get($Theme,rating,font-color),
+          border: none
+  ));
+
+
+  ///social
+  @include component($component:css-social,$map:(
+          background: map-nested-get($Theme,social,background),
+          border: map-nested-get($Theme,social,border),
+          box-shadow: none,
+          icon-color: map-nested-get($Theme,social,icon-color),
+          icon-text-shadow: map-nested-get($Theme,social,icon-text-color)
+  ));
+
+  ///css-tabs
+  @include component($component:css-tabs,$map:(
+          background:map-nested-get($Theme,tabs,background),
+          border:map-nested-get($Theme,tabs,border),
+          font-color:map-nested-get($Theme,tabs,font-color),
+          box-shadow:none,
+          active:(
+                  background:map-nested-get($Theme,tabs,background-active),
+                  border:map-nested-get($Theme,tabs,border-active),
+                  font-color:map-nested-get($Theme,tabs,font-color-active),
+                  box-shadow:none
+          )
+  ));
+
+  ///css-bar
+  @include desktop-component($component:css-bar,$map:(
+          background: map-nested-get($Theme,topbar,background),
+          font-color: map-nested-get($Theme,topbar,font-color),
+          border: map-nested-get($Theme,topbar,border),
+          text-shadow: map-nested-get($Theme,topbar,text-shadow),
+          box-shadow: map-nested-get($Theme,topbar,box-shadow)
+  ));
+
+  ///css-bar-menu
+
+  @include extend-component($component:css-bar-menu,$extend-component:css-bar, $map:(
+          font-color: map-nested-get($Theme,menu,font-color),
+          hover:(
+                  background: map-nested-get($Theme,menu,background-hover),
+                  font-color: map-nested-get($Theme,menu,font-color-hover)
+          ),
+          active:(
+                  font-color:map-nested-get($Theme,menu,font-color-active)
+          )
+  ));
+
+  ///css-desktop-input
+  @include desktop-component($component:css-desktop-input,$map:(
+          background: map-nested-get($Theme,input,background),
+          font-color:map-nested-get($Theme,input,color),
+          border: map-nested-get($Theme,input,border),
+          border-hover: map-nested-get($Theme,input,border-hover),
+          icon-color:map-nested-get($Theme,input,icon-color),
+          icon-text-shadow:map-nested-get($Theme,input,icon-text-shadow),
+          placeholder-color:map-nested-get($Theme,input,placeholder-color)
+  ));
+
+  ///css-menu-divider
+  @include component($component: css-menu-divider,$map:(
+          background: map-nested-get($Theme,menu-divider,background),
+          border: map-nested-get($Theme,menu-divider,border)
+  ));
+
+
+  ///css-window
+  @include component($component:css-window,$map:(
+          background:map-nested-get($Theme,window,background),
+          font-color:map-nested-get($Theme,window,font-color),
+          border:map-nested-get($Theme,window,border),
+          box-shadow:map-nested-get($Theme,window,box-shadow)
+  ));
+
+  ///css-window-header
+  @include component($component:css-window-header,$map:(
+          background:map-nested-get($Theme,window-header,background),
+          font-color:map-nested-get($Theme,window-header,font-color),
+          border:map-nested-get($Theme,window-header,border),
+          text-shadow:map-nested-get($Theme,window-header,text-shadow)
+  ));
+
+  ///css-window-close
+  @include component($component:css-window-close,$map:(
+          background:map-nested-get($Theme,window-close,background),
+          border:map-nested-get($Theme,window-close,border),
+          text-shadow:map-nested-get($Theme,window-close,text-shadow),
+          box-shadow:map-nested-get($Theme,window-close,box-shadow),
+          font-color:map-nested-get($Theme,window-close,font-color),
+          hover:(
+                  background:map-nested-get($Theme,window-close,background-hover),
+                  font-color:map-nested-get($Theme,window-close,font-color)
+          )
+  ));
+
+  ///css-window-footer
+  @include extend-component($component:css-window-footer,$extend-component:css-window-header,$map:(
+          text-shadow:map-nested-get($Theme,window-footer,text-shadow),
+          box-shadow:map-nested-get($Theme,window-footer,box-shadow)
+  ));
+
+
+  ///css-datepicker
+  @include extend-component($component:css-datepicker,$extend-component:default,$map:(
+          background:map-nested-get($Theme,datepicker,background),
+          icon-color:map-nested-get($Theme,datepicker,icon-color)
+  ));
+
+  ///css-datepicker-button
+  @include component($component:css-datepicker-button,$map:(
+          background:map-nested-get($Theme,datepicker-button,background),
+          border:0,
+          font-color:map-get($Core,font-color),
+          hover:(
+                  background:map-nested-get($Core,secondary,background),
+                  font-color:map-nested-get($Core,secondary,font-color),
+          ),
+          active:(
+                  background:map-nested-get($Core,inverse,background),
+                  font-color:map-nested-get($Core,inverse,font-color)
+          )
+  ));
+
+  ///css-datepicker-today-button
+  @include component($component:css-datepicker-today-button,$map:(
+          background:map-nested-get($Core,primary,background),
+          font-color:map-nested-get($Core,primary,font-color)
+  ));
+
+  ///css-sliding-panel
+  @include component($component:css-sliding-panel,$map:(
+          background:map-nested-get($Theme,sliding-panel,background),
+          font-color:map-nested-get($Theme,sliding-panel,font-color),
+          border:map-nested-get($Theme,sliding-panel,border),
+          box-shadow:map-nested-get($Theme,sliding-panel,box-shadow)
+  ));
+
+  ///css-collapse
+  @include component($component:css-collapse,$map:(
+          background:map-nested-get($Theme,collapse,background),
+          border:map-nested-get($Theme,collapse,border)
+  ));
+
+  @include component($component:css-collapse-header,$map:(
+          background:map-nested-get($Theme,collapse-header,background),
+          font-color:map-nested-get($Theme,collapse-header,font-color),
+          border:0
+  ));
+
+  @include component($component:css-collapse-section,$map:(
+          background:map-nested-get($Theme,collapse-section,background),
+          font-color:map-nested-get($Theme,collapse-section,font-color),
+          border:0
+  ));
+
+  ///oauth
+  @include component($component:google,$map:(
+          background:map-nested-get($Theme,oauth,google),
+          font-color:map-nested-get($Theme,oauth,font-color),
+          border:map-nested-get($Theme,oauth,google)
+  ));
+
+  @include component($component:facebook,$map:(
+          background:map-nested-get($Theme,oauth,facebook),
+          font-color:map-nested-get($Theme,oauth,font-color),
+          border:map-nested-get($Theme,oauth,facebook)
+  ));
+
+  @include component($component:twitter,$map:(
+          background:map-nested-get($Theme,oauth,twitter),
+          font-color:map-nested-get($Theme,oauth,font-color),
+          border:map-nested-get($Theme,oauth,twitter)
+  ));
+
+}
+
+
+
+/// create a sass component theme to apply to web components
+/// @param {Map} $theme <optional>
+/// @param {Map} $touch <optional>
+/// @param {Map{ $touch-menu <optional>
+/// @param {Boolean} $extend-theme ...if a theme is passed and the $extend-theme param is set, extend $Theme
+@mixin component-theme($theme:null,$touch:null,$touch-menu:null,$extend-theme:false){
+
+  @include _core-theme();
+  @include _semantic-theme();
+
+  $_touch-theme:map-nested-get($Theme,touch,theme);
+
+  @if($theme !=null){
+    @if $extend-theme==true{
+      $Theme:map-extend($Theme,$theme,true);
+    }@else{
+      $Theme:$theme;
+    }
+  }
+
+  @include _create-components-from-theme($Theme:$Theme);
+  @include _create-touch-components($touch-theme:$_touch-theme,$touch:$touch,$touch-menu:$touch-menu);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

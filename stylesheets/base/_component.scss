@@ -1,0 +1,364 @@
+@import "../settings/core";
+@import "../utilities/functions";
+@import "breakpoints";
+@import "../utilities/component";
+
+///@public
+///@param {String} $component
+///@param {Map} $map
+/// $map:(
+///         direction:<value>,
+///         background:<value>,
+///         font-color:<value>,
+///         border:<value>,
+///         text-shadow:<value>,
+///         box-shadow:<value>,
+///         icon-color:<value>,
+///         icon-text-shadow:<value>,
+///         placeholder-color:<value>,
+///         hover:(
+///                 background:<value>,
+///                 font-color:<value>,
+///                 border:<value>,
+///                 text-shadow:<value>,
+///                 box-shadow:<value>
+///         ),
+///         active:(
+///                 background:<value>,
+///                 font-color:<value>,
+///                 border:<value>,
+///                 text-shadow:<value>,
+///                 box-shadow:<value>
+///         ),
+///         disabled:(
+///                 background:<value>,
+///                 font-color:<value>
+///         )
+/// )
+@mixin component($component: null,$map:()) {
+
+  $_white:map-get($Core,white);
+  $direction:map-get-default($map,direction,to bottom);
+  $background: map-get($map,background);
+  $font-color: map-get-default($map,font-color,$_white);
+  $border: map-get($map,border);
+  $text-shadow: map-get($map,text-shadow);
+  $box-shadow: map-get($map,box-shadow);
+  $icon-color: map-get($map,icon-color);
+  $icon-text-shadow: map-get($map,icon-text-shadow);
+  $placeholder-color:map-get($map,placeholder-color);
+  $background-hover: map-nested-get($map,hover,background);
+  $font-color-hover: map-nested-get($map,hover,font-color);
+  $border-hover: map-nested-get($map,hover,border);
+  $text-shadow-hover: map-nested-get($map,hover,text-shadow);
+  $box-shadow-hover: map-nested-get($map,hover,box-shadow);
+  $background-active: map-nested-get($map,active,background);
+  $font-color-active: map-nested-get($map,active,font-color);
+  $border-active: map-nested-get($map,active,border);
+  $text-shadow-active: map-nested-get($map,active,text-shadow);
+  $box-shadow-active: map-nested-get($map,active,box-shadow);
+  $background-disabled: map-nested-get($map,disabled,background);
+  $font-color-disabled: map-nested-get($map,disabled,font-color);
+
+
+  %#{$component}-background {
+    @include component-background($background,$direction);
+  }
+
+  %#{$component}-background-hover {
+    @if $background-hover == null {
+      @include component-background-hover($background,$direction);
+    } @else {
+      @include component-background($background-hover,$direction);
+    }
+  }
+
+  %#{$component}-background-active {
+    @if $background-active == null {
+      @extend %#{$component}-background-hover !optional;
+    } @else {
+      @include component-background($background-active,$direction);
+    }
+  }
+
+  %#{$component}-font {
+    @include component-font($font-color, $text-shadow);
+  }
+
+  %#{$component}-font-hover {
+    @if $font-color-hover !=null and $text-shadow-hover != null{
+      @include component-font-hover($font-color-hover, $text-shadow-hover);
+    } @else {
+      @include component-font($font-color, $text-shadow);
+      @include component-font-hover($font-color-hover, $text-shadow-hover);
+    }
+  }
+
+  %#{$component}-font-active {
+    @if $font-color-active !=null and $text-shadow-active != null{
+      @include component-font-hover($font-color-active, $text-shadow-active);
+    } @else {
+      @extend %#{$component}-font-hover !optional;
+      @include component-font-hover($font-color-active, $text-shadow-active);
+    }
+  }
+
+  %#{$component}-border {
+    @include component-border($border);
+  }
+
+  %#{$component}-border-hover {
+    @if $border-hover != null {
+      @include component-border($border-hover);
+    } @else {
+      @include component-border-hover($border);
+    }
+  }
+
+  %#{$component}-border-active {
+    @if $border-active == null {
+      @extend %#{$component}-border-hover !optional;
+    } @else {
+      @include component-border($border-active);
+    }
+  }
+
+  %#{$component}-box-shadow {
+    @include component-box-shadow($box-shadow);
+  }
+
+  %#{$component}-box-shadow-hover {
+    @if $box-shadow-hover == null {
+      @extend %#{$component}-box-shadow !optional;
+    } @else {
+      @include component-box-shadow($box-shadow-hover);
+    }
+  }
+
+  %#{$component}-box-shadow-active {
+    @if $box-shadow-active == null {
+      @include component-box-shadow-active();
+    } @else {
+      @include component-box-shadow($box-shadow-active);
+    }
+  }
+
+  %#{$component}-icon {
+    @if $icon-color == null and $icon-text-shadow == null{
+      @extend %#{$component}-font !optional;
+    } @else {
+      @extend %#{$component}-font !optional;
+      @include component-font-hover($icon-color, $icon-text-shadow);
+    }
+  }
+
+  %#{$component}-placeholder {
+    $_placeholder-color:$font-color;
+    @if $placeholder-color !=null{
+      $_placeholder-color:$placeholder-color;
+    }
+    @include component-placeholder($_placeholder-color);
+  }
+
+  %#{$component}-disabled {
+    @include component-disabled($background-disabled, $font-color-disabled,$background);
+  }
+
+}
+
+
+///@public
+///@param {String} $component
+///@param {Map} $map
+@mixin touch-component($component: null,$map:()) {
+  @media #{$breakpoint-touch}{
+    @include component($component,$map);
+  }
+}
+
+///@public
+///@param {String} $component
+///@param {Map} $map
+@mixin desktop-component($component: null,$map:()) {
+  @media #{$breakpoint-desktop}{
+    @include component($component,$map);
+  }
+}
+
+///@public
+///@param {String} $component
+///@param {String} $extend-component
+///@param {Map} $map
+@mixin extend-component($component:null, $extend-component:null,$map:()) {
+
+  $direction:map-get-default($map,direction,to bottom);
+  $background: map-get($map,background);
+  $font-color: map-get($map,font-color);
+  $border: map-get($map,border);
+  $text-shadow: map-get($map,text-shadow);
+  $box-shadow: map-get($map,box-shadow);
+  $icon-color: map-get($map,icon-color);
+  $icon-text-shadow: map-get($map,icon-text-shadow);
+  $placeholder-color:map-get($map,placeholder-color);
+  $background-hover: map-nested-get($map,hover,background);
+  $font-color-hover: map-nested-get($map,hover,font-color);
+  $border-hover: map-nested-get($map,hover,border);
+  $text-shadow-hover: map-nested-get($map,hover,text-shadow);
+  $box-shadow-hover: map-nested-get($map,hover,box-shadow);
+  $background-active: map-nested-get($map,active,background);
+  $font-color-active: map-nested-get($map,active,font-color);
+  $border-active: map-nested-get($map,active,border);
+  $text-shadow-active: map-nested-get($map,active,text-shadow);
+  $box-shadow-active: map-nested-get($map,active,box-shadow);
+  $background-disabled: map-nested-get($map,disabled,background);
+  $font-color-disabled: map-nested-get($map,disabled,font-color);
+
+
+  %#{$component}-background {
+    @if $background != null {
+      @include component-background($background,$direction);
+    } @else {
+      @extend %#{$extend-component}-background !optional;
+    }
+  }
+
+  %#{$component}-background-hover {
+    @if $background-hover == null{
+      @if $background != null{
+        @include component-background-hover($background,$direction);
+      }@else{
+        @extend %#{$extend-component}-background-hover !optional;
+      }
+    }@else{
+      @include component-background($background-hover,$direction);
+    }
+  }
+
+  %#{$component}-background-active {
+    @if $background-active != null {
+      @include component-background($background-active,$direction);
+    } @else {
+      @extend %#{$extend-component}-background-active !optional;
+    }
+  }
+
+  %#{$component}-font {
+    @if type-of($font-color)== color and type-of($text-shadow)==list{
+      @include component-font($font-color, $text-shadow);
+    } @else {
+      @extend %#{$extend-component}-font !optional;
+      @include component-font-extended($font-color, $text-shadow);
+    }
+  }
+
+  %#{$component}-font-hover {
+    @if type-of($font-color-hover)== color and type-of($text-shadow-hover)==list{
+      @include component-font-hover($font-color-hover, $text-shadow-hover);
+    } @else {
+      @extend %#{$extend-component}-font-hover !optional;
+      @include component-font-hover($font-color-hover, $text-shadow-hover);
+    }
+  }
+
+  %#{$component}-font-active {
+    @if type-of($font-color-active)== color and type-of($text-shadow-active)==list{
+      @include component-font-hover($font-color-active, $text-shadow-active);
+    } @else {
+      @extend %#{$extend-component}-font-active !optional;
+      @include component-font-hover($font-color-active, $text-shadow-active);
+    }
+  }
+
+  %#{$component}-border {
+    @if $border != null{
+      @include component-border($border);
+    } @else {
+      @extend %#{$extend-component}-border !optional;
+    }
+  }
+
+  %#{$component}-border-hover {
+    @if $border-hover != null{
+      @include component-border($border-hover);
+    } @else {
+      @if type-of($border)== color or type-of($border) == list{
+        @include component-border-hover($border);
+      } @else {
+        @extend %#{$extend-component}-border-hover !optional;
+      }
+    }
+  }
+
+  %#{$component}-border-active {
+    @if $border-active != null{
+      @include component-border($border-active);
+    } @else {
+      @extend %#{$extend-component}-border-active !optional;
+    }
+  }
+
+  %#{$component}-box-shadow {
+    @if $box-shadow != null{
+      @include component-box-shadow($box-shadow);
+    }@else{
+      @extend %#{$extend-component}-box-shadow !optional;
+    }
+  }
+
+  %#{$component}-box-shadow-hover {
+    @if $box-shadow-hover != null{
+      @include component-box-shadow($box-shadow-hover);
+    }@else{
+      @extend %#{$extend-component}-box-shadow-hover !optional;
+    }
+  }
+
+  %#{$component}-box-shadow-active {
+    @if $box-shadow-active != null{
+      @include component-box-shadow($box-shadow-active);
+    }@else{
+      @extend %#{$extend-component}-box-shadow-active !optional;
+    }
+  }
+
+  %#{$component}-icon {
+    @extend %#{$extend-component}-icon !optional;
+    @if $icon-color != null or $icon-text-shadow != null {
+      @include component-font-extended($icon-color, $icon-text-shadow);
+    }
+  }
+
+  %#{$component}-placeholder {
+    @extend %#{$extend-component}-placeholder !optional;
+    @if $placeholder-color != null {
+      @include component-placeholder($placeholder-color);
+    }
+  }
+
+  %#{$component}-disabled {
+    @extend %#{$extend-component}-disabled !optional;
+  }
+}
+
+///@public
+///@param {String} $component
+///@param {String} $extend-component
+///@param {Map} $map
+@mixin extend-touch-component($component:null,$extend-component:null,$map:()) {
+  @media #{$breakpoint-touch}{
+    @include extend-component($extend-component, $component,$map);
+  }
+}
+
+///@public
+///@param {String} $component
+///@param {String} $extend-component
+///@param {Map} $map
+@mixin extend-desktop-component($component:null,$extend-component:null,$map:()) {
+  @media #{$breakpoint-desktop}{
+    @include extend-component($extend-component, $component,$map);
+  }
+}
+
+
+

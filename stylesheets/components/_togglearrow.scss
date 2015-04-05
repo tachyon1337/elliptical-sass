@@ -1,0 +1,66 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _toggle-arrow(
+$color:null,
+$font-size:null,
+$icon:null,
+$margin:null,
+$padding:null,
+$icon-font-family:null
+){
+  position:relative;
+  display:none;
+  cursor:pointer;
+  font-size:$font-size;
+  height:$font-size;
+  width:$font-size;
+  margin:$margin;
+  padding:$padding;
+  &:after{
+    font-family:'#{$icon-font-family}';
+    content:#{$icon};
+    color:$color;
+    font-size:$font-size;
+    @include phone-content(){
+      font-size:16px;
+    }
+  }
+  @include touch-content(){
+    display:inline-block;
+  }
+
+}
+
+
+///@public
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         margin:<value>,
+///         padding:<value>,
+///         icon:(
+///                 color:<value>,
+///                 font-size:<value>,
+///                 icon:<value>,
+///                 font-family:<value>
+///         )
+/// )
+@mixin toggle-arrow($tags:null,$template-tag:null,$class:null,$map:()){
+
+  $margin:map-get-default($map,margin,0);
+  $padding:map-get-default($map,padding,0);
+  $color:map-nested-get-default($map,icon,color,#000);
+  $font-size:map-nested-get-default($map,icon,font-size,24px);
+  $icon:map-nested-get-default($map,icon,icon,\e1b3);
+  $_icon-font-family:map-nested-get-default($map,icon,font-family,map-get($Icons,font-family));
+
+  $tag:toggle-arrow;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _toggle-arrow($color,$font-size,$icon,$margin,$padding,$_icon-font-family);
+    @content;
+  }
+
+}

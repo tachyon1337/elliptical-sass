@@ -1,0 +1,304 @@
+@import "base";
+@import "document";
+
+$_gray:map-get($Base,gray);
+$_off-black:map-get($Base,off-black);
+$_white:map-get($Base,white);
+$_off-white:map-get($Base,off-white);
+$_gray-medium:map-get($Base,gray-medium);
+$_gray-medium-light:map-get($Base,gray-medium-light);
+$_gray-dark:map-get($Base,gray-dark);
+$_gray-light:map-get($Base,gray-light);
+$_font-color:map-get($Document,font-color);
+$_black:map-get($Base,black);
+$_dark-light:map-get($Base,dark-light);
+$_dark-medium:map-get($Base,dark-medium);
+$_transparent:map-get($Base,transparent);
+
+//touch-black
+$component-touch-black-background: $_dark-light,$_dark-medium !default;
+$component-touch-black-font-color: $_white !default;
+$component-touch-black-text-shadow: 0 1px 1px #373737 !default;
+$component-touch-black-border: 0 !default;
+$component-touch-black-box-shadow: none !default;
+$component-touch-black-icon-color:darken($_gray-medium-light,5%) !default;
+
+//toggle-black
+$component-toggle-black-background: $transparent !default;
+$component-toggle-black-font-color: $_gray-medium-light !default;
+$component-toggle-black-text-shadow: rgba(0, 0, 0, 1) 0 1px 1px !default;
+$component-toggle-black-border: $_black !default;
+$component-toggle-black-box-shadow: darken($_gray-medium,14%) 0px -1px 0px 1px !default;
+
+
+//drawer-header-black
+$component-drawer-header-black-background: $_dark-light,$_black !default;
+$component-drawer-header-black-font-color: $white !default;
+$component-drawer-header-black-text-shadow:rgba(0, 0, 0, 1) 0 1px 1px !default;
+$component-drawer-header-black-border:0 !default;
+$component-drawer-header-black-box-shadow:none !default;
+
+//drawer-black
+$component-drawer-black-background: $_off-white !default;
+$component-drawer-black-font-color: $_gray-medium !default;
+$component-drawer-black-text-shadow:none !default;
+$component-drawer-black-border:0 !default;
+$component-drawer-black-box-shadow:none !default;
+
+//touch white
+$component-touch-white-background: $_white !default;
+$component-touch-white-font-color: darken(#d8d8d8,10%) !default;
+$component-touch-white-text-shadow: none !default;
+$component-touch-white-border: 0 !default;
+$component-touch-white-box-shadow: none !default;
+$component-touch-white-icon-color: #55acee !default;
+
+//toggle-white
+$component-toggle-white-background: transparent !default;
+$component-toggle-white-font-color: darken(#d8d8d8,10%) !default;
+$component-toggle-white-text-shadow: rgba(0, 0, 0, 1) 0 1px 1px !default;
+$component-toggle-white-border: #d8d8d8 !default;
+$component-toggle-white-box-shadow: none !default;
+
+//drawer-header-white
+$component-drawer-header-white-background: $_white !default;
+$component-drawer-header-white-font-color: darken(#d8d8d8,10%) !default;
+$component-drawer-header-white-text-shadow:none !default;
+$component-drawer-header-white-border:0 !default;
+$component-drawer-header-white-box-shadow:none !default;
+
+//drawer-white
+$component-drawer-white-background: $_white !default;
+$component-drawer-white-font-color: $_gray !default;
+$component-drawer-white-text-shadow:none !default;
+$component-drawer-white-border:0 !default;
+$component-drawer-white-box-shadow:none !default;
+
+
+//touch
+$component-touch-background: #40484b,#2c3134 !default;
+$component-touch-font-color: $_white !default;
+$component-touch-text-shadow: 0 1px 1px #373737 !default;
+$component-touch-border: 0 !default;
+$component-touch-box-shadow: rgba(0, 0, 0, .5) 0px 1px 2px !default;
+$component-touch-icon-color: $_white !default;
+
+//toggle
+$component-toggle-background: transparent !default;
+$component-toggle-font-color: $_white !default;
+$component-toggle-text-shadow: rgba(0, 0, 0, 1) 0 1px 1px !default;
+$component-toggle-border: $_black !default;
+$component-toggle-box-shadow: #484e51 0px -1px 0px 1px !default;
+
+
+//drawer
+$component-drawer-background: #32393c !default;
+$component-drawer-font-color: $_white !default;
+$component-drawer-text-shadow:none !default;
+$component-drawer-border:0 !default;
+$component-drawer-box-shadow:none !default;
+
+//drawer-header
+$component-drawer-header-background: #292e31, #141416 !default;
+$component-drawer-header-font-color: $_white !default;
+$component-drawer-header-text-shadow:rgba(0, 0, 0, 1) 0 1px 1px !default;
+$component-drawer-header-border:0 !default;
+$component-drawer-header-box-shadow:none !default;
+
+//menu
+$component-touch-menu-background: #f7f7f7 !default;
+$component-touch-menu-font-color:#434444 !default;
+$component-touch-menu-text-shadow:none !default;
+$component-touch-menu-border: $_gray-light !default;
+$component-touch-menu-box-shadow:false !default;
+$component-touch-menu-icon-color:$_gray-medium !default;
+$component-touch-menu-icon-text-shadow:0 -1px 0 #373737 !default;
+
+//dropdown
+$component-touch-dropdown-background: #e2e4e5 !default;
+$component-touch-dropdown-font-color:#373737 !default;
+$component-touch-dropdown-text-shadow:none !default;
+$component-touch-dropdown-border: $_gray-medium-light !default;
+$component-touch-dropdown-box-shadow:inset 0px 3px 12px rgba(0,0,0,.1) !default;
+
+//touch-input
+$component-touch-input-background: $_white !default;
+$component-touch-input-font-color:$_gray-medium !default;
+$component-touch-input-text-shadow:none !default;
+$component-touch-input-border:0 !default;
+$component-touch-input-box-shadow:inset 0px 1px 6px $_gray-medium-light !default;
+
+//touch-search
+$component-touch-search-background: $_white !default;
+$component-touch-search-font-color:$_gray-medium !default;
+$component-touch-search-text-shadow:none !default;
+$component-touch-search-border:0 !default;
+$component-touch-search-box-shadow:none !default;
+$component-touch-search-icon-color:#b3b8ba !default;
+$component-touch-search-placeholder-color:$_gray-light !default;
+
+//touch-search-white
+$component-touch-search-white-background:#a3acb2 !default;
+$component-touch-search-white-background-hover:#a3acb2 !default;
+$component-touch-search-white-background-active:#66757f !default;
+$component-touch-search-white-font-color:#f1f2f3 !default;
+$component-touch-search-white-text-shadow:none !default;
+$component-touch-search-white-border:0 !default;
+$component-touch-search-white-box-shadow:none !default;
+$component-touch-search-white-icon-color:$_white !default;
+$component-touch-search-white-placeholder-color:#e5e7e9 !default;
+
+
+$Touch-Black:(
+        bar:(
+                background:$component-touch-black-background,
+                font-color:$component-touch-black-font-color,
+                text-shadow:$component-touch-black-text-shadow,
+                border:$component-touch-black-border,
+                box-shadow:$component-touch-black-box-shadow,
+                icon-color:$component-touch-black-icon-color
+        ),
+        toggle:(
+                background:$component-toggle-black-background,
+                font-color:$component-toggle-black-font-color,
+                text-shadow:$component-toggle-black-text-shadow,
+                border:$component-toggle-black-border,
+                box-shadow:$component-toggle-black-box-shadow
+        ),
+        drawer-header:(
+                background:$component-drawer-header-black-background,
+                font-color:$component-drawer-header-black-font-color,
+                text-shadow:$component-drawer-header-black-text-shadow,
+                border:$component-drawer-header-black-border,
+                box-shadow:$component-drawer-header-black-box-shadow
+        ),
+        drawer:(
+                background:$component-drawer-black-background,
+                font-color:$component-drawer-black-font-color,
+                text-shadow:$component-drawer-black-text-shadow,
+                border:$component-drawer-black-border,
+                box-shadow:$component-drawer-black-box-shadow
+        )
+);
+
+$Touch-White:(
+        bar:(
+                background:$component-touch-white-background,
+                font-color:$component-touch-white-font-color,
+                text-shadow:$component-touch-white-text-shadow,
+                border:$component-touch-white-border,
+                box-shadow:$component-touch-white-box-shadow,
+                icon-color:$component-touch-white-icon-color
+        ),
+        toggle:(
+                background:$component-toggle-white-background,
+                font-color:$component-toggle-white-font-color,
+                text-shadow:$component-toggle-white-text-shadow,
+                border:$component-toggle-white-border,
+                box-shadow:$component-toggle-white-box-shadow
+        ),
+        drawer-header:(
+                background:$component-drawer-header-white-background,
+                font-color:$component-drawer-header-white-font-color,
+                text-shadow:$component-drawer-header-white-text-shadow,
+                border:$component-drawer-header-white-border,
+                box-shadow:$component-drawer-header-white-box-shadow
+        ),
+        drawer:(
+                background:$component-drawer-white-background,
+                font-color:$component-drawer-white-font-color,
+                text-shadow:$component-drawer-white-text-shadow,
+                border:$component-drawer-white-border,
+                box-shadow:$component-drawer-white-box-shadow
+        )
+);
+
+$Touch:(
+        bar:(
+                background:$component-touch-background,
+                font-color:$component-touch-font-color,
+                text-shadow:$component-touch-text-shadow,
+                border:$component-touch-border,
+                box-shadow:$component-touch-box-shadow,
+                icon-color:$component-touch-icon-color
+        ),
+        toggle:(
+                background:$component-toggle-background,
+                font-color:$component-toggle-font-color,
+                text-shadow:$component-toggle-text-shadow,
+                border:$component-toggle-border,
+                box-shadow:$component-toggle-box-shadow
+        ),
+        drawer-header:(
+                background:$component-drawer-header-background,
+                font-color:$component-drawer-header-font-color,
+                text-shadow:$component-drawer-header-text-shadow,
+                border:$component-drawer-header-border,
+                box-shadow:$component-drawer-header-box-shadow
+        ),
+        drawer:(
+                background:$component-drawer-background,
+                font-color:$component-drawer-font-color,
+                text-shadow:$component-drawer-text-shadow,
+                border:$component-drawer-border,
+                box-shadow:$component-drawer-box-shadow
+        )
+);
+
+$Touch-Menu:(
+        menu:(
+                background:$component-touch-menu-background,
+                font-color:$component-touch-menu-font-color,
+                text-shadow:$component-touch-menu-text-shadow,
+                border:$component-touch-menu-border,
+                box-shadow:$component-touch-menu-box-shadow,
+                icon-color:$component-touch-menu-icon-color,
+                icon-text-shadow:$component-touch-menu-icon-text-shadow
+        ),
+        dropdown:(
+                background:$component-touch-dropdown-background,
+                font-color:$component-touch-dropdown-font-color,
+                text-shadow:$component-touch-dropdown-text-shadow,
+                border:$component-touch-dropdown-border,
+                box-shadow:$component-touch-dropdown-box-shadow
+        ),
+        input:(
+                background:$component-touch-input-background,
+                font-color:$component-touch-input-font-color,
+                text-shadow:$component-touch-input-text-shadow,
+                border:$component-touch-input-border,
+                box-shadow:$component-touch-input-box-shadow
+        ),
+        search:(
+                background:$component-touch-search-background,
+                font-color:$component-touch-search-font-color,
+                text-shadow:$component-touch-search-text-shadow,
+                border:$component-touch-search-border,
+                box-shadow:$component-touch-search-box-shadow,
+                icon-color:$component-touch-search-icon-color,
+                placeholder-color:$component-touch-search-placeholder-color
+        ),
+        search-white:(
+                background:$component-touch-search-white-background,
+                font-color:$component-touch-search-white-font-color,
+                text-shadow:$component-touch-search-white-text-shadow,
+                border:$component-touch-search-white-border,
+                box-shadow:$component-touch-search-white-box-shadow,
+                icon-color:$component-touch-search-white-icon-color,
+                placeholder-color:$component-touch-search-white-placeholder-color,
+                hover:(
+                        background:$component-touch-search-white-background-hover
+                ),
+                active:(
+                        background:$component-touch-search-white-background-active
+                )
+        )
+);
+
+
+
+
+
+
+
+

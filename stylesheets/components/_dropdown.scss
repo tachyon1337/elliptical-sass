@@ -1,0 +1,244 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-dropdown($component:null, $divider: null,
+$width:null,
+$min-width:null,
+$top:null,
+$margin: null,
+$padding:null,
+$float: null,
+$z-index: null,
+$font-size: null,
+$border: null,
+$item-padding: null,
+$item-divider-padding: null,
+$item-divider-border: null,
+$border-radius: null,
+$span-icon-margin:null
+) {
+
+
+  left: 0;
+  @if $width != null {
+    width:$width;
+  }
+
+  min-width:$min-width;
+  list-style: none;
+  margin: $margin;
+  padding:$padding;
+  position: absolute;
+  top: $top;
+  float: $float;
+  z-index: $z-index;
+  border-radius: $border-radius;
+  display: none;
+  font-size:$font-size;
+  @include web-component-default($component:$component,$include-font:false,$include-disabled:false);
+  &>menu-item{
+    text-align: left;
+    display:list-item;
+    &:first-child {
+      border-top-right-radius: $border-radius;
+      border-top-left-radius: $border-radius;
+    }
+    &:last-child {
+      border-bottom-right-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+    &:hover, &:focus {
+      @extend %#{$component}-background-hover !optional;
+      @extend %#{$component}-font-hover !optional;
+      &>a{
+        @extend %#{$component}-font-hover !optional;
+      }
+    }
+    &.active{
+      @extend %#{$component}-background-hover !optional;
+      @extend %#{$component}-font-hover !optional;
+    }
+    &:focus{
+      display:inherit;
+      @include tab-focus();
+    }
+    &.disabled, &[disabled] {
+      cursor: default !important;
+      @extend %#{$component}-disabled !optional;
+      &:hover {
+        @extend %#{$component}-disabled !optional;
+      }
+      &>a{
+        @extend %#{$component}-disabled !optional;
+      }
+    }
+    &>a {
+      text-align: left;
+      font-size: 1em;
+      @extend %#{$component}-font !optional;
+      white-space: nowrap;
+      display:block;
+      padding: $item-padding;
+      &:hover, &:focus {
+        @extend %#{$component}-font-hover !optional;
+      }
+      &>span[class*='icon-']{
+        margin:$span-icon-margin;
+      }
+    }
+  }
+  &>menu-divider {
+    width: 100%;
+    height: 0;
+    border: 0;
+    border-bottom: $item-divider-border;
+    padding: $item-divider-padding;
+    @extend %#{$divider}-border !optional;
+    display:list-item;
+  }
+  &.show,&.active {
+    display: list-item !important;
+  }
+  &.visible{
+    visibility: visible !important;
+  }
+  &.horizontal{
+    width:100%;
+    @include flexbox($justification:space-between,$alignment:center)
+  }
+
+}
+
+///@private
+@mixin _ui-mega-dropdown($component:null,
+$width:null,
+$min-width:null,
+$top:null,
+$margin: null,
+$padding:null,
+$z-index: null,
+$font-size: null,
+$border: null,
+$min-height: null,
+$border-radius: null
+) {
+
+  left: 0;
+  @if $width != null {
+    width:$width;
+  }
+  list-style: none;
+  margin: $margin;
+  padding:$padding;
+  position: absolute;
+  top: $top;
+  z-index: $z-index;
+  border-radius: $border-radius;
+  display: none;
+  font-size:$font-size;
+  min-width:$min-width;
+  min-height: $min-height;
+  height:auto;
+  cursor: default;
+  @include web-component-default($component:$component,$include-font:false,$include-disabled:false);
+
+  &.show,&.active {
+    display: block !important;
+
+  }
+  &.visible{
+    visibility: visible !important;
+  }
+}
+
+
+///@public
+/// @param {String} $component
+/// @param {String} $divider
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+///   $map:(
+///           width:<value>,
+///           min-width:<value>,
+///           top:<value>,
+///           margin:<value>,
+///           padding:<value>,
+///           height:<value>,
+///           border-radius:<value>,
+///           float:<value>,
+///           z-index:<value>,
+///           font-size:<value>,
+///           border:<value>
+///           item:(
+///                   padding:<value>,
+///                   divider-padding: <value>,
+///                   divider-border:<value>
+///           ),
+///           mega:(
+///                   min-width:<value>,
+///                   min-height:<value>,
+///                   width:<value>,
+///                   padding:<value>
+///           ),
+///           icon:(
+///                   margin:<value>
+///          )
+///  )
+@mixin ui-dropdown($component: css-dropdown, $divider: css-divider,$tags:null,$template-tag:null,$class:null,$map:()) {
+
+  $_z-index:get-z-index();
+  $_border-radius:get-border-radius();
+
+  $width:map-get($map,width);
+  $min-width:map-get-default($map,min-width,12em);
+  $top:map-get-default($map,top,100%);
+  $margin:map-get-default($map,margin,0);
+  $padding:map-get-default($map,padding,0 0 .5em 0);
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $float:map-get-default($map,float,none);
+  $z-index:map-get-default($map,z-index,$_z-index + 9999);
+  $font-size:map-get-default($map,font-size,1em);
+  $border:map-get-default($map,border,1px solid);
+  $item-padding:map-nested-get-default($map,item,padding,.5em 1em);
+  $item-divider-padding: map-nested-get-default($map,item,divider-padding,0);
+  $item-divider-border:map-nested-get-default($map,item,divider-border,1px solid);
+  $mega-padding:map-nested-get-default($map,mega,padding,1em);
+  $mega-min-width:map-nested-get-default($map,mega,min-width,450px);
+  $mega-min-height:map-nested-get-default($map,mega,min-height,12.5em);
+  $mega-width:map-nested-get($map,mega,width);
+  $span-icon-margin:map-nested-get-default($map,icon,margin,0 .5em 0 0);
+
+
+
+  $tag:ui-dropdown;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-dropdown($component, $divider, $width,$min-width, $top, $margin,$padding, $float, $z-index, $font-size, $border, $item-padding,
+            $item-divider-padding, $item-divider-border, $border-radius, $span-icon-margin
+    );
+    @content;
+  }
+
+  @-moz-document url-prefix() {
+    ui-dropdown{
+      &>menu-item{
+        padding: $item-padding;
+        &>a{
+          min-width:$min-width;
+          padding:0 !important;
+        }
+      }
+    }
+  }
+
+  $tag:ui-mega-dropdown;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-mega-dropdown($component, $mega-width, $mega-min-width, $top, $margin, $mega-padding, $z-index, $font-size, $border, $mega-min-height, $border-radius);
+    @content;
+  }
+
+}
+
+
+

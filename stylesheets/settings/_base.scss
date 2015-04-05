@@ -1,0 +1,34 @@
+$white: #fff !default;
+$off-white: #eee !default;
+$gray: #ccc !default;
+$gray-light: #ddd !default;
+$gray-medium-light:#999 !default;
+$gray-medium: #666 !default;
+$gray-dark: #333 !default;
+$black: #000 !default;
+$off-black: #222 !default;
+$dark-light: #272727 !default;
+$dark-medium:#1b1b1b !default;
+$zero: 0 !default;
+$transparent:transparent !default;
+$flex-justification:flex-start !default;
+$flex-alignment:flex-start !default;
+
+
+$Base: (
+        white:$white,
+        off-white:$off-white,
+        gray:$gray,
+        gray-light:$gray-light,
+        gray-medium-light:$gray-medium-light,
+        gray-medium:$gray-medium,
+        gray-dark:$gray-dark,
+        black:$black,
+        off-black:$off-black,
+        dark-light:$dark-light,
+        dark-medium:$dark-medium,
+        zero:$zero,
+        transparent:$transparent,
+        flex-justification:$flex-justification,
+        flex-alignment:$flex-alignment
+);

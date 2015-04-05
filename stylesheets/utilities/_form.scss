@@ -1,0 +1,156 @@
+@import "../base/breakpoints";
+@import "../settings/component";
+@import "../settings/icons";
+@import "../settings/semantic";
+@import "../settings/form";
+@import "../utilities/functions";
+@import "../base/web-component";
+
+@mixin input() {
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="url"],
+  textarea {
+    @content;
+  }
+}
+
+//semantic input
+@mixin _semantic-input-text($component) {
+  @include input(){
+    &.#{$component} {
+      @extend %#{$component}-background !optional;
+      @extend %#{$component}-border !optional;
+      @extend %#{$component}-font !optional;
+      outline: none;
+      font-weight: bold;
+      @extend %#{$component}-placeholder !optional;
+      &:focus{
+        @extend %#{$component}-background-hover !optional;
+        @extend %#{$component}-border-hover !optional;
+        @extend %#{$component}-font !optional;
+        outline: none;
+        font-weight: bold;
+        @extend %#{$component}-placeholder !optional;
+      }
+    }
+  }
+}
+
+@mixin _semantic-form-label($class, $color) {
+  label {
+    &.#{$class} {
+      color: $color;
+    }
+  }
+}
+
+@mixin _semantic-search(){
+  ui-search{
+    &.warning{
+      &:after{
+        color:map-nested-get($Semantic,warning,font-color) !important;
+      }
+    }
+    &.success{
+      &:after{
+        color:map-nested-get($Semantic,success,font-color) !important;
+      }
+    }
+    &.info{
+      &:after{
+        color:map-nested-get($Semantic,info,font-color) !important;
+      }
+    }
+    &.error{
+      &:after{
+        color:map-nested-get($Semantic,error,font-color) !important;
+      }
+    }
+  }
+}
+
+@mixin _form-input-icon($component: null,
+$font-size: null,
+$border-radius: null,
+$icon:null,
+$icon-font-family:null,
+$padding-right: null,
+$right: null) {
+
+  $_form-input-padding:map-nested-get($Form,input,padding);
+  position: relative;
+  display:block;
+  @include input() {
+    @extend %#{$component}-background !optional;
+    @extend %#{$component}-border !optional;
+    @extend %#{$component}-font !optional;
+    @extend %#{$component}-placeholder !optional;
+    border-radius:$border-radius !important;
+    padding-right: $padding-right;
+
+    &:focus {
+      @extend %#{$component}-background-hover !optional;
+    }
+  }
+  &:after {
+    font-family: $icon-font-family;
+    content: '#{$icon}';
+    position: absolute;
+    @extend %#{$component}-icon !optional;
+    font-size: $font-size;
+    right: $right;
+    top: icon-position($_form-input-padding, $font-size);
+    line-height: component-line-height($font-size, 1);
+    z-index: 99;
+    pointer-events: none;
+  }
+}
+
+
+
+
+@mixin _form-search-input($component: css-desktop-input, $touch-component:css-touch-search,
+$border-radius: null,
+$icon-font-family:map-get($Icons,font-family),
+$search-icon:null,
+$font-size:null,
+$touch-border-radius: null
+) {
+
+  $icon:map-get($Icons,search);
+  @if $search-icon != null{
+    $icon:$search-icon;
+  }
+  display:block;
+  @media #{$breakpoint-desktop}{
+    @if $border-radius == null{
+      $border-radius: map-nested-get($Form,input,border-radius);
+    }
+    $padding-right: 3em;
+    $right: .3em;
+    width:100%;
+    @include _form-input-icon($component:$component, $font-size:$font-size, $border-radius:$border-radius,
+    $icon:$icon,$icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
+
+ }
+
+  @media #{$breakpoint-touch}{
+    @if $touch-border-radius == null{
+      $touch-border-radius: $border-radius;
+    }
+    $padding-right: 2em;
+    $right: .5em;
+    $font-size: .9em;
+    @include _form-input-icon($component:$touch-component, $font-size:$font-size, $border-radius:$touch-border-radius,
+    $icon:$icon,$icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
+
+  }
+}

@@ -1,0 +1,65 @@
+@import "../base/common-web-component";
+@import "touch-toggle";
+
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///   height:<value>,
+///   width:<value>,
+///   border-right:<value>,
+///   z-index:<value>,
+///   icon:(
+///            icon:<value>,
+///            size:<value>,
+///            left:<value>,
+///            top:<value>,
+///            font-family:<value>
+///
+///   )
+/// )
+@mixin ui-toggle($component:css-toggle,$tags:null,$template-tag:null,$class:null,$map:()){
+  $_z-index:get-z-index();
+  $_icon:map-get($Icons,toggle);
+  $_icon-font-family:map-get($Icons,font-family);
+  $_height:map-get($Component,touch-bar-height);
+  $_toggle-size:map-get($Component,toggle-size);
+  $_toggle-top:map-get($Component,toggle-top);
+  $_toggle-left:map-get($Component,toggle-left);
+  $height: map-get-default($map,height,$_height - 1);
+  $width: map-get-default($map,width,60px);
+  $z-index:map-get-default($map,z-index,$_z-index);
+  $border-right:map-get-default($map,border-right,1px solid);
+  $icon:map-nested-get-default($map,icon,icon,$_icon);
+  $icon-size:map-nested-get-default($map,icon,size,$_toggle-size);
+  $icon-left:map-nested-get-default($map,icon,left,$_toggle-left);
+  $icon-top:map-nested-get-default($map,icon,top,$_toggle-top);
+  $_icon-font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);
+
+  ui-toggle{
+    display:none;
+  }
+
+  @include touch-content(){
+    $tag:ui-toggle;
+    @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+      @include _touch-ui-toggle($component,
+              $height,
+              $width,
+              $z-index,
+              $border-right,
+              $icon,
+              $icon-size,
+              $icon-left,
+              $icon-top,
+              $_icon-font-family
+      );
+      @content;
+    }
+  }
+}
+
+

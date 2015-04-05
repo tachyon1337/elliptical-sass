@@ -1,0 +1,283 @@
+@import "../base/common-web-component";
+@import "touch-topbar";
+
+/// @private
+@mixin _ui-topbar($component: null,
+$position: null,
+$padding: null,
+$height: null,
+$z-index: null,
+$font-size:null,
+$brand-font-size: null,
+$line-height: null,
+$justification:null,
+$alignment:null,
+$brand-justification:null,
+$brand-alignment:null,
+$brand-min-width:null,
+$brand-padding:null,
+$right-padding:null,
+$menu-justification:null) {
+
+  $_grid-width:map-get($Grid,width);
+  $_grid-column-gutter:map-get($Grid,column-gutter);
+  $_ui-topbar-contained-to-grid: $_grid-width - $_grid-column-gutter;
+
+  position: $position;
+  width: 100%;
+  padding: $padding;
+  border-right: 0;
+  border-left: 0;
+  height: $height;
+  font-size:$font-size;
+  @include flexbox($justification: $justification, $alignment: $alignment);
+
+  @if $position == absolute or $position == fixed {
+    top: 0;
+    left: 0;
+    z-index: $z-index;
+  }
+  @if $position==relative{
+    max-height:$height;
+  }
+  @include web-component-default($component:$component);
+  ui-brand {
+    position:absolute;
+    left:0;
+    top:0;
+    cursor:pointer;
+    padding: $brand-padding;
+    height:100%;
+    min-width:$brand-min-width;
+    font-size:$brand-font-size;
+    a{
+      font-size:1em;
+      @extend %#{$component}-font !optional;
+      @include flexbox($justification: $brand-justification, $alignment: $brand-alignment);
+      &:hover{
+        @extend %#{$component}-font-hover !optional;
+      }
+    }
+    @include flexbox($justification: $brand-justification, $alignment: $brand-alignment);
+    @extend %#{$component}-font !optional;
+  }
+
+  &>* {
+    list-style: none;
+    &.right{
+      position:absolute;
+      right:0;
+      top:0;
+      height:100%;
+      padding:$right-padding;
+    }
+    &.left{
+      position:absolute;
+      left:0;
+      top:0;
+      height:100%;
+    }
+  }
+  & > section {
+    height: $height;
+    width: $_ui-topbar-contained-to-grid;
+    position:relative;
+    background:none;
+    @include flexbox($justification:flex-start, $alignment: $alignment);
+    &>*{
+      &.right,&.flex-end {
+        margin-left:auto;
+        height:100%;
+        @include flexbox($justification: $menu-justification, $alignment: $alignment);
+      }
+      &.left,&.flex-start{
+        margin-right:auto;
+        height:100%;
+        @include flexbox($justification: $menu-justification, $alignment:$alignment);
+      }
+    }
+    &.center {
+      @include flexbox($justification:center, $alignment: $alignment);
+    }
+    &.space-between{
+      @include flexbox($justification:space-between, $alignment: $alignment);
+    }
+    &.space-around{
+      @include flexbox($justification:space-around, $alignment: $alignment);
+    }
+    &.right{
+      @include flexbox($justification:flex-end, $alignment: $alignment);
+    }
+  }
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z-index;
+  }
+  ///when the screen width matches grid width, we must further subtract gutter width from the max-width and use gutter width as the margin
+  @include grid-contain-content() {
+    & > section {
+      left: 0;
+      margin: 0;
+      max-width: $_grid-width - $_grid-column-gutter - $_grid-column-gutter;
+    }
+  }
+
+}
+
+///@public
+/// @param {String} $component
+/// @param {String} $touch-component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+///   $map:(
+///      position:<value>,
+///      padding:<value>
+///      margin:<value>,
+///      font-size:<value>,
+///      height:<value>,
+///      z-index:<value>,
+///      line-height:<value>,
+///      justification:<value>,
+///      alignment:<value>,
+///      brand:(
+///          justification:<value>,
+///          alignment:<value>,
+///          min-width:<value>,
+///          padding:<value>,
+///      ),
+///      menu:(
+///          justification:<value>,
+///          right-padding:<value>,
+///      ),
+///      touch:(
+///          position:<value>,
+///          height:<value>,
+///          z-index:<value>,
+///          font-size:<value>,
+///          brand-font-size:<value>,
+///          icon-font-size:<value>,
+///          icon-margin:<value>
+///      )
+//   )
+
+@mixin ui-topbar($component:css-bar,$touch-component:css-touch,$tags:null,$template-tag:null,$class:null,$map:()) {
+
+  $_touch-height:map-get($Component,touch-bar-height);
+  $_z-index:get-z-index() + 999;
+  $position: map-get-default($map,position,fixed);
+  $padding: map-get-default($map,padding,0);
+  $height: map-get-default($map,height,$_touch-height);
+  $z-index: map-get-default($map,z-index,$_z-index);
+  $font-size:map-get-default($map,font-size,1em);
+  $line-height:map-get-default($map,line-height,.5);
+  $justification:map-get-default($map,justification,center);
+  $alignment:map-get-default($map,alignment,center);
+  $brand-font-size: map-nested-get-default($map,brand,font-size,1.5em);
+  $brand-justification:map-nested-get-default($map,brand,justification,flex-start);
+  $brand-alignment:map-nested-get-default($map,brand,alignment,center);
+  $brand-min-width:map-nested-get-default($map,brand,min-width,6em);
+  $brand-padding:map-nested-get-default($map,brand,padding,0 0 0 1em);
+  $right-padding:map-nested-get-default($map,menu,right-padding,0 1em 0 0);
+  $menu-justification:map-nested-get-default($map,menu,justification,center);
+  $touch-position: map-nested-get-default($map,touch,position,fixed);
+  $touch-height: map-nested-get-default($map,touch,height,$_touch-height);
+  $touch-font-size:map-nested-get-default($map,touch,font-size,1em);
+  $touch-z-index: map-nested-get-default($map,touch,z-index,$_z-index);
+  $touch-brand-font-size:map-nested-get-default($map,touch,brand-font-size,1.75em);
+  $touch-icon-font-size:map-nested-get-default($map,touch,icon-font-size,22px);
+  $touch-icon-margin:map-nested-get-default($map,touch,icon-margin,.8em);
+
+
+
+  $tag:ui-topbar;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include desktop-content() {
+      @include _ui-topbar($component,
+              $position,
+              $padding,
+              $height,
+              $z-index,
+              $font-size,
+              $brand-font-size,
+              $line-height,
+              $justification,
+              $alignment,
+              $brand-justification,
+              $brand-alignment,
+              $brand-min-width,
+              $brand-padding,
+              $right-padding,
+              $menu-justification);
+    }
+    @include touch-content(){
+      @include _touch-ui-topbar($touch-component,
+              $touch-position,
+              $touch-height,
+              $touch-z-index,
+              $touch-font-size,
+              $touch-brand-font-size,
+              $touch-icon-font-size,
+              $touch-icon-margin);
+    }
+    @content;
+  }
+
+  ///if fixed position, margin of next element =topbar height + 1em
+  @if $position != relative {
+    [data-role=navigation] + *{
+      padding-top:$touch-height;
+    }
+    @if $class != null {
+      ui-topbar.#{$class} + * {
+        margin-top: $height;
+      }
+    } @else {
+      ui-topbar + * {
+        margin-top: $height;
+      }
+    }
+  }
+
+  @include desktop-content(){
+    ui-topbar{
+      touch-ui-brand,touch-icons{
+        display:none;
+      }
+    }
+  }
+
+  ///for touch, if fixed position, padding of next element =topbar height
+  @include touch-content(){
+    @if $touch-position != relative {
+      @if $class != null {
+        ui-topbar.#{$class} + *{
+          padding-top: $touch-height;
+        }
+
+      } @else {
+        ui-topbar + * {
+          padding-top: $touch-height;
+        }
+      }
+    }
+  }
+}
+
+@mixin ui-topbar-brand() {
+  ui-brand {
+    @content;
+  }
+}
+
+@mixin touch-ui-topbar-brand() {
+  @include touch-content() {
+    ui-brand {
+      @content;
+    }
+  }
+
+}

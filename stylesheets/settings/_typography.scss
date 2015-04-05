@@ -1,0 +1,110 @@
+@import "base";
+@import "document";
+
+
+$typography-paragraph-line-height: 1.5 !default;
+$typography-paragraph-margin: 0 0 1em 0 !default;
+$typography-paragraph-lead-font-size: map-get($Document,font-size)  * 1.5 !default;
+$typography-paragraph-header-sibling-margin: 2em 0 1em 0 !default;
+$typography-paragraph-hr-sibling-margin: 2.5em 0 2.5em 0 !default;
+$typography-grid-header-first-child-margin-top: 1em !default;
+$typography-aside-paragraph-font-size: map-get($Document,font-size) !default;
+$typography-aside-paragraph-font-style: italic !default;
+$typography-aside-paragraph-line-height: 150% !default;
+$typography-inset: 0 1px 0 map-get($Base,white) !default;
+$typography-list-style-position: inside !default;
+$typography-list-line-height: 1.25 !default;
+$typography-hr-border-top: 1px solid map-get($Base,gray) !default;
+$typography-hr-border-bottom: 1px solid lighten(map-get($Base,gray), 10%) !default;
+$typography-hr-height: 1px !default;
+$typography-hr-margin: 1em 0 1em !default;
+$typography-highlight-background: map-get($Base,off-white) !default;
+$typography-highlight-font-color: map-get($Base,gray-dark) !default;
+$typography-highlight-font-weight: bold !default;
+$typography-blockquote-border: 0 !default;
+$typography-blockquote-border-left: 6px solid !default;
+$typography-blockquote-font-color: lighten(map-get($Document,font-color), 10%) !default;
+$typography-blockquote-font-size: map-get($Document,font-size) !default;
+$typography-blockquote-font-weight: normal !default;
+$typography-blockquote-font-style: normal !default;
+$typography-blockquote-line-height: 1.6 !default;
+$typography-blockquote-margin: 1em 0 !default;
+$typography-blockquote-padding: 1em !default;
+$typography-blockquote-link-decoration: underline !default;
+$typography-blockquote-link-weight: normal !default;
+$typography-blockquote-link-hover-opacity: .7 !default;
+$typography-cite-font-size: .8em !default;
+$typography-cite-font-color: lighten(map-get($Document,font-color), 20%) !default;
+$typography-cite-font-style: normal !default;
+$typography-cite-before: \2014 \0020 !default;
+$typography-header-font-family: inherit !default;
+$typography-header-font-color: map-get($Base,gray-dark) !default;
+$typography-header-font-weight: 300 !default;
+$typography-header-line-height: 1.1 !default;
+$typography-header-margin: .2em 0 .3em 0 !default;
+$typography-header-text-rendering: optimizeLegibility !default;
+$typography-header-small-font-size: 60% !default;
+$typography-header-small-font-color: lighten(map-get($Document,font-color), 30%) !default;
+$typography-header-small-line-height: 0 !default;
+$typography-header-1: 4.9em !default;
+$typography-header-2: 3.375em !default;
+$typography-header-3: 2.375em !default;
+$typography-header-4: 1.68em !default;
+$typography-header-5: 1.2em !default;
+$typography-header-6: 1em !default;
+
+
+
+$Typography: (
+        paragraph-line-height:$typography-paragraph-line-height,
+        paragraph-margin:$typography-paragraph-margin,
+        paragraph-lead-font-size:$typography-paragraph-lead-font-size,
+        paragraph-header-sibling-margin:$typography-paragraph-header-sibling-margin,
+        paragraph-hr-sibling-margin:$typography-paragraph-hr-sibling-margin,
+        grid-header-first-child-margin-top:$typography-grid-header-first-child-margin-top,
+        aside-paragraph-font-size:$typography-aside-paragraph-font-size,
+        aside-paragraph-font-style:$typography-aside-paragraph-font-style,
+        aside-paragraph-line-height:$typography-aside-paragraph-line-height,
+        inset:$typography-inset,
+        list-style-position:$typography-list-style-position,
+        list-line-height:$typography-list-line-height,
+        hr-border-top:$typography-hr-border-top,
+        hr-border-bottom:$typography-hr-border-bottom,
+        hr-height:$typography-hr-height,
+        hr-margin:$typography-hr-margin,
+        highlight-background:$typography-highlight-background,
+        hightlight-font-color:$typography-highlight-font-color,
+        hightlight-font-weight:$typography-highlight-font-weight,
+        blockquote-border:$typography-blockquote-border,
+        blockquote-border-left:$typography-blockquote-border-left,
+        blockquote-font-color:$typography-blockquote-font-color,
+        blockquote-font-size:$typography-blockquote-font-size,
+        blockquote-font-weight:$typography-blockquote-font-weight,
+        blockquote-font-style:$typography-blockquote-font-style,
+        blockquote-line-height:$typography-blockquote-line-height,
+        blockquote-margin:$typography-blockquote-margin,
+        blockquote-padding:$typography-blockquote-padding,
+        blockquote-link-decoration:$typography-blockquote-link-decoration,
+        blockquote-link-weight:$typography-blockquote-link-weight,
+        blockquote-link-hover-opacity:$typography-blockquote-link-hover-opacity,
+        cite-font-size:$typography-cite-font-size,
+        cite-font-color:$typography-cite-font-color,
+        cite-font-style:$typography-cite-font-style,
+        cite-bore:$typography-cite-before,
+        header-font-family: $typography-header-font-family,
+        header-font-color: $typography-header-font-color,
+        header-font-weight: $typography-header-font-weight,
+        header-line-height: $typography-header-line-height,
+        header-margin: $typography-header-margin,
+        header-text-rendering: $typography-header-text-rendering,
+        header-small-font-size: $typography-header-small-font-size,
+        header-small-font-color: $typography-header-small-font-color,
+        header-small-line-height: $typography-header-small-line-height,
+        header-1: $typography-header-1,
+        header-2: $typography-header-2,
+        header-3: $typography-header-3,
+        header-4: $typography-header-4,
+        header-5: $typography-header-5,
+        header-6: $typography-header-6
+
+);

@@ -1,0 +1,417 @@
+@import "../base/common-web-component";
+@import "../settings/button";
+@import "../css3/transition";
+
+
+///@private
+@mixin _button-size($font-size, $padding, $icon-padding) {
+  $_icon-next:map-get($Icons,next);
+  $_icon-down:map-get($Icons,down);
+  $_icon-up:map-get($Icons,up);
+  $_icon-previous:map-get($Icons,previous);
+  $_icon-font-family:map-get($Icons,font-family);
+  $_button-line-height:map-get($Button,line-height);
+
+  padding: $padding;
+  font-size: $font-size;
+  &.icon {
+    padding-right:3em;
+    padding-left:.5em;
+    &.left {
+      padding-left: 3em;
+      padding-right:.5em;
+      span {
+        left: .1em;
+      }
+    }
+    span {
+      position: absolute;
+      right: .1em;
+      height: 100%;
+      font-size: 1em;
+      top: 0;
+      display:-webkit-flex;
+      display: flex;
+      -webkit-align-items:center;
+      align-items: center;
+    }
+  }
+  &.next {
+    padding-right: convert-to-decimal($icon-padding + margin-right($padding));
+    &:after {
+      font-size: $font-size;
+      content: '#{$_icon-next}';
+      right: icon-position-right($font-size);
+      top: icon-position($padding, $font-size);
+      line-height: component-line-height($font-size, $_button-line-height);
+    }
+  }
+  &.prev {
+    padding-left: convert-to-decimal($icon-padding + margin-left($padding));
+    &:after {
+      font-size: $font-size;
+      content: '#{$_icon-previous}';
+      left: icon-position-left($font-size);
+      top: icon-position($padding, $font-size);
+      line-height: component-line-height($font-size, $_button-line-height);
+    }
+  }
+}
+
+///@private
+@mixin _button-dropdown($font-size, $padding, $icon-padding){
+  $_icon-down:map-get($Icons,down);
+  $_icon-font-family:map-get($Icons,font-family);
+  $_button-line-height:map-get($Button,line-height);
+
+  padding-right: 3em;
+  padding-left:.5em;
+  span {
+    position: absolute;
+    right: .1em;
+    height: 100%;
+    font-size: 1em;
+    top: 0;
+    display:-webkit-flex;
+    display: flex;
+    -webkit-align-items:center;
+    align-items: center;
+  }
+}
+
+////@private
+@mixin _button-base() {
+  $_icon-font-family:map-get($Icons,font-family);
+  $_button-line-height:map-get($Button,line-height);
+  $_button-padding:map-get($Button,padding);
+  $_button-margin:map-get($Button,margin);
+  $_button-font-size:map-get($Button,font-size);
+  $_button-font-weight:map-get($Button,font-weight);
+  $_button-radius:map-get($Button,border-radius);
+  $_button-icon-padding:map-get($Button,icon-padding);
+  $_button-font-family:map-get($Button,font-family);
+
+  @include _button-size($_button-font-size, $_button-padding, $_button-icon-padding);
+  margin: $_button-margin;
+  border-radius: $_button-radius;
+  font-family: $_button-font-family;
+  font-weight: $_button-font-weight;
+  text-align: center;
+  line-height: $_button-line-height !important;
+  position: relative;
+  cursor: pointer !important;
+  display: inline-block;
+  outline: 0;
+  &.next, &.prev, &.down, &[data-ui=dropdown], &.up {
+    &:after {
+      font-family: $_icon-font-family;
+      position: absolute;
+    }
+  }
+  ui-button-dropdown{
+    &:after {
+      font-family: $_icon-font-family;
+      position: absolute;
+    }
+  }
+}
+
+///@private
+@mixin _button-states($component) {
+  @include web-component($component:$component);
+  &.active {
+    cursor: default !important;
+    outline: 0;
+  }
+}
+
+///@private
+@mixin _button-sizes() {
+  $_button-jumbo-font-size:map-get($Button,jumbo-font-size);
+  $_button-jumbo-padding:map-get($Button,jumbo-padding);
+  $_button-icon-padding:map-get($Button,icon-padding);
+  $_button-large-font-size:map-get($Button,large-font-size);
+  $_button-large-padding:map-get($Button,large-padding);
+  $_button-small-font-size:map-get($Button,small-font-size);
+  $_button-small-padding:map-get($Button,small-padding);
+  $_button-tiny-font-size:map-get($Button,tiny-font-size);
+  $_button-tiny-padding:map-get($Button,tiny-padding);
+  $_button-radius:map-get($Button,border-radius);
+  $_button-transparent-opacity:map-get($Button,transparent-opacity);
+
+  &.jumbo {
+    @include _button-size($_button-jumbo-font-size, $_button-jumbo-padding, $_button-icon-padding);
+  }
+  &.large {
+    @include _button-size($_button-large-font-size, $_button-large-padding, $_button-icon-padding);
+  }
+  &.small {
+    @include _button-size($_button-small-font-size, $_button-small-padding, $_button-icon-padding);
+  }
+  &.tiny {
+    @include _button-size($_button-tiny-font-size, $_button-tiny-padding, $_button-icon-padding);
+  }
+  &.expand {
+    width: 100%;
+    text-align: center;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  &.radius {
+    border-radius:$_button-radius;
+  }
+  &.round {
+    border-radius:1000px;
+  }
+  &.transparent {
+    opacity: $_button-transparent-opacity;
+
+  }
+  &.left-align {
+    text-align: left;
+    text-indent: .75em;
+  }
+}
+
+@mixin _button-disabled-state($component) {
+  &.disabled, &[disabled] {
+    cursor: default !important;
+    @extend %#{$component}-disabled !optional;
+    &:hover {
+      @extend %#{$component}-disabled !optional;
+    }
+  }
+}
+
+@mixin _ui-button-group($component: default, $active-component: null) {
+  $_button-radius:map-get($Button,border-radius);
+  $_active-component: null;
+
+  list-style: none;
+  padding: 0;
+  margin: 0 0 .75em;
+  -webkit-display:flex;
+  display:flex;
+
+  .ui-button {
+    border-radius:0;
+    @include phone-content() {
+      font-size: .8em;
+    }
+    &:first-child {
+      margin-left: 0;
+      border-top-left-radius: $_button-radius;
+      border-bottom-left-radius: $_button-radius;
+    }
+    &:last-child {
+      border-top-right-radius: $_button-radius;
+      border-bottom-right-radius: $_button-radius;
+    }
+    &:nth-child(2):not(:last-child){
+      border-left:0;
+      border-right:0;
+    }
+    &:nth-child(3):not(:last-child){
+      border-left:0;
+      border-right:0;
+    }
+    &:nth-child(4):not(:last-child){
+      border-left:0;
+      border-right:0;
+    }
+    &:nth-child(5):not(:last-child){
+      border-left:0;
+      border-right:0;
+    }
+    &:nth-child(6):not(:last-child){
+      border-left:0;
+      border-right:0;
+    }
+    &:nth-child(7):not(:last-child){
+      border-left:0;
+      border-right:0;
+    }
+    &:nth-child(8):not(:last-child){
+      border-left:0;
+      border-right:0;
+    }
+  }
+
+  @if $active-component != null {
+    $_active-component: $active-component;
+  }
+  @else {
+    $_active-component: $component;
+  }
+
+  .ui-button {
+    &.active {
+      @include web-component-base($component:$_active-component,$state:active);
+      cursor: default;
+    }
+  }
+
+  &.large {
+    span, [class*='icon-'] {
+      font-size: 2em;
+    }
+  }
+
+  &.flex {
+    & > button-item {
+      @include flex(1 1 0);
+      .ui-button{
+        width: 100%;
+        padding-left: 1px;
+        padding-right: 1px;
+      }
+    }
+  }
+}
+
+
+///@public
+/// {String} $component
+@mixin ui-button($component) {
+  $_include-component-animation:map-get($Component,include-animation);
+  $_component-animation:map-get($Component,animation);
+
+  .ui-button,ui-button{
+    @if($component == default){
+      @include _button-base();
+      @if $_include-component-animation == true{
+        @include transition($_component-animation);
+      }
+      @include _button-states($component);
+      @include _button-sizes();
+      @include _button-disabled-state($component);
+      @content
+
+    } @else {
+      &.#{$component} {
+        @include _button-states($component);
+        @include _button-disabled-state($component);
+        @content
+      }
+    }
+
+  }
+}
+
+///@public
+/// {String} $component
+/// {String} $active-component
+/// {String} $class
+@mixin ui-button-group($component: default, $active-component: null,$class: null) {
+
+  ui-button-group {
+    @if $class != null{
+      &.#{$class} {
+        @include _ui-button-group($component, $active-component);
+        @content;
+      }
+    } @else {
+      @include _ui-button-group($component, $active-component);
+      @content;
+    }
+  }
+
+}
+
+///@public
+/// {Map} $map
+/// $map:(
+///        touch:(
+///              font-size:<value>,
+///              flex-breakpoint:<value>
+///        )
+/// }
+@mixin ui-button-bar($map:()) {
+
+  $_touch-font-size:map-nested-get-default($map,touch,font-size,.8em);
+  $_touch-flex-breakpoint:map-nested-get-default($map,touch,flex-breakpoint,600px);
+
+  .ui-button-bar,ui-button-bar {
+    @include flexbox();
+    @include justify-content(space-between);
+
+    @include grid-contain-content() {
+      &> ui-button-group {
+        margin-right:1em;
+        &:last-child{
+          margin-right:0;
+        }
+        @include flex(1 1 0);
+        & > li, &>button-item {
+          @include flex(1 1 0);
+          .ui-button,ui-button {
+            width: 100%;
+            padding-left: 1px;
+            padding-right: 1px;
+            font-size:$_touch-font-size;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint($_touch-flex-breakpoint){
+      @include flex-direction(column);
+      @include justify-content(flex-start);
+      &>ui-button-group{
+        margin-right:0;
+      }
+    }
+  }
+
+}
+
+
+/// @public
+@mixin ui-button-dropdown(){
+  $_button-font-size:map-get($Button,font-size);
+  $_button-padding:map-get($Button,padding);
+  $_button-icon-padding:map-get($Button,icon-padding);
+  $_button-jumbo-font-size:map-get($Button,jumbo-font-size);
+  $_button-jumbo-padding:map-get($Button,jumbo-padding);
+  $_button-large-font-size:map-get($Button,large-font-size);
+  $_button-large-padding:map-get($Button,large-padding);
+  $_button-small-font-size:map-get($Button,small-font-size);
+  $_button-small-padding:map-get($Button,small-padding);
+  $_button-tiny-font-size:map-get($Button,tiny-font-size);
+  $_button-tiny-padding:map-get($Button,tiny-padding);
+
+  [data-ui=dropdown],ui-button-dropdown{
+    position:relative;
+    ui-dropdown{
+      font-size:14px;
+    }
+  }
+  ui-button-dropdown.ui-button{
+    @include _button-dropdown($_button-font-size, $_button-padding, $_button-icon-padding);
+    &.jumbo {
+      @include _button-dropdown($_button-jumbo-font-size, $_button-jumbo-padding, $_button-icon-padding);
+    }
+    &.large {
+      @include _button-dropdown($_button-large-font-size, $_button-large-padding, $_button-icon-padding);
+    }
+    &.small {
+      @include _button-dropdown($_button-small-font-size, $_button-small-padding, $_button-icon-padding);
+    }
+    &.tiny {
+      @include _button-dropdown($_button-tiny-font-size, $_button-tiny-padding, $_button-icon-padding);
+    }
+  }
+}
+
+/// Shortcut: Create Base Buttons
+/// @public
+@mixin ui-buttons() {
+  @include ui-button(default);
+  @include ui-button(primary);
+  @include ui-button(inverse);
+  @include ui-button(secondary);
+  @include ui-button-dropdown();
+}
+
+
+

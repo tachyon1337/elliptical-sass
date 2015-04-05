@@ -1,0 +1,50 @@
+@import "../base/web-component";
+@import "../settings/icons";
+
+///@private
+@mixin _touch-ui-toggle($component:null,
+$height: null,
+$width: null,
+$z-index:null,
+$border-right: null,
+$icon:null,
+$icon-size: null,
+$icon-left: null,
+$icon-top: null,
+$icon-font-family:null
+
+){
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: $height;
+  width: $width;
+  border-width: 0;
+  border-right: $border-right;
+  z-index:$z-index;
+  @include web-component-base($component:$component,$include-font:false);
+  &:before {
+    font-family:$icon-font-family;
+    content: '#{$icon}';
+    font-size: $icon-size;
+    @extend %#{$component}-font !optional;
+    left: $icon-left;
+    top: $icon-top;
+    position: absolute;
+  }
+  &.active{
+    box-shadow:none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

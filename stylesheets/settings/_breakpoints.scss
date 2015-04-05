@@ -1,0 +1,20 @@
+
+///Screen Breakpoints
+$screen-tablet: 1200px !default;
+$screen-grid-tablet: 1100px !default;
+$screen-smartphone: 600px !default;
+$screen-tablet-portrait: $screen-smartphone + 1 !default;
+$screen-tabs: 800px !default;
+$screen-smartphone-portrait: 320px !default;
+$screen-desktop: $screen-tablet + 1 !default;
+
+
+$Breakpoint: (
+        tablet:$screen-tablet,
+        tablet-portrait:$screen-tablet-portrait,
+        smartphone:$screen-smartphone,
+        smartphone-portrait:$screen-smartphone-portrait,
+        grid-tablet:$screen-grid-tablet,
+        desktop:$screen-desktop,
+        tabs:$screen-tabs
+);

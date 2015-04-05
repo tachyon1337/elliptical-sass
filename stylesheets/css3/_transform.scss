@@ -1,0 +1,119 @@
+
+@mixin translate($x:0,$y:0){
+  -webkit-transform: translate(#{$x},#{$y});
+  transform: translate(#{$x},#{$y});
+}
+
+@mixin translateX($x){
+  -webkit-transform: translateX(#{$x});
+  transform: translateX(#{$x});
+}
+
+@mixin translateY($y){
+  -webkit-transform: translateY(#{$y});
+  transform: translateY(#{$y});
+}
+
+@mixin translateZ($z){
+  -webkit-transform: translateZ(#{$z});
+  transform: translateZ(#{$z});
+}
+
+@mixin translate3d($x:0,$y:0,$z:0){
+  -webkit-transform: translate3d(#{$x},#{$y},#{$z});
+  transform: translate3d(#{$x},#{$y},#{$z});
+}
+
+@mixin scale($x:0,$y:0){
+  -webkit-transform: scale(#{$x},#{$y});
+  transform: scale(#{$x},#{$y});
+}
+
+@mixin scaleX($x){
+  -webkit-transform: scaleX(#{$x});
+  transform: scaleX(#{$x});
+}
+
+@mixin scaleY($y){
+  -webkit-transform: scaleY(#{$y});
+  transform: scaleY(#{$y});
+}
+
+@mixin scaleZ($z){
+  -webkit-transform: scaleZ(#{$z});
+  transform: scaleZ(#{$z});
+}
+
+@mixin scale3d($x:0,$y:0,$z:0){
+  -webkit-transform: scale3d(#{$x},#{$y},#{$z});
+  transform: scale3d(#{$x},#{$y},#{$z});
+}
+
+@mixin rotate($v){
+  -webkit-transform: rotate(#{$v});
+  transform: rotate(#{$v});
+}
+
+@mixin rotateX($x){
+  -webkit-transform: rotateX(#{$x});
+  transform: rotateX(#{$x});
+}
+
+@mixin rotateY($y){
+  -webkit-transform: rotateY(#{$y});
+  transform: rotateY(#{$y});
+}
+
+@mixin rotateZ($z){
+  -webkit-transform: rotateZ(#{$z});
+  transform: rotateZ(#{$z});
+}
+
+@mixin rotate3d($x:0,$y:0,$z:0){
+  -webkit-transform: rotate3d(#{$x},#{$y},#{$z});
+  transform: rotate3d(#{$x},#{$y},#{$z});
+}
+
+@mixin skew($x:0deg,$y:0deg){
+  -webkit-transform: skew(#{$x},#{$y});
+  transform: skew(#{$x},#{$y});
+}
+
+@mixin skewX($x){
+  -webkit-transform: skewX(#{$x});
+  transform: skewX(#{$x});
+}
+
+@mixin skewY($y){
+  -webkit-transform: skewY(#{$y});
+  transform: skewY(#{$y});
+}
+
+@mixin perspective($v){
+  -webkit-transform: perspective(#{$v});
+  transform: perspective(#{$v});
+}
+
+@mixin transform($v){
+  -webkit-transform: #{$v};
+  transform: #{$v};
+}
+
+@mixin transform-origin($v){
+  -webkit-transform-origin: #{$v};
+  transform-origin: #{$v};
+}
+
+@mixin transform-style($v){
+  -webkit-transform-style: #{$v};
+  transform-style: #{$v};
+}
+
+@mixin backface-visibility($v){
+  -webkit-backface-visibility: #{$v};
+  backface-visibility: #{$v};
+}
+
+
+
+

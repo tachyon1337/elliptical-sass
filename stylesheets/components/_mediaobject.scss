@@ -1,0 +1,124 @@
+@import "../base/common-web-component";
+
+
+/// @private
+@mixin _ui-media-object(
+$background:null,
+$padding:null,
+$border-radius:null,
+$media-margin:null,
+$image-border:null,
+$header-margin:null,
+$image-max-width:null,
+$image-max-height:null
+){
+
+  @include flexbox();
+  @include align-items(flex-start);
+  padding:$padding;
+  background:$background;
+  border-radius: $border-radius;
+  margin:0 0 1em 0;
+
+  @include phone-content(){
+    border-radius:0;
+    padding-left:1px;
+    background:$white;
+  }
+  &>figure{
+    margin-right: $media-margin;
+    &>div{
+      border:$image-border;
+      max-width:$image-max-width;
+      max-height:$image-max-height;
+      overflow:hidden;
+      @include phone-content(){
+        width:80px;
+        max-height:100px;
+      }
+      &>img{
+        width:100%;
+        height:auto;
+      }
+    }
+  }
+
+  &>img{
+    margin-right: $media-margin;
+    border:$image-border;
+    @include phone-content(){
+      width:80px;
+      height:auto;
+    }
+  }
+  &>section {
+    @include flex(1);
+    h2,h3,h4,h5,h6{
+      &:first-child{
+        margin:$header-margin;
+      }
+    }
+    @include phone-content(){
+
+    }
+  }
+  &.reverse{
+    &>figure,&>img{
+      @include order(1);
+      margin:0 0 0 $media-margin;
+    }
+  }
+
+}
+
+
+
+
+///@public
+///@param {String} $class
+///@param {Map} $map
+/// $map:(
+///         background:<value>,
+///         padding:<value>,
+///         border-radius:<value>,
+///         margin:<value>,
+///         image:(
+///                   border:<value>,
+///                   max-width:<value>,
+///                   max-height:<value>
+///         ),
+///         header:(
+///                   margin:<value>
+///         )
+/// )
+@mixin ui-media-object($class:null,$map:()){
+
+  $_off-white:map-get($Base,off-white);
+  $_radius:get-border-radius();
+
+  $background:map-get-default($map,background,$_off-white);
+  $padding:map-get-default($map,padding,1em);
+  $border-radius:map-get-default($map,border-radius,$_radius);
+  $media-margin:map-get-default($map,margin,1em);
+  $image-border:map-nested-get-default($map,image,border,0);
+  $image-max-width:map-nested-get-default($map,image,max-width,200px);
+  $image-max-height:map-nested-get-default($map,image,max-height,200px);
+  $header-margin:map-nested-get-default($map,header,margin,0 0 1em 0);
+
+
+  .ui-media-object,ui-media-object {
+    @if $class != null{
+      &.#{$class} {
+        @include _ui-media-object($background,$padding,$border-radius,$media-margin,$image-border,
+          $header-margin,$image-max-width,$image-max-height);
+        @content;
+      }
+    } @else {
+      @include _ui-media-object($background,$padding,$border-radius,$media-margin,$image-border,
+        $header-margin,$image-max-width,$image-max-height);
+      @content;
+    }
+
+  }
+
+}

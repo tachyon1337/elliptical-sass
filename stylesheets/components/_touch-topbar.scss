@@ -1,0 +1,63 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _touch-ui-topbar($component: null,
+$position: null,
+$height: null,
+$z-index: null,
+$font-size:null,
+$brand-font-size: null,
+$icon-font-size: null,
+$icon-margin: null) {
+
+  position: $position;
+  @if $position != relative {
+    z-index: $z-index;
+    top: 0;
+    left: 0;
+  }
+  @include flexbox($justification: center, $alignment: center);
+  opacity: 1;
+  height: $height;
+  width: 100%;
+  text-align: center;
+  font-size:$font-size;
+  @include web-component-base($component: $component, $include-font: false);
+  ui-brand {
+    @extend %#{$component}-font !optional;
+    font-size: $brand-font-size;
+    margin-left: auto;
+    margin-right: auto;
+    @include flexbox($justification: center, $alignment: center);
+    a {
+      font-size: 1em;
+      @extend %#{$component}-font !optional;
+      @include flexbox($justification: center, $alignment: center);
+    }
+  }
+  touch-ui-brand{
+    @include flexbox($justification: center, $alignment: center);
+  }
+  .touch-right, touch-icons {
+    list-style: none;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    @include flexbox($justification: center, $alignment: center);
+    height: 100%;
+    & > touch-icon, & > li {
+      display: list-item;
+      @include span-icon() {
+        font-size: $icon-font-size;
+        @extend %#{$component}-icon !optional;
+        margin-right: $icon-margin;
+      }
+    }
+  }
+  & > section {
+    display: none !important;
+  }
+  & > ul, ui-social {
+    display: none !important;
+  }
+}

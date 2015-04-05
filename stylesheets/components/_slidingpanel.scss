@@ -1,0 +1,65 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-sliding-panel($component:null,
+$height:null,
+$width:null,
+$top:null,
+$right:null,
+$border-radius:null,
+$padding:null,
+$z-index:null
+){
+
+  position:fixed;
+  z-index:$z-index;
+  top:$top;
+  right:$right;
+  height:$height;
+  width:$width;
+  border-radius:$border-radius;
+  display:none;
+  padding:$padding;
+  @include web-component-base($component:$component,$include-font:false);
+  &.show{
+    display:inherit;
+  }
+}
+
+
+
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+
+//$map:(
+//        height:<value>,
+//        width:<value>,
+//        top:<value>,
+//        right:<value>,
+//        border-radius:<value>,
+//        padding:<value>,
+//        z-index:<value>
+//)
+
+@mixin ui-sliding-panel($component:css-sliding-panel,$tags:null,$template-tag:null,$class:null,$map:()) {
+  $_border-radius:get-border-radius();
+  $_z-index:get-z-index() + 9999;
+  $height:map-get-default($map,height,88vh);
+  $width:map-get-default($map,width,25em);
+  $top:map-get-default($map,top,50px);
+  $right:map-get-default($map,right,0);
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $padding:map-get-default($map,padding,0);
+  $z-index:map-get-default($map,z-index,$_z-index);
+
+  $tag:ui-sliding-panel;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-sliding-panel($component,$height,$width,$top,$right,$border-radius,$padding,$z-index);
+    @content;
+  }
+
+}

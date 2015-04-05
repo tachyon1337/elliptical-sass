@@ -1,0 +1,324 @@
+@import "../settings/component";
+@import "../settings/base";
+@import "../utilities/functions";
+@import "../css3/mixins";
+
+///set a background value if passed value is color or string(e.g: none;transparent)
+///if force bit is set, will otherwise set to gray if passed val not color or string
+///@private
+@mixin _background-color($color, $force: false) {
+  @if type-of($color) == color or type-of($color) == string {
+    background: $color;
+  } @else {
+    @if $force == true {
+      background: map-get($Base, gray);
+    }
+  }
+}
+
+///set a background color from a list
+///@private
+@mixin _background-color-from-gradient($background) {
+  $_color: first($background);
+  background: $_color;
+}
+
+///darken a background color from a color input
+///@private
+@mixin _darken-background-color($color, $force: false) {
+  $_darken-factor: map-get($Component, hover-darken-factor);
+  @if type-of($color) == color {
+    background: darken($color, $_darken-factor);
+  } @else {
+    @if $force == true {
+      background: darken(map-get($Base, gray), $_darken-factor);
+    }
+  }
+}
+
+///set a darkened background color from a list input
+///@private
+@mixin _darken-background-color-from-gradient($background) {
+  $_color: first($background);
+  @include _darken-background-color($_color, true);
+}
+
+///darken a gradient background
+///@private
+@mixin _darken-background-gradient($list, $direction) {
+  $_darken-factor: map-get($Component, hover-darken-factor);
+  $darken-gradient: darken-gradient($list, $_darken-factor);
+  @include _linear-gradient($direction, $darken-gradient);
+}
+
+///set a component background from a color or list/direction
+///if include-gradient flag is not set, a gradient list will be converted to a color
+///@public
+///@param {List} $background
+///@param {List} $direction
+@mixin component-background($background, $direction) {
+  @if type-of($background) == list {
+    @if map-get($Component,include-gradient) == true {
+      @include _linear-gradient($direction, $background);
+    } @else {
+      @include _background-color-from-gradient($background);
+    }
+  } @else {
+    @include _background-color($background, false);
+  }
+}
+
+///set a component hover background by darkening a color or list/direction
+///if include-gradient flag is not set, a gradient list will be converted to a color
+///@public
+///@param {*} $background
+///@param {List} $direction
+@mixin component-background-hover($background, $direction) {
+  @if type-of($background) == list {
+    @if map-get($Component,include-gradient) == true {
+      @include _darken-background-gradient($background, $direction);
+    } @else {
+      @include _darken-background-color-from-gradient($background);
+    }
+  } @else {
+    @include _darken-background-color($background, false);
+  }
+}
+
+///set a component border from a color or a list
+///@public
+///@param {*} $border
+@mixin component-border($border) {
+  $_enforce-important: map-get($Component, enforce-border-important);
+  $_component-border: map-get($Component, border);
+  @if type-of($border) == color {
+    border: $_component-border;
+    @if $_enforce-important==true {
+      border-color: $border !important;
+    } @else {
+      border-color: $border;
+    }
+  } @else if type-of($border) == list {
+    @if list-has-number($border) {
+      @if $_enforce-important==true {
+        border: $border !important;
+      } @else {
+        border: $border;
+      }
+    } @else {
+      border: $_component-border;
+      @if $_enforce-important==true {
+        border-color: $border !important;
+      } @else {
+        border-color: $border;
+      }
+    }
+  } @else {
+    border: none;
+  }
+}
+
+/// set a component hover border by darkening a color or a list
+///@public
+///@param {*} $border
+@mixin component-border-hover($border) {
+  $_enforce-important: map-get($Component, enforce-border-important);
+  $_darkenFactor: map-get($Component, border-hover-darken-factor);
+  $_component-border: map-get($Component, border);
+  @if type-of($border) == list {
+    @if list-has-number($border) {
+      @if $_enforce-important==true {
+        border: $border !important;
+      } @else {
+        border: $border;
+      }
+    } @else {
+      border: $_component-border;
+      @if $_enforce-important==true {
+        border-color: darken-rule($border, $_darkenFactor) !important;
+      } @else {
+        border-color: darken-rule($border, $_darkenFactor);
+      }
+    }
+  } @else if type-of($border) == color {
+    @if $_enforce-important==true {
+      border: $_component-border !important;
+      border-color: darken-rule($border, $_darkenFactor) !important;
+    } @else {
+      border: $_component-border;
+      border-color: darken-rule($border, $_darkenFactor);
+    }
+  } @else {
+    border: none;
+  }
+}
+
+//set a component box-shadow
+@mixin component-box-shadow($box-shadow) {
+  $_override:map-get($Component, override-box-shadow);
+  @if map-get($Component,include-box-shadow) == true {
+    @if $box-shadow == null {
+      box-shadow: map-get($Component, box-shadow);
+    } @else if type-of($box-shadow) == list {
+      box-shadow: $box-shadow;
+    } @else {
+      box-shadow: none;
+    }
+  } @else if $_override==true {
+    @if type-of($box-shadow) ==list {
+      box-shadow: $box-shadow;
+    } @else {
+      box-shadow: none;
+    }
+  }
+
+}
+
+///set box-shadow from settings for active if flag is true
+@mixin component-box-shadow-active() {
+  @if map-get($Component,include-active-box-shadow) ==true {
+    box-shadow: map-get($Component, box-shadow-active);
+  } @else {
+    box-shadow: none;
+  }
+}
+
+///set a component font
+@mixin component-font($color: null, $text-shadow: null) {
+  @if type-of($color) == color {
+    color: $color;
+    opacity: 1;
+  } @else if type-of($color) == number {
+    opacity: $color;
+  }
+  @if type-of($text-shadow) == list {
+    @if map-get($Component,include-text-shadow) == true {
+      text-shadow: $text-shadow;
+    } @else {
+      text-shadow: none; //explicitly set text-shadow to avoid css-component inheriting another's text-shadow;
+    }
+  } @else {
+    text-shadow: none; //explicitly set text-shadow to avoid unexpected inheritance
+  }
+}
+
+//set an extended component font
+@mixin component-font-extended($color: null, $text-shadow: null) {
+  @if type-of($color) == color {
+    color: $color;
+    opacity: 1;
+  } @else if type-of($color) == number {
+    opacity: $color;
+  }
+  @if type-of($text-shadow) == list {
+    @if map-get($Component,include-text-shadow) == true {
+      text-shadow: $text-shadow;
+    } @else {
+      text-shadow: none;
+    }
+  } @else {
+    @if type-of($text-shadow) == string {
+      text-shadow: $text-shadow;
+    }
+  }
+}
+
+//set component font for hover and active
+@mixin component-font-hover($color: null, $text-shadow: null) {
+  @if type-of($color) == color {
+    color: $color;
+    opacity: 1;
+  } @else if type-of($color) == number {
+    opacity: $color;
+  }
+
+  @if type-of($text-shadow) == list {
+    @if map-get($Component,include-text-shadow) == true {
+      text-shadow: $text-shadow;
+    }
+  }
+}
+
+//set a component placeholder
+@mixin component-placeholder($color: null) {
+  &::-webkit-input-placeholder {
+    color: $color !important;
+  }
+  &::-moz-placeholder {
+    color: $color !important;
+  }
+  &::-o-placeholder {
+    color: $color !important;
+  }
+  &:-ms-input-placeholder {
+    color: $color !important;
+  }
+}
+
+//disabled component
+@mixin component-disabled($background-disabled, $font-color-disabled, $background) {
+  @if not(type-of($background-disabled) == color or type-of($background-disabled) == list or $background-disabled == none) {
+    @if not(type-of($background) ==color or type-of($background) == list) {
+      $background-disabled: none;
+    } @else {
+      $background-disabled: map-get($Component, background-disabled);
+    }
+  }
+
+  @if type-of($font-color-disabled) != color {
+    $font-color-disabled: $component-font-color-disabled;
+  }
+
+  background: $background-disabled !important;
+  text-shadow: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: map-get($Component, border-disabled);
+  cursor: default !important;
+  color: $font-color-disabled !important;
+  &:after {
+    background: none !important;
+    color: $font-color-disabled !important;
+  }
+  &:before {
+    background: none !important;
+    color: $font-color-disabled !important;
+  }
+  @include component-placeholder($font-color-disabled);
+}
+
+@mixin component-preload() {
+  [ui-preload] {
+    position: relative;
+    &:before {
+      font-family: 'elliptical';
+      content: '\e0a3';
+      font-size: 32px;
+      color: map-get($Base, gray);
+      top: 100px;
+      left: 48%;
+      position: absolute;
+    }
+  }
+  [ui-preload="100"] {
+    position: relative;
+    min-height: 100px;
+  }
+  [ui-preload="200"] {
+    position: relative;
+    min-height: 200px;
+  }
+  [ui-preload="300"] {
+    position: relative;
+    min-height: 300px;
+  }
+  [ui-preload="400"] {
+    position: relative;
+    min-height: 400px;
+  }
+  [ui-preload="500"] {
+    position: relative;
+    min-height: 500px;
+  }
+}
+

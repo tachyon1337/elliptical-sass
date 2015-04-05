@@ -1,0 +1,140 @@
+@import "../base/breakpoints";
+
+@mixin utilities-visibility(){
+  .hide-for-desktop,
+  .hide-for-large,
+  .show-for-phone,
+  .show-for-small,
+  .hide-for-tablet-up,
+  .hide-for-medium-up
+  .show-for-tablet-down,
+  .show-for-medium-down,
+  .show-for-tablet,
+  .show-for-medium,
+  .show-for-touch {
+    display: none !important
+  }
+
+  .show-for-tablet,
+  .show-for-medium,
+  .show-for-tablet-up,
+  .show-for-medium-up
+  .show-for-desktop,
+  .show-for-large{
+    display: inherit !important;
+  }
+
+  .hide-for-touch,
+  .hide-for-phone,
+  .hide-for-small,
+  .hide-for-tablet-down,
+  .hide-for-medium-down{
+    display: inherit !important;
+  }
+
+
+  @media #{$breakpoint-phone}{
+    .show-for-phone,
+    .show-for-small,
+    .show-for-tablet-down,
+    .show-for-medium-down{
+      display: inherit !important;
+    }
+
+    .hide-for-tablet-down,
+    .hide-for-medium-down,
+    .show-for-tablet,
+    .show-for-medium,
+    .show-for-tablet-up,
+    .show-for-medium-up,
+    .show-for-desktop,
+    .show-for-large{
+      display: none !important;
+    }
+
+    .hide-for-tablet,
+    .hide-for-medium,
+    .hide-for-tablet-up,
+    .hide-for-medium-up,
+    .hide-for-desktop,
+    .hide-for-large{
+      display: inherit !important;
+    }
+
+    .hide-for-phone,
+    .hide-for-small{
+      display: none !important;
+    }
+
+    .show-for-touch{
+      display: inherit !important;
+    }
+    .hide-for-touch{
+      display: none !important;
+    }
+  }
+
+  @media #{$breakpoint-tablet}{
+    .show-for-phone,
+    .show-for-small{
+      display:none !important;
+    }
+
+    .hide-for-phone,
+    .hide-for-small,
+    .show-for-tablet,
+    .show-for-tablet-down,
+    .show-for-medium-down,
+    .show-for-medium,
+    .show-for-tablet-up,
+    .show-for-medium-up{
+      display: inherit !important;
+    }
+
+    .show-for-desktop,
+    .show-for-large{
+      display: none !important;
+    }
+
+    .hide-for-tablet,
+    .hide-for-medium,
+    .hide-for-tablet-up,
+    .hide-for-medium-up,
+    .hide-for-tablet-down,
+    .hide-for-medium-down,{
+      display:none !important;
+    }
+    .hide-for-desktop,
+    .hide-for-large{
+      display: inherit !important;
+    }
+    .show-for-touch{
+      display: inherit !important;
+    }
+    .hide-for-touch{
+      display: none !important;
+    }
+  }
+
+  @media #{$breakpoint-portrait}{
+    .show-for-portrait,
+    .hide-for-landscape{
+      display:inherit;
+    }
+    .show-for-landscape,
+    .hide-for-portrait{
+      display:none;
+    }
+  }
+  @media #{$breakpoint-landscape}{
+    .show-for-portrait,
+    .hide-for-landscape{
+      display:none;
+    }
+    .show-for-landscape,
+    .hide-for-portrait{
+      display:inherit;
+    }
+  }
+
+}

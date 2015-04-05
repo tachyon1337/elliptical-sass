@@ -1,0 +1,51 @@
+@import "../settings/breakpoints";
+@import "../settings/grid";
+
+
+///screen
+$breakpoint-screen: "only screen" !default;
+
+///smartphone
+$breakpoint-phone: "only screen and (max-width: #{map-get($Breakpoint,smartphone)})" !default;
+
+///smartphone-landscape
+$breakpoint-phone-landscape: "only screen and (max-width: #{map-get($Breakpoint,smartphone)}) and (orientation:landscape)" !default;
+
+///smartphone-portrait
+$breakpoint-phone-portrait: "only screen and (max-width: #{map-get($Breakpoint,smartphone-portrait)}) and (orientation:portrait)" !default;
+
+///tablet
+$breakpoint-tablet: "only screen and (max-width: #{map-get($Breakpoint,tablet)}) and (min-width: #{map-get($Breakpoint,smartphone)})" !default;
+
+///tablet-landscape
+$breakpoint-tablet-landscape: "only screen and (max-width: #{map-get($Breakpoint,tablet)}) and (min-width: #{map-get($Breakpoint,smartphone)}) and (orientation:landscape)" !default;
+
+///tablet-portrait
+$breakpoint-tablet-portrait: "only screen and (max-width: #{map-get($Breakpoint,tablet-portrait)}) and (min-width: #{map-get($Breakpoint,smartphone)}) and (orientation:portrait)" !default;
+
+
+///landscape
+$breakpoint-landscape: "only screen and (orientation: landscape)" !default;
+
+///portrait
+$breakpoint-portrait: "only screen and (orientation: portrait)" !default;
+
+///touch
+$breakpoint-touch: "only screen and (max-width: #{map-get($Breakpoint,tablet)}) and (min-width: #{map-get($Breakpoint,smartphone-portrait)})" !default;
+
+///touch landscape
+$breakpoint-touch-landscape: "only screen and (max-width: #{map-get($Breakpoint,tablet)}) and (min-width: #{map-get($Breakpoint,smartphone)}) and (orientation:landscape)" !default;
+
+///touch portrait
+$breakpoint-touch-portrait: "only screen and (max-width: #{map-get($Breakpoint,tablet)}) and (min-width: #{map-get($Breakpoint,smartphone-portrait)}) and (orientation:portrait)" !default;
+
+///desktop
+$breakpoint-desktop: "only screen and (min-width: #{map-get($Breakpoint,desktop)})" !default;
+
+///grid contain
+$breakpoint-grid-contain: "only screen and (max-width:#{map-get($Grid,width)}) and (min-width: #{map-get($Breakpoint,desktop)})" !default;
+
+///grid tablet/medium breakpoint
+$breakpoint-grid-tablet: "only screen and (max-width: #{map-get($Breakpoint,grid-tablet)}) and (min-width: #{map-get($Breakpoint,smartphone)})" !default;
+
+

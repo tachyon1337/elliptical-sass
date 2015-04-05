@@ -1,0 +1,43 @@
+@import "component";
+@import "document";
+
+$button-radius: map-get($Component,border-radius) !default;
+$button-tiny-radius: 3px !default;
+$button-font-family: inherit !default;
+$button-font-size: 1em !default;
+$button-font-weight: normal !default;
+$button-line-height: map-get($Document,button-line-height) !default;
+$button-margin: .5em 0 0 0 !default;
+$button-padding: .7em 1em .7em 1em !default;
+$button-icon-padding: 1.5em !default;
+$button-large-padding: .8em 1.15em .8em 1.15em !default;
+$button-large-font-size: 1.15em !default;
+$button-small-padding: .6em .8em .6em .8em !default;
+$button-small-font-size: .9em !default;
+$button-tiny-padding: .5em .7em .5em .7em !default;
+$button-tiny-font-size: .8em !default;
+$button-jumbo-padding: 1.15em 1.5em 1.15em 1.5em !default;
+$button-jumbo-font-size: 1.5em !default;
+$button-transparent-opacity: .8 !default;
+
+
+$Button:(
+        border-radius: $button-radius,
+        tiny-radius: $button-tiny-radius,
+        font-family: $button-font-family,
+        font-size: $button-font-size,
+        font-weight: $button-font-weight,
+        line-height: $button-line-height,
+        margin: $button-margin,
+        padding: $button-padding,
+        icon-padding: $button-icon-padding,
+        large-padding: $button-large-padding,
+        large-font-size: $button-large-font-size,
+        small-padding: $button-small-padding,
+        small-font-size: $button-small-font-size,
+        tiny-padding: $button-tiny-padding,
+        tiny-font-size: $button-tiny-font-size,
+        jumbo-padding: $button-jumbo-padding,
+        jumbo-font-size: $button-jumbo-font-size,
+        transparent-opacity: $button-transparent-opacity
+);

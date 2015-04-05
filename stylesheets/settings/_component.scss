@@ -1,0 +1,64 @@
+@import "base";
+$include-component-gradient: true !default;
+$include-component-gradient-inset: true !default;
+$include-component-text-shadow: false !default;
+$include-component-box-shadow: false !default;
+$include-component-active-box-shadow: true !default;
+$include-component-animation: false !default;
+$enforce-border-important : true !default;
+$override-component-box-shadow: true !default;
+$component-animation: all 0.15s ease-in !default;
+$component-hover-darken-factor: 4% !default;
+$component-border-hover-darken-factor: 4% !default;
+$component-border: 1px solid !default;
+$component-text-shadow: 0 1px 0 !default;
+$component-inset-box-shadow: rgba(0, 0, 0, .20) 0px 1px 1px, rgba(255, 255, 255, .40) 0 1px 0 0 inset !default;
+$component-box-shadow: rgba(0, 0, 0, .20) 0px 1px 1px !default;
+$component-box-shadow-active: inset 0 3px 5px rgba(0, 0, 0, .175) !default;
+$component-background-disabled: map-get($Base,off-white) !default;
+$component-font-color-disabled: darken(map-get($Base,off-white), 5%) !default;
+$component-border-disabled: 1px solid transparent !important !default;
+$component-box-shadow-disabled: none !default;
+$component-text-shadow-disabled:none !default;
+$component-z-index: 999 !default;
+$component-border-radius:5px !default;
+$component-drawer-box-shadow:rgba(0, 0, 0, .2) -1px -2px 20px 1px !default;
+$component-touch-bar-height:50px !default;
+$component-toggle-size:24px !default;
+$component-toggle-top:12px !default;
+$component-toggle-left:16px !default;
+$component-tabs-touch-enabled:true !default;
+$component-touch-icon-size:32px !default;
+
+$Component: (
+        include-gradient:$include-component-gradient,
+        include-gradient-inset:$include-component-gradient-inset,
+        include-text-shadow:$include-component-text-shadow,
+        include-box-shadow:$include-component-box-shadow,
+        include-active-box-shadow:$include-component-active-box-shadow,
+        include-animation:$include-component-animation,
+        enforce-border-important:$enforce-border-important,
+        override-box-shadow:$override-component-box-shadow,
+        animation:$component-animation,
+        hover-darken-factor:$component-hover-darken-factor,
+        border-hover-darken-factor:$component-border-hover-darken-factor,
+        border:$component-border,
+        text-shadow:$component-text-shadow,
+        inset-box-shadow:$component-inset-box-shadow,
+        box-shadow:$component-box-shadow,
+        box-shadow-active:$component-box-shadow-active,
+        background-disabled:$component-background-disabled,
+        font-color-disabled:$component-font-color-disabled,
+        border-disabled:$component-border-disabled,
+        box-shadow-disabled:$component-box-shadow-disabled,
+        text-shadow-disabled:$component-text-shadow-disabled,
+        z-index:$component-z-index,
+        border-radius:$component-border-radius,
+        drawer-box-shadow:$component-drawer-box-shadow,
+        touch-bar-height:$component-touch-bar-height,
+        toggle-size:$component-toggle-size,
+        toggle-top:$component-toggle-top,
+        toggle-left:$component-toggle-left,
+        tabs-touch-enabled:$component-tabs-touch-enabled,
+        touch-icon-size:$component-touch-icon-size
+);

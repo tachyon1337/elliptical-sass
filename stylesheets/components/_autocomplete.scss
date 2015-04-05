@@ -1,0 +1,125 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-autocomplete($component:null,$divider:null,
+$border-radius:null,
+$z-index:null,
+$height:null
+){
+  width:100%;
+  height:$height;
+  position:absolute;
+  top:100%;
+  left:0;
+  display:none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius:$border-radius;
+  font-size:1em;
+  z-index:$z-index;
+  @include web-component-default($component:$component,$include-font:false,$include-disabled:false);
+  li {
+    width: 100%;
+    cursor: pointer;
+    padding: 0;
+    min-height: 1.1em;
+    line-height: 1.1em;
+    margin: 0;
+    white-space: nowrap;
+    list-style: none;
+    a {
+      display: block;
+      padding: .7em .9em;
+      text-align: left;
+      @extend %#{$component}-font !optional;
+    }
+    &:hover,&.hover, &:focus, &:active {
+      @extend %#{$component}-background-hover !optional;
+
+      &:first-child{
+        border-top-right-radius: $border-radius;
+        border-top-left-radius: $border-radius;
+      }
+      &:last-child{
+        border-bottom-right-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+      }
+      a{
+        @extend %#{$component}-font-hover !optional;
+      }
+    }
+
+    &.divider {
+      min-height: 0;
+      padding: 0;
+      height: 1px;
+      margin:0;
+      @extend %#{$divider}-background-hover !optional;
+      &:last-child{
+        display:none;
+      }
+    }
+    &.last:hover {
+      border-bottom-right-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+  }
+
+}
+
+
+
+///@public
+///@param {String} $component
+///@param {String} $divider
+///@param {String} $class
+///@param {Map} $map
+/// $map:(
+///         border-radius:<value>,
+///         z-index:<value>,
+///         height:<value>,
+///         container:(
+///               width:<value>
+///         )
+/// )
+@mixin ui-autocomplete($component:css-autocomplete,$divider:css-divider,$class:null,$map:()){
+
+  $_border-radius:get-border-radius();
+  $_z-index:get-z-index();
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $z-index:map-get-default($map,z-index,$_z-index + 999);
+  $height:map-get-default($map,height,20em);
+  $container-width:map-nested-get-default($map,container,width,100%);
+
+
+  .ui-autocomplete {
+    @if $class != null{
+      &.#{$class} {
+        @include _ui-autocomplete($component,$divider,$border-radius,$z-index,$height);
+        @content;
+      }
+
+    } @else {
+      @include _ui-autocomplete($component,$divider,$border-radius,$z-index,$height);
+      @content;
+    }
+
+  }
+  .ui-autocomplete-container{
+    display:block;
+    position:relative;
+    width:$container-width;
+    @content;
+    &>ui-search{
+      width:100%;
+    }
+  }
+}
+
+
+
+
+

@@ -1,0 +1,791 @@
+@import "../base/common-web-component";
+@import "../utilities/document";
+@import "../css3/transition";
+@import "../css3/flexbox";
+@import "../settings/form";
+@import "../utilities/form";
+
+
+
+///Base Form Markup
+
+//@private
+@mixin _form-search($component:null,$touch-component:null,
+$border-radius: null,
+$icon-font-family:map-get($Icons,font-family),
+$search-icon:null,
+$font-size:null,
+$touch-border-radius: null){
+  $icon:map-get($Icons,search);
+  @if $search-icon != null{
+    $icon:$search-icon;
+  }
+  display:block;
+  @media #{$breakpoint-desktop}{
+    $padding-right: 3em;
+    $right: .3em;
+    width:100%;
+    @include _form-input-icon($component:$component, $font-size:$font-size, $border-radius:$border-radius,
+    $icon:$icon,$icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
+  }
+  @media #{$breakpoint-touch}{
+    @if $touch-border-radius == null{
+      $touch-border-radius: $border-radius;
+    }
+    $padding-right: 2em;
+    $right: .5em;
+    $font-size: .9em;
+    @include _form-input-icon($component:$touch-component, $font-size:$font-size, $border-radius:$touch-border-radius,
+    $icon:$icon,$icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
+
+  }
+
+}
+
+///@public
+///@param {String} $input-component
+@mixin form-base($input-component: css-input) {
+
+  $_form-spacing:map-get($Form,spacing);
+  $_form-width:map-get($Form,width);
+
+  .form-width{
+    width:$_form-width;
+    @include phone-content(){
+      width:100%;
+    }
+  }
+
+  textarea {
+    height: auto;
+    min-height: map-nested-get($Form,textarea,height);
+  }
+  @include input() {
+    &:focus {
+      @include tab-focus();
+    }
+  }
+
+
+  form {
+    margin: 0 0 ($_form-spacing * 1);
+
+    label {
+      font-size: map-nested-get($Form,label,font-size);
+      color: map-nested-get($Form,label,font-color);
+      cursor: pointer;
+      display: block;
+      font-weight: map-nested-get($Form,label,font-weight);
+      margin-bottom: map-nested-get($Form,label,margin-bottom);
+      margin-left: 3px;
+      &.disabled {
+        cursor: normal !important;
+      }
+      &.checkbox {
+        margin-bottom: 1em;
+      }
+      &.radio {
+        margin-bottom: 1em;
+      }
+      &.right {
+        float: none;
+        text-align: right;
+      }
+      &.inline {
+        line-height: (1em + ($_form-spacing * 1.5));
+        margin: 0 0 $_form-spacing 0;
+      }
+    }
+  }
+
+
+  grid-row form grid-row {
+    margin: 0 (-($_form-spacing / 2));
+
+    grid-columns {
+      padding: 0 ($_form-spacing / 2);
+    }
+    &.collapse {
+      margin: 0;
+      grid-columns {
+        padding: 0;
+      }
+    }
+  }
+
+
+
+  [validation-summary]{
+    ul{
+      list-style:none;
+    }
+  }
+
+  ui-form{
+    display:block;
+  }
+
+  @include flat-forms($component:$input-component);
+
+  @include _semantic-input-text(error);
+  @include _semantic-input-text(info);
+  @include _semantic-input-text(warning);
+  @include _semantic-input-text(success);
+  @include _semantic-search();
+
+
+  select {
+    width: 100%;
+  }
+
+  fieldset {
+    border: map-nested-get($Form,fieldset,border);
+    padding: map-nested-get($Form,fieldset,padding);
+    margin: map-nested-get($Form,fieldset,margin);
+
+    button {
+      margin-top: map-nested-get($Form,fieldset,button-margin-top);
+    }
+  }
+
+
+}
+
+///@public
+///@param {String} $tag
+@mixin input-addon($tag:null){
+
+  $_tag:ui-input-addon;
+  @if $tag !=null{
+    $_tag:$tag;
+  }
+  #{$_tag} {
+    @include flexbox();
+    margin: 0 0 1em 0;
+    position:relative;
+    width:100%;
+    align-items:stretch;
+    input {
+      @include flex(1);
+      margin: 0 !important;
+      &:not(:first-child) {
+        border-left: 0;
+      }
+      &:not(:last-child) {
+        border-right: 0;
+      }
+    }
+    .ui-button,ui-button {
+      margin: 0;
+      &:not(:active) {
+        box-shadow: none;
+      }
+    }
+    input, .ui-button,ui-button {
+      padding: 0.6em 0.75em;
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+    &.large-icon{
+      input,.ui-button,ui-button{
+        padding:0.25em 0.375em;
+      }
+      .ui-button,ui-button{
+        &>span{
+          font-size:2em;
+          padding-left:.5em;
+          padding-right:.5em;
+        }
+      }
+    }
+  }
+}
+
+///@public
+///@param {String} $component
+@mixin input-checkbox($component:css-checkbox){
+
+  ui-checkbox{
+    display:block;
+    position:relative;
+    input[type="checkbox"] {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 99;
+      height: 30px;
+      width: 100%;
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    input[type="checkbox"] + label {
+      display: block;
+      position: relative;
+      padding: map-nested-get($Form,checkbox,label-padding);
+      vertical-align: text-bottom;
+      padding-bottom: 0;
+      margin-bottom: 1em;
+      line-height:1.2;
+      cursor: pointer;
+      &:before {
+        content: "";
+        display: block;
+        line-height:1.2;
+        height: map-nested-get($Form,checkbox,size);
+        width: map-nested-get($Form,checkbox,size);
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: map-nested-get($Form,checkbox,icon-font-size);
+        @extend %#{$component}-border !optional;
+        @extend %#{$component}-background !optional;
+      }
+      &.inline{
+        display:inline-block;
+      }
+    }
+
+    input[type="checkbox"]:checked + label {
+      &:before {
+        content: "#{map-get($Icons,checkmark)}";
+        @extend %#{$component}-font !optional;
+        font-family: map-get($Icons,font-family);
+        font-size: map-nested-get($Form,checkbox,icon-font-size);
+      }
+    }
+
+    input[type="checkbox"]:disabled + label {
+      @extend %#{$component}-disabled !optional;
+      background: none !important;
+    }
+
+    input[type="checkbox"]:disabled:checked + label {
+      @extend %#{$component}-disabled !optional;
+      background: none !important;
+    }
+  }
+
+  ui-radio{
+    display:block;
+    position:relative;
+    input[type="radio"] {
+      opacity: 0;
+    }
+
+    input[type="radio"] + label {
+      display: block;
+      position: relative;
+      padding: map-nested-get($Form,checkbox,label-padding);
+      vertical-align: text-bottom;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      line-height: 1;
+      &:before {
+        content: "";
+        display: block;
+        line-height: 1;
+        height: map-nested-get($Form,checkbox,size);
+        width: map-nested-get($Form,checkbox,size);
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        @extend %#{$component}-border !optional;
+        @extend %#{$component}-background !optional;
+        border-radius:map-nested-get($Form,radio,border-radius);
+      }
+      &.inline{
+        display:inline-block;
+        margin-bottom:1em;
+      }
+    }
+
+    input[type="radio"]:checked + label {
+      &:after {
+        line-height: 1;
+        content: '#{map-get($Icons,radio)}';
+        font-size:map-nested-get($Form,radio,icon-font-size);
+        @extend %#{$component}-icon !optional;
+        font-family: map-get($Icons,font-family);
+        bottom:.4em;
+        left:.4em;
+        position: absolute;
+      }
+    }
+
+    input[type="radio"]:disabled + label {
+      @extend %#{$component}-disabled !optional;
+      background: none !important
+    }
+
+    input[type="radio"]:disabled:checked + label {
+      @extend %#{$component}-disabled !optional;
+      background: none !important;
+    }
+  }
+
+}
+
+///@public
+///@param {String} $component
+///@param {String} $toggle-component
+@mixin input-switch($component:css-switch, $toggle-component: css-switch-toggle){
+
+  input[type="checkbox"].ui-switch + label.ui-switch {
+    display: block;
+    position: relative;
+    width: map-nested-get($Form,switch,width);
+    height: map-nested-get($Form,switch,height);
+    border-radius: map-nested-get($Form,switch,border-radius);
+    @include web-component-default($component:$component,$include-font:false,$include-disabled:false);
+    margin: 0;
+    padding: 0;
+    &:before {
+      content: '';
+      border: 0;
+      background: none;
+    }
+    &:after {
+      content: "";
+      width: map-nested-get($Form,switch,toggle-size);
+      height: map-nested-get($Form,switch,toggle-size);
+      border-radius: 100px;
+      @extend %#{$toggle-component}-background !optional;
+      @extend %#{$toggle-component}-border !optional;
+      position: absolute;
+      top: 0;
+      left: 1%;
+      z-index: 999;
+      @include transition(left 0.1s linear);
+    }
+
+  }
+
+  input[type="checkbox"].ui-switch:disabled + label.ui-switch {
+    @extend %#{$component}-disabled !optional;
+  }
+
+  input[type="checkbox"].ui-switch:checked + label.ui-switch {
+    @extend %#{$component}-background-active !optional;
+    @extend %#{$component}-border-active !optional;
+    &:after {
+      @extend %#{$toggle-component}-border-active !optional;
+      left: 49%;
+      @include transition(left 0.1s linear);
+    }
+
+  }
+
+  input[type="checkbox"].ui-switch:disabled:checked + label.ui-switch {
+    @extend %#{$component}-disabled !optional;
+    &:before {
+      content: '';
+      border: 0;
+      background: none;
+    }
+    &:after {
+      left: 49%;
+    }
+  }
+
+}
+
+///@public
+///@param {String} $component
+///@param {String} $input-component
+///@param {Map} $map
+/// $map:(
+///        margin:<value>,
+///        input:(
+///                padding:<value>,
+///                width:<value>
+///        ),
+///        item:(
+///                margin:<value>,
+///                size:<value>
+///        ),
+///        icon:(
+///                top:<value>,
+///                left:<value>
+///        )
+///)
+@mixin input-number($component:default,$input-component:css-input-alt,$map:()){
+
+  $input-number-margin:map-get-default($map,margin,0 .5em 0 .5em);
+  $input-number-input-padding:map-nested-get-default($map,input,padding,.3em .2em 6px .2em);
+  $input-number-input-width:map-nested-get-default($map,input,width,2.75em);
+  $input-number-item-margin:map-nested-get-default($map,item,margin,0 .3em 0 0);
+  $input-number-item-size:map-nested-get-default($map,item,size,2em);
+  $input-number-icon-top:map-nested-get-default($map,icon,top,.3em);
+  $input-number-icon-left:map-nested-get-default($map,icon,left,.38em);
+
+  ui-input-number{
+    display:block;
+    label {
+      @include flexbox($justification:flex-start,$alignment:flex-end);
+      &>input.input-number-box {
+        width: $input-number-input-width;
+        margin: $input-number-margin;
+        padding: $input-number-input-padding;
+        font-size: 1em;
+        @include web-component-default($component:$input-component,$include-disabled:false);
+        font-weight:normal;
+      }
+      .input-number{
+        list-style: none;
+        margin:0;
+        font-weight:normal;
+        @include flexbox($justification:flex-start,$alignment:center);
+        &>div{
+          margin:$input-number-item-margin;
+          border-radius:map-get($Component,border-radius);
+          height: $input-number-item-size;
+          width: $input-number-item-size;
+          position: relative;
+          cursor: pointer;
+          @include web-component-default($component:$component,$include-font:false,$include-box-shadow:false,$include-disabled:false);
+          @include web-component-hover($component:$component,$include-font:false,$include-box-shadow:false);
+          @include web-component-active($component:$component);
+        }
+        &>.plus{
+          &:before{
+            font-family:map-get($Icons,font-family);
+            position: absolute;
+            top: $input-number-icon-top;
+            left: $input-number-icon-left;
+            font-size: 1em;
+            content: '#{map-get($Icons,plus)}';
+            @extend %#{$component}-icon !optional;
+          }
+        }
+        &>.minus{
+          &:before{
+            font-family:map-get($Icons,font-family);
+            position: absolute;
+            top: $input-number-icon-top;
+            left:$input-number-icon-left;
+            font-size: 1em;
+            content: '#{map-get($Icons,minus)}';
+            @extend %#{$component}-icon !optional;
+          }
+        }
+      }
+    }
+    @content;
+  }
+
+}
+
+///@public
+///@param {String} $check-component
+///@param {String} $switch-component
+///@param {String} $switch-toggle-component
+///@param {String} $number-component
+///@param {String} $input-component
+///@param {Map} $map
+/// $map:(
+///        margin:<value>,
+///        input:(
+///                padding:<value>,
+///                width:<value>
+///        ),
+///        item:(
+///                margin:<value>,
+///                size:<value>
+///        ),
+///        icon:(
+///                top:<value>,
+///                left:<value>
+///        )
+///)
+@mixin form-input($check-component: css-checkbox, $switch-component: css-switch, $switch-toggle-component: css-switch-toggle,
+$number-component:default,$input-component:css-input-number,$map:()) {
+
+  @include input-addon();
+  @include input-checkbox($component:$check-component);
+  @include input-switch($component:$switch-component,$toggle-component:$switch-toggle-component);
+  @include input-number($component:$number-component,$input-component:$input-component,$map:$map);
+
+}
+
+
+///@public
+/// @param {String} $component
+/// @param {String} $touch-component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         option-color:<value>,
+///         margin:<value>,
+///         width:<value>,
+///         padding:<value>,
+///         border-radius:<value>,
+///         line-height:<value>,
+///         icon:(
+///                 down:<value>,
+///                 font-family:<value>,
+///                 font-size:<value>,
+///                 top:<value>,
+///                 right:<value>
+///         )
+/// )
+@mixin ui-select($component:css-white,$tags:null,$class:null,$map:()) {
+
+  $_default-select-icon:map-get($Icons,down);
+  $_default-font-family:map-get($Icons,font-family);
+  $_select-width:map-nested-get($Form,select,width);
+  $_select-radius:map-nested-get($Form,select,border-radius);
+  $_select-padding:map-nested-get($Form,select,padding);
+  $icon:map-nested-get-default($map,icon,down,$_default-select-icon);
+  $_icon-font-family:map-nested-get-default($map,icon,font-family,$_default-font-family);
+  $icon-font-size:map-nested-get-default($map,icon,font-size,1em);
+  $icon-top:map-nested-get-default($map,icon,top,.7em);
+  $icon-right:map-nested-get-default($map,icon,right,.6em);
+  $option-color:map-get($Base,black);
+  $_margin:map-get-default($map,margin,0 0 1em 0);
+
+  $tag:ui-select;
+
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
+    position: relative;
+    @include web-component-default($component:$component);
+    min-width: map-get-default($map,width,$_select-width);
+    padding: map-get-default($map,padding,$_select-padding);
+    border-radius: map-get-default($map,border-radius,$_select-radius);
+    display: inline-block;
+    line-height:map-get-default($map,line-height,1.5);
+    margin:$_margin;
+    &.expand, &.ui-expand {
+      width: 100%;
+    }
+    & > select {
+      -webkit-appearance: none;
+      -moz-appearance: window;
+      font-size: 1em;
+      line-height: 1;
+      background: transparent;
+      border: 0;
+      @extend %#{$component}-font !optional;
+      text-shadow: none !important;
+      outline: none;
+      font-weight: map-nested-get($Form,select,font-weight);
+      option{
+        color:$option-color;
+      }
+    }
+    ::-ms-expand {
+      display: none;
+    }
+    &:after {
+      content: "#{$icon}";
+      @extend %#{$component}-icon !optional;
+      font-family: $_icon-font-family;
+      font-size: $icon-font-size;
+      position: absolute;
+      right: $icon-right;
+      top: $icon-top;
+      line-height: 1;
+      pointer-events: none;
+    }
+    @content;
+  }
+
+
+  @-moz-document url-prefix() {
+    @include element-tag($tag:$tag,$tags:$tags,$class:$class){
+      select {
+        text-overflow: '';
+        text-indent: .1em;
+      }
+    }
+  }
+
+  @media #{$breakpoint-phone} {
+    @include element-tag($tag:$tag,$tags:$tags,$class:$class){
+      width: 90%;
+    }
+  }
+}
+
+
+
+
+
+///@public
+/// @param {String} $component
+/// @param {String} $touch-component
+/// @param {List} $tags
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         border-radius:<value>,
+///         font-size:<value>,
+///         icon:(
+///                font-family:<value>,
+///                search:<value>
+///         ),
+///         touch:(
+///                border-radius:<value>
+///         )
+/// )
+@mixin ui-search($component:css-desktop-input, $touch-component:css-touch-search, $tags:null, $class:null, $map:()) {
+
+  $_default-border-radius:map-nested-get($Form,input,border-radius);
+  $border-radius: map-get-default($map,border-radius,$_default-border-radius);
+  $_icon-font-family:map-nested-get($map,icon,font-family);
+  $search-icon:map-nested-get($map,icon,search);
+  $touch-border-radius: map-nested-get($map,touch,border-radius);
+  $font-size:map-get-default($map,font-size,1em);
+
+  $tag:ui-search;
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
+    @include _form-search($component:$component,$touch-component:$touch-component,$border-radius:$border-radius,
+    $icon-font-family:$_icon-font-family,$search-icon:$search-icon,$font-size:$font-size,$touch-border-radius:$touch-border-radius);
+    @content;
+
+  }
+
+
+}
+
+
+///@public
+/// @param {String} $component
+/// @param {String} $touch-component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         border-radius:<value>,
+///         font-size:<value>,
+///         padding-right:<value>,
+///         right:<value>,
+///         icon:(
+///                 icon:<value>,
+///                 font-family:<value>
+///         )
+/// )
+@mixin ui-input-icon($component:css-input,$tags:null, $class:null, $map:()) {
+
+  $_default-border-radius:map-nested-get($Form,input,border-radius);
+  $border-radius: map-get-default($map,border-radius,$_default-border-radius);
+  $icon-font-family:map-nested-get-default($map,icon,font-family,map-get($Icons,font-family));
+  $icon: map-nested-get($map,icon,icon);
+  $font-size:map-get-default($map,font-size,1.5em);
+  $padding-right:map-get-default($map,padding-right,3em);
+  $right:map-get-default($map,right,.3em);
+
+  $tag:ui-input-icon;
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
+    @include _form-input-icon($component:$component, $font-size:$font-size, $border-radius:$border-radius,
+            $icon:$icon, $icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
+    @content;
+  }
+
+}
+
+
+
+///@public
+///@param {Map} $map
+/// $map:(
+///         border-color:<value>,
+///         background:<value>,
+///         border-radius:<value>,
+///         form:(
+///                width:<value>
+///         )
+/// )
+@mixin flat-forms($component:null,$map:()){
+
+  $_white:map-get($Core,white);
+  $_border-radius:get-border-radius();
+
+  $border-color:map-get-default($map,border-color,#d5d5d5);
+  $background:map-get-default($map,background,$_white);
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $form-width:map-nested-get-default($map,form,width,400px);
+  $_active-color:map-nested-get($Theme,input,border-active);
+
+  @include input(){
+    border:1px solid $border-color;
+    background:$background;
+    font-family: inherit;
+    border-radius:map-nested-get($Form,input,border-radius);
+    display: block;
+    font-size: 1em;
+    margin: map-nested-get($Form,input,margin);
+    padding: map-nested-get($Form,input,padding);
+    width: 100%;
+    outline: map-nested-get($Form,input,outline);
+    -webkit-appearance: none;
+
+    @extend %#{$component}-placeholder !optional;
+    @extend %#{$component}-font !optional;
+    @if map-nested-get($Form,input,include-animation) == true
+    {
+      @include transition(map-nested-get($Form,input,animation));
+    }
+    &:focus {
+      background:$background;
+      border:1px solid $_active-color !important;
+    }
+    &:active,&.active{
+      border:1px solid $_active-color !important;
+    }
+    &[readonly]{
+      &:focus{
+        border:1px solid $border-color !important;
+      }
+    }
+  }
+  .form-width{
+    form{
+      width:$form-width;
+      max-width:100%;
+    }
+  }
+
+  @content;
+}
+
+@mixin default-forms($component:null){
+  @include input(){
+    font-family: inherit;
+    border-radius:map-nested-get($Form,input,border-radius);
+    display: block;
+    font-size: 1em;
+    margin: map-nested-get($Form,input,margin);
+    padding: map-nested-get($Form,input,padding);
+    width: 100%;
+    outline: map-nested-get($Form,input,outline);
+    -webkit-appearance: none;
+    @include web-component-default($component:$component);
+    @extend %#{$component}-placeholder !optional;
+    @if map-nested-get($Form,input,include-animation) == true
+    {
+      @include transition(map-nested-get($Form,input,animation));
+    }
+    &:focus {
+      @extend %#{$component}-background-hover !optional;
+      @extend %#{$component}-font !optional;
+      @extend %#{$component}-placeholder !optional;
+    }
+  }
+}
+
+
+
+
+

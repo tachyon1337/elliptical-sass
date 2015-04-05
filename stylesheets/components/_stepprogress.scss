@@ -1,0 +1,246 @@
+@import "../base/common-web-component";
+
+@mixin _ui-step-progress($component:null,$icon-component:null,$complete-component:null,$complete-icon-component:null,
+$icon-font-family:null,
+$icon-size:null,
+$icon-margin-top:null,
+$item-width:null,
+$label-top:null,
+$label-left:null,
+$label-font-family:null,
+$label-font-weight:null,
+$complete-icon:null,
+$complete-icon-top:null,
+$complete-icon-left:null,
+$current-font-weight:null,
+$vertical-item-height:null,
+$vertical-label-margin:null
+){
+
+
+  $label-margin-left:$item-width + 1;
+  $icon-margin-left:$item-width - 1;
+  $_icon-margin-top:($icon-size/2) + 1;
+  @if $icon-margin-top != null{
+    $_icon-margin-top:$icon-margin-top;
+  }
+
+  @include flexbox($justification:flex-start,$alignment:center);
+
+  step-item{
+    @include flexbox-column($justification:flex-start,$alignment:center);
+    width:$item-width;
+    @extend %#{$component}-border !optional;
+    border-bottom:0 !important;
+    border-left:0 !important;
+    border-right:0 !important;
+    &:last-child{
+      border:0 !important;
+      &.complete{
+        border:0 !important;
+      }
+    }
+    progress-icon{
+      display:block;
+      position:relative;
+      height:$icon-size;
+      width:$icon-size;
+      border-radius:50%;
+      @include web-component-base($component:$component,$include-font:false,$include-box-shadow:false);
+      margin-top:-#{$_icon-margin-top};
+      margin-left:-#{$icon-margin-left};
+      &:after{
+        position:absolute;
+        top:$label-top;
+        left:$label-left;
+        content:'1';
+        font-size:14px;
+        @extend %#{$icon-component}-icon !optional;
+        font-family: $label-font-family;
+        font-weight:$label-font-weight;
+      }
+    }
+
+    @for $i from 2 through 10{
+      &:nth-child(#{$i}){
+        progress-icon{
+          &:after{
+            content:'#{$i}';
+          }
+        }
+      }
+    }
+    progress-label{
+      @include flexbox-column($justification:center,$alignment:center);
+      margin:.5em 0 0 -#{$label-margin-left};
+      font-size:14px;
+      line-height:1;
+      color:map-get($Document,font-color);
+      @extend %#{$icon-component}-font !optional;
+    }
+    &.complete{
+      @extend %#{$complete-component}-border !optional;
+      border-bottom:0 !important;
+      border-left:0 !important;
+      border-right:0 !important;
+      progress-icon{
+        @include web-component-base($component:$complete-icon-component,$include-font:false,$include-box-shadow:false);
+        &:after{
+          font-family:$icon-font-family;
+          content:$complete-icon;
+          @extend %#{$complete-icon-component}-icon !optional;
+          font-size:16px;
+          left:$complete-icon-left;
+          top:$complete-icon-top;
+        }
+      }
+    }
+    &.current{
+      @extend %#{$component}-border !optional;
+      border-bottom:0 !important;
+      border-left:0 !important;
+      border-right:0 !important;
+      progress-label{
+        font-weight:$current-font-weight;
+      }
+    }
+  }
+
+ //vertical step progress
+  &.vertical{
+    @include flexbox-column($justification:flex-start,$alignment:flex-start);
+    $_vertical-icon-margin-left:($icon-size/2) + 1;
+    $_vertical-icon-margin-left-last-child:$_vertical-icon-margin-left - 2;
+
+    step-item{
+      @include flexbox($justification:flex-start,$alignment:flex-start);
+      @include flex-direction(row);
+      width:auto;
+      height:$vertical-item-height;
+      @extend %#{$component}-border !optional;
+      border-bottom:0 !important;
+      border-top:0 !important;
+      border-right:0 !important;
+      &:last-child{
+        border:0 !important;
+        &.complete{
+          border:0 !important;
+        }
+      }
+      progress-icon{
+        display:block;
+        position:relative;
+        height:$icon-size;
+        width:$icon-size;
+        border-radius:50%;
+        @include web-component-base($component:$icon-component,$include-font:false,$include-box-shadow:false);
+        margin:-2px 0 0 -#{$_vertical-icon-margin-left} !important;
+      }
+      progress-label{
+        @include flexbox-column($justification:flex-start,$alignment:flex-start);
+        margin:$vertical-label-margin;
+      }
+
+      &.complete{
+        @extend %#{$complete-component}-border !optional;
+        border-bottom:0 !important;
+        border-top:0 !important;
+        border-right:0 !important;
+        progress-icon{
+          @include web-component-base($component:$complete-icon-component,$include-font:false,$include-box-shadow:false);
+        }
+      }
+      &.current{
+        @extend %#{$component}-border !optional;
+        border-bottom:0 !important;
+        border-top:0 !important;
+        border-right:0 !important;
+        progress-label{
+          font-weight:$current-font-weight;
+        }
+      }
+      &:last-child{
+        progress-icon{
+          margin:-2px 0 0 -#{$_vertical-icon-margin-left-last-child} !important;
+        }
+      }
+    }
+  }
+
+}
+
+///@public
+/// @param {String} $component
+/// @param {String} $icon-component
+/// @param {String} $complete-component
+/// @param {String} $complete-icon-component,
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///    current-font-weight:<value>,
+///    icon-font-family:<value>,
+///    icon-size:<value>,
+///    icon-margin-top:<value>,
+///    item:(
+///       width:<value>
+///    ),
+///    label:(
+///       top:<value>,
+///       left:<value>,
+///       font-family:<value>,
+///       font-weight:<value>,
+///    ),
+///    complete:(
+///       icon:<value>,
+///       icon-top:<value>,
+///       icon-left:<value>
+///    ),
+///    vertical:(
+///       item-height:<value>,
+///       label-margin:<value>
+///    )
+/// )
+///
+@mixin ui-step-progress($component:null,$icon-component:null,$complete-component:null,
+     $complete-icon-component:null, $tags:null,$template-tag:null,$class:null,$map:()){
+
+  $_icon-font-family:map-get($Icons,font-family);
+  $current-font-weight:map-get-default($map,current-font-weight,bold);
+  $icon-font-family:map-get-default($map,icon-font-family,$_icon-font-family);
+  $icon-size:map-get-default($map,icon-size,24px);
+  $item-width:map-nested-get-default($map,item,width,9em);
+  $icon-margin-top:map-get($map,icon-margin-top);
+  $label-top:map-nested-get-default($map,label,top,-3px);
+  $label-left:map-nested-get-default($map,label,left,7px);
+  $label-font-family:map-nested-get-default($map,label,font-family,"Helvetica Neue");
+  $label-font-weight:map-nested-get-default($map,label,font-weight,500);
+  $complete-icon:map-nested-get-default($map,complete,icon,'\e035');
+  $complete-icon-top:map-nested-get-default($map,complete,icon-top,-4px);
+  $complete-icon-left:map-nested-get-default($map,complete,icon-left,4px);
+  $vertical-item-height:map-nested-get-default($map,vertical,item-height,5em);
+  $vertical-label-margin:map-nested-get-default($map,vertical,label-margin,.3em 0 0 1em);
+
+  $tag:ui-step-progress;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-step-progress($component,$icon-component,$complete-component, $complete-icon-component,
+            $icon-font-family,
+            $icon-size,
+            $icon-margin-top,
+            $item-width,
+            $label-top,
+            $label-left,
+            $label-font-family,
+            $label-font-weight,
+            $complete-icon,
+            $complete-icon-top,
+            $complete-icon-left,
+            $current-font-weight,
+            $vertical-item-height,
+            $vertical-label-margin);
+
+    @content;
+  }
+
+}

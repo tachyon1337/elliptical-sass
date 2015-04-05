@@ -1,0 +1,565 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-carousel($component: null,
+$height: null,
+$width: null,
+$margin: null,
+$justification: null,
+$alignment: null,
+$inner-container-width: null,
+$inner-container-max-width: null,
+$item-width: null,
+$item-max-width: null,
+$item-max-height: null,
+$item-height: null,
+$item-justification: null,
+$item-alignment: null,
+$item-margin-right: null,
+$item-border: null,
+$item-border-active: null,
+$item-padding: null,
+$button-padding: null,
+$button-width: null,
+$button-top-position: null,
+$button-left-position: null,
+$button-right-position: null,
+$button-prev-icon-left-position: null,
+$button-next-icon-left-position: null,
+$icon-size: null,
+$icon-top-position: null,
+$icon-font-family: null,
+$z-index: null,
+$constrain-image-to-width: null,
+$image-top-position: null,
+$navigation-top-position: null,
+$navigation-position: null,
+$navigation-next-icon: null,
+$navigation-prev-icon: null,
+$navigation-font-size: null,
+$navigation-color: null,
+$navigation-hover-opacity: null,
+$navigation-hover: null,
+$include-touch-media-queries: null,
+$indicator-top: null,
+$indicator-right: null,
+$indicator-icon: null,
+$indicator-icon-active: null,
+$indicator-icon-size: null,
+$indicator-icon-color: null,
+$indicator-icon-active-color:null,
+$indicator-icon-margin: null) {
+
+  position: relative;
+  @include flexbox($justification: $justification, $alignment: $alignment);
+  width: $width;
+  @if $height !=null {
+    height: $height;
+  }
+  @if $margin !=null {
+    margin: $margin;
+  }
+  &:hover, &:focus {
+    carousel-navigation {
+      opacity: 1;
+    }
+  }
+
+  &.hidden {
+    visibility: hidden;
+  }
+
+  &[indicators=true] {
+    & > carousel-navigation {
+      &.indicators {
+        opacity: 1;
+        @include flexbox($justification: flex-start, $alignment: center);
+      }
+      &.prev, &.next {
+        display: none;
+      }
+    }
+  }
+
+  & > carousel-navigation {
+    position: absolute;
+    top: $navigation-top-position;
+    z-index: $z-index;
+    height: $navigation-font-size;
+    width: $navigation-font-size;
+
+    @if $navigation-hover==true {
+      opacity: 0;
+      @include transition(all 0.25s linear);
+    } @else {
+      opacity: 1;
+    }
+
+    &.disabled, [disabled] {
+      display: none !important;
+    }
+    &.nav-visible {
+      visibility: visible !important;
+    }
+    &.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+    &:hover, &:focus {
+      cursor: pointer;
+      opacity: $navigation-hover-opacity;
+
+    }
+    &.next {
+      right: $navigation-position;
+      visibility: hidden;
+      &:after {
+        content: '#{$navigation-next-icon}';
+        font-family: $icon-font-family;
+        font-size: $navigation-font-size;
+        @extend %#{$component}-font !optional;
+      }
+    }
+    &.prev {
+      left: $navigation-position;
+      visibility: hidden;
+      &:after {
+        content: '#{$navigation-prev-icon}';
+        font-family: $icon-font-family;
+        font-size: $navigation-font-size;
+        @extend %#{$component}-font !optional;
+      }
+    }
+    &.indicators {
+      display: none;
+      list-style: none;
+      position: absolute;
+      top: $indicator-top;
+      right: $indicator-right;
+      &:hover {
+        opacity: 1;
+      }
+      & > li {
+        min-height: $indicator-icon-size;
+        min-width: $indicator-icon-size;
+        color: $indicator-icon-color;
+        position: relative;
+        margin: $indicator-icon-margin;
+        display: list-item;
+        &:hover {
+          cursor: pointer;
+          opacity: 1;
+        }
+        &:before {
+          font-family: $icon-font-family;
+          font-size: $indicator-icon-size;
+          color: $indicator-icon-color;
+          content: '#{$indicator-icon}';
+        }
+        &.active {
+          &:before {
+            content: '#{$indicator-icon-active}';
+            color:$indicator-icon-active-color;
+          }
+        }
+      }
+      @include phone-content() {
+        display: none !important;
+      }
+    }
+  }
+
+  button {
+    &.ui-button {
+      position: absolute;
+      top: $button-top-position;
+      z-index: $z-index;
+      padding: $button-padding;
+      width: $button-width;
+
+      &.next {
+        right: $button-right-position;
+        &:after {
+          font-size: $icon-size;
+          left: $button-next-icon-left-position;
+          top: $icon-top-position;
+        }
+      }
+      &.prev {
+        left: $button-left-position;
+        &:after {
+          font-size: $icon-size;
+          left: $button-prev-icon-left-position;
+          top: $icon-top-position;
+        }
+      }
+    }
+  }
+
+  carousel-inner-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    @if $inner-container-width !=null {
+      width: $inner-container-width;
+    }
+    max-width: $inner-container-max-width;
+    &.hidden {
+      visibility: hidden;
+    }
+    &.visible {
+      visibility: visible;
+    }
+    .multi-border {
+      border: 1px solid transparent;
+    }
+    carousel-items, ui-template {
+      list-style: none;
+      @include flexbox($justification: flex-start, $alignment: flex-start);
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      & > carousel-item {
+        width: 100%;
+        height: $item-height;
+        max-width: $item-max-width;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+        display: list-item;
+        img {
+          max-width: 100%;
+          height: auto !important;
+        }
+      }
+      @if $item-max-height != null {
+        & > carousel-item {
+          max-height: $item-max-height;
+          overflow: hidden;
+          img {
+            margin-top: $image-top-position;
+          }
+        }
+      }
+    }
+  }
+
+  &[animation=multi-slide] {
+    & > carousel-navigation {
+      opacity: 1;
+    }
+
+    //-webkit-justify-content: center;
+    //justify-content: center;
+
+    carousel-inner-container {
+      width:85%;
+      carousel-items, ui-template {
+        width: auto;
+        & > carousel-item {
+          @include flexbox-column($justification: $item-justification, $alignment: $item-alignment);
+          //display: inline-block;
+          @if $item-width !=null {
+            min-width: $item-width !important;
+            max-width: $item-width !important;
+          }
+          height: auto;
+          margin-right: $item-margin-right;
+          overflow: hidden;
+          position: relative;
+          border: $item-border;
+          padding: $item-padding;
+          cursor: pointer;
+          &.active {
+            border: $item-border-active;
+          }
+          @if $constrain-image-to-width != true {
+            img {
+              max-width: none;
+              position: absolute;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &[animation=fade] {
+    carousel-items, ui-template {
+      display: block;
+      & > carousel-item {
+        display: none;
+        position: absolute;
+        opacity: 0;
+        float: none;
+        z-index: 1;
+        &:first-child {
+          display: inherit;
+          position: relative;
+          float: left;
+          opacity: 1;
+          z-index: 2;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+        @if $include-touch-media-queries==true {
+          @include tablet-content() {
+            img {
+              max-width: 150% !important;
+              margin-left: -25% !important;
+            }
+          }
+          @include phone-content() {
+            img {
+              max-width: 200% !important;
+              margin-left: -50% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &[animation=slide] {
+    carousel-items, ui-template {
+      & > carousel-item {
+        max-width: 100%;
+        min-width: 100%;
+        @if $include-touch-media-queries==true {
+          @include tablet-content() {
+            img {
+              max-width: 150% !important;
+              margin-left: -25% !important;
+            }
+          }
+          @include phone-content() {
+            img {
+              max-width: 200% !important;
+              margin-left: -50% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         include-touch-media-queries:<value>,
+///         constrain-image-to-width:<value>,
+///         z-index:<value>,
+///         height:<value>,
+///         width:<value>,
+///         margin:<value>,
+///         justification:<value>,
+///         alignment:<value>,
+///         inner-container:(
+///                 width:<value>,
+///                 max-width:<value>
+///         ),
+///         item:(
+///                 width:<value>,
+///                 max-width:<value>,
+///                 max-height:<value>,
+///                 height:<value>,
+///                 justification:<value>,
+///                 alignment: <value>,
+///                 margin-right:<value>,
+///                 border:<value>,
+///                 border-active:<value>,
+///                 padding:<value>
+///         ),
+///         button:(
+///                 padding:<value>,
+///                 width:<value>,
+///                 top-position:<value>,
+///                 left-position:<value>,
+///                 right-position:<value>,
+///                 prev-icon-left-position:<value>,
+///                 next-icon-left-position:<value>
+///         ),
+///         icon:(
+///                 size:<value>,
+///                 top-position:<value>,
+///                 font-family:<value>
+///         ),
+///         image:(
+///                 top-position:<value>
+///         ),
+///         navigation:(
+///                 top-position:<value>,
+///                 position:<value>,
+///                 next-icon:<value>,
+///                 prev-icon:<value>,
+///                 font-size:<value>,
+///                 color:<value>,
+///                 hover-opacity:<value>,
+///                 hover:<value>
+///         ),
+///         indicator:(
+///                 top:<value>,
+///                 right:<value>,
+///                 icon:<value>,
+///                 icon-active:<value>,
+///                 icon-size:<value>,
+///                 icon-color:<value>,
+///                 icon-active-color:<value>,
+///                 icon-margin:<value>
+///         )
+///
+/// )
+@mixin ui-carousel($component: null, $tags: null, $template-tag: null, $class: null, $map: ()) {
+
+  $_z-index: get-z-index();
+  $_white: map-get($Base, white);
+
+  $include-touch-media-queries: map-get-default($map, include-touch-media-queries, true);
+  $constrain-image-to-width: map-get-default($map, constrain-image-to-width, true);
+  $z-index: map-get-default($map, z-index, $_z-index + 99);
+  $height: map-get-default($map, height, auto);
+  $width: map-get-default($map, width, 100%);
+  $margin: map-get($map, margin);
+  $justification: map-get-default($map, justification, center);
+  $alignment: map-get-default($map, alignment, flex-start);
+  $inner-container-width: map-nested-get($map, inner-container, width);
+  $inner-container-max-width: map-nested-get-default($map, inner-container, max-width, none);
+  $item-width: map-nested-get($map, item, width);
+  $item-max-width: map-nested-get-default($map, item, max-width, none);
+  $item-max-height: map-nested-get($map, item, max-height);
+  $item-height: map-nested-get-default($map, item, height, auto);
+  $item-justification: map-nested-get-default($map, item, justification, flex-start);
+  $item-alignment: map-nested-get-default($map, item, justification, center);
+  $item-margin-right: map-nested-get-default($map, item, margin-right, 12px);
+  $item-border: map-nested-get-default($map, item, border, 0);
+  $item-border-active: map-nested-get-default($map, item, border-active, 0);
+  $item-padding: map-nested-get-default($map, item, padding, 0);
+  $_button-padding: map-nested-get-default($map, button, padding, 30px 15px 30px 15px);
+  $button-width: map-nested-get-default($map, button, width, 26px);
+  $button-top-position: map-nested-get-default($map, button, top-position, 45%);
+  $button-left-position: map-nested-get-default($map, button, left-position, 0);
+  $button-right-position: map-nested-get-default($map, button, right-position, 0);
+  $button-prev-icon-left-position: map-nested-get-default($map, button, prev-icon-left-position, 0);
+  $button-next-icon-left-position: map-nested-get-default($map, button, next-icon-left-position, 0);
+  $icon-size: map-nested-get-default($map, icon, size, 20px);
+  $icon-top-position: map-nested-get-default($map, icon, top-position, 20px);
+  $_icon-font-family: map-nested-get-default($map, icon, font-family, map-get($Icons, font-family));
+  $image-top-position: map-nested-get-default($map, image, top-position, 0);
+  $navigation-top-position: map-nested-get-default($map, navigation, top-position, 40%);
+  $navigation-position: map-nested-get-default($map, navigation, position, 2em);
+  $navigation-next-icon: map-nested-get-default($map, navigation, next-icon, \e179);
+  $navigation-prev-icon: map-nested-get-default($map, navigation, prev-icon, \e178);
+  $navigation-font-size: map-nested-get-default($map, navigation, font-size, 2em);
+  $navigation-color: map-nested-get-default($map, navigation, color, $_white);
+  $navigation-hover-opacity: map-nested-get-default($map, navigation, hover-opacity, .8);
+  $navigation-hover: map-nested-get-default($map, navigation, hover, true);
+  $indicator-top: map-nested-get-default($map, indicator, top, 80%);
+  $indicator-right: map-nested-get-default($map, indicator, right, 10%);
+  $indicator-icon: map-nested-get-default($map, indicator, icon, map-get($Icons, indicator));
+  $indicator-icon-active: map-nested-get-default($map, indicator, icon-active, map-get($Icons, indicator-active));
+  $indicator-icon-size: map-nested-get-default($map, indicator, icon-size, 1em);
+  $indicator-icon-color: map-nested-get-default($map, indicator, icon-color, $_white);
+  $indicator-icon-active-color: map-nested-get-default($map, indicator, icon-active-color, $indicator-icon-color);
+  $indicator-icon-margin: map-nested-get-default($map, indicator, icon-margin, 0 .75em 0 0);
+
+  $tag: ui-carousel;
+  @include element-tag($tag: $tag, $tags: $tags, $template-tag: $template-tag, $class: $class) {
+    @include _ui-carousel($component,
+            $height,
+            $width,
+            $margin,
+            $justification,
+            $alignment,
+            $inner-container-width,
+            $inner-container-max-width,
+            $item-width,
+            $item-max-width,
+            $item-max-height,
+            $item-height,
+            $item-justification,
+            $item-alignment,
+            $item-margin-right,
+            $item-border,
+            $item-border-active,
+            $item-padding,
+            $_button-padding,
+            $button-width,
+            $button-top-position,
+            $button-left-position,
+            $button-right-position,
+            $button-prev-icon-left-position,
+            $button-next-icon-left-position,
+            $icon-size,
+            $icon-top-position,
+            $_icon-font-family,
+            $z-index,
+            $constrain-image-to-width,
+            $image-top-position,
+            $navigation-top-position,
+            $navigation-position,
+            $navigation-next-icon,
+            $navigation-prev-icon,
+            $navigation-font-size,
+            $navigation-color,
+            $navigation-hover-opacity,
+            $navigation-hover,
+            $include-touch-media-queries,
+            $indicator-top,
+            $indicator-right,
+            $indicator-icon,
+            $indicator-icon-active,
+            $indicator-icon-size,
+            $indicator-icon-color,
+            $indicator-icon-active-color,
+            $indicator-icon-margin
+    );
+
+    @content;
+  }
+
+  //don't show navigation for touch
+  @include touch-content() {
+    ui-carousel {
+      .ui-button, carousel-navigation {
+        display: none;
+      }
+      overflow-x: hidden;
+    }
+  }
+}
+
+@mixin carousel-indicator-size($size:1em){
+  carousel-navigation {
+    &.indicators {
+      & > li {
+        min-height: $size;
+        min-width: $size;
+        &:before {
+          font-size: $size;
+        }
+      }
+    }
+  }
+}
+
+@mixin carousel-indicator-position($right:10%,$top:80%){
+  carousel-navigation {
+    &.indicators {
+      right:$right;
+      top:$top;
+    }
+  }
+}

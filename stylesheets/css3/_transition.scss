@@ -1,0 +1,25 @@
+
+@mixin transition($v){
+  -webkit-transition: #{$v};
+  transition: #{$v};
+}
+
+@mixin transition-property($v){
+  -webkit-transition-property: #{$v};
+  transition-property: #{$v};
+}
+
+@mixin transition-duration($v){
+  -webkit-transition-duration: #{$v};
+  transition-duration: #{$v};
+}
+
+@mixin transition-delay($v){
+  -webkit-transition-delay: #{$v};
+  transition-delay: #{$v};
+}
+
+@mixin transition-timing-function($v){
+  -webkit-transition-property: #{$v};
+  transition-timing-function: #{$v};
+}

@@ -1,0 +1,164 @@
+@import "../base/common-web-component";
+
+
+///@private
+@mixin _ui-collapse($component:null,$header-component:null,$section-component:null,
+$margin:null,
+$padding:null,
+$border-radius:null,
+$width:null,
+$font-size:null,
+$item-header-height:null,
+$item-header-expand-margin:null,
+$item-header-padding:null,
+$item-header-justification:null,
+$item-header-alignment:null,
+$item-header-border-radius:null,
+$item-section-padding:null,
+$item-section-margin:null,
+$item-section-min-height:null,
+$item-section-border-radius:null
+){
+  list-style: none;
+  margin: $margin;
+  padding:$padding;
+  height: 100%;
+  display:block;
+  border-radius:$border-radius;
+  font-size:$font-size;
+  width:$width;
+  @extend %#{$component}-background;
+  @extend %#{$component}-border;
+  collapse-item{
+    &>header{
+      @include flexbox($justification:$item-header-justification,$alignment:$item-header-alignment);
+      height:$item-header-height;
+      border-radius:$item-header-border-radius;
+      padding:$item-header-padding;
+      @include web-component-default($component:$header-component,$include-disabled:false);
+      button,.ui-button{
+        margin:0;
+      }
+
+      @include media-breakpoint(600px){
+        border-radius:0;
+      }
+    }
+    section {
+      margin:$item-section-margin;
+      padding:0;
+      position:relative;
+      border-radius:$item-section-border-radius;
+      @include web-component-default($component:$section-component,$include-box-shadow:false,$include-disabled:false);
+      >*{
+        margin:$item-section-padding;
+      }
+      @include media-breakpoint(600px){
+        border-radius:0;
+      }
+    }
+
+    header + section{
+      height: 0;
+      display:block;
+      overflow: hidden;
+    }
+    &.expand header + section{
+         height:auto;
+         overflow: hidden;
+    }
+    &.expand{
+      &>header{
+        margin:$item-header-expand-margin;
+      }
+    }
+    &:last-child{
+      &>section{
+        margin-bottom:0;
+      }
+    }
+  }
+
+  &.hide-expanded-headers{
+    collapse-item{
+      &.expand{
+        &>header{
+          display:none;
+        }
+      }
+    }
+  }
+}
+
+
+
+///@public
+/// @param {String} $component
+/// @param {String} $header-component
+/// @param {String} $section-component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         margin:<value>,
+///         padding:<value>,
+///         border-radius:<value>,
+///         width:<value>,
+///         item:(
+///                 header-height:<value>,
+///                 header-expand-margin:<value>,
+///                 header-padding:<value>,
+///                 header-justification:<value>,
+///                 header-alignment:<value>,
+///                 header-border-radius:<value>,
+///                 section-padding:<value>,
+///                 section-margin:<value>,
+///                 section-min-height:<value>,
+///                 section-border-radius:<value>
+///         )
+/// )
+@mixin ui-collapse($component:css-collapse,$header-component:css-collapse-header,$section-component:css-collapse-section,$tags:null,$template-tag:null,$class:null,$map:()){
+
+  $_border-radius:get-border-radius();
+
+  $margin:map-get-default($map,margin,0);
+  $padding:map-get-default($map,padding,0);
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $width:map-get-default($map,width,auto);
+  $font-size:map-get-default($map,font-size,1em);
+  $item-header-height:map-nested-get-default($map,item,header-height,3em);
+  $item-header-expand-margin:map-nested-get-default($map,item,expand-margin,0 0 1px 0);
+  $item-header-padding:map-nested-get-default($map,item,header-padding,0 3em 0 1em);
+  $item-header-justification:map-nested-get-default($map,item,header-justification,space-between);
+  $item-header-alignment:map-nested-get-default($map,item,header-alignment,center);
+  $item-header-border-radius:map-nested-get-default($map,item,header-border-radius,3px);
+  $item-section-padding:map-nested-get-default($map,item,section-padding,1em);
+  $item-section-margin:map-nested-get-default($map,item,section-margin,0 0 1px 0);
+  $item-section-min-height:map-nested-get-default($map,item,section-min-height,10em);
+  $item-section-border-radius:map-nested-get-default($map,item,section-border-radius,3px);
+
+
+  $tag:ui-collapse;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-collapse($component,$header-component,$section-component,
+            $margin,
+            $padding,
+            $border-radius,
+            $width,
+            $font-size,
+            $item-header-height,
+            $item-header-expand-margin,
+            $item-header-padding,
+            $item-header-justification,
+            $item-header-alignment,
+            $item-header-border-radius,
+            $item-section-padding,
+            $item-section-margin,
+            $item-section-min-height,
+            $item-section-border-radius
+    );
+    @content;
+  }
+
+}

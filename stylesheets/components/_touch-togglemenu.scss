@@ -1,0 +1,11 @@
+
+///@public
+@mixin touch-toggle-menu(){
+  @include touch-ui-drawer() {
+    @include touch-ui-menu();
+    @include touch-ui-dropdown();
+  };
+
+  /* touch menu toggle */
+  @include ui-toggle();
+}

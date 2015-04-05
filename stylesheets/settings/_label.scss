@@ -1,0 +1,41 @@
+@import "core";
+@import "component";
+
+$label-padding:2px 4px 2px !default;
+$label-background:map-nested-get($Core,inverse,color) !default;
+$label-font-color: $white !default;
+$label-font-size:.8em !default;
+$label-font-weight:bold !default;
+$label-text-transform:none !default;
+$label-text-decoration:none !default;
+$label-text-align:center !default;
+$label-line-height:1 !default;
+$label-radius:map-get($Component,border-radius) !default;
+$label-round-padding:1px 7px 2px !default;
+
+$label-semantic-margin: 1em 0 !default;
+$label-semantic-padding:.6em 0 .6em 2em !default;
+$label-semantic-font-size:1em !default;
+$label-semantic-border-radius:map-get($Component,border-radius) !default;
+
+
+$Label:(
+        padding:$label-padding,
+        background:$label-background,
+        font-colot:$label-font-color,
+        font-size:$label-font-size,
+        font-weight:$label-font-weight,
+        text-transform:$label-text-transform,
+        text-decoration:$label-text-decoration,
+        text-align:$label-text-align,
+        line-height:$label-line-height,
+        radius:$label-radius,
+        round-padding:$label-round-padding,
+        semantic:(
+                margin:$label-semantic-margin,
+                padding:$label-semantic-padding,
+                font-size:$label-semantic-font-size,
+                border-radius:$label-semantic-border-radius
+
+        )
+);

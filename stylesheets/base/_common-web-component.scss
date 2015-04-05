@@ -1,0 +1,20 @@
+@import "../utilities/functions";
+@import "../settings/component";
+@import "../settings/core";
+@import "../settings/semantic";
+@import "../settings/label";
+@import "../settings/icons";
+@import "../settings/base";
+@import "element-tag";
+@import "../settings/grid";
+@import "../css3/flexbox";
+@import "../utilities/document";
+@import "web-component";
+
+@function get-border-radius(){
+   @return map-get($Component,border-radius);
+}
+
+@function get-z-index(){
+  @return map-get($Component,z-index);
+}

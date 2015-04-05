@@ -1,0 +1,616 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _flex-list(
+$first-child-max-width:null,
+$alt-background:null,
+$justification:null,
+$alignment:null,
+$padding:null
+){
+  list-style: none;
+  &>li,&>.list-item{
+    padding:$padding;
+    position:relative;
+    @include flexbox($justification:$justification,$alignment:$alignment);
+    a{
+      &:first-child{
+        max-width:$first-child-max-width;
+      }
+      &.ellipsis{
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        overflow:hidden;
+        display:block;
+      }
+    }
+    &:nth-child(even){
+      background:$alt-background;
+    }
+    .right{
+      margin-left:auto;
+    }
+  }
+}
+
+///@private
+@mixin _flex-grid(
+$columns:null,
+$grid-contain-columns:null,
+$tablet-columns:null,
+$justification:null,
+$alignment:null,
+$cell-justification:null,
+$cell-alignment:null,
+$cell-padding:null
+)
+{
+  width:100%;
+  $_column-percentage: columns-to-percentage($columns);
+  $_grid-contain-column-percentage: columns-to-percentage($grid-contain-columns);
+  $_tablet-column-percentage: columns-to-percentage($tablet-columns);
+
+  @include flexbox();
+  @include justify-content($justification);
+  @include align-items($alignment);
+  @include flex-wrap(wrap);
+  &>grid-item{
+    width:$_column-percentage;
+    @include flexbox();
+    @include justify-content($cell-justification);
+    @include align-items($cell-alignment);
+    @include flex-direction(column);
+    padding:$cell-padding;
+    @include grid-contain-content(){
+      width:$_grid-contain-column-percentage;
+    }
+    @include tablet-content(){
+      width:$_tablet-column-percentage;
+    }
+    @include phone-content(){
+      width:100%;
+    }
+
+  }
+
+}
+
+
+///@private
+@mixin _ui-columns(
+$count:null,
+$gap:null,
+$width:null,
+$contain-count:null,
+$contain-gap:null,
+$contain-width:null,
+$touch-count:null,
+$touch-gap:null,
+$touch-width:null,
+$touch-item-margin:null,
+$touch-font-size:null,
+$font-size:null){
+
+  display:block;
+  list-style: none;
+  font-size:$font-size;
+  -webkit-column-count: $count;
+  -moz-column-count:$count;
+  column-count: $count;
+  -webkit-column-width:$width;
+  -moz-column-width:$width;
+  column-width:$width;
+  -webkit-column-gap:$gap;
+  -moz-column-gap:$gap;
+  column-gap:$gap;
+
+  &>column-item{
+    display:list-item;
+    width:$width;
+    a{
+      font-size:$font-size;
+    }
+  }
+
+  @include grid-contain-content() {
+    -webkit-column-count: $contain-count;
+    -moz-column-count:$contain-count;
+    column-count: $contain-count;
+    -webkit-column-width:$contain-width;
+    -moz-column-width:$contain-width;
+    column-width:$contain-width;
+    -webkit-column-gap:$contain-gap;
+    -moz-column-gap:$contain-gap;
+    column-gap:$contain-gap;
+  }
+
+  @include touch-content(){
+    -webkit-column-count: $touch-count;
+    -moz-column-count:$touch-count;
+    column-count: $touch-count;
+    -webkit-column-width:$touch-width;
+    -moz-column-width:$touch-width;
+    column-width:$touch-width;
+    -webkit-column-gap:$touch-gap;
+    -moz-column-gap:$touch-gap;
+    column-gap:$touch-gap;
+  }
+
+  @include phone-content(){
+    -webkit-column-count:1;
+    -moz-column-count:1;
+    column-count: 1;
+    -webkit-column-width:100%;
+    -moz-column-width:100%;
+    column-width:100%;
+    -webkit-column-gap:0;
+    -moz-column-gap:0;
+    column-gap:0;
+  }
+
+  @include touch-content(){
+
+    &>column-item{
+      margin:$touch-item-margin;
+      a{
+        font-size:$touch-font-size;
+      }
+    }
+  }
+
+}
+
+///@private
+@mixin _ui-icons($component:null,
+$justification:null,
+$alignment:null,
+$type:null,
+$include-animation:null,
+$animation:null,
+$item-margin:null,
+$item-padding:null,
+$font-size:null,
+$mark-font-size:null,
+$mark-font-weight:null,
+$mark-font-family:null,
+$mark-margin:null){
+
+  @if $type == horizontal{
+    height:100%;
+    @include flexbox($justification:$justification,$alignment:$alignment);
+    &>screen-icon{
+      margin:$item-margin;
+      padding:$item-padding;
+      @include span-icon(){
+        cursor:pointer;
+        @if $include-animation == true{
+          @include transition($animation);
+        }
+        position:relative;
+        @include flexbox($justification:center,$alignment:center);
+        &>mark{
+          font-family:$mark-font-family;
+          font-size:$mark-font-size !important;
+          font-weight:$mark-font-weight !important;
+          margin:$mark-margin;
+          position:absolute;
+          top:0;
+          left:0;
+          background:none;
+          height:100%;
+          width:100%;
+          @include flexbox($justification:center,$alignment:center);
+          @extend %#{$component}-icon !optional;
+        }
+        font-size:$font-size;
+        @extend %#{$component}-font !optional;
+        &:hover{
+          @extend %#{$component}-font-hover !optional;
+        }
+      }
+    }
+  }@else{
+    width:100%;
+    @include flexbox-column($justification:$justification,$alignment:$alignment);
+    &>screen-icon{
+      margin:$item-margin;
+      padding:$item-padding;
+      @include span-icon(){
+        cursor:pointer;
+        @if $include-animation == true{
+          @include transition($animation);
+        }
+        position:relative;
+        @include flexbox($justification:center,$alignment:center);
+        &>mark{
+          font-family:$mark-font-family;
+          font-size:$mark-font-size !important;
+          font-weight:$mark-font-weight !important;
+          margin:$mark-margin;
+          position:absolute;
+          top:0;
+          left:0;
+          background:none;
+          height:100%;
+          width:100%;
+          @include flexbox($justification:center,$alignment:center);
+          @extend %#{$component}-icon !optional;
+        }
+        @extend %#{$component}-font !optional;
+        &:hover{
+          @extend %#{$component}-font-hover !optional;
+        }
+      }
+    }
+  }
+
+
+}
+
+
+///@public
+flex-box,.flex-box{
+  display:-webkit-flex;
+  display:flex;
+  &.stretch{
+    width:100%;
+  }
+  &.wrap{
+    width: 100%;
+    @include flex-wrap(wrap);
+  }
+  &.center{
+    @include justify-content(center);
+  }
+  &.right, &.flex-end{
+    @include justify-content(flex-end);
+  }
+  &.space-between{
+    @include justify-content(space-between);
+  }
+  &.top{
+    @include align-items(flex-start);
+  }
+  &.bottom{
+    @include align-items(flex-end);
+  }
+  &.align-center{
+    @include align-items(center);
+  }
+  &.align-stretch{
+    @include align-items(stretch);
+  }
+  &.align-baseline{
+    @include align-items(baseline);
+  }
+  &.space-around{
+    @include justify-content(space-around);
+  }
+  &.align-space-between{
+    @include align-items(space-between);
+  }
+  &.column{
+    @include flex-direction(column);
+    &.center{
+      @include align-items(center);
+    }
+    &.align-center{
+      @include justify-content(center);
+    }
+    &.top{
+      @include justify-content(flex-start);
+    }
+    &.bottom{
+      @include justify-content(flex-end);
+    }
+    &.right,&.flex-end{
+      @include align-items(flex-end);
+    }
+  }
+  &>.right, &>.flex-end{
+    margin-left:auto;
+  }
+  &>.left, &>.flex-start{
+    margin-right:auto;
+  }
+  &.touch-column{
+    @include touch-content(){
+      @include flex-direction(column);
+      @include align-items(center);
+    }
+  }
+  &>.touch-left{
+    @include touch-content(){
+      margin-right:auto;
+    }
+  }
+  &>.touch-right{
+    @include touch-content(){
+      margin-left:auto;
+    }
+  }
+  &>.tablet-right{
+    @include tablet-content(){
+      margin-left:auto;
+    }
+  }
+  &>.tablet-left{
+    @include tablet-content(){
+      margin-right:auto;
+    }
+  }
+  &.absolute{
+    position:absolute;
+    height:100%;
+    width:100%;
+    z-index:999;
+    top:0;
+  }
+  &.relative{
+    position:relative;
+  }
+}
+
+
+
+
+///@public
+///@param  {String} $class
+///@param  {Map} $map
+/// $map:(
+///         justification:<value>,
+///         alignment:<value>,
+///         padding:<value>,
+///         first-child:(
+///               max-width:<value>
+///         ),
+///         background:(
+///               alternating:<value>
+///         )
+/// )
+@mixin flex-list($class:null,$map:()){
+
+  $justification:map-get-default($map,justification,space-between);
+  $alignment:map-get-default($map,alignment,center);
+  $padding:map-get-default($map,padding,.5em 0 .5em 0);
+  $first-child-max-width:map-nested-get-default($map,first-child,max-width,15em);
+  $alt-background:map-nested-get-default($map,background,alternating,#fafafa);
+
+  flex-list,.flex-list {
+    @if $class != null{
+      &.#{$class} {
+        @include _flex-list($first-child-max-width,$alt-background,$justification,$alignment,$padding);
+        @content;
+      }
+
+    } @else {
+      @include _flex-list($first-child-max-width,$alt-background,$justification,$alignment,$padding);
+      @content;
+    }
+  }
+}
+
+
+///@public
+///@param {String} $class
+///@param {Map} $map
+/// $map:(
+///         columns:<value>,
+///         justification:<value>,
+///         alignment:<value>,
+///         grid-contain:(
+///               columns:<value>
+///         ),
+///         tablet:(
+///               columns:<value>
+///         ),
+///         cell:(
+///               justification:<value>,
+///               alignment:<value>,
+///               padding:<value>
+///         )
+/// )
+@mixin flex-grid($class:null,$map:()){
+
+  $columns:map-get-default($map,columns,4);
+  $justification:map-get-default($map,justification,flex-start);
+  $alignment:map-get-default($map,alignment,flex-start);
+  $grid-contain-columns:map-nested-get-default($map,grid-contain,columns,3);
+  $tablet-columns:map-nested-get-default($map,tablet,columns,3);
+  $cell-justification:map-nested-get-default($map,cell,justification,flex-start);
+  $cell-alignment:map-nested-get-default($map,cell,alignment,flex-start);
+  $cell-padding:map-nested-get-default($map,cell,padding,0 1em 2em 0);
+
+  flex-grid,.flex-grid {
+    @if $class != null{
+      &.#{$class} {
+        @include _flex-grid($columns,$grid-contain-columns,$tablet-columns,
+                $justification,$alignment,$cell-justification,$cell-alignment,$cell-padding);
+        @content;
+      }
+
+    } @else {
+      @include _flex-grid($columns,$grid-contain-columns,$tablet-columns,
+              $justification,$alignment,$cell-justification,$cell-alignment,$cell-padding);
+      @content;
+    }
+  }
+}
+
+
+
+///@public
+///@param {String} $class
+///@param {Map} $map
+/// $map:(
+///         font-size:<value>,
+///         column:(
+///               count:<value>,
+///               gap:<value>,
+///               width:<value>
+///         )
+///         grid-contain:(
+///               count:<value>,
+///               gap:<value>
+///         ),
+///         touch:(
+///               count:<value>,
+///               gap:<value>,
+///               item-margin:<value>,
+///               font-size:<value>
+///         )
+/// )
+@mixin ui-columns($class:null,$map:()){
+
+  $count:map-nested-get-default($map,column,count,3);
+  $gap:map-nested-get-default($map,column,gap,1em);
+  $width:map-nested-get-default($map,column,width,100px);
+  $font-size:map-get-default($map,font-size,1em);
+  $grid-contain-count:map-nested-get-default($map,grid-contain,count,2);
+  $grid-contain-gap:map-nested-get-default($map,grid-contain,gap,1em);
+  $touch-count:map-nested-get-default($map,touch,count,2);
+  $touch-gap:map-nested-get-default($map,touch,gap,1em);
+  $touch-item-margin:map-nested-get-default($map,touch,item-margin,0 0 .5em 0);
+  $touch-font-size:map-nested-get-default($map,touch,font-size,1em);
+
+  $column-percentage: columns-to-percentage($count);
+  $contain-column-percentage: columns-to-percentage($grid-contain-count);
+  $touch-column-percentage: columns-to-percentage($touch-count);
+
+
+  ui-columns,.ui-columns {
+
+    @if $class != null{
+      &.#{$class} {
+        @include _ui-columns($count,
+        $gap,
+        $width,
+        $grid-contain-count,
+        $grid-contain-gap,
+        $contain-column-percentage,
+        $touch-count,
+        $touch-gap,
+        $touch-column-percentage,
+        $touch-item-margin,
+        $touch-font-size,
+        $font-size);
+        @content;
+      }
+
+    } @else {
+      @include _ui-columns($count,
+              $gap,
+              $width,
+              $grid-contain-count,
+              $grid-contain-gap,
+              $contain-column-percentage,
+              $touch-count,
+              $touch-gap,
+              $touch-column-percentage,
+              $touch-item-margin,
+              $touch-font-size,
+              $font-size);
+      @content;
+    }
+  }
+}
+
+
+///@public
+///@param {String} $component
+///@param {String} $class
+///@param {Map} $map
+/// $map:(
+///         justification:<value>,
+///         alignment:<value>,
+///         font-size:<value>,
+///         type:<value>,
+///         include-animation:<value>,
+///         animation:<value>,
+///         item:(
+///                 margin:<value>,
+///                 padding:<value>
+///         ),
+///         mark:(
+///                 font-size:<value>,
+///                 font-family:<value>,
+///                 font-weight:<value>,
+///                 margin:<value>
+///         )
+/// )
+@mixin ui-icons($component:null,$class:null,$map:()){
+
+  $justification:map-get-default($map,justification,flex-start);
+  $alignment:map-get-default($map,alignment,center);
+  $font-size:map-get-default($map,font-size,2em);
+  $type:map-get-default($map,type,horizontal);
+  $include-animation:map-get-default($map,include-animation,true);
+  $animation:map-get-default($map,animation,color 500ms);
+  $item-margin:map-nested-get-default($map,item,margin,0 2em 0 0);
+  $item-padding:map-nested-get-default($map,item,padding,0);
+  $mark-font-size:map-nested-get-default($map,mark,font-size,11px);
+  $mark-font-weight:map-nested-get-default($map,mark,font-weight,700);
+  $mark-font-family:map-nested-get-default($map,mark,font-family,'Helvetica Neue');
+  $mark-margin:map-nested-get-default($map,mark,margin,0);
+
+
+
+  .ui-icons,ui-icons{
+    @if $class != null{
+      &.#{$class} {
+        @include _ui-icons($component,
+        $justification,
+        $alignment,
+        $type,
+        $include-animation,
+        $animation,
+        $item-margin,
+        $item-padding,
+        $font-size,
+        $mark-font-size,
+        $mark-font-weight,
+        $mark-font-family,
+        $mark-margin
+        );
+        @content;
+      }
+    }@else{
+      @include _ui-icons($component,
+              $justification,
+              $alignment,
+              $type,
+              $include-animation,
+              $animation,
+              $item-margin,
+              $item-padding,
+              $font-size,
+              $mark-font-size,
+              $mark-font-weight,
+              $mark-font-family,
+              $mark-margin
+      );
+        @content;
+    }
+  }
+}
+
+
+///@public
+@mixin ui-sticky-footer(){
+  ////sticky bottom footer
+  .ui-sticky-footer {
+    @include flexbox();
+    min-height: 100vh;
+    height:100%;
+    @include flex-direction(column);
+    & > *:not([data-role=footer]) {
+      //@include flex(1);
+      @include flex(1 0 auto);//ie workaround
+    }
+    &.ns{
+      height:900px;//not supported workaround
+    }
+  }
+}
+
+

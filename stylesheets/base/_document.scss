@@ -1,0 +1,206 @@
+@import "breakpoints";
+@import "../settings/document";
+@import "../settings/component";
+@import "../css3/mixins";
+@import "../utilities/document";
+
+
+/// Document Reset & Standards
+@mixin document-reset() {
+
+  *, *:before, *:after {
+    @include box-sizing(border-box);
+  }
+
+  html {
+    font-size: map-get($Document,font-size);
+  }
+
+  body {
+    background: map-get($Document,background);
+    font-family: map-get($Document,font);
+    font-weight: map-get($Document,font-weight);
+    font-size: map-get($Document,font-size);
+    color:map-get($Document,font-color);
+    line-height: map-get($Document,line-height);
+    -webkit-font-smoothing: map-get($Document,font-smoothing);
+    margin: map-get($Document,margin);
+    padding: map-get($Document,padding);
+  }
+
+
+
+  a img {
+    border: none;
+  }
+
+  a {
+    color: map-get($Document,link-color);
+    text-decoration: map-get($Document,link-text-decoration);
+    line-height: map-get($Document,link-line-height);
+    font-size: map-get($Document,link-font-size);
+    font-weight: map-get($Document,link-font-weight);
+    text-transform: map-get($Document,link-text-transform);
+
+    &:hover, &:focus {
+      color: map-get($Document,link-color-hover);
+      text-decoration: map-get($Document,link-text-decoration-hover);
+      text-transform: map-get($Document,link-text-transform-hover);
+      font-weight: map-get($Document,link-font-weight-hover);
+      cursor: pointer;
+    }
+    &:focus {
+      @include tab-focus();
+    }
+    &.disabled, &[disabled] {
+      color:map-get($Component,font-color-disabled);
+      background: none !important;
+      box-shadow:none;
+      text-shadow:none;
+      cursor:default;
+    }
+
+  }
+
+  p a, p a:visited {
+    line-height: inherit;
+  }
+
+  span {
+    &:focus, &.focus {
+      @include tab-focus();
+    }
+  }
+
+  ///lists
+  ul, ol, dl {
+    line-height: map-get($Document,list-line-height);
+    list-style-position: map-get($Document,list-style-position);
+    &:focus {
+      @include tab-focus();
+    }
+  }
+
+  ul {
+    li {
+      ul, ol {
+        margin-left: map-get($Document,list-margin);
+        margin-bottom: 0;
+      }
+    }
+    &.square, &.circle, &.disc {
+      margin-left: map-get($Document,list-margin);
+    }
+    &.square {
+      list-style-type: square;
+      li ul {
+        list-style: inherit;
+      }
+    }
+    &.circle {
+      list-style-type: circle;
+      li ul {
+        list-style: inherit;
+      }
+    }
+    &.disc {
+      list-style-type: disc;
+      li ul {
+        list-style: inherit;
+      }
+    }
+    &.no-bullet {
+      list-style: none;
+    }
+  }
+
+  ol {
+    margin-left: map-get($Document,list-margin);
+    li {
+      ul, ol {
+        margin-left: map-get($Document,list-margin);
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  ///images, objects
+  img,
+  object,
+  embed {
+    max-width: 100%;
+    height: auto;
+  }
+
+  object,
+  embed {
+    height: 100%;
+  }
+
+  img {
+    -ms-interpolation-mode: bicubic;
+  }
+
+  #map_canvas,
+  .map_canvas {
+    img,
+    embed,
+    object {
+      max-width: none !important;
+    }
+  }
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  code {
+    font-weight: map-get($Document,code-font-weight);
+    background: map-get($Document,highlight-background);
+    color: map-get($Document,highlight-color);
+    white-space: nowrap;
+    border-radius: map-get($Document,code-border-radius);
+  }
+
+  button {
+    line-height: map-get($Document,button-line-height);
+    &:focus {
+      @include tab-focus();
+    }
+  }
+
+  ///Reset for strange margins by default on <figure> elements
+  figure {
+    margin: 0;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  menu,
+  nav,
+  section,
+  summary {
+    display: block;
+    width: 100%;
+  }
+
+  @media #{$breakpoint-touch}{
+    ///stop long touch from triggering dialog
+    a {
+      -webkit-touch-callout: none !important;
+    }
+    /// A hack for HTML5 contenteditable attribute on mobile
+    textarea[contenteditable] {
+      -webkit-appearance: none;
+    }
+  }
+
+
+}

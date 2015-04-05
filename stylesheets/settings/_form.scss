@@ -1,0 +1,86 @@
+@import "document";
+@import "component";
+
+$form-spacing: 1.5em !default;
+$form-width: 400px !default;
+$include-form-input-animation: true !default;
+$form-input-animation: all 0.25s linear !default;
+$form-input-margin: 0 0 1em 0 !default;
+$form-input-padding: 0.5em 0.75em !default;
+$form-input-border-radius: 0 !default;
+$form-input-outline: none !default;
+$form-textarea-height: 100px !default;
+$form-label-font-size: 1em !default;
+$form-label-font-weight: bold !default;
+$form-label-font-color: map-get($Document,font-color) !default;
+$form-label-margin-bottom: .2em !default;
+$form-fieldset-padding: .5em !default;
+$form-fieldset-margin: 1em 0 !default;
+$form-fieldset-button-margin-top: 3em !default;
+$form-fieldset-border: 0 !default;
+$form-checkbox-label-padding: 0 0 0 1.5em !default;
+$form-checkbox-size: 1.2em !default;
+$form-checkbox-icon-font-size: 1em !default;
+$form-radio-border-radius: 100px !default;
+$form-radio-icon-font-size: .625em !default;
+$form-switch-font-size: .75em !default;
+$form-switch-toggle-size: 2.5em !default;
+$form-switch-height: 2.5em !default;
+$form-switch-width: 5em !default;
+$form-switch-border-radius: 2.5em !default;
+$form-switch-top-position: .7em !default;
+$form-select-width: 18.625em !default;
+$form-select-padding: .4em 1em !default;
+$form-select-border-radius: map-get($Component,border-radius) !default;
+$form-select-font-weight: normal !default;
+
+$Form: (
+        spacing:$form-spacing,
+        width:$form-width,
+        input:(
+                include-animation:$include-form-input-animation,
+                animation:$form-input-animation,
+                margin:$form-input-margin,
+                padding:$form-input-padding,
+                border-radius:$form-input-border-radius,
+                outline:$form-input-outline
+        ),
+        textarea:(
+                height:$form-textarea-height
+        ),
+        label:(
+                font-size:$form-label-font-size,
+                font-weight:$form-label-font-weight,
+                font-color:$form-label-font-color,
+                margin-bottom:$form-label-margin-bottom
+        ),
+        fieldset:(
+                padding:$form-fieldset-padding,
+                margin:$form-fieldset-margin,
+                button-margin-top:$form-fieldset-button-margin-top,
+                border:$form-fieldset-border
+        ),
+        checkbox:(
+                label-padding:$form-checkbox-label-padding,
+                size:$form-checkbox-size,
+                icon-font-size:$form-checkbox-icon-font-size
+        ),
+        radio:(
+                border-radius:$form-radio-border-radius,
+                icon-font-size:$form-radio-icon-font-size
+        ),
+        switch:(
+                font-size:$form-switch-font-size,
+                toggle-size:$form-switch-toggle-size,
+                height:$form-switch-height,
+                width:$form-switch-width,
+                border-radius:$form-switch-border-radius,
+                top-position:$form-switch-top-position
+        ),
+        select:(
+                width:$form-select-width,
+                padding:$form-select-padding,
+                border-radius:$form-select-border-radius,
+                font-weight:$form-select-font-weight
+        )
+);

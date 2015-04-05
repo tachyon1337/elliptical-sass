@@ -1,0 +1,309 @@
+@import "breakpoints";
+
+///@public
+@mixin utilities-convenience() {
+
+  .flex-right,.flex-end{
+    margin-left:auto !important;
+  }
+  .flex-left,.flex-start{
+    margin-right:auto !important;
+  }
+  .text-left {
+    text-align: left !important;
+  }
+  .text-right {
+    text-align: right !important;
+  }
+  .text-center {
+    text-align: center !important;
+  }
+  .text-justify {
+    text-align: justify !important;
+  }
+  .hide {
+    display: none;
+  }
+  .show{
+    display:inherit;
+  }
+  .hide-important,.hide-override {
+    display: none !important;
+  }
+  .visible{
+    visibility: visible !important;
+    opacity:1;
+  }
+  .hidden{
+    visibility: hidden;
+  }
+  .transparent {
+    opacity: 0;
+  }
+  .full-width {
+    width: 100%;
+  }
+  .touch-full-width{
+    @include touch-content(){
+      width:100% !important;
+    }
+  }
+  .inline{
+    display:inline;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .fixed {
+    position: fixed;
+  }
+  .relative{
+    position:relative;
+  }
+  .static{
+    position:static;
+  }
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+  }
+  .text-bold {
+    font-weight: bold !important;
+  }
+  .text-normal {
+    font-weight: normal !important;
+  }
+  .larger-text {
+    font-size: 1.5rem;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .box-shadow {
+    box-shadow: rgba(0, 0, 0, .20) 0 1px 1px;
+  }
+  .icon-inset {
+    text-shadow: rgba(0, 0, 0, .80) 0 -1px 0;
+  }
+
+  .list-style-none{
+    list-style: none;
+    margin:0;
+    padding:0;
+    &>li{
+      margin:0 0 10px 0;
+      line-height: 1.25;
+    }
+  }
+
+  .width-half{
+    width:50% !important;
+
+  }
+
+  .auto-width{
+    width:auto;
+    min-width:0;
+  }
+
+  .auto-height{
+    height:auto;
+  }
+
+  .circle {
+    border-radius: 50%;
+  }
+
+  //clear-fix
+  .clearfix:before,
+  .clearfix:after {
+    content: "";
+    display: table;
+  }
+
+  .clearfix:after {
+    clear: both;
+  }
+
+  .top {
+    top: 0;
+  }
+
+  .bottom {
+    bottom: 0;
+  }
+
+  .margin {
+    margin: 1em 0 1em 0;
+    &.two{
+      margin: 2em 0 2em 0;
+    }
+  }
+
+  .margin-left{
+    margin-left:1em;
+    &.two{
+      margin-left:2em;
+    }
+    &.zero{
+      margin-left:0;
+    }
+  }
+  .margin-right{
+    margin-right:1em;
+    &.two{
+      margin-right:2em;
+    }
+    &.zero{
+      margin-right:0;
+    }
+  }
+  .margin-top{
+    margin-top:1em;
+    &.two{
+      margin-top:2em;
+    }
+    &.zero{
+      margin-top:0;
+    }
+  }
+  .margin-bottom{
+    margin-bottom:1em;
+    &.two{
+      margin-bottom:2em;
+    }
+    &.zero{
+      margin-bottom:0;
+    }
+  }
+
+  .margin-0 {
+    margin: 0;
+  }
+
+  .padding {
+    padding: 1em 0 1em 0;
+  }
+
+  .padding-0 {
+    padding: 0;
+  }
+
+  .padding-left{
+    padding-left:1em;
+    &.two{
+      padding-left:2em;
+    }
+    &.zero{
+      padding-left:0;
+    }
+  }
+  .padding-right{
+    padding-right:1em;
+    &.two{
+      padding-right:2em;
+    }
+    &.zero{
+      padding-right:0;
+    }
+  }
+  .padding-top{
+    padding-top:1em;
+    &.two{
+      padding-top:2em;
+    }
+    &.zero{
+      padding-top:0;
+    }
+  }
+  .padding-bottom{
+    padding-bottom:1em;
+    &.two{
+      padding-bottom:2em;
+    }
+    &.zero{
+      padding-bottom:0;
+    }
+  }
+  .pointer{
+    cursor:pointer;
+  }
+
+  .pointer-underline{
+    text-decoration: underline;
+    cursor:pointer;
+  }
+
+  .white{
+    color:$white;
+  }
+
+  .small-font{
+    font-size:.85em;
+  }
+
+  .size-two{
+    font-size:2em;
+  }
+  .size-one{
+    font-size:1em
+  }
+
+
+  .size-16{
+    font-size:16px;
+  }
+
+  .size-18{
+    font-size:18px;
+  }
+
+  .size-20{
+    font-size:20px;
+  }
+
+  size-22{
+    font-size:22px;
+  }
+
+  .size-24{
+    font-size:24px;
+  }
+
+  .size-32{
+    font-size:32px;
+  }
+
+  .size-36{
+    font-size:36px;
+  }
+
+  .size-40{
+    font-size:40px;
+  }
+
+  .size-44{
+    font-size:44px;
+  }
+
+  .size-48{
+    font-size:48px;
+  }
+
+  .size-64{
+    font-size:64px;
+  }
+
+
+  .tiny-font{
+    font-size:.8em;
+  }
+
+  .nocallout {
+    -webkit-touch-callout: none;
+  }
+
+  .pressed {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+}

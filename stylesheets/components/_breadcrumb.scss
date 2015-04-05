@@ -1,0 +1,69 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-breadcrumb($component: null,
+$font-size: null,
+$padding: null,
+$font-weight: null,
+$link-font-weight: null
+
+) {
+
+  display: inline-block;
+  list-style: none;
+  padding-bottom: 0 !important;
+  &>breadcrumb-item {
+    float: left;
+    padding: $padding;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    a {
+      @if $component != null{
+        @extend %#{$component}-font !optional;
+      }
+      font-size: $font-size;
+      &:hover, &:focus {
+        @if $component != null{
+          @extend %#{$component}-font-hover !optional;
+        }
+      }
+    }
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+
+///@public
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         font-size:<value>,
+///         padding:<value>,
+///         font-weight:<value>,
+///         link:(
+///               font-weight:<value>
+///         )
+/// )
+@mixin ui-breadcrumb($component: null,$tags:null,$template-tag:null,$class:null,$map:()) {
+
+  $font-size:map-get-default($map,font-size,1em);
+  $padding:map-get-default($map,padding,0 .3em 0 .3em);
+  $font-weight:map-get-default($map,font-weight,normal);
+  $link-font-weight:map-nested-get-default($map,link,font-weight,normal);
+
+  $tag:ui-breadcrumb;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-breadcrumb($component, $font-size, $padding, $font-weight, $link-font-weight);
+    @content;
+  }
+
+}

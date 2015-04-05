@@ -1,0 +1,204 @@
+@import "../settings/core";
+@import "../settings/component";
+@import "../settings/document";
+@import "document";
+@import "hardware-acceleration";
+
+
+///@public
+@mixin utilities-classes(){
+  // box shadow
+  .ui-left-box-shadow {
+    box-shadow: map-get($Component,drawer-box-shadow);
+  }
+
+  ui-container,ui-drawer,touch-ui-drawer{
+    display:block;
+  }
+
+  //overlay
+  ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: map-get($Component,z-index) + 999999;
+    display:none;
+    &.show{
+      display:block;
+    }
+  }
+
+  ui-container[name=base]{
+    position:relative;
+  }
+
+  //toggle-container
+  .ui-fixed-toggle-container {
+    z-index: map-get($Component,z-index) + 9999;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background:map-get($Document,background);
+    position: fixed !important;
+    overflow: hidden;
+    *{
+      &:focus{
+        @include disable-focus();
+      }
+    }
+  }
+
+  .ui-overflow-container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+
+  .ui-focus{
+    @include tab-focus();
+    &:focus{
+      @include tab-focus();
+    }
+  }
+
+  //caret,dropdown arrow
+  span{
+    &.caret{
+      padding:0 .1rem 0 1rem;
+      @extend .icon-core-caret-down !optional;
+      &.large{
+        font-size:32px;
+      }
+    }
+  }
+
+  .box-shadow-none{
+    &:not(:active) {
+      box-shadow: none;
+    }
+
+  }
+
+  .disabled,[disabled]{
+    background:map-get($Component,background-disabled);
+    border:map-get($Component,border-disabled);
+    color:map-get($Component,font-color-disabled);
+    text-shadow:map-get($Component,text-shadow-disabled);
+    box-shadow:map-get($Component,box-shadow-disabled);
+  }
+
+  span{
+    &.disabled,&[disabled]{
+      background:none !important;
+    }
+  }
+
+  .large-icon{
+    font-size:2em;
+  }
+
+  .medium-icon{
+    font-size:1.5em;
+  }
+
+  .ui-inset-shadow{
+    opacity: 1;
+    text-shadow: rgba(0, 0, 0, 0.8) 0 -1px 0;
+  }
+
+  .ui-inset-shadow-important{
+    opacity: 1 !important;
+    text-shadow: rgba(0, 0, 0, 0.8) 0 -1px 0 !important;
+  }
+
+  .ui-hide{
+    display:none;
+    visibility:visible;
+  }
+
+  .ui-relative{
+    position:relative;
+  }
+
+  .ui-fixed{
+    position:fixed;
+  }
+
+  .ui-absolute{
+    position:absolute;
+  }
+
+  .ui-static{
+    position:static;
+  }
+
+  ui-container{
+    position:relative;
+  }
+
+  [data-upgraded=false]{
+    visibility:hidden;
+  }
+
+  [data-upgraded=true]{
+    visibility:visible;
+  }
+
+  .primary{
+    color:map-nested-get($Core,primary,color);
+  }
+
+  .secondary{
+    color:map-nested-get($Core,secondary,color);
+  }
+
+  .inverse{
+    color:map-nested-get($Core,inverse,color);
+  }
+
+  [validation-summary]{
+    ul{
+      list-style:none;
+    }
+  }
+
+  ui-form{
+    display:block;
+  }
+
+}
+
+@mixin utilities-template(){
+  ui-template{
+    visibility: hidden;
+  }
+
+  [template]{
+    visibility:hidden;
+  }
+
+  [role=form]{
+    &>form{
+      visibility:hidden;
+    }
+  }
+
+  touch-template{
+    display:none;
+  }
+
+  empty-template{
+    display:none;
+    &.show{
+      display:block;
+    }
+  }
+
+  form{
+    &.visible{
+      visibility: visible !important;
+    }
+  }
+}

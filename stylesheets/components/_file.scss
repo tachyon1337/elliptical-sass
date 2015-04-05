@@ -1,0 +1,172 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-file($component:null,
+$min-height:null,
+$border:null,
+$z-index:null,
+$drop-zone-padding:null,
+$font-size:null,
+$header-font-size:null,
+$position:null,
+$button-margin:null,
+$p-margin:null,
+$preview-columns:null
+
+) {
+
+  $_ui-file-column-percentage:columns-to-percentage($preview-columns);
+
+  input[type=file] {
+    display: none;
+  }
+
+  position: relative;
+  &.active{
+    min-height:$min-height;
+    @extend %#{$component}-border !optional;
+    @if $border != null {
+      border:$border;
+    }
+    &:hover, &:focus {
+      @extend %#{$component}-border-hover !optional;
+    }
+  }
+
+
+  .ui-upload-overlay,ui-upload-overlay {
+    position: absolute;
+    top: $position;
+    left: $position;
+    z-index: $z-index;
+    right: $position;
+    bottom: $position;
+    @extend %#{$component}-background !optional;
+    & > .ui-drop-zone {
+      padding: $drop-zone-padding;
+      h2 {
+        font-size: $header-font-size;
+        @extend %#{$component}-font !optional;
+      }
+      p {
+        font-size: $font-size;
+        @extend %#{$component}-font !optional;
+        margin: $p-margin;
+      }
+      .ui-button {
+        margin: $button-margin;
+      }
+    }
+    & > progress {
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      width: 100%;
+    }
+    .ui-preview,ui-preview{
+      padding:40px 20px 40px 20px;
+      &>ul{
+        list-style: none;
+        &>li{
+          display:inline-block;
+          width:$_ui-file-column-percentage - 2;
+          padding:10px;
+          &>img{
+            width:100%;
+            height:auto;
+          }
+          &>div{
+            margin:5px 0 0 0;
+            font-size:12px;
+            @extend %#{$component}-font-active !optional;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+/// @public
+///@param {String} $component
+///@param {String} $class
+///@param {Map} $map
+/// $map:(
+///         height:<value>,
+///         border:<value>,
+///         z-index:<value>,
+///         font-size:<value>,
+///         position:<value>,
+///         columns:<value>,
+///         drop-zone:(
+///                   padding:<value>
+///         ),
+///         header:(
+///                   font-size:<value>
+///         ),
+///         button:(
+///                   margin:<value>
+///         ),
+///         paragraph:(
+///                   margin:<value>
+///         ),
+///         touch:(
+///                   hide:<value>
+///         )
+/// )
+@mixin ui-file($component:css-input-file,$class:null,$map:()) {
+
+  $_z-index:get-z-index();
+
+  $min-height:map-get-default($map,min-height,550px);
+  $border:map-get($map,border);
+  $z-index:map-get-default($map,z-index,$_z-index + 999);
+  $font-size:map-get-default($map,font-size,1em);
+  $position:map-get-default($map,position,0);
+  $preview-columns:map-get-default($map,columns,3);
+  $drop-zone-padding:map-nested-get-default($map,drop-zone,padding,100px 0 0 100px);
+  $header-font-size:map-nested-get-default($map,header,font-size,2.25em);
+  $button-margin:map-nested-get-default($map,button,margin,0 0 0 5.625em);
+  $p-margin:map-nested-get-default($map,paragraph,margin,.3125em 0 .625em 8em);
+  $hide-for-touch:map-nested-get-default($map,touch,hide,true);
+
+
+  ui-file,.ui-file {
+    @if $class != null{
+      &.#{$class} {
+        @include _ui-file($component, $min-height,$border,$z-index,$drop-zone-padding,
+          $font-size,
+          $header-font-size,
+          $position,
+          $button-margin,
+          $p-margin,
+          $preview-columns
+        );
+       @content;
+      }
+    } @else {
+      @include _ui-file($component, $min-height, $border,$z-index,$drop-zone-padding,
+        $font-size,
+        $header-font-size,
+        $position,
+        $button-margin,
+        $p-margin,
+        $preview-columns
+      );
+      @content;
+    }
+  }
+
+  @if $hide-for-touch == true{
+    @media #{$breakpoint-touch}{
+      ui-file,[data-ui=file],.ui-file {
+        border:none;
+        ui-upload-overlay,.ui-upload-overlay {
+          display:none;
+        }
+      }
+    }
+  }
+
+}

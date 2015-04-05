@@ -1,0 +1,90 @@
+@import "../base/common-web-component";
+
+
+/// @public
+///@param {Map} $map
+/// $map:(
+///         background:<value>,
+///         border-color:<value>,
+///         duration:<value>,
+///         z-index:<value>,
+///         inner:(
+///                 border-color:<value>,
+///                 duration:<value>
+///         )
+/// )
+@mixin ui-loading($map:()){
+
+  $_secondary-color:map-nested-get($Core,secondary,color);
+  $_white:map-get($Base,white);
+  $_inner-border-color:darken($_secondary-color,10%);
+  $_z-index:get-z-index();
+
+  $background:map-get-default($map,background,$_secondary-color);
+  $border-color:map-get-default($map,border,$_white);
+  $duration:map-get-default($map,duration,3s);
+  $z-index:map-get-default($map,z-index,$_z-index + 999999);
+  $inner-border-color:map-nested-get-default($map,inner,border-color,$_inner-border-color);
+  $inner-duration:map-nested-get-default($map,inner,duration,1s);
+
+  .ui-loading,ui-loading{
+    display:block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 18.75em;
+    height: 18.75em;
+    background: $background;
+    z-index:$z-index;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-transform: translateX(100%) translateY(-100%) rotate(45deg);
+    transform: translateX(100%) translateY(-100%) rotate(45deg);
+    pointer-events: none;
+    &.animate{
+      -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
+      transform: translateX(50%) translateY(-50%) rotate(45deg);
+    }
+    &:before,&:after{
+      position: absolute;
+      bottom: 2em;
+      left: 50%;
+      display: block;
+      border: 5px solid $border-color;
+      border-radius: 50%;
+      content: '';
+    }
+    &:before{
+      margin-left: -2.5em;
+      width: 5em;
+      height: 5em;
+      border-right-color: $inner-border-color;
+      border-left-color: $inner-border-color;
+      -webkit-animation: loading-rotation $duration linear infinite;
+      animation: loading-rotation $duration linear infinite;
+    }
+    &:after{
+      bottom: 3.125em;
+      margin-left: -1.25em;
+      width: 2.5em;
+      height: 2.5em;
+      border-top-color: $inner-border-color;
+      border-bottom-color: $inner-border-color;
+      -webkit-animation: loading-rotation $inner-duration linear infinite;
+      animation: loading-rotation $inner-duration linear infinite;
+    }
+
+  }
+}
+
+@-webkit-keyframes loading-rotation {
+  0% 		{ -webkit-transform: rotate(0deg); }
+  50% 	{ -webkit-transform: rotate(180deg); }
+  100% 	{ -webkit-transform: rotate(360deg); }
+}
+
+@keyframes loading-rotation {
+  0% 		{ transform: rotate(0deg); }
+  50% 	{ transform: rotate(180deg); }
+  100% 	{ transform: rotate(360deg); }
+}

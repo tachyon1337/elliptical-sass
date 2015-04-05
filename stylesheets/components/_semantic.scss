@@ -1,0 +1,228 @@
+@import "../base/common-web-component";
+
+
+///@extend
+%ui-semantic-label{
+  margin:map-get($Label,margin);
+  padding:map-get($Label,padding);
+  width:100%;
+  opacity:0;
+  font-size:map-get($Label,font-size);
+  cursor:default;
+  position:relative;
+  border-radius:map-get($Label,border-radius);
+  @include flexbox($alignment:center,$justification:center);
+  font-weight:normal;
+  &.hidden{
+    visibility: hidden;
+  }
+  &.visible{
+    visibility: visible !important;
+    opacity:1;
+  }
+  border:1px solid;
+  &>button,ui-close{
+    margin-left:auto;
+    padding-right:.6em;
+    background:none;
+    border:none;
+    font-size:1.5em;
+    opacity:.2 !important;
+    font-weight:bold;
+    cursor:pointer;
+  }
+}
+
+
+///@private
+@mixin _semantic-label($component) {
+  .ui-semantic-label,ui-semantic-label{
+    @extend %ui-semantic-label;
+    &.#{$component}{
+      @include web-component-default($component:$component);
+      box-shadow:none !important;
+      &>button{
+        @extend %#{$component}-font !optional;
+        &:hover,&:focus{
+          opacity: .8 !important;
+        }
+      }
+    }
+
+  }
+
+  span{
+    &.warning{
+      color:map-nested-get($Semantic,warning,font-color);
+    }
+    &.success{
+      color:map-nested-get($Semantic,success,font-color);
+    }
+    &.info{
+      color:map-nested-get($Semantic,info,font-color);
+    }
+    &.error{
+      color:map-nested-get($Semantic,error,font-color);
+    }
+  }
+
+}
+
+@mixin _semantic-component($state){
+  *{
+    &.#{$state}{
+      @include _semantic-state($state);
+      &:hover{
+        @include _semantic-state($state);
+      }
+      &:active,&.active{
+        @include _semantic-state($state);
+      }
+    }
+  }
+}
+
+
+///@private
+@mixin _semantic-state($state){
+    background:map-nested-get($Semantic,$state,background) !important;
+    color:map-nested-get($Semantic,$state,font-color) !important;
+    border-color:map-nested-get($Semantic,$state,border) !important;
+    &:before{
+      color:map-nested-get($Semantic,$state,font-color) !important;
+    }
+    &:after{
+      color:map-nested-get($Semantic,$state,font-color) !important;
+    }
+    @include component-placeholder(map-nested-get($Semantic,$state,font-color));
+
+
+}
+
+///@public
+///@param {Map} $map
+/// $map:(
+///    padding:<value>,
+///    border-radius:<value>
+/// )
+@mixin ui-semantic-checkboxes($map:()){
+
+  $_border-radius:get-border-radius();
+  $padding:map-get-default($map,padding,1em);
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+
+  $_success-color:map-nested-get($Semantic,success,font-color);
+  $_warning-color:map-nested-get($Semantic,warning,font-color);
+  $_info-color:map-nested-get($Semantic,info,font-color);
+  $_error-color:map-nested-get($Semantic,error,font-color);
+
+  ui-semantic-checkbox{
+    box-shadow:none !important;
+    border-radius:$border-radius;
+    padding:$padding;
+    position:relative;
+    &.success{
+      @include web-component-default($component:success);
+      input[type="checkbox"] + label.ui-checkbox {
+        color:$_success-color;
+        &:before{
+          border-color:lighten($_success-color,20%) !important;
+          color:$_success-color;
+        }
+      }
+    }
+    &.error{
+      @include web-component-default($component:error);
+      input[type="checkbox"] + label.ui-checkbox {
+        color:$_error-color;
+        &:before{
+          border-color:lighten($_error-color,20%) !important;
+          color:$_error-color;
+        }
+      }
+    }
+    &.warning{
+      @include web-component-default($component:warning);
+      input[type="checkbox"] + label.ui-checkbox {
+        color:$_warning-color;
+        &:before{
+          border-color:lighten($_warning-color,20%) !important;
+          color:$_warning-color;
+        }
+      }
+    }
+    &.info{
+      @include web-component-default($component:info);
+      input[type="checkbox"] + label.ui-checkbox {
+        color:$_info-color;
+        &:before{
+          border-color:lighten($_info-color,20%) !important;
+          color:$_info-color;
+        }
+      }
+    }
+  }
+
+}
+
+///@public
+///@param {String} $background
+@mixin semantic-input-icons($background:#fff){
+  ui-input-icon{
+    &.error{
+      background:$background !important;
+      &:after{
+        color: map-nested-get($Semantic,error,font-color);
+        opacity: 1;
+        text-shadow: none;
+      }
+    }
+    &.success{
+      background:$background !important;
+      &:after{
+        color: map-nested-get($Semantic,success,font-color);
+        opacity: 1;
+        text-shadow: none;
+      }
+    }
+    &.info{
+      background:$background !important;
+      &:after{
+        color: map-nested-get($Semantic,info,font-color);
+        opacity: 1;
+        text-shadow: none;
+      }
+    }
+    &.warning{
+      background:$background !important;
+      &:after{
+        color: map-nested-get($Semantic,warning,font-color);
+        opacity: 1;
+        text-shadow: none;
+      }
+    }
+  }
+}
+
+
+
+///@public
+@mixin ui-semantic-label(){
+  @include _semantic-label(error);
+  @include _semantic-label(info);
+  @include _semantic-label(warning);
+  @include _semantic-label(success);
+}
+
+
+///@public
+@mixin semantic-components(){
+  @include ui-semantic-label();
+  @include semantic-input-icons();
+  @include _semantic-component(error);
+  @include _semantic-component(info);
+  @include _semantic-component(warning);
+  @include _semantic-component(success);
+
+
+}

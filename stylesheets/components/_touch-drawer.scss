@@ -1,0 +1,125 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _touch-ui-drawer($component: null, $header-component: null, $input-component: null,
+$width: null,
+$header-height: null,
+$search-margin: null,
+$search-width: null,
+$search-padding: null,
+$search-font-size: null,
+$search-input-border-radius: null,
+$search-input-icon-top: null,
+$search-input-icon-right: null) {
+
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: none;
+  width: $width;
+  @extend %#{$component}-background !optional;
+  & > header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $header-height;
+    width: $width;
+    z-index: 999;
+    @include web-component-default($component: $header-component, $include-disabled: false);
+    & > .ui-search, & > ui-search {
+      margin: $search-margin;
+      width: $search-width;
+      position: relative;
+      font-size: $search-font-size;
+      input[type="text"], input {
+        width: 100% !important;
+        padding: $search-padding;
+        font-size: $search-font-size;
+        border-radius: $search-input-border-radius;
+        transition: none;
+        -webkit-transition: none;
+        @include web-component-default($component: input-component, $include-disabled: false);
+        @extend %#{$input-component}-placeholder !optional;
+        &:focus {
+          @extend %#{$input-component}-background !optional;
+          @extend %#{$input-component}-font !optional;
+          @extend %#{$input-component}-placeholder !optional;
+        }
+      }
+      &:after {
+        font-size: $search-font-size;
+        top: $search-input-icon-top;
+        right: $search-input-icon-right;
+        @extend %#{$component}-icon !optional;
+      }
+    }
+  }
+}
+
+///@public
+/// @param {String} $component
+/// @param {String} $header-component,
+/// @param {String} $input-component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+///  $map:(
+///          width:<value>,
+///          header:(
+///                  height:<value>
+///          ),
+///          search:(
+///                  margin:<value>,
+///                  width:<value>,
+///                  padding:<value>,
+///                  font-size:<value>,
+///                  input-border-radius:<value>,
+///                  input-icon-top:<value>,
+///                  input-icon-right:<value>
+///          )
+///  )
+@mixin touch-ui-drawer($component: css-touch-drawer, $header-component: css-touch-drawer-header, $input-component: css-touch-search,
+$tags: null, $template-tag: null, $class: null, $map: ()) {
+
+  $_header-height: map-get($Component, touch-bar-height);
+  $width: map-get-default($map, width, 265px);
+  $header-height: map-nested-get-default($map, header, height, $_header-height);
+  $search-margin: map-nested-get-default($map, search, margin, 12px 0 1px 7px);
+  $search-width: map-nested-get-default($map, search, width, 80%);
+  $search-padding: map-nested-get-default($map, search, padding, .3em);
+  $search-font-size: map-nested-get-default($map, search, font-size, 16px);
+  $search-input-border-radius: map-nested-get-default($map, search, input-border-radius, 2px);
+  $search-input-icon-top: map-nested-get-default($map, search, input-icon-top, .4em);
+  $search-input-icon-right: map-nested-get-default($map, search, input-icon-right, .4em);
+
+  @media #{$breakpoint-desktop}{
+    touch-ui-drawer {
+      display: none;
+    }
+  }
+
+  $tag: touch-ui-drawer;
+  @include element-tag($tag: $tag, $tags: $tags, $template-tag: $template-tag, $class: $class) {
+    @include touch-content() {
+      @include _touch-ui-drawer($component, $header-component, $input-component,
+              $width,
+              $header-height,
+              $search-margin,
+              $search-width,
+              $search-padding,
+              $search-font-size,
+              $search-input-border-radius,
+              $search-input-icon-top,
+              $search-input-icon-right
+      );
+    }
+    @content;
+  }
+
+  touch-ui-drawer touch-ui-menu{
+    min-height:102%;
+  }
+
+}

@@ -1,0 +1,71 @@
+
+
+@mixin elliptical-fonts(){
+  @include font-icons();
+  @include font-ubuntu();
+}
+
+@mixin elliptical-document(){
+  @include document-reset();
+}
+
+
+@mixin elliptical-typography(){
+  @include typography-reset();
+  @include typography-header();
+  @include typography-header-margins();
+}
+
+@mixin elliptical-buttons(){
+  @include ui-buttons();
+  @include ui-dropdown();
+}
+
+@mixin elliptical-notification(){
+  @include ui-loading();
+  @include ui-notification();
+}
+
+@mixin elliptical-forms(){
+  @include form-base();
+  @include form-input();
+  @include ui-select();
+  @include ui-search();
+}
+
+@mixin elliptical-grid(){
+  @include grid();
+}
+
+@mixin elliptical-semantic(){
+  @include semantic-components();
+}
+
+@mixin elliptical-utilities(){
+  @include utilities-classes();
+  @include utilities-convenience();
+  @include utilities-grid();
+  @include utilities-hardware-acceleration();
+  @include utilities-visibility();
+}
+
+
+@mixin elliptical-animations(){
+  @include animations-fade();
+  @include animations-slide();
+}
+
+@mixin elliptical-project(){
+  @include normalize();
+  @include elliptical-fonts();
+  @include elliptical-document();
+  @include elliptical-typography();
+  @include elliptical-utilities();
+  @include elliptical-forms();
+  @include elliptical-grid();
+  @include elliptical-buttons();
+  @include elliptical-notification();
+  @include elliptical-semantic();
+  @include elliptical-animations();
+
+}

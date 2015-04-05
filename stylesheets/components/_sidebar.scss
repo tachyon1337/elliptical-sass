@@ -1,0 +1,154 @@
+@import "../base/common-web-component";
+@import "../base/component";
+
+@include component(css-sidebar,(
+        background:#eee,
+        background-hover:darken(#eee,5%)
+));
+
+
+///@private
+@mixin _ui-sidebar($component:null,
+$padding:null,
+$item-padding-left:null,
+$alignment:null,
+$min-height:null,
+$border-radius:null,
+$menu-item-line-height:null,
+$menu-header-margin-top:null,
+$menu-dropdown-margin:null,
+$header-font-size:null
+){
+
+  $_margin-left:margin-left($padding);
+  $_margin-right:margin-right($padding);
+
+  @include flexbox-column($alignment:$alignment);
+  @if $min-height != null{
+    min-height:$min-height;
+  }
+  list-style: none;
+  padding:$padding;
+  border-radius:$border-radius;
+  @extend %#{$component}-background !optional;
+  h1,h2,h3,h4,h5,h6{
+    padding:0;
+    margin:0;
+    font-size:$header-font-size;
+    display:inline;
+  }
+
+  @include touch-content(){
+    display:none;
+  }
+  &.show{
+    display:inherit !important;
+  }
+  &>ui-menu{
+    width:100% !important;
+    display:block !important;
+    &>menu-item{
+      float:none !important;
+      line-height:$menu-item-line-height;
+      display:block;
+      list-style:none;
+      h1,h2,h3,h4,h5,h6{
+        line-height:$menu-item-line-height;
+      }
+      padding-left:$item-padding-left;
+      &.header{
+        padding-left:0;
+        &:hover{
+          cursor:default;
+          @extend %#{$component}-background !optional;
+        }
+      }
+      a{
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        overflow:hidden;
+        width:100%;
+        display:block;
+      }
+      &:hover,&.active{
+        cursor:pointer;
+        margin-left:-#{$_margin-left};
+        margin-right:-#{$_margin-right};
+        @extend %#{$component}-background-hover !optional;
+        &>*{
+          padding-left:#{$_margin-left};
+        }
+        a{
+          width:91%;
+          @extend %#{$component}-font !optional;
+          &:hover{
+            @extend %#{$component}-font-hover !optional;
+          }
+        }
+      }
+      &.header:not(:first-child){
+        margin-top:$menu-header-margin-top;
+      }
+    }
+    ui-dropdown{
+      margin:$menu-dropdown-margin;
+    }
+  }
+}
+
+
+
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+
+//$map:(
+//        padding:<value>,
+//        alignment:<value>,
+//        min-height:<value>,
+//        border-radius:<value>,
+//        item:(
+//                padding-left:<value>
+//        ),
+//        menu:(
+//                item-line-height:<value>,
+//                dropdown-margin:<value>,
+//                header-margin-top:<value>
+//        ),
+//        header:(
+//                font-size:<value>
+//        )
+//)
+
+@mixin ui-sidebar($component:css-sidebar,$tags:null,$template-tag:null,$class:null,$map:()){
+
+  $_border-radius:get-border-radius();
+  $padding:map-get-default($map,padding,24px);
+  $alignment:map-get-default($map,alignment,flex-start);
+  $min-height:map-get($map,padding,min-height);
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $item-padding-left:map-nested-get-default($map,item,padding-left,8px);
+  $menu-item-line-height:map-nested-get-default($map,menu,item-line-height,2em);
+  $menu-dropdown-margin:map-nested-get-default($map,menu,dropdown-margin,0 0 0 1em);
+  $menu-header-margin-top:map-nested-get-default($map,menu,header-margin-top,2em);
+  $header-font-size:1.25emmap-nested-get-default($map,header,font-size,1.25em);
+
+  $tag:ui-sidebar;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-sidebar($component,$padding,$item-padding-left,$alignment,$min-height,
+            $border-radius,
+            $menu-item-line-height,
+            $menu-header-margin-top,
+            $menu-dropdown-margin,
+            $header-font-size);
+    @content;
+  }
+
+
+}
+
+
+

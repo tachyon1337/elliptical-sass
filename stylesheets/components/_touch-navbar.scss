@@ -1,0 +1,60 @@
+@import "../base/common-web-component";
+
+@mixin _touch-ui-navbar($component:null,
+$position:null,
+$height:null,
+$z-index:null,
+$font-size:null,
+$brand-font:null,
+$brand-margin:null,
+$icon-font-size:null,
+$icon-margin:null
+){
+
+  position:$position;
+  @if $position != relative {
+    z-index:$z-index;
+    top:0;
+    left:0;
+  }
+  font-size:$font-size;
+  &>nav,&>nav.stacked{
+    &>section{
+      display:none !important;
+    }
+    height:$height;
+    @include web-component-base($component:$component,$include-font:false);
+    @include flexbox($justification: center, $alignment:center);
+    touch-ui-brand{
+      @include flexbox($justification: center, $alignment:center);
+      margin-top:$brand-margin;
+      height:$height;
+      h1,h2,h3,h4,h5,h6{
+        margin:0;
+        @extend %#{$component}-font !optional;
+      }
+      h4{
+        font:$brand-font;
+      }
+    }
+    .touch-right,touch-icons{
+      list-style: none;
+      position:absolute;
+      top:0;
+      right:5px;
+      @include flexbox($justification: center, $alignment:center);
+      height:100%;
+      &>touch-icon{
+        display:list-item;
+        @include span-icon(){
+          font-size:$icon-font-size;
+          margin-right:$icon-margin;
+          @extend %#{$component}-icon !optional;
+        }
+      }
+
+    }
+  }
+
+
+}

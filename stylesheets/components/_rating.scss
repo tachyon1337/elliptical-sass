@@ -1,0 +1,127 @@
+@import "../base/common-web-component";
+
+
+///@private
+@mixin _ui-rating($component:null,$divider:null,$link:null,
+$item-margin: null,
+$font-size: null,
+$divider-height: null,
+$divider-border: null,
+$divider-margin: null,
+$divider-padding: null,
+$star-size: null,
+$star-color-empty: null
+) {
+
+  list-style: none;
+  @include clearfix();
+  margin-left: 0;
+  display:inline-block;
+  &>rating-item {
+    float: left;
+    margin: $item-margin;
+    font-size: $font-size;
+    a {
+      @if $link != null {
+        @extend %#{$link}-font !optional;
+      }
+      font-size: $font-size;
+      &:hover{
+        @if $link != null {
+          @extend %#{$link}-font-hover !optional;
+        }
+      }
+    }
+    &.divider {
+      width: 2px;
+      height: $divider-height;
+      @extend %#{$divider}-background !optional;
+      @extend %#{$divider}-border !optional;
+      border-right: $divider-border;
+      margin: $divider-margin;
+      padding: $divider-padding;
+    }
+    .star {
+      @extend %#{$component}-icon !optional;
+      font-size: $star-size;
+      &.empty {
+        color: $star-color-empty;
+      }
+      &:last-child {
+        margin-right: 5px;
+      }
+    }
+  }
+
+}
+
+
+
+
+
+///@public
+/// @param {String} $component
+/// @param {String} $divider
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+
+//$map:(
+//        link:<value>,
+//        font-size:<value>,
+//        item:(
+//                margin:<value>
+//        ),
+//        divider:(
+//                height:<value>,
+//                margin:<value>,
+//                padding:<value>,
+//                border:<value>
+//        ),
+//        star:(
+//                size:<value>,
+//                color-empty:<value>
+//        )
+//)
+@mixin ui-rating($component: css-rating, $divider: css-divider, $tags:null,$template-tag:null,$class:null,$map:()) {
+
+  $_gray-light:map-get($Base,gray-light);
+  $link:map-get($map,link);
+  $font-size:map-get-default($map,font-size,.9em);
+  $item-margin:map-nested-get-default($map,item,margin,0 3px 0 0);
+  $divider-height: map-nested-get-default($map,divider,height,1em);
+  $divider-border:map-nested-get-default($map,divider,border,1px solid);
+  $divider-margin:map-nested-get-default($map,divider,margin,0 9px 0 4px);
+  $divider-padding:map-nested-get-default($map,divider,padding,0);
+  $star-size:map-nested-get-default($map,star,size,16px);
+  $star-color-empty:map-nested-get-default($map,star,color-empty,$_gray-light);
+
+  $tag:ui-rating;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-rating($component,$divider,$link,$item-margin,$font-size,$divider-height,
+            $divider-border,$divider-margin,$divider-padding,$star-size,$star-color-empty);
+  }
+
+  ui-rating.hover{
+    &>rating-item{
+      &:hover{
+        cursor:pointer;
+      }
+    }
+  }
+}
+
+///@public
+/// @param {String} $star-color
+@mixin touch-ui-rating($star-color:map-get($Base,gray-light)) {
+  @media #{$breakpoint-touch}{
+    &>rating-item {
+      .star {
+        color: $star-color;
+
+      }
+    }
+    @content;
+  }
+}

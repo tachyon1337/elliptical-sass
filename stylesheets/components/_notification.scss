@@ -1,0 +1,147 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-notification($component: null,
+$padding: null,
+$font-size: null,
+$border-radius: null,
+$z-index: null,
+$width:null,
+$top:null,
+$left:null,
+$bottom:null,
+$right:null
+
+) {
+
+  display: inline-block;
+  padding: $padding;
+  font-size: $font-size;
+  border-radius:$border-radius;
+  position: fixed;
+  @if $bottom != null {
+    bottom:$bottom;
+  }@else{
+    top: $top;
+  }
+  @if $right != null{
+    right:$right;
+  }@else{
+    left: $left;
+  }
+  z-index: $z-index;
+  opacity: 0;
+  @if $width != null{
+    width:$width;
+  }
+  @include web-component-base($component:$component);
+  &.visible{
+    visibility: visible;
+    opacity:1;
+  }
+  &.inline{
+    position:relative;
+    top:0;
+    left:0;
+    font-size:.9em;
+  }
+  @include phone-content(){
+    left:5px;
+  }
+}
+
+
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+// $map:(
+//         padding:<value>,
+//         font-size:<value>,
+//         border-radius:<value>,
+//         z-index:<value>,
+//         width:<value>,
+//         top:<value>,
+//         left:<value>,
+//         bottom:<value>,
+//         right:<value>
+// )
+@mixin ui-notification($component:inverse,$tags:null,$template-tag:null,$class:null, $map:()) {
+
+  $padding:map-get-default($map,padding,1em 2em 1em 2em);
+  $font-size:map-get-default($map,font-size,1em);
+  $border-radius:map-get-default($map,border-radius,get-border-radius());
+  $z-index: map-get-default($map,z-index,get-z-index() + 9999999);
+  $width:map-get($map,width);
+  $top:map-get-default($map,top,25%);
+  $left:map-get-default($map,left,45%);
+  $bottom:map-get($map,bottom);
+  $right:map-get($map,right);
+
+  $tag:ui-notification;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-notification($component,$padding,$font-size,$border-radius,$z-index,$width,$top,$left,$bottom,$right);
+    @content;
+
+    @media #{$breakpoint-phone}{
+      width:94%;
+      left:3%;
+      text-align:center;
+    }
+  }
+}
+
+
+///@public
+///@param {Map} $map
+// $map:(
+//       min-width:<value>,
+//         border-radius:<value>,
+//         margin:<value>,
+//         padding:<value>
+// )
+@mixin ui-notification-label($map:()){
+  $_border-radius:get-border-radius();
+  @if($_border-radius!=0){
+    $_border-radius:10px;
+  }
+  $min-width:map-get-default($map,min-width,20em);
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $margin:map-get-default($map,margin,1em 0);
+  $padding:map-get-default($map,padding,1em 0 1em 2em);
+  ui-notification-label{
+    margin:$margin;
+    padding:$padding;
+    border:1px solid transparent !important;
+    &>div{
+      min-width:$min-width;
+      display:inline-block;
+      &>ui-semantic-label{
+        border-radius:$border-radius;
+      }
+    }
+  }
+  @media #{$breakpoint-phone}{
+    ui-notification-label{
+      &>div{
+        width:100%;
+        &>ui-label,.ui-label{
+          border-radius:0;
+        }
+      }
+    }
+  }
+  ui-notification-label{
+    @content;
+  }
+}
+
+///@public
+@mixin ui-semantic-notification(){
+  @include ui-notification($class:info, $component:info);
+  @include ui-notification($class:success, $component:success);
+  @include ui-notification($class:error, $component:error);
+  @include ui-notification($class:warning, $component:warning);
+}

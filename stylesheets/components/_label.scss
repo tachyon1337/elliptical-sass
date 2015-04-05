@@ -1,0 +1,35 @@
+@import "../base/common-web-component";
+
+
+
+
+///@public
+///@param {String} $component
+@mixin ui-label($component:default){
+  ui-label,.ui-label {
+    padding:map-get($Label,padding);
+    font-size:map-get($Label,font-size);
+    font-weight:map-get($Label,font-weight);
+    text-transform:map-get($Label,text-transform);
+    text-align:map-get($Label,text-align);
+    text-decoration:map-get($Label,text-deccoration);
+    line-height:map-get($Label,line-height);
+    white-space: nowrap;
+    display: inline;
+    position: relative;
+    cursor:default;
+    @include web-component-default($component:$component);
+    &.radius {
+      border-radius:map-get($Label,radius);
+    }
+    &.round {
+      padding:map-get($Label,round-padding);
+      border-radius:1000px;
+
+    }
+  }
+
+}
+
+
+

@@ -1,0 +1,252 @@
+@import "../base/common-web-component";
+
+
+///@private
+@mixin _ui-menu($component:null,$divider:null,
+$margin:null,
+$padding:null,
+$width:null,
+$height:null,
+$justification:null,
+$alignment:null,
+$item-margin:null,
+$item-padding:null,
+$item-divider-border:null,
+$item-divider-padding:null,
+$item-divider-margin:null,
+$item-divider-height:null,
+$item-font-size:null,
+$item-label-font-size:null,
+$item-label-padding:null,
+$item-search-padding:null,
+$item-search-font-size:null,
+$z-index:null,
+$top:null,
+$left:null,
+$item-stacked-padding:null
+
+){
+
+  @include flexbox($alignment:$alignment,$justification:$justification);
+  list-style: none;
+  margin: $margin;
+  padding:$padding;
+  width:$width;
+  @if($height !=null){
+    height:$height;
+  }
+
+  @extend %#{$component}-background !optional;
+  &>menu-item{
+    @include flexbox($alignment:$alignment,$justification:$justification);
+    margin:$item-margin;
+    height:100%;
+    position:relative;
+    font-size:$item-font-size;
+    &:hover,&:focus{
+      cursor:pointer;
+      @extend %#{$component}-background-hover !optional;
+      &>a{
+        @extend %#{$component}-font-hover !optional;
+      }
+      &>ui-button-dropdown{
+        &>a{
+          @extend %#{$component}-font-hover !optional;
+        }
+      }
+    }
+    .label,label{
+      @extend %#{$component}-font-active !optional;
+      font-size:$item-label-font-size;
+      padding:$item-label-padding;
+    }
+    &>a{
+      @extend %#{$component}-font !optional;
+      font-size:1em;
+      padding:$item-padding;
+    }
+    &.active{
+      @extend %#{$component}-background-active !optional;
+      &>a{
+        @extend %#{$component}-font-active !optional;
+      }
+      &:hover{
+        @extend %#{$component}-background-active !optional;
+        &>a{
+          @extend %#{$component}-font-active !optional;
+        }
+      }
+    }
+    &>ui-button-dropdown{
+      &>a{
+        @extend %#{$component}-font !optional;
+        font-size:1em;
+        padding:$item-padding;
+      }
+    }
+  }
+  &>menu-divider{
+    width:0;
+    height:$item-divider-height;
+    border:0;
+    border-right: $item-divider-border;
+    padding: $item-divider-padding;
+    margin:$item-divider-margin;
+    @if $divider != null{
+      @extend %#{$divider}-border !optional;
+    }
+  }
+  &>menu-item-dropdown{
+    @include flexbox($alignment:$alignment,$justification:$justification);
+    position:relative;
+    margin:$item-margin;
+    padding:$item-padding;
+    height:100%;
+    font-size:$item-font-size;
+    &.static{
+      position:static;
+      &.inactive{
+        &:hover,&:focus{
+          &>ui-dropdown,&>ui-mega-dropdown{
+            display:none !important;
+          }
+        }
+      }
+    }
+    &>ui-dropdown,&>ui-mega-dropdown{
+      display:none !important;
+    }
+    &>a{
+      @extend %#{$component}-font !optional;
+      font-size:1em;
+    }
+    &:hover,&:focus{
+      cursor:pointer;
+      &>ui-dropdown{
+        display:list-item !important;
+      }
+      &>ui-mega-dropdown{
+        display:block !important;
+      }
+      @extend %#{$component}-background-hover !optional;
+      &>a{
+        @extend %#{$component}-font-hover !optional;
+      }
+    }
+  }
+  &>menu-item-search{
+    padding:$item-search-padding;
+    margin-left:auto;
+    font-size:$item-search-font-size;
+  }
+
+  &.flex-start,&.left{
+    margin-right:auto;
+
+  }
+  &.flex-end,&.right{
+    margin-left:auto;
+  }
+}
+
+
+///@public
+/// @param {String} $component
+/// @param {String} $divider
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+//  $map:(
+///   margin:<value>,
+///   padding:<value>,
+///   width:<value>,
+///   height:<value>,
+///   z-index:<value>,
+///   top:<value>,
+///   left:<value>,
+///   justification:<value>,
+///   alignment:<value>,
+///   item:(
+///        margin:<value>,
+///        padding:<value>,
+///        divider-border:<value>,
+///        divider-padding:<value>,
+///        divider-margin:<value>,
+///        divider-height:<value>,
+///        font-size:<value>,
+///        label-font-size:<value>,
+///        label-padding:<value>,
+///        search-padding:<value>,
+///        stacked-padding:<value>
+///   )
+/// )
+@mixin ui-menu($component:null,$divider:css-menu-divider,$tags:null,$template-tag:null,$class:null,$map:()){
+
+  $_z-index:get-z-index();
+
+  $margin:map-get-default($map,margin,0);
+  $padding:map-get-default($map,padding,0);
+  $width:map-get-default($map,width,auto);
+  $height:map-get-default($map,height,inherit);
+  $z-index:map-get-default($map,z-index,$_z-index + 4);
+  $top:map-get-default($map,top,0);
+  $left:map-get-default($map,left,0);
+  $justification:map-get-default($map,justification,flex-start);
+  $alignment:map-get-default($map,alignment,center);
+  $item-margin:map-nested-get-default($map,item,margin,0);
+  $item-padding:map-nested-get-default($map,item,padding,1em);
+  $item-divider-border:map-nested-get-default($map,item,divider-border,1px solid);
+  $item-divider-padding:map-nested-get-default($map,item,divider-padding,0);
+  $item-divider-margin:map-nested-get-default($map,item,divider-padding,0);
+  $item-divider-height:map-nested-get-default($map,item,divider-height,100%);
+  $item-font-size:map-nested-get-default($map,item,font-size,1em);
+  $item-label-font-size:map-nested-get-default($map,item,label-font-size,1em);
+  $item-label-padding:map-nested-get-default($map,item,label-padding,$item-padding);
+  $item-search-font-size:map-nested-get-default($map,item,search-font-size,1em);
+  $item-search-padding:map-nested-get-default($map,item,search-padding,$item-padding);
+  $item-stacked-padding:map-nested-get-default($map,item,stacked-padding,.5em 0 .5em 0);
+
+
+  $tag:ui-menu;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class) {
+    @include _ui-menu($component,$divider,
+            $margin,
+            $padding,
+            $width,
+            $height,
+            $justification,
+            $alignment,
+            $item-margin,
+            $item-padding,
+            $item-divider-border,
+            $item-divider-padding,
+            $item-divider-margin,
+            $item-divider-height,
+            $item-font-size,
+            $item-label-font-size,
+            $item-label-padding,
+            $item-search-font-size,
+            $item-search-padding,
+            $z-index,
+            $top,
+            $left,
+            $item-stacked-padding
+    );
+    @content;
+  }
+
+  @media #{$breakpoint-touch}{
+    ui-menu{
+      display:none;
+    }
+  }
+  ui-menu{
+    &.center{
+      margin-left:auto;
+    }
+  }
+}
+
+
+

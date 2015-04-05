@@ -1,0 +1,382 @@
+@import "../settings/base";
+@import "../settings/core";
+@import "../settings/typography";
+@import "../settings/component";
+@import "../settings/semantic";
+@import "../utilities/functions";
+@import "../base/breakpoints";
+
+@mixin typography-reset(){
+  $_zero:map-get($Base,zero);
+  $_info-color:map-nested-get($Semantic,info,font-color);
+  $_info-background:map-nested-get($Semantic,info,background);
+  $_error-color:map-nested-get($Semantic,error,font-color);
+  $_error-background:map-nested-get($Semantic,error,background);
+  $_success-color:map-nested-get($Semantic,success,font-color);
+  $_success-background:map-nested-get($Semantic,success,background);
+  $_warning-color:map-nested-get($Semantic,warning,font-color);
+  $_warning-background:map-nested-get($Semantic,warning,background);
+
+  div, dl, dt, dd, ul, ol, li, pre, form, p, blockquote, th, td {
+    margin: $_zero;
+    padding: $_zero;
+    direction:ltr;
+  }
+
+  p {
+    line-height: map-get($Typography,paragraph-line-height);
+    margin: map-get($Typography,paragraph-margin);
+    &.lead {
+      font-size: map-get($Typography,paragraph-lead-font-size);
+    }
+  }
+
+  aside p {
+    font-size: map-get($Typography,aside-paragraph-font-size);
+    line-height: map-get($Typography,aside-paragraph-line-height);
+    font-style: map-get($Typography,aside-paragraph-font-style);
+  }
+
+
+  p + hr {
+    margin: map-get($Typography,paragraph-hr-sibling-margin);
+  }
+
+  grid-columns + h1,grid-columns + h2,grid-columns + h3,grid-columns + h4,grid-columns + h5, grid-columns + h6{
+    &:first-child {
+      margin-top: map-get($Typography,grid-header-first-child-margin-top);
+    }
+  }
+
+  hr {
+    border: $_zero;
+    border-top:map-get($Typography,hr-border-top);
+    clear: both;
+    margin: map-get($Typography,hr-margin);
+    height: map-get($Typography,hr-height);
+    &.flush{
+      margin-top:$_zero;
+    }
+  }
+
+  hr > grid-row > grid-columns {
+    margin: $_zero;
+  }
+
+  em, i {
+    font-style: italic;
+    line-height: inherit;
+  }
+
+  strong, b {
+    font-weight: bold;
+    line-height: inherit;
+  }
+
+  small {
+    font-size: 85%;
+    line-height: inherit;
+    font-weight: normal;
+  }
+
+  code, .highlight {
+
+  }
+
+  .inset {
+    text-shadow: #{map-get($Typography,inset)};
+  }
+
+  blockquote, blockquote p {
+    line-height: map-get($Typography,blockquote-line-height);
+    color: map-get($Typography,blockquote-font-color);
+    margin: map-get($Typography,blockquote-margin);
+    padding: map-get($Typography,blockquote-padding);
+    font-size: map-get($Typography,blockquote-font-size);
+    font-style: map-get($Typography,blockquote-font-style);
+    border: map-get($Typography,blockquote-border);
+    &.center{
+      text-align: center;
+    }
+    cite {
+      display: block;
+      font-size: map-get($Typography,cite-font-size);
+      color: map-get($Typography,cite-font-color);
+      font-style: map-get($Typography,cite-font-style);
+      &:before {
+        content: "#{map-get($Typography,cite-before)}";
+      }
+    }
+    &.info,&.warning,&.success,&.error {
+      a{
+        text-decoration:map-get($Typography,blockquote-link-decoration);
+        font-weight:map-get($Typography,blockquote-link-weight);
+        &:hover{
+          opacity:map-get($Typography,blockquote-link-hover-opacity);
+        }
+      }
+    }
+    &.info{
+      border-left:map-get($Typography,blockquote-border-left) $_info-color;
+      background:$_info-background;
+      color:$_info-color;
+      a{
+        color:$_info-color;
+      }
+    }
+    &.warning{
+      border-left:map-get($Typography,blockquote-border-left) $_warning-color;
+      background:$_warning-background;
+      color:$_warning-color;
+      a{
+        color:$_warning-color;
+      }
+    }
+    &.success{
+      border-left:map-get($Typography,blockquote-border-left) $_success-color;
+      background:$_success-background;
+      color:$_success-color;
+      a{
+        color:$_success-color;
+      }
+    }
+    &.error{
+      border-left:map-get($Typography,blockquote-border-left) $_error-color;
+      background:$_error-background;
+      color:$_error-color;
+      a{
+        color:$_error-color;
+      }
+    }
+  }
+
+  a{
+    &.disabled,[disabled]{
+      color:map-get($Component,font-color-disabled);
+      &:hover{
+        color:map-get($Component,font-color-disabled);
+        opacity:1 !important;
+      }
+    }
+  }
+
+  button{
+    &[disabled]{
+      background:map-get($Component,background-disabled);
+      color:map-get($Component,font-color-disabled);
+      border:$_zero !important;
+      box-shadow:none !important;
+      text-shadow:none !important;
+    }
+  }
+  abbr, acronym {
+    text-transform: uppercase;
+    font-size: 90%;
+    cursor: help;
+  }
+
+  abbr {
+    text-transform: none;
+  }
+  @content;
+}
+
+///Header Typography
+@mixin typography-header($tablet-factor:.8, $phone-factor:.6){
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: map-get($Typography,header-font-family);
+    font-weight: map-get($Typography,header-font-weight);
+    color: map-get($Typography,header-font-color);
+    text-rendering: map-get($Typography,header-text-rendering);
+    line-height: map-get($Typography,header-line-height);
+    margin: map-get($Typography,header-margin);
+    small {
+      font-size: map-get($Typography,header-small-font-size);
+      color: map-get($Typography,header-small-font-color);
+      line-height: map-get($Typography,header-small-line-height);
+    }
+    &.primary {
+      color: map-nested-get($Core,primary,color);
+    }
+    &.white {
+      color: map-get($Base,white);
+    }
+    &.inverse {
+      color: map-nested-get($Core,inverse,color);
+    }
+    &.secondary {
+      color: map-nested-get($Core,secondary,color);
+    }
+    &.error {
+      color: map-nested-get($Semantic,error,font-color);
+    }
+    &.info {
+      color: map-nested-get($Semantic,info,font-color);
+    }
+    &.success {
+      color: map-nested-get($Semantic,success,font-color);
+    }
+    &.warning {
+      color: map-nested-get($Semantic,warning,font-color);
+    }
+  }
+
+  h1 {
+    font-size: map-get($Typography,header-1);
+  }
+
+  h2 {
+    font-size: map-get($Typography,header-2);
+  }
+
+  h3 {
+    font-size: map-get($Typography,header-3);
+  }
+
+  h4 {
+    font-size: map-get($Typography,header-4);
+  }
+
+  h5 {
+    font-size: map-get($Typography,header-5);
+  }
+
+  h6 {
+    font-size: map-get($Typography,header-6);
+  }
+
+  @media #{$breakpoint-tablet} {
+
+    h1 {
+      font-size: $tablet-factor*map-get($Typography,header-1);
+    }
+    h2 {
+      font-size: $tablet-factor*map-get($Typography,header-2);
+    }
+    h3 {
+      font-size: $tablet-factor*map-get($Typography,header-3);
+    }
+    h4 {
+      font-size: $tablet-factor*map-get($Typography,header-4);
+    }
+  }
+
+  ///Media queries
+  @media #{$breakpoint-phone} {
+    h1 {
+      font-size: $phone-factor*map-get($Typography,header-1);
+    }
+    h2 {
+      font-size: $phone-factor*map-get($Typography,header-2);
+    }
+    h3 {
+      font-size: $phone-factor*map-get($Typography,header-3);
+    }
+    h4 {
+      font-size: $tablet-factor*map-get($Typography,header-4);
+    }
+
+  }
+  @content;
+}
+
+@mixin typography-header-margins(){
+  h2 + hr{
+    margin-top:3em;
+  }
+
+  section + section{
+    margin-top:2em;
+  }
+
+  p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
+    margin: 1em 0 .4em 0;
+  }
+  section{
+    h4{
+      margin-bottom:.3em;
+    }
+  }
+  @content;
+}
+
+
+
+
+///Print Typography
+
+@mixin typography-print() {
+
+  .print-only {
+    display: none !important;
+  }
+
+  @media print {
+    * {
+      background: transparent !important;
+      color: map-get($Base,black) !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      filter: none !important;
+      -ms-filter: none !important;
+    }
+
+    a, a:visited {
+      text-decoration: underline;
+    }
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+      content: " (" attr(title) ")";
+    }
+    .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+      content: "";
+    }
+
+    pre, blockquote {
+      border: 1px solid #999;
+      page-break-inside: avoid;
+    }
+    thead {
+      display: table-header-group;
+    }
+
+    tr, img {
+      page-break-inside: avoid;
+    }
+    img {
+      max-width: 100% !important;
+    }
+    @page {
+      margin: 0.5cm;
+    }
+
+    p, h2, h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2, h3 {
+      page-break-after: avoid;
+    }
+
+    .hide-on-print {
+      display: none !important;
+    }
+
+    .print-only {
+      display: block !important;
+    }
+
+    .hide-for-print {
+      display: none !important;
+    }
+
+    .show-for-print {
+      display: inherit !important;
+    }
+  }
+  @content;
+}

@@ -1,0 +1,62 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-badge($component:inverse,
+$padding:null,
+$margin:null,
+$line-height:null,
+$border-radius:null,
+$font:null,
+$font-size:null
+){
+
+
+  display: inline-block;
+  min-width: 1em;
+  padding: $padding;
+  line-height: $line-height;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: $border-radius;
+  margin:$margin;
+  font-size:$font-size;
+  @include web-component-default($component:component);
+  &:empty {
+    display: none;
+  }
+
+}
+
+
+
+///@public
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+/// $map:(
+///         padding:<value>,
+///         margin:<value>,
+///         line-height:<value>,
+///         border-radius:<value>,
+///         font-size:<value>
+/// )
+@mixin ui-badge($component:inverse,$tags:null,$template-tag:null,$class:null,$map:()){
+
+  $_border-radius:get-border-radius();
+  $padding:map-get-default($map,padding,.2em .5em);
+  $margin:map-get-default($map,margin,0);
+  $line-height:map-get-default($map,line-height,1);
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $font-size:map-get-default($map,font-size,1em);
+
+  $tag:ui-badge;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-badge($component,$padding,$margin,$line-height,$border-radius,$font-size);
+    @content;
+  }
+
+}

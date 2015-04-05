@@ -1,0 +1,230 @@
+@import "../base/common-web-component";
+
+
+///@private
+@mixin _ui-datepicker($component:null,$button-component:null,$today-component:null,
+$border-radius:null,
+$button-border-radius:null,
+$button-font-weight:null,
+$button-padding:null,
+$z-index:null
+){
+
+  z-index: $z-index;
+  display: block;
+  position: relative;
+  min-width:15em;
+  padding: .5em;
+  border-radius:$border-radius;
+  @include web-component-default($component:$component);
+  button{
+    margin-top:0 !important;
+  }
+
+  &.contained{
+    width:100%;
+    position:absolute;
+    top:100%;
+    left:0;
+
+  }
+  &.is-hidden{
+    display:none;
+  }
+  &.is-bound{
+    position: absolute;
+  }
+
+  .title {
+    position: relative;
+    text-align: center;
+  }
+
+  abbr{
+    font-size:1.25em;
+    font-weight:$button-font-weight;
+    @extend %#{$component}-icon !optional;
+    border:0;
+  }
+
+  .label {
+    display: inline-block;
+    *display: inline;
+    position: relative;
+    z-index: $z-index;
+    overflow: hidden;
+    margin: 0;
+    padding: .3em .1875em;
+    font-weight: $button-font-weight;
+    font-size:1.25em;
+    @extend %#{$component}-font !optional;
+  }
+  .title select {
+    cursor: pointer;
+    position: absolute;
+    z-index: $z-index -1;
+    margin: 0;
+    left: 0;
+    top: .3em;
+    filter: alpha(opacity=0);
+    opacity: 0;
+  }
+
+  .prev,
+  .next {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    border: 0;
+    padding: 0;
+    width: 1.25em;
+    height: 1.875em;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 75% 75%;
+    white-space: nowrap;
+    text-indent: 100%;
+    overflow: hidden;
+    opacity: .5;
+    *position: absolute;
+    *top: 0;
+  }
+
+  .prev:hover,
+  .next:hover {
+    opacity: 1;
+  }
+
+  .prev,
+  .is-rtl .next {
+    float: left;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAUklEQVR42u3VMQoAIBADQf8Pgj+OD9hG2CtONJB2ymQkKe0HbwAP0xucDiQWARITIDEBEnMgMQ8S8+AqBIl6kKgHiXqQqAeJepBo/z38J/U0uAHlaBkBl9I4GwAAAABJRU5ErkJggg==');
+    *left: 0;
+
+  }
+
+  .next,
+  .is-rtl .prev {
+    float: right;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAU0lEQVR42u3VOwoAMAgE0dwfAnNjU26bYkBCFGwfiL9VVWoO+BJ4Gf3gtsEKKoFBNTCoCAYVwaAiGNQGMUHMkjGbgjk2mIONuXo0nC8XnCf1JXgArVIZAQh5TKYAAAAASUVORK5CYII=');
+    *right: 0;
+
+  }
+
+  .prev.is-disabled,
+  .next.is-disabled {
+    cursor: default;
+    opacity: .2;
+  }
+
+  .select {
+    display: inline-block;
+    *display: inline;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 0;
+  }
+
+  .table th,
+  .table td {
+    width: 14.285714285714286%;
+
+  }
+
+  .table th {
+    font-size: .75em;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .button {
+    cursor: pointer;
+    display: block;
+    outline: none;
+    border: 0;
+    margin: 0;
+    width: 100%;
+    padding: $button-padding;
+    font-size: .75em;
+    line-height: 1;
+    text-align: center;
+    @extend %#{$button-component}-background !optional;
+    @extend %#{$button-component}-font !optional;
+  }
+
+  .is-today .button {
+    font-weight: $button-font-weight;
+    border-radius: $button-border-radius;
+    @extend %#{$today-component}-font !optional;
+    @extend %#{$today-component}-background !optional;
+  }
+
+  .is-selected .button {
+    font-weight: $button-font-weight;
+    border-radius: $button-border-radius;
+    @extend %#{$button-component}-background-active !optional;
+    @extend %#{$button-component}-font-active !optional;
+  }
+
+  .is-disabled .button {
+    pointer-events: none;
+    cursor: default;
+    opacity:.2;
+  }
+
+  .button:hover {
+    border-radius: $button-border-radius;
+    @extend %#{$button-component}-font-hover !optional;
+    @extend %#{$button-component}-background-hover !optional;
+  }
+}
+
+
+///@public
+///@param {String} $component,
+///@param {String} $button-component
+///@param {String} $today-component
+///@param {String} $class
+///@param {Map} $map
+/// $map:(
+///         border-radius:<value>,
+///         z-index:<value>,
+///         button:(
+///                 border-radius:<value>,
+///                 font-weight:<value>,
+///                 padding:<value>
+///         )
+/// )
+@mixin ui-datepicker($component:css-datepicker,$button-component:css-datepicker-button,$today-component:css-datepicker-today-button,$class:null,$map:()){
+
+  $_border-radius:get-border-radius();
+  $_z-index:get-z-index();
+
+  $border-radius:map-get-default($map,border-radius,$_border-radius);
+  $z-index:map-get-default($map,z-index,$_z-index);
+  $button-border-radius:map-nested-get-default($map,button,border-radius,$_border-radius);
+  $button-font-weight:map-nested-get-default($map,button,font-weight,bold);
+  $button-padding:map-nested-get-default($map,button,padding,.5em .75em);
+
+
+  .ui-datepicker{
+    @if $class != null{
+      &.#{$class} {
+        @include _ui-datepicker($component,$button-component,$today-component,$border-radius,$button-border-radius,
+          $button-font-weight,$button-padding,$z-index);
+        @content;
+      }
+    } @else {
+      @include _ui-datepicker($component,$button-component,$today-component,$border-radius,$button-border-radius,
+        $button-font-weight,$button-padding,$z-index);
+      @content;
+    }
+  }
+}

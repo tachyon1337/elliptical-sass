@@ -1,0 +1,318 @@
+@import "../base/common-web-component";
+
+
+///@private
+@mixin _ui-social($component:null,
+$margin:null,
+$padding:null,
+$font-size:null,
+$font-family:null,
+$item-padding: null,
+$item-margin:null,
+$facebook-color:null,
+$facebook-icon:null,
+$facebook-icon-2:null,
+$twitter-color:null,
+$twitter-icon:null,
+$twitter-icon-2:null,
+$google-color:null,
+$google-icon:null,
+$google-icon-2:null,
+$github-color:null,
+$github-icon:null,
+$github-icon-2:null,
+$color-text-shadow:null,
+$color-item-margin:null,
+$color-font-size:null
+) {
+
+      @include flexbox($justification: flex-start, $alignment: center);
+      list-style: none;
+      padding: $padding;
+      margin:$margin;
+      social-icon {
+        padding: $item-padding;
+        margin:$item-margin;
+        min-width:$font-size;
+        min-height:$font-size;
+        position:relative;
+        a {
+          font-size:$font-size;
+          &:before{
+            font-family:$font-family;
+            @extend %#{$component}-icon !optional;
+            position:absolute;
+            top:0;
+            left:0;
+            font-size:$font-size;
+          }
+          &.facebook{
+            &:before{
+              content:'#{$facebook-icon}';
+            }
+          }
+          &.twitter{
+            &:before{
+              content:'#{$twitter-icon}';
+            }
+          }
+          &.google{
+            &:before{
+              content:'#{$google-icon}';
+            }
+          }
+          &.github{
+            &:before{
+              content:'#{$github-icon}';
+            }
+          }
+        }
+      }
+      &.color{
+        social-icon{
+          padding:0;
+          margin:$color-item-margin;
+          min-width:$color-font-size;
+          min-height:$color-font-size;
+          font-size:$color-font-size;
+          a{
+            &:before{
+              font-family:$font-family;
+              @extend %#{$component}-icon !optional;
+              position:absolute;
+              top:0;
+              left:0;
+              font-size:$color-font-size;
+            }
+            &.facebook{
+              &:before{
+                content:'#{$facebook-icon-2}';
+                color:$facebook-color;
+              }
+            }
+            &.twitter{
+              &:before{
+                content:'#{$twitter-icon-2}';
+                color:$twitter-color;
+              }
+            }
+            &.google{
+              &:before{
+                content:'#{$google-icon-2}';
+                color:$google-color;
+              }
+            }
+            &.github{
+              &:before{
+                content:'#{$github-icon-2}';
+                color:$github-color;
+              }
+            }
+            &:before{
+              @if $color-text-shadow != true{
+                text-shadow:none;
+              }
+            }
+          }
+        }
+      }
+
+
+}
+
+
+///@public
+/// @param {String} $component
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
+/// @param {Map} $map
+
+//$map:(
+//        margin:<value>,
+//        padding:<value>,
+//        font-family:<value>,
+//        facebook:(
+//                color:<value>,
+//                icon:<value>,
+//                icon-2:<value>
+//        ),
+//        twitter:(
+//                color:<value>,
+//                icon:<value>,
+//                icon-2:<value>
+//        ),
+//        google:(
+//                color:<value>,
+//                icon:<value>,
+//                icon-2:<value>
+//        ),
+//        github:(
+//                color:<value>,
+//                icon:<value>,
+//                icon-2:<value>
+//        ),
+//        item:(
+//                padding:<value>,
+//                margin:<value>
+//        ),
+//        color:(
+//                text-shadow:<value>,
+//                item-margin:<value>,
+//                font-size:<value>
+//        )
+//)
+
+
+@mixin ui-social($component:css-social,$tags:null,$template-tag:null,$class:null,$map:()) {
+
+  $margin:map-get-default($map,margin,0);
+  $padding:map-get-default($map,padding,0);
+  $font-family:map-get-default($map,font-family,map-get($Icons,font-family));
+  $font-size:map-get-default($map,font-size,32px);
+  $facebook-color:map-nested-get-default($map,facebook,color,#3b5998);
+  $facebook-icon:map-nested-get-default($map,facebook,icon,map-get($Icons,facebook));
+  $facebook-icon-2:map-nested-get-default($map,facebook,icon-2,map-get($Icons,facebook-2));
+  $twitter-color:map-get-default($map,facebook-color,#5ec5fb);
+  $twitter-icon:map-nested-get-default($map,twitter,icon,map-get($Icons,twitter));
+  $twitter-icon-2:map-nested-get-default($map,twitter,icon-2,map-get($Icons,twitter-2));
+  $google-color:map-get-default($map,facebook-color,#d23e2b);
+  $google-icon:map-nested-get-default($map,google,icon,map-get($Icons,google));
+  $google-icon-2:map-nested-get-default($map,google,icon-2,map-get($Icons,google-2));
+  $github-color:map-get-default($map,facebook-color,#020202);
+  $github-icon:map-nested-get-default($map,github,icon,map-get($Icons,github));
+  $github-icon-2:map-nested-get-default($map,github,icon,map-get($Icons,github-2));
+  $item-padding:map-nested-get-default($map,item,padding,0 .7em 0 .7em);
+  $item-margin:map-nested-get-default($map,item,margin,0 .5em 0 .5em);
+  $color-text-shadow:map-nested-get($map,color,text-shadow);
+  $color-item-margin:map-nested-get-default($map,color,item-margin,0 .15em 0 0);
+  $color-font-size:map-nested-get-default($map,color,font-size,33px);
+
+  $tag:ui-social;
+  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include _ui-social($component,
+            $margin,
+            $padding,
+            $font-size,
+            $font-family,
+            $item-padding,
+            $item-margin,
+            $facebook-color,
+            $facebook-icon,
+            $facebook-icon-2,
+            $twitter-color,
+            $twitter-icon,
+            $twitter-icon-2,
+            $google-color,
+            $google-icon,
+            $google-icon-2,
+            $github-color,
+            $github-icon,
+            $github-icon-2,
+            $color-text-shadow,
+            $color-item-margin,
+            $color-font-size
+
+    );
+
+    @content;
+  }
+
+
+}
+
+
+///@public
+///@param {Map} $map
+/// $map:(
+///         padding:<value>,
+///         margin:<value>,
+///         min-width:<value>,
+///         icon:(
+///                 font-family:<value>,
+///                 size:<value>,
+///                 color:<value>,
+///                 top:<value>,
+///                 left:<value>,
+///                 twitter:<value>,
+///                 facebook:<value>,
+///                 google:<value>
+///         )
+/// )
+@mixin ui-oauth($map:()){
+  $_white:map-get($Base,white);
+  $_twitter-icon:map-get($Icons,twitter);
+  $_facebook-icon:map-get($Icons,facebook);
+  $_google-icon:map-get($Icons,google);
+  $_icon-font-family:map-get($Icons,font-family);
+
+  $_padding:map-get-default($map,padding,0.8em 1.15em 0.8em 3.25em);
+  $_margin:map-get-default($map,margin,0 0 1em 1em);
+  $_min-width:map-get-default($map,min-width,250px);
+  $_font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);
+  $_font-size:map-nested-get-default($map,icon,size,32px);
+  $_color:map-nested-get-default($map,icon,color,$_white);
+  $_top:map-nested-get-default($map,icon,top,6px);
+  $_left:map-nested-get-default($map,icon,left,8px);
+  $_twitter:map-nested-get-default($map,icon,twitter,$_twitter-icon);
+  $_facebook:map-nested-get-default($map,icon,twitter,$_facebook-icon);
+  $_google:map-nested-get-default($map,icon,twitter,$_google-icon);
+
+  @include ui-button(twitter);
+  @include ui-button(google);
+  @include ui-button(facebook);
+
+  .ui-button{
+    &.oauth{
+      padding:$_padding;
+      min-width:$_min-width;
+      margin:$_margin;
+      &:before{
+        font-family:$_font-family;
+        font-size:$_font-size;
+        color:$_color;
+        position:absolute;
+        top:$_top;
+        left:$_left;
+      }
+    }
+  }
+  .ui-button.oauth{
+    &.twitter{
+      &:before{
+        content:'#{$_twitter}';
+      }
+    }
+    &.facebook{
+      &:before{
+        content:'#{$_facebook}';
+      }
+    }
+    &.google{
+      &:before{
+        content:'#{$_google}';
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

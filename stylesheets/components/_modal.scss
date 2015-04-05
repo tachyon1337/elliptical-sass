@@ -1,0 +1,54 @@
+@import "../base/common-web-component";
+
+///@private
+@mixin _ui-modal($background: null, $z-index: null, $opacity: null) {
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index;
+  background-color: $background;
+  height: 100%;
+  width: 100%;
+  opacity: $opacity;
+  &.light {
+    background-color: $gray;
+    opacity: .5;
+  }
+  &.transparent {
+    background-color: $white;
+    opacity: 0;
+  }
+
+}
+
+
+///@public
+/// @param {String} $class
+///@param {Map} $map
+// $map:(
+//         background:<value>,
+//         z-index:<value>,
+//         opacity:<value>
+// )
+@mixin ui-modal($class: null,$map:()) {
+  $_z-index:get-z-index();
+  $background:map-get-default($map,background,#000);
+  $z-index: map-get-default($map,z-index,$_z-index + 99999);
+  $opacity: map-get-default($map,opacity,.3);
+
+  ui-modal {
+    @if $class != null {
+      &.#{$class} {
+        @include _ui-modal($background, $z-index, $opacity);
+        @content;
+      }
+    } @else {
+      @include _ui-modal($background, $z-index, $opacity);
+      @content;
+    }
+  }
+
+}

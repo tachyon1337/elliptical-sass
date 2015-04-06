@@ -3,14 +3,14 @@
 
 ///@extend
 %ui-semantic-label{
-  margin:map-get($Label,margin);
-  padding:map-get($Label,padding);
+  margin:map-nested-get($Label,semantic,margin);
+  padding:map-nested-get($Label,semantic,padding);
   width:100%;
   opacity:0;
-  font-size:map-get($Label,font-size);
+  font-size:map-nested-get($Label,semantic,font-size);
   cursor:default;
   position:relative;
-  border-radius:map-get($Label,border-radius);
+  border-radius:map-nested-get($Label,semantic,border-radius);
   @include flexbox($alignment:center,$justification:center);
   font-weight:normal;
   &.hidden{

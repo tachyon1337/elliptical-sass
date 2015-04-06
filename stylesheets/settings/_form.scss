@@ -7,7 +7,7 @@ $include-form-input-animation: true !default;
 $form-input-animation: all 0.25s linear !default;
 $form-input-margin: 0 0 1em 0 !default;
 $form-input-padding: 0.5em 0.75em !default;
-$form-input-border-radius: 0 !default;
+$form-input-border-radius: map-get($Component,border-radius) !default;
 $form-input-outline: none !default;
 $form-textarea-height: 100px !default;
 $form-label-font-size: 1em !default;

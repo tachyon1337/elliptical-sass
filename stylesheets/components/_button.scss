@@ -207,33 +207,8 @@
       border-top-right-radius: $_button-radius;
       border-bottom-right-radius: $_button-radius;
     }
-    &:nth-child(2):not(:last-child){
+    &:nth-child(n):not(:first-child){
       border-left:0;
-      border-right:0;
-    }
-    &:nth-child(3):not(:last-child){
-      border-left:0;
-      border-right:0;
-    }
-    &:nth-child(4):not(:last-child){
-      border-left:0;
-      border-right:0;
-    }
-    &:nth-child(5):not(:last-child){
-      border-left:0;
-      border-right:0;
-    }
-    &:nth-child(6):not(:last-child){
-      border-left:0;
-      border-right:0;
-    }
-    &:nth-child(7):not(:last-child){
-      border-left:0;
-      border-right:0;
-    }
-    &:nth-child(8):not(:last-child){
-      border-left:0;
-      border-right:0;
     }
   }
 

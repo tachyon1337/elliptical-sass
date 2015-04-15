@@ -15,8 +15,8 @@ $font-weight:null,
 $letter-spacing:null,
 $position:null
 ){
-  $_radius:get-border-radius();
-  position: $position;
+
+  position:$position;
   top:$top;
   padding:$padding;
   left:0;
@@ -33,7 +33,7 @@ $position:null
   &.right{
     right:0 !important;
     left:auto;
-    border-radius:$_radius 0 0 $_radius;
+    border-radius:$border-radius 0 0 $border-radius;
   }
   &>span{
     display:block;
@@ -51,7 +51,7 @@ $position:null
     height:auto;
     width:auto;
     padding:.5em 1em;
-    border-radius:$_radius !important;
+    border-radius:$border-radius !important;
     &>span{
       display:block;
       -webkit-transform: rotate(0deg);
@@ -116,7 +116,7 @@ $position:null
   $position:map-get-default($map,position,fixed);
 
 
-  $tag:ui-screentab;
+  $tag:ui-screen-tab;
   @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
     @include _ui-screentab($component,
             $height,

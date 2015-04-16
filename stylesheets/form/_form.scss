@@ -538,6 +538,12 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 ///                 top:<value>,
 ///                 right:<value>
 ///         )
+///         touch:(
+///                 select-breakpoint:<value>,
+///                 select-font-size:<value>,
+///                 icon-font-size:<value>,
+///                 icon-top:<value>,
+///         )
 /// )
 @mixin ui-select($component:css-white,$tags:null,$class:null,$map:()) {
 
@@ -552,6 +558,10 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   $icon-top:map-nested-get-default($map,icon,top,.7em);
   $icon-right:map-nested-get-default($map,icon,right,.6em);
   $option-color:map-get($Base,black);
+  $touch-select-breakpoint:map-nested-get-default($map,touch,select-breakpoint,450px);
+  $touch-select-font-size:map-nested-get-default($map,touch,select-font-size,.8em);
+  $touch-icon-font-size:map-nested-get-default($map,touch,icon-font-size,.8em);
+  $touch-icon-top:map-nested-get-default($map,touch,icon-top,1em);
   $_margin:map-get-default($map,margin,0 0 1em 0);
 
   $tag:ui-select;
@@ -598,6 +608,17 @@ $number-component:default,$input-component:css-input-number,$map:()) {
       pointer-events: none;
     }
     @content;
+    
+    @include media-breakpoint($touch-select-breakpoint){
+      &>select{
+        font-size:$touch-select-font-size;
+      }
+      &:after{
+        font-size:$touch-icon-font-size;
+        top:$touch-icon-top;
+      }
+
+    }
   }
 
 

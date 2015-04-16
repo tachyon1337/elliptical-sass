@@ -608,7 +608,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
       pointer-events: none;
     }
     @content;
-    
+
     @include media-breakpoint($touch-select-breakpoint){
       &>select{
         font-size:$touch-select-font-size;

@@ -70,9 +70,6 @@ $position:null
     @extend %#{$component}-background-hover;
   }
 
-  @include touch-content(){
-    display:none !important;
-  }
 }
 
 
@@ -114,7 +111,7 @@ $position:null
   $font-weight:map-get-default($map,font-weight,normal);
   $letter-spacing:map-get-default($map,letter-spacing,1px);
   $position:map-get-default($map,position,fixed);
-
+  $breakpoint-hide:map-get-default($map,breakpoint-hide,1500px);
 
   $tag:ui-screen-tab;
   @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
@@ -132,6 +129,8 @@ $position:null
             $position
     );
     @content;
-
+    @include media-breakpoint($breakpoint-hide){
+      display:none !important;
+    }
   }
 }

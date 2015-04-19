@@ -357,8 +357,8 @@
 
   [data-ui=dropdown],ui-button-dropdown{
     position:relative;
-    ui-dropdown{
-      font-size:14px;
+    &:focus{
+      @include tab-focus();
     }
   }
   ui-button-dropdown.ui-button{

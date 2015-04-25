@@ -289,7 +289,7 @@ $font-size:null) {
   $stacked-tab-min-width:map-nested-get-default($map,stacked,tab-min-height,200px);
   $stacked-tab-padding:map-nested-get-default($map,stacked,tab-padding,.75em .5em .75em .5em);
   $stacked-tab-margin:map-nested-get-default($map,stacked,tab-margin,0px 0px 1px 0);
-  $stacked-tab-border-radius:map-nested-get-default($map,stacked,tab-border-radius,$_border-radius);
+  $stacked-tab-border-radius:map-nested-get-default($map,stacked,tab-border-radius,$tab-border-radius);
   $stacked-content-min-height:map-nested-get-default($map,stacked,content-min-height,16.25em);
   $stacked-content-padding:map-nested-get-default($map,stacked,content-padding,2em);
   $touch-enabled:map-nested-get-default($map,touch,enabled,$_touch-enabled);

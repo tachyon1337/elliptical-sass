@@ -146,6 +146,14 @@
     visibility:visible;
   }
 
+  [html5-imported=true][data-upgraded=true]{
+    visibility:inherit;
+  }
+
+  [data-upgraded=true][html5-imported=true]{
+    visibility:inherit;
+  }
+
   .primary{
     color:map-nested-get($Core,primary,color);
   }

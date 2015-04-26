@@ -2,7 +2,7 @@
 
 ///@private
 @mixin _ui-tabs($component: null, $active-tab: null,
-$justification:null,
+$justification: null,
 $tab-padding: null,
 $tab-margin: null,
 $tab-border-radius: null,
@@ -10,30 +10,31 @@ $tab-min-width: null,
 $content-border: null,
 $content-padding: null,
 $content-min-height: null,
-$content-border-radius:null,
+$content-border-radius: null,
 $flex-amount: null,
-$stacked-tab-min-height:null,
-$stacked-tab-max-width:null,
+$stacked-tab-min-height: null,
+$stacked-tab-max-width: null,
 $stacked-tab-padding: null,
 $stacked-tab-margin: null,
 $stacked-tab-border-radius: null,
 $stacked-content-min-height: null,
 $stacked-content-padding: null,
-$stacked-content-border-radius:null,
-$font-size:null) {
+$stacked-content-border-radius: null,
+$font-size: null,
+$breakpoint: null) {
 
   list-style: none;
   @include flexbox();
   @include flex-direction(column);
   margin: 0;
-  &>tab-items {
+  & > tab-items {
     list-style: none;
-    width:100%;
-    @include flexbox($justification:$justification);
+    width: 100%;
+    @include flexbox($justification: $justification);
     @include flex-direction(row);
     @include flex-wrap(wrap);
     margin: 0;
-    &>tab-item {
+    & > tab-item {
       text-align: center;
       min-width: $tab-min-width;
       position: relative;
@@ -45,9 +46,13 @@ $font-size:null) {
       border-top-right-radius: $tab-border-radius;
       margin: $tab-margin;
       border-bottom-width: 0 !important;
-      @include web-component-base($component:$component,$include-font:false);
-      &>a{
-        font-size:$font-size;
+      @include web-component-base($component: $component, $include-font: false);
+      @include media-breakpoint($breakpoint) {
+        border-left: 0 !important;
+        border-right: 0 !important;
+      }
+      & > a {
+        font-size: $font-size;
       }
       &:last-child {
         margin: 0;
@@ -56,15 +61,19 @@ $font-size:null) {
       cursor: pointer;
       & > span, & > a {
         @extend %#{$component}-font !optional;
-        &:hover{
+        &:hover {
           @extend %#{$component}-font-hover !optional;
         }
       }
       &.active {
-        @if $active-tab == null{
-          @include web-component-base($component:$component,$include-font:false,$state:active);
+        @if $active-tab == null {
+          @include web-component-base($component: $component, $include-font: false, $state: active);
         } @else {
-          @include web-component-base($component:$active-tab,$include-font:false);
+          @include web-component-base($component: $active-tab, $include-font: false);
+        }
+        @include media-breakpoint($breakpoint) {
+          border-left: 0 !important;
+          border-right: 0 !important;
         }
         top: 1px;
         position: relative;
@@ -73,7 +82,7 @@ $font-size:null) {
           display: block;
           top: -1px;
           position: relative;
-          @if $active-tab == null{
+          @if $active-tab == null {
             @extend %#{$component}-font-active !optional;
           } @else {
             @extend %#{$active-tab}-font-active !optional;
@@ -95,8 +104,8 @@ $font-size:null) {
     }
 
     &.flex {
-      width:100%;
-      &>tab-item {
+      width: 100%;
+      & > tab-item {
         @include flex($flex-amount);
         padding-top: margin-top($tab-padding);
         padding-bottom: margin-bottom($tab-padding);
@@ -105,7 +114,7 @@ $font-size:null) {
       }
     }
     &.disabled, &[disabled] {
-      &>tab-item {
+      & > tab-item {
         @extend %#{$component}-disabled !optional;
         & > span, & > a {
           @extend %#{$component}-disabled !optional;
@@ -113,16 +122,16 @@ $font-size:null) {
       }
     }
   }
-  &>content-items {
+  & > content-items {
     margin: 0;
     list-style: none;
     @include flexbox();
     @include flex-direction(column);
     min-height: $content-min-height;
-    width:100%;
+    width: 100%;
     &.border {
       border: $content-border;
-      border-radius:$component-border-radius;
+      border-radius: $component-border-radius;
       @include phone-content() {
         border: 0 !important;
       }
@@ -130,10 +139,10 @@ $font-size:null) {
     &.border-top {
       border-top: $content-border;
     }
-    &>tab-content {
+    & > tab-content {
       padding: $content-padding;
       display: none;
-      width:100%;
+      width: 100%;
       &.active {
         display: inherit;
       }
@@ -147,27 +156,27 @@ $font-size:null) {
 
     @include flex-direction(row);
     min-height: $stacked-content-min-height;
-    &>content-items {
+    & > content-items {
       @include flexbox();
       @include align-items(stretch);
       padding: $stacked-content-padding;
-      min-height:$stacked-content-min-height;
-      &.border{
-        border-radius:$stacked-content-border-radius;
+      min-height: $stacked-content-min-height;
+      &.border {
+        border-radius: $stacked-content-border-radius;
       }
       &.border-left {
         border-left: $content-border;
       }
-      tab-content{
+      tab-content {
         @include flex(1 1 auto);
       }
     }
-    &>tab-items {
+    & > tab-items {
       @include flex-direction(column);
-      max-width:$stacked-tab-max-width;
-      &>tab-item {
-        min-width:$stacked-tab-max-width;
-        min-height:$stacked-tab-min-height;
+      max-width: $stacked-tab-max-width;
+      & > tab-item {
+        min-width: $stacked-tab-max-width;
+        min-height: $stacked-tab-min-height;
         @include flex(1 1 auto);
         border-radius: 0;
         border-top-left-radius: $stacked-tab-border-radius;
@@ -176,18 +185,26 @@ $font-size:null) {
         padding: $stacked-tab-padding;
         border-bottom-width: 1px !important;
         border-right: 0 !important;
+        @include media-breakpoint($breakpoint) {
+          border-left: 0 !important;
+          border-right: 0 !important;
+        }
         &:last-child {
           margin: 0;
         }
         &.active {
           border-bottom-width: 1px !important;
           border-right: 0 !important;
-          a{
-            display:inline;
+          @include media-breakpoint($breakpoint) {
+            border-left: 0 !important;
+            border-right: 0 !important;
+          }
+          a {
+            display: inline;
           }
           top: 0;
           right: -1px;
-          @if $active-tab == null{
+          @if $active-tab == null {
             @extend %#{$component}-border-active !optional;
           } @else {
             @extend %#{$active-tab}-border !optional;
@@ -204,40 +221,44 @@ $font-size:null) {
 
 }
 
-
 ///@private
-@mixin _touch-tabs(){
+@mixin _touch-tabs() {
   @include gutter-bleed();
-  tab-items{
-    width:100%;
-    tab-item{
-      width:100%;
-      border-radius:0;
-      border-right-width:0 !important;
-      border-left-width:0 !important;
+  tab-items {
+    width: 100%;
+    min-width: 100%;
+    max-width: none;
+    tab-item {
+      width: 100%;
+      min-width: 100%;
+      max-width: none;
+      border-radius: 0 !important;
     }
   }
-  content-items{
-    width:100%;
-    border-radius:0;
-    border-right-width:0 !important;
-    border-left-width:0 !important;
-    content-item{
-      width:100%;
+  content-items {
+    width: 100%;
+    min-width: 100%;
+    max-width: none;
+    border-radius: 0 !important;
+    border-right-width: 0 !important;
+    border-left-width: 0 !important;
+    content-item {
+      width: 100%;
+      min-width: 100%;
+      max-width: none;
     }
   }
 
-  &.stacked{
-    @include flexbox-column($justification:flex-start,$alignment:flex-start);
+  &.stacked {
+    @include flexbox-column($justification: flex-start, $alignment: flex-start);
   }
-  .touch-hide-tabs{
-    tab-items{
-      display:none;
+  .touch-hide-tabs {
+    tab-items {
+      display: none;
     }
   }
 
 }
-
 
 ///@public
 /// @param {String} $component
@@ -277,46 +298,48 @@ $font-size:null) {
 ///   )
 ///
 /// )
-@mixin ui-tabs($component: css-tabs, $active-tab: null,$tags:null,$template-tag:null,$class: null,$map:()){
+@mixin ui-tabs($component: css-tabs, $active-tab: null, $tags: null, $template-tag: null, $class: null, $map: ()) {
 
-  $_border-radius:get-border-radius();
-  $_gray-light:map-get($Base,gray-light);
-  $_breakpoint:map-get($Breakpoint,tabs);
-  $_touch-enabled:map-get($Component,tabs-touch-enabled);
-  $font-size:map-get-default($map,font-size,1em);
-  $justification:map-get-default($map,justification,flex-start);
-  $tab-padding:map-get-default($map,tab-padding,.5em 1em .5em 1em);
-  $tab-margin:map-get-default($map,tab-margin,1px 1px 0 0);
-  $tab-border-radius:map-get-default($map,tab-border-radius,$_border-radius);
-  $tab-min-width:map-get-default($map,tab-min-width,4.68em);
-  $content-border:map-nested-get-default($map,content,border,1px solid $_gray-light);
-  $content-padding:map-nested-get-default($map,content,padding,1.5em);
-  $content-min-height:map-nested-get-default($map,content,min-height,9.25em);
-  $content-border-radius:map-nested-get-default($map,content,border-radius,$tab-border-radius);
-  $flex-amount:map-get-default($map,flex-amount,1 1 0);
-  $stacked-tab-min-height:map-nested-get-default($map,stacked,tab-min-height,50px);
-  $stacked-tab-max-width:map-nested-get-default($map,stacked,tab-max-width,200px);
-  $stacked-tab-padding:map-nested-get-default($map,stacked,tab-padding,.75em .5em .75em .5em);
-  $stacked-tab-margin:map-nested-get-default($map,stacked,tab-margin,0px 0px 1px 0);
-  $stacked-tab-border-radius:map-nested-get-default($map,stacked,tab-border-radius,$tab-border-radius);
-  $stacked-content-min-height:map-nested-get-default($map,stacked,content-min-height,16.25em);
-  $stacked-content-padding:map-nested-get-default($map,stacked,content-padding,2em);
-  $stacked-content-border-radius:map-nested-get-default($map,stacked,content-border-radius,$content-border-radius);
-  $touch-enabled:map-nested-get-default($map,touch,enabled,$_touch-enabled);
-  $breakpoint:map-nested-get-default($map,touch,breakpoint,$_breakpoint);
+  $_border-radius: get-border-radius();
+  $_gray-light: map-get($Base, gray-light);
+  $_breakpoint: map-get($Breakpoint, tabs);
+  $_touch-enabled: map-get($Component, tabs-touch-enabled);
+  $font-size: map-get-default($map, font-size, 1em);
+  $justification: map-get-default($map, justification, flex-start);
+  $tab-padding: map-get-default($map, tab-padding, .5em 1em .5em 1em);
+  $tab-margin: map-get-default($map, tab-margin, 1px 1px 0 0);
+  $tab-border-radius: map-get-default($map, tab-border-radius, $_border-radius);
+  $tab-min-width: map-get-default($map, tab-min-width, 4.68em);
+  $content-border: map-nested-get-default($map, content, border, 1px solid $_gray-light);
+  $content-padding: map-nested-get-default($map, content, padding, 1.5em);
+  $content-min-height: map-nested-get-default($map, content, min-height, 9.25em);
+  $content-border-radius: map-nested-get-default($map, content, border-radius, $tab-border-radius);
+  $flex-amount: map-get-default($map, flex-amount, 1 1 0);
+  $stacked-tab-min-height: map-nested-get-default($map, stacked, tab-min-height, 50px);
+  $stacked-tab-max-width: map-nested-get-default($map, stacked, tab-max-width, 200px);
+  $stacked-tab-padding: map-nested-get-default($map, stacked, tab-padding, .75em .5em .75em .5em);
+  $stacked-tab-margin: map-nested-get-default($map, stacked, tab-margin, 0px 0px 1px 0);
+  $stacked-tab-border-radius: map-nested-get-default($map, stacked, tab-border-radius, $tab-border-radius);
+  $stacked-content-min-height: map-nested-get-default($map, stacked, content-min-height, 16.25em);
+  $stacked-content-padding: map-nested-get-default($map, stacked, content-padding, 2em);
+  $stacked-content-border-radius: map-nested-get-default($map, stacked, content-border-radius, $content-border-radius);
+  $touch-enabled: map-nested-get-default($map, touch, enabled, $_touch-enabled);
+  $breakpoint: map-nested-get-default($map, touch, breakpoint, $_breakpoint);
 
-
-  $tag:ui-tabs;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
-    @include _ui-tabs($component, $active-tab, $justification,$tab-padding, $tab-margin, $tab-border-radius, $tab-min-width, $content-border, $content-padding,
-            $content-min-height,$content-border-radius, $flex-amount,$stacked-tab-min-height,$stacked-tab-max-width, $stacked-tab-padding, $stacked-tab-margin, $stacked-tab-border-radius,
-            $stacked-content-min-height, $stacked-content-padding,$stacked-content-border-radius,$font-size);
+  $tag: ui-tabs;
+  @include element-tag($tag: $tag, $tags: $tags, $template-tag: $template-tag, $class: $class) {
+    @include _ui-tabs($component, $active-tab, $justification, $tab-padding, $tab-margin, $tab-border-radius, $tab-min-width, $content-border, $content-padding,
+            $content-min-height, $content-border-radius, $flex-amount, $stacked-tab-min-height, $stacked-tab-max-width, $stacked-tab-padding, $stacked-tab-margin, $stacked-tab-border-radius,
+            $stacked-content-min-height, $stacked-content-padding, $stacked-content-border-radius, $font-size, $breakpoint);
     @content;
-    @if ($touch-enabled==true){
-      @include media-breakpoint($breakpoint){
+    @if ($touch-enabled==true) {
+      @include media-breakpoint($breakpoint) {
         @include _touch-tabs();
       }
     }
   }
 
 }
+
+
+

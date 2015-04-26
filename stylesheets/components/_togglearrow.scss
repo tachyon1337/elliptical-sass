@@ -19,7 +19,7 @@ $icon-font-family:null
   padding:$padding;
   &:after{
     font-family:'#{$icon-font-family}';
-    content:#{$icon};
+    content:'#{$icon}';
     color:$color;
     font-size:$font-size;
     @include phone-content(){

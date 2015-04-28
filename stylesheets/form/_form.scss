@@ -272,7 +272,18 @@ $touch-border-radius: null){
       background: none !important;
     }
   }
-
+  ui-radio-list{
+    list-style:none;
+    &.horizontal{
+      -webkit-display:flex;
+      display:flex;
+      -webkit-flex-wrap:wrap;
+      flex-wrap:wrap;
+      &>li{
+        margin-right:1em;
+      }
+    }
+  }
   ui-radio{
     display:block;
     position:relative;
@@ -537,7 +548,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 ///                 font-size:<value>,
 ///                 top:<value>,
 ///                 right:<value>
-///         )
+///         ),
 ///         touch:(
 ///                 select-breakpoint:<value>,
 ///                 select-font-size:<value>,
@@ -592,6 +603,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
       option{
         color:$option-color;
       }
+
     }
     ::-ms-expand {
       display: none;
@@ -606,9 +618,9 @@ $number-component:default,$input-component:css-input-number,$map:()) {
       top: $icon-top;
       line-height: 1;
       pointer-events: none;
+
     }
     @content;
-
     @include media-breakpoint($touch-select-breakpoint){
       &>select{
         font-size:$touch-select-font-size;
@@ -710,7 +722,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   $tag:ui-input-icon;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _form-input-icon($component:$component, $font-size:$font-size, $border-radius:$border-radius,
-            $icon:$icon, $icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
+    $icon:$icon, $icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
     @content;
   }
 
@@ -777,6 +789,22 @@ $number-component:default,$input-component:css-input-number,$map:()) {
       max-width:100%;
     }
   }
+  form{
+    &>label{
+      margin-top:1em;
+      margin-bottom:.1em;
+      &.radio{
+        margin-bottom:-1em;
+      }
+    }
+    ui-radio-list{
+      &>li{
+        &:last-of-type{
+          margin-bottom:2em;
+        }
+      }
+    }
+  }
 
   @content;
 }
@@ -805,8 +833,4 @@ $number-component:default,$input-component:css-input-number,$map:()) {
     }
   }
 }
-
-
-
-
 

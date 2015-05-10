@@ -40,7 +40,7 @@
   $z-index: map-get-default($map,z-index,$_z-index + 99999);
   $opacity: map-get-default($map,opacity,.3);
 
-  ui-modal {
+  ui-modal,.ui-modal {
     @if $class != null {
       &.#{$class} {
         @include _ui-modal($background, $z-index, $opacity);

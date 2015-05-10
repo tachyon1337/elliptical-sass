@@ -38,7 +38,7 @@ $tip-color:null
 ///      color:<value>
 ///   )
 /// )
-@mixin ui-tooltip($component:primary,$class:null,$map:null) {
+@mixin ui-tooltip($component:primary,$class:null,$map:()) {
   $_tip-color:map-nested-get($Core,primary,color);
   $_border-radius:get-border-radius();
   $_z-index:get-z-index();
@@ -60,6 +60,9 @@ $tip-color:null
       @content;
     }
 
+    @include touch-content(){
+      display:none;
+    }
   }
 
   .ui-tooltip{

@@ -443,6 +443,36 @@
           border:map-nested-get($Theme,oauth,twitter)
   ));
 
+  //flex-grid
+  @include component($component:css-flex-grid,$map:(
+          background:map-nested-get($Theme,flex-grid,background),
+          font-color:map-nested-get($Theme,flex-grid,font-color),
+          border:map-nested-get($Theme,flex-grid,border)
+  ));
+
+  //flex-table
+  @include component($component:css-flex-table,$map:(
+          background:map-nested-get($Theme,flex-table,background),
+          font-color:map-nested-get($Theme,flex-table,font-color),
+          border:map-nested-get($Theme,flex-table,border)
+  ));
+
+  //grid-pagination
+  @include component($component:css-grid-pagination,$map:(
+          background:map-nested-get($Theme,grid-pagination,background),
+          font-color:map-nested-get($Theme,grid-pagination,font-color),
+          text-shadow:map-nested-get($Theme,grid-pagination,text-shadow),
+          border:map-nested-get($Theme,grid-pagination,border),
+          icon-color:map-nested-get($Theme,grid-pagination,icon-color),
+          hover:(
+                  background:map-nested-get($Theme,grid-pagination,background-hover),
+                  font-color:map-nested-get($Theme,grid-pagination,font-color-hover),
+                  text-shadow:map-nested-get($Theme,grid-pagination,text-shadow-hover),
+                  border:map-nested-get($Theme,grid-pagination,border-hover),
+                  icon-color:map-nested-get($Theme,grid-pagination,icon-color-hover)
+          )
+  ));
+
 }
 
 

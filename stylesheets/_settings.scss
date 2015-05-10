@@ -400,7 +400,7 @@
 ///sliding panel
 //$theme-sliding-panel-background: $white;
 //$theme-sliding-panel-font-color: $document-font-color;
-//$theme-sliding-panel-border: 1px solid $gray;
+//$theme-sliding-panel-border: 0;
 //$theme-sliding-panel-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 ///collapse
 //$theme-collapse-background: #e0e0e0;
@@ -416,6 +416,29 @@
 //$theme-oauth-google:#dd4b39;
 //$theme-oauth-facebook:#44619d;
 //$theme-oauth-twitter:#55acee;
+
+//flex-grid
+//$theme-flex-grid-background:$_white;
+//$theme-flex-grid-font-color:$_font-color;
+//$theme-flex-grid-border:#dfdfdf;
+
+//flex-table
+//$theme-flex-table-background:$_white;
+//$theme-flex-table-font-color:$_font-color;
+//$theme-flex-table-border:#dfdfdf;
+
+//grid-pagination
+//$theme-grid-pagination-background:$_white;
+//$theme-grid-pagination-font-color:#787878;
+//$theme-grid-pagination-text-shadow:0 0 0 #787878;
+//$theme-grid-pagination-border:1px solid #dadada;
+//$theme-grid-pagination-background-hover:#8ebc00;
+//$theme-grid-pagination-font-color-hover:$_white;
+//$theme-grid-pagination-text-shadow-hover:0 0 0 $_white;
+//$theme-grid-pagination-border-hover:1px solid #8ebc00;
+//$theme-grid-pagination-icon-color:#bbb;
+//$theme-grid-pagination-icon-color-hover:#8ebc00;
+
 
 ///touch theme
 //$theme-touch: black;

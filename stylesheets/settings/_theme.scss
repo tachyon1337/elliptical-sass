@@ -107,7 +107,7 @@ $theme-window-footer-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5) !default;
 //sliding panel
 $theme-sliding-panel-background: $_white !default;
 $theme-sliding-panel-font-color: $_font-color !default;
-$theme-sliding-panel-border: 1px solid $_gray !default;
+$theme-sliding-panel-border: 0 !default;
 $theme-sliding-panel-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3) !default;
 //collapse
 $theme-collapse-background: #e0e0e0 !default;
@@ -123,6 +123,29 @@ $theme-oauth-font-color:$_white !default;
 $theme-oauth-google:#dd4b39 !default;
 $theme-oauth-facebook:#44619d !default;
 $theme-oauth-twitter:#55acee !default;
+
+//flex-grid
+$theme-flex-grid-background:$_white !default;
+$theme-flex-grid-font-color:$_font-color !default;
+$theme-flex-grid-border:#dfdfdf !default;
+
+//flex-table
+$theme-flex-table-background:$_white !default;
+$theme-flex-table-font-color:$_font-color !default;
+$theme-flex-table-border:#dfdfdf !default;
+
+//grid-pagination
+$theme-grid-pagination-background:$_white !default;
+$theme-grid-pagination-font-color:#787878 !default;
+$theme-grid-pagination-text-shadow:0 0 0 #787878 !default;
+$theme-grid-pagination-border:1px solid #dadada !default;
+$theme-grid-pagination-background-hover:#8ebc00 !default;
+$theme-grid-pagination-font-color-hover:$_white !default;
+$theme-grid-pagination-text-shadow-hover:0 0 0 $_white !default;
+$theme-grid-pagination-border-hover:1px solid #8ebc00 !default;
+$theme-grid-pagination-icon-color:#bbb !default;
+$theme-grid-pagination-icon-color-hover:#8ebc00 !default;
+
 
 //touch theme
 $theme-touch: black !default;
@@ -257,6 +280,28 @@ $Theme: (
                 google:$theme-oauth-google,
                 facebook:$theme-oauth-facebook,
                 twitter:$theme-oauth-twitter
+        ),
+        flex-grid:(
+                background:$theme-flex-grid-background,
+                font-color:$theme-flex-grid-font-color,
+                border:$theme-flex-grid-border
+        ),
+        flex-table:(
+                background:$theme-flex-table-background,
+                font-color:$theme-flex-table-font-color,
+                border:$theme-flex-table-border
+        ),
+        grid-pagination:(
+                background:$theme-grid-pagination-background,
+                font-color:$theme-grid-pagination-font-color,
+                text-shadow:$theme-grid-pagination-text-shadow,
+                border:$theme-grid-pagination-border,
+                background-hover:$theme-grid-pagination-background-hover,
+                font-color-hover:$theme-grid-pagination-font-color-hover,
+                text-shadow-hover:$theme-grid-pagination-text-shadow-hover,
+                border-hover:$theme-grid-pagination-border-hover,
+                icon-color:$theme-grid-pagination-icon-color,
+                icon-color-hover:$theme-grid-pagination-icon-color-hover
         ),
         touch:(
                 theme:$theme-touch

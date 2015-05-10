@@ -47,7 +47,7 @@ $z-index:null
 
 @mixin ui-sliding-panel($component:css-sliding-panel,$tags:null,$template-tag:null,$class:null,$map:()) {
   $_border-radius:get-border-radius();
-  $_z-index:get-z-index() + 9999;
+  $_z-index:get-z-index() + 99999;
   $height:map-get-default($map,height,88vh);
   $width:map-get-default($map,width,25em);
   $top:map-get-default($map,top,50px);

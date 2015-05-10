@@ -2,6 +2,47 @@
 @import "../settings/button";
 @import "../css3/transition";
 
+
+///@private
+@mixin _window-phone-breakpoint($tiny-padding){
+  header {
+    width: 100%;
+    height: 30px;
+    margin: 0;
+    position: relative;
+    h3 {
+      font-size: 12px;
+      text-align: center;
+      margin: 0;
+      padding-top: 2px;
+    }
+    .close {
+      font-size: 1rem;
+      padding: 5px 8px;
+    }
+  }
+  section {
+    padding: 10px;
+    height: 70%;
+    padding-bottom: 30px;
+  }
+  footer {
+    padding: 6px 9px 9px;
+    margin-bottom: 0;
+    text-align: right;
+    min-height: 20px;
+    .ui-button {
+      padding: $tiny-padding;
+      font-size:.7em !important;
+    }
+    .ui-button + .ui-button {
+      margin-left: 5px;
+      margin-bottom: 0;
+      padding: $tiny-padding;
+    }
+  }
+}
+
 ///@private
 @mixin _ui-window($component:null,$header-component:null,$close-component:null,$footer-component:null,
 $border-radius:null,
@@ -31,12 +72,12 @@ $footer-padding:null
   z-index: $z-index;
   outline: none;
   display: none;
-  overflow: hidden;
+  //overflow: hidden;
   @include web-component-base($component:$component,$include-font:false);
   &.no-shadow {
     box-shadow:none;
   }
-  header {
+  &>header {
     width: 100%;
     height: $header-height;
     border-top-left-radius: $border-radius;
@@ -75,7 +116,7 @@ $footer-padding:null
       }
     }
   }
-  section {
+  &>section {
     position: relative;
     overflow-y: auto;
     padding: $section-padding;
@@ -89,7 +130,7 @@ $footer-padding:null
       font-weight:bold;
     }
   }
-  footer {
+  &>footer {
     padding:$footer-padding;
     margin-bottom: 0;
     text-align: right;
@@ -165,46 +206,22 @@ $footer-component:css-window-footer,$tags:null,$template-tag:null,$class:null,$m
 
   @include phone-content(){
     ui-window {
-      width: 300px;
-      height: 380px;
-      top: 5px;
-      left: 10px;
-      margin-left: 0;
-      header {
-        width: 100%;
-        height: 30px;
-        margin: 0;
-        position: relative;
-        h3 {
-          font-size: 12px;
-          text-align: center;
-          margin: 0;
-          padding-top: 2px;
-        }
-        .close {
-          font-size: 1rem;
-          padding: 5px 8px;
-        }
-      }
-      section {
-        padding: 10px;
-        height: 70%;
-        padding-bottom: 30px;
-      }
-      footer {
-        padding: 6px 9px 9px;
-        margin-bottom: 0;
-        text-align: right;
-        min-height: 20px;
-        .ui-button {
-          padding: $_tiny-padding;
-        }
-        .ui-button + .ui-button {
-          margin-left: 5px;
-          margin-bottom: 0;
-          padding: $_tiny-padding;
-        }
-      }
+      width: 300px !important;
+      height: 340px !important;
+      top: 70px;
+      left: 50% !important;
+      margin-left: -150px !important;
+      @include _window-phone-breakpoint($_tiny-padding);
+    }
+  }
+  @include phone-landscape-content(){
+    ui-window {
+      width: 380px !important;
+      height: 240px !important;
+      top: 40px;
+      left: 50% !important;
+      margin-left: -190px !important;
+      @include _window-phone-breakpoint($_tiny-padding);
     }
   }
 }

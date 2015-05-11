@@ -33,47 +33,7 @@ $padding:null
   }
 }
 
-///@private
-@mixin _flex-grid(
-$columns:null,
-$grid-contain-columns:null,
-$tablet-columns:null,
-$justification:null,
-$alignment:null,
-$cell-justification:null,
-$cell-alignment:null,
-$cell-padding:null
-)
-{
-  width:100%;
-  $_column-percentage: columns-to-percentage($columns);
-  $_grid-contain-column-percentage: columns-to-percentage($grid-contain-columns);
-  $_tablet-column-percentage: columns-to-percentage($tablet-columns);
 
-  @include flexbox();
-  @include justify-content($justification);
-  @include align-items($alignment);
-  @include flex-wrap(wrap);
-  &>grid-item{
-    width:$_column-percentage;
-    @include flexbox();
-    @include justify-content($cell-justification);
-    @include align-items($cell-alignment);
-    @include flex-direction(column);
-    padding:$cell-padding;
-    @include grid-contain-content(){
-      width:$_grid-contain-column-percentage;
-    }
-    @include tablet-content(){
-      width:$_tablet-column-percentage;
-    }
-    @include phone-content(){
-      width:100%;
-    }
-
-  }
-
-}
 
 
 ///@private
@@ -390,52 +350,6 @@ flex-box,.flex-box{
   }
 }
 
-
-///@public
-///@param {String} $class
-///@param {Map} $map
-/// $map:(
-///         columns:<value>,
-///         justification:<value>,
-///         alignment:<value>,
-///         grid-contain:(
-///               columns:<value>
-///         ),
-///         tablet:(
-///               columns:<value>
-///         ),
-///         cell:(
-///               justification:<value>,
-///               alignment:<value>,
-///               padding:<value>
-///         )
-/// )
-@mixin flex-grid($class:null,$map:()){
-
-  $columns:map-get-default($map,columns,4);
-  $justification:map-get-default($map,justification,flex-start);
-  $alignment:map-get-default($map,alignment,flex-start);
-  $grid-contain-columns:map-nested-get-default($map,grid-contain,columns,3);
-  $tablet-columns:map-nested-get-default($map,tablet,columns,3);
-  $cell-justification:map-nested-get-default($map,cell,justification,flex-start);
-  $cell-alignment:map-nested-get-default($map,cell,alignment,flex-start);
-  $cell-padding:map-nested-get-default($map,cell,padding,0 1em 2em 0);
-
-  flex-grid,.flex-grid {
-    @if $class != null{
-      &.#{$class} {
-        @include _flex-grid($columns,$grid-contain-columns,$tablet-columns,
-                $justification,$alignment,$cell-justification,$cell-alignment,$cell-padding);
-        @content;
-      }
-
-    } @else {
-      @include _flex-grid($columns,$grid-contain-columns,$tablet-columns,
-              $justification,$alignment,$cell-justification,$cell-alignment,$cell-padding);
-      @content;
-    }
-  }
-}
 
 
 

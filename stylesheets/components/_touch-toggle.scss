@@ -7,6 +7,7 @@ $height: null,
 $width: null,
 $z-index:null,
 $border-right: null,
+$border-show:null,
 $icon:null,
 $icon-size: null,
 $icon-left: null,
@@ -18,10 +19,16 @@ $icon-font-family:null
   position: absolute;
   left: 0;
   top: 0;
-  height: $height;
+
   width: $width;
   border-width: 0;
-  border-right: $border-right;
+  @if $border-show==true{
+    border-right: $border-right;
+    height: $height;
+  }@else{
+    border-right:0;
+    height: $height - 1;
+  }
   z-index:$z-index;
   @include web-component-base($component:$component,$include-font:false);
   &:before {
@@ -37,14 +44,3 @@ $icon-font-family:null
     box-shadow:none;
   }
 }
-
-
-
-
-
-
-
-
-
-
-

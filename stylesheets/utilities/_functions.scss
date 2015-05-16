@@ -89,7 +89,7 @@
 /// @return {Number}
 @function columns-to-percentage($columns) {
   $v: (1/$columns)*100;
-  $v1: $v - 1;
+  $v1: $v;
   $v2: ($v1/100)*100%;
   @return $v2;
 }
@@ -625,7 +625,4 @@
     @return $value;
   }
 }
-
-
-
 

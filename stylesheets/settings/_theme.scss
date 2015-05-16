@@ -20,11 +20,11 @@ $_primary-color:map-nested-get($Core,primary,color);
 //input
 $theme-input-background: $_white !default;
 $theme-input-color: $_font-color !default;
-$theme-input-border: #d6d6d6 !default;
-$theme-input-border-hover: ($_white, 30%) !default;
+$theme-input-border: 1px solid #d6d6d6 !default;
+$theme-input-border-hover: 1px solid #2b9af3 !default;
 $theme-input-placeholder-color: #d4d4d4 !default;
 $theme-input-alt-box-shadow: #f4f4f4 0 0 0 4px !default;
-$theme-input-border-active:$_primary-color !default;
+$theme-input-border-active:1px solid #2b9af3 !default;
 //checkbox
 $theme-checkbox-color: $_off-black !default;
 $theme-checkbox-border: 2px solid $_gray !default;

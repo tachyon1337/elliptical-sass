@@ -10,12 +10,13 @@
   @content;
 }
 
-@mixin gutter-bleed-padding(){
+@mixin gutter-bleed-padding($padding-left:1.5em,$padding-right:1.5em){
   $_column-gutter:map-get($Grid,column-gutter);
   margin-right: - $_column-gutter/2 !important;
   margin-left: - $_column-gutter/2 !important;
-  padding-right: $_column-gutter/2 !important;
-  padding-left: $_column-gutter/2 !important;
+  padding-left:$padding-left;
+  padding-right:$padding-right;
+  width:110%;
   @content;
 }
 
@@ -32,6 +33,13 @@
   }
 }
 
+@mixin touch-gutter-bleed-padding($padding-left:1.5em,$padding-right:1.5em){
+  @include touch-content(){
+    @include gutter-bleed-padding($padding-left,$padding-right);
+    @content;
+  }
+}
+
 @mixin touch-gutter-collapse(){
   @include touch-content(){
     @include gutter-collapse();
@@ -39,13 +47,7 @@
   }
 }
 
-@mixin gutter-collapse-m(){
-  @include gutter-bleed();
-  width:110%;
-  padding-left:1.5em;
-  padding-right:1.5em;
-  @content;
-}
+
 
 
 
@@ -57,6 +59,10 @@
 
   .gutter-bleed {
     @include touch-gutter-bleed();
+  }
+
+  .gutter-bleed-padding {
+    @include touch-gutter-bleed-padding();
   }
 
   .gutter-collapse {
@@ -71,11 +77,6 @@
     @include gutter-collapse();
   }
 
-  @include touch-content(){
-    .gutter-collapse-m{
-      @include gutter-collapse-m();
-    }
-  }
 
   @include tablet-content(){
     .tablet-flex{

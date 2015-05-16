@@ -161,6 +161,9 @@ $menu-justification:null) {
 ///          brand-font-size:<value>,
 ///          icon-font-size:<value>,
 ///          icon-margin:<value>
+///      ),
+///      phone:(
+///          icon-font-size:<value>
 ///      )
 //   )
 
@@ -188,9 +191,9 @@ $menu-justification:null) {
   $touch-font-size:map-nested-get-default($map,touch,font-size,1em);
   $touch-z-index: map-nested-get-default($map,touch,z-index,$_z-index);
   $touch-brand-font-size:map-nested-get-default($map,touch,brand-font-size,1.75em);
-  $touch-icon-font-size:map-nested-get-default($map,touch,icon-font-size,22px);
+  $touch-icon-font-size:map-nested-get-default($map,touch,icon-font-size,32px);
   $touch-icon-margin:map-nested-get-default($map,touch,icon-margin,.8em);
-
+  $phone-icon-font-size:map-nested-get-default($map,phone,icon-font-size,24px);
 
 
   $tag:ui-topbar;
@@ -224,6 +227,18 @@ $menu-justification:null) {
               $touch-icon-margin);
     }
     @content;
+    @include phone-content(){
+      .touch-right, touch-icons {
+        & > touch-icon, & > li {
+          @include span-icon() {
+            font-size: $phone-icon-font-size;
+          }
+        }
+      }
+      touch-ui-brand{
+        font-size:1em;
+      }
+    }
   }
 
   ///if fixed position, margin of next element =topbar height + 1em

@@ -10,8 +10,11 @@
 /// $map:(
 ///   height:<value>,
 ///   width:<value>,
-///   border-right:<value>,
 ///   z-index:<value>,
+///   border:(
+///            right:<value>,
+///            show:<value>
+///   ),
 ///   icon:(
 ///            icon:<value>,
 ///            size:<value>,
@@ -32,12 +35,17 @@
   $height: map-get-default($map,height,$_height - 1);
   $width: map-get-default($map,width,60px);
   $z-index:map-get-default($map,z-index,$_z-index);
-  $border-right:map-get-default($map,border-right,1px solid);
+  $border-right:map-nested-get-default($map,border,right,1px solid);
+  $border-show:map-nested-get($map,border,show);
   $icon:map-nested-get-default($map,icon,icon,$_icon);
   $icon-size:map-nested-get-default($map,icon,size,$_toggle-size);
   $icon-left:map-nested-get-default($map,icon,left,$_toggle-left);
   $icon-top:map-nested-get-default($map,icon,top,$_toggle-top);
   $_icon-font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);
+
+  @if $border-show==null{
+    $border-show:map-get($Toggle,border-show);
+  }
 
   ui-toggle{
     display:none;
@@ -51,6 +59,7 @@
               $width,
               $z-index,
               $border-right,
+              $border-show,
               $icon,
               $icon-size,
               $icon-left,
@@ -61,5 +70,4 @@
     }
   }
 }
-
 

@@ -56,6 +56,9 @@ $indicator-icon-margin: null) {
   @if $height !=null {
     height: $height;
   }
+  @include touch-content(){
+    height:auto;
+  }
   @if $margin !=null {
     margin: $margin;
   }

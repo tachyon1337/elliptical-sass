@@ -43,6 +43,67 @@ $touch-border-radius: null){
 }
 
 ///@public
+///@param {String} $component
+/// )
+@mixin flat-forms($component:null){
+
+  @include input(){
+    font-family: inherit;
+    border-radius:map-nested-get($Form,input,border-radius);
+    display: block;
+    font-size: 1em;
+    margin: map-nested-get($Form,input,margin);
+    padding: map-nested-get($Form,input,padding);
+    width: 100%;
+    outline: map-nested-get($Form,input,outline);
+    -webkit-appearance: none;
+    @extend %#{$component}-background !optional;
+    @extend %#{$component}-border !optional;
+    @extend %#{$component}-placeholder !optional;
+    @extend %#{$component}-font !optional;
+    @if map-nested-get($Form,input,include-animation) == true
+    {
+      @include transition(map-nested-get($Form,input,animation));
+    }
+    &:focus {
+      @extend %#{$component}-border-hover !optional;
+    }
+    &:active,&.active{
+      @extend %#{$component}-border-active !optional;
+    }
+    &[readonly]{
+      &:focus{
+        @extend %#{$component}-border !optional;
+      }
+    }
+  }
+  .form-width{
+    form{
+      width:map--get($Form,width);;
+      max-width:100%;
+    }
+  }
+  form{
+    &>label{
+      margin-top:1em;
+      margin-bottom:.1em;
+      &.radio{
+        margin-bottom:-1em;
+      }
+    }
+    ui-radio-list{
+      &>li{
+        &:last-of-type{
+          margin-bottom:2em;
+        }
+      }
+    }
+  }
+
+  @content;
+}
+
+///@public
 ///@param {String} $input-component
 @mixin form-base($input-component: css-input) {
 
@@ -165,15 +226,10 @@ $touch-border-radius: null){
     position:relative;
     width:100%;
     align-items:stretch;
-    input {
+    &>input[type="text"] {
       @include flex(1);
       margin: 0 !important;
-      &:not(:first-child) {
-        border-left: 0;
-      }
-      &:not(:last-child) {
-        border-right: 0;
-      }
+      border-right:0 !important;
     }
     .ui-button,ui-button {
       margin: 0;
@@ -728,109 +784,4 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 
 }
 
-
-
-///@public
-///@param {Map} $map
-/// $map:(
-///         border-color:<value>,
-///         background:<value>,
-///         border-radius:<value>,
-///         form:(
-///                width:<value>
-///         )
-/// )
-@mixin flat-forms($component:null,$map:()){
-
-  $_white:map-get($Core,white);
-  $_border-radius:get-border-radius();
-
-  $border-color:map-get-default($map,border-color,#d5d5d5);
-  $background:map-get-default($map,background,$_white);
-  $border-radius:map-get-default($map,border-radius,$_border-radius);
-  $form-width:map-nested-get-default($map,form,width,400px);
-  $_active-color:map-nested-get($Theme,input,border-active);
-
-  @include input(){
-    border:1px solid $border-color;
-    background:$background;
-    font-family: inherit;
-    border-radius:map-nested-get($Form,input,border-radius);
-    display: block;
-    font-size: 1em;
-    margin: map-nested-get($Form,input,margin);
-    padding: map-nested-get($Form,input,padding);
-    width: 100%;
-    outline: map-nested-get($Form,input,outline);
-    -webkit-appearance: none;
-
-    @extend %#{$component}-placeholder !optional;
-    @extend %#{$component}-font !optional;
-    @if map-nested-get($Form,input,include-animation) == true
-    {
-      @include transition(map-nested-get($Form,input,animation));
-    }
-    &:focus {
-      background:$background;
-      border:1px solid $_active-color !important;
-    }
-    &:active,&.active{
-      border:1px solid $_active-color !important;
-    }
-    &[readonly]{
-      &:focus{
-        border:1px solid $border-color !important;
-      }
-    }
-  }
-  .form-width{
-    form{
-      width:$form-width;
-      max-width:100%;
-    }
-  }
-  form{
-    &>label{
-      margin-top:1em;
-      margin-bottom:.1em;
-      &.radio{
-        margin-bottom:-1em;
-      }
-    }
-    ui-radio-list{
-      &>li{
-        &:last-of-type{
-          margin-bottom:2em;
-        }
-      }
-    }
-  }
-
-  @content;
-}
-
-@mixin default-forms($component:null){
-  @include input(){
-    font-family: inherit;
-    border-radius:map-nested-get($Form,input,border-radius);
-    display: block;
-    font-size: 1em;
-    margin: map-nested-get($Form,input,margin);
-    padding: map-nested-get($Form,input,padding);
-    width: 100%;
-    outline: map-nested-get($Form,input,outline);
-    -webkit-appearance: none;
-    @include web-component-default($component:$component);
-    @extend %#{$component}-placeholder !optional;
-    @if map-nested-get($Form,input,include-animation) == true
-    {
-      @include transition(map-nested-get($Form,input,animation));
-    }
-    &:focus {
-      @extend %#{$component}-background-hover !optional;
-      @extend %#{$component}-font !optional;
-      @extend %#{$component}-placeholder !optional;
-    }
-  }
-}
 

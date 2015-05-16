@@ -37,6 +37,7 @@ $icon-margin: null) {
   }
   touch-ui-brand{
     @include flexbox($justification: center, $alignment: center);
+    font-size: $brand-font-size;
   }
   .touch-right, touch-icons {
     list-style: none;

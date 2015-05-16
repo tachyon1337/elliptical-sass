@@ -15,6 +15,9 @@ $_dark-light:map-get($Base,dark-light);
 $_dark-medium:map-get($Base,dark-medium);
 $_transparent:map-get($Base,transparent);
 
+
+$component-toggle-border-show: true !default;
+
 //touch-black
 $component-touch-black-background: $_dark-light,$_dark-medium !default;
 $component-touch-black-font-color: $_white !default;
@@ -148,6 +151,10 @@ $component-touch-search-white-box-shadow:none !default;
 $component-touch-search-white-icon-color:$_white !default;
 $component-touch-search-white-placeholder-color:#e5e7e9 !default;
 
+$Toggle:(
+        border-show:$component-toggle-border-show
+
+);
 
 $Touch-Black:(
         bar:(
@@ -294,11 +301,4 @@ $Touch-Menu:(
                 )
         )
 );
-
-
-
-
-
-
-
 

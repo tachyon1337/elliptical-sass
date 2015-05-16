@@ -231,7 +231,7 @@ flex-box,.flex-box{
   &.top{
     @include align-items(flex-start);
   }
-  &.bottom{
+  &.bottom,&.align-end{
     @include align-items(flex-end);
   }
   &.align-center{
@@ -352,7 +352,6 @@ flex-box,.flex-box{
 
 
 
-
 ///@public
 ///@param {String} $class
 ///@param {Map} $map
@@ -397,17 +396,17 @@ flex-box,.flex-box{
     @if $class != null{
       &.#{$class} {
         @include _ui-columns($count,
-        $gap,
-        $width,
-        $grid-contain-count,
-        $grid-contain-gap,
-        $contain-column-percentage,
-        $touch-count,
-        $touch-gap,
-        $touch-column-percentage,
-        $touch-item-margin,
-        $touch-font-size,
-        $font-size);
+                $gap,
+                $width,
+                $grid-contain-count,
+                $grid-contain-gap,
+                $contain-column-percentage,
+                $touch-count,
+                $touch-gap,
+                $touch-column-percentage,
+                $touch-item-margin,
+                $touch-font-size,
+                $font-size);
         @content;
       }
 
@@ -473,18 +472,18 @@ flex-box,.flex-box{
     @if $class != null{
       &.#{$class} {
         @include _ui-icons($component,
-        $justification,
-        $alignment,
-        $type,
-        $include-animation,
-        $animation,
-        $item-margin,
-        $item-padding,
-        $font-size,
-        $mark-font-size,
-        $mark-font-weight,
-        $mark-font-family,
-        $mark-margin
+                $justification,
+                $alignment,
+                $type,
+                $include-animation,
+                $animation,
+                $item-margin,
+                $item-padding,
+                $font-size,
+                $mark-font-size,
+                $mark-font-weight,
+                $mark-font-family,
+                $mark-margin
         );
         @content;
       }
@@ -503,7 +502,7 @@ flex-box,.flex-box{
               $mark-font-family,
               $mark-margin
       );
-        @content;
+      @content;
     }
   }
 }
@@ -513,13 +512,11 @@ flex-box,.flex-box{
 @mixin ui-sticky-footer(){
   ////sticky bottom footer
   .ui-sticky-footer {
-    @include flexbox();
     min-height: 100vh;
-    height:100%;
-    @include flex-direction(column);
-    & > *:not([data-role=footer]) {
-      //@include flex(1);
-      @include flex(1 0 auto);//ie workaround
+    height: 100%;
+    @include flexbox-column();
+    & > footer[data-role=footer] {
+      margin-top: auto;
     }
     &.ns{
       height:900px;//not supported workaround

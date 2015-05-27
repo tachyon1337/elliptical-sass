@@ -1,5 +1,6 @@
 @import "settings/base";
 @import "settings/breakpoints";
+@import "settings/media";
 @import "settings/button";
 @import "settings/component";
 @import "settings/core";
@@ -13,7 +14,6 @@
 @import "settings/touch";
 @import "settings/typography";
 @import "base/normalize";
-@import "base/breakpoints";
 @import "base/component";
 @import "base/document";
 @import "base/element-tag";
@@ -29,7 +29,7 @@
 @import "css3/transition";
 @import "animation/animations";
 @import "animation/transitions";
-@import "utilities/breakpoints";
+@import "utilities/media";
 @import "utilities/classes";
 @import "utilities/component";
 @import "utilities/convenience";
@@ -95,4 +95,10 @@
 @import "components/flex-grid";
 
 @import "app/mixins";
+
+
+
+
+
+
 

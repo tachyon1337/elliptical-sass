@@ -310,7 +310,7 @@
     @include flexbox();
     @include justify-content(space-between);
 
-    @include grid-contain-content() {
+    @include grid-content() {
       &> ui-button-group {
         margin-right:1em;
         &:last-child{

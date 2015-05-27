@@ -85,7 +85,7 @@ $right:null
     @include _ui-notification($component,$padding,$font-size,$border-radius,$z-index,$width,$top,$left,$bottom,$right);
     @content;
 
-    @media #{$breakpoint-phone}{
+    @include phone-content(){
       width:94%;
       left:3%;
       text-align:center;
@@ -123,7 +123,7 @@ $right:null
       }
     }
   }
-  @media #{$breakpoint-phone}{
+  @include phone-content(){
     ui-notification-label{
       &>div{
         width:100%;

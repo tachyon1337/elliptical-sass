@@ -1,7 +1,7 @@
 @import "../settings/grid";
-@import "../base/breakpoints";
 @import "../utilities/unit-functions";
 @import "../utilities/document";
+@import "../utilities/media";
 
 ///grid
 
@@ -177,7 +177,7 @@ $touch-margin-bottom:null) {
   }
 
   ///tablet(or medium)
-  @media #{$breakpoint-grid-tablet} {
+  @include medium-content() {
 
     @for $i from 1 through $grid-columns {
       .tablet-#{$i},
@@ -219,7 +219,7 @@ $touch-margin-bottom:null) {
   }
 
   ///desktop(or large)
-  @media #{$breakpoint-desktop} {
+  @include large-content() {
 
     @for $i from 1 through $grid-columns {
       .desktop-#{$i},
@@ -272,7 +272,7 @@ $touch-margin-bottom:null) {
   }
   ///enforce no screen horizontal scrolling
   @if $touch-horizontal-constrain {
-    @media #{$breakpoint-touch}{
+    @include touch-content(){
       grid-row {
         overflow-x: hidden;
         &.overflow {

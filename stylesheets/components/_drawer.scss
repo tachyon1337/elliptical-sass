@@ -28,7 +28,7 @@ $background:null
     height:$header-height;
   }
 
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     background:#fff;
   }
 }

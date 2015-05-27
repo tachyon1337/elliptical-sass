@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   # Release Info
   spec.version = File.read(File.join(File.dirname(__FILE__), "VERSION"))
-  spec.date = "2015-04-05"
+  spec.date = "2015-05-26"
 
   # Project Details
   spec.name = "elliptical-sass"

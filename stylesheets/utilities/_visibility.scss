@@ -1,4 +1,4 @@
-@import "../base/breakpoints";
+@import "media";
 
 @mixin utilities-visibility(){
   .hide-for-desktop,
@@ -33,7 +33,7 @@
   }
 
 
-  @media #{$breakpoint-phone}{
+  @include phone-content(){
     .show-for-phone,
     .show-for-small,
     .show-for-tablet-down,
@@ -74,7 +74,7 @@
     }
   }
 
-  @media #{$breakpoint-tablet}{
+  @include medium-content(){
     .show-for-phone,
     .show-for-small{
       display:none !important;
@@ -116,7 +116,7 @@
     }
   }
 
-  @media #{$breakpoint-portrait}{
+  @include portrait-content(){
     .show-for-portrait,
     .hide-for-landscape{
       display:inherit;
@@ -126,7 +126,7 @@
       display:none;
     }
   }
-  @media #{$breakpoint-landscape}{
+  @include landscape-content(){
     .show-for-portrait,
     .hide-for-landscape{
       display:none;

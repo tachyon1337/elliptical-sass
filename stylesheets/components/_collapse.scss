@@ -43,8 +43,12 @@ $item-section-border-radius:null
       @include media-breakpoint(600px){
         border-radius:0;
       }
+      [data-role=toggle],[toggle]{
+        cursor:pointer;
+        @extend %#{$header-component}-font-hover;
+      }
     }
-    section {
+    &>section {
       margin:$item-section-margin;
       padding:0;
       position:relative;
@@ -55,6 +59,16 @@ $item-section-border-radius:null
       }
       @include media-breakpoint(600px){
         border-radius:0;
+      }
+    }
+
+    &.expand{
+      &>header{
+        @extend %#{$component}-background-active;
+        [data-role=toggle],[toggle]{
+          cursor:pointer;
+          @extend %#{$header-component}-font-active;
+        }
       }
     }
 

@@ -1,8 +1,8 @@
-@import "breakpoints";
 @import "../settings/document";
 @import "../settings/component";
 @import "../css3/mixins";
 @import "../utilities/document";
+@import "../utilities/media";
 
 
 /// Document Reset & Standards
@@ -78,6 +78,9 @@
     list-style-position: map-get($Document,list-style-position);
     &:focus {
       @include tab-focus();
+    }
+    &>li{
+      margin:map-get($Document,list-item-margin);
     }
   }
 
@@ -191,7 +194,7 @@
     width: 100%;
   }
 
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     ///stop long touch from triggering dialog
     a {
       -webkit-touch-callout: none !important;

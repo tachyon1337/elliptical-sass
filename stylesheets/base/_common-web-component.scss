@@ -5,10 +5,13 @@
 @import "../settings/label";
 @import "../settings/icons";
 @import "../settings/base";
+@import "../settings/media";
 @import "element-tag";
 @import "../settings/grid";
 @import "../css3/flexbox";
 @import "../utilities/document";
+@import "../utilities/media";
+@import "../utilities/grid";
 @import "web-component";
 
 @function get-border-radius(){

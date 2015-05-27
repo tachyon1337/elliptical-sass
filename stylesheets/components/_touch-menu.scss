@@ -183,7 +183,7 @@ $icon-dropdown:null
     @content;
   }
 
-  @media #{$breakpoint-desktop}{
+  @include desktop-content(){
     touch-ui-menu{
       display:none;
     }

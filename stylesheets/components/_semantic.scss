@@ -67,6 +67,22 @@
   }
 
 }
+///@private
+@mixin _semantic-state($state){
+  background:map-nested-get($Semantic,$state,background) !important;
+  color:map-nested-get($Semantic,$state,font-color) !important;
+  border-color:map-nested-get($Semantic,$state,border) !important;
+  &:before{
+    color:map-nested-get($Semantic,$state,font-color) !important;
+  }
+  &:after{
+    color:map-nested-get($Semantic,$state,font-color) !important;
+  }
+  @include component-placeholder(map-nested-get($Semantic,$state,font-color));
+
+
+}
+
 
 @mixin _semantic-component($state){
   *{
@@ -83,21 +99,7 @@
 }
 
 
-///@private
-@mixin _semantic-state($state){
-    background:map-nested-get($Semantic,$state,background) !important;
-    color:map-nested-get($Semantic,$state,font-color) !important;
-    border-color:map-nested-get($Semantic,$state,border) !important;
-    &:before{
-      color:map-nested-get($Semantic,$state,font-color) !important;
-    }
-    &:after{
-      color:map-nested-get($Semantic,$state,font-color) !important;
-    }
-    @include component-placeholder(map-nested-get($Semantic,$state,font-color));
 
-
-}
 
 ///@public
 ///@param {Map} $map

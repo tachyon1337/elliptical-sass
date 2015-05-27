@@ -116,7 +116,7 @@ $menu-justification:null) {
     z-index: $z-index;
   }
   ///when the screen width matches grid width, we must further subtract gutter width from the max-width and use gutter width as the margin
-  @include grid-contain-content() {
+  @include grid-content() {
     & > section {
       left: 0;
       margin: 0;

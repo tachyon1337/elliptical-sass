@@ -405,7 +405,7 @@ $footer-margin:null
     }
   }
 
-  @media #{$breakpoint-phone}{
+  @include phone-content(){
     .ui-table{
       &.touch{
         display:block;

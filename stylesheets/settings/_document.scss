@@ -24,6 +24,7 @@ $document-outline: thin dotted map-get($Base,gray) !default;
 $document-touch-outline: thin solid transparent !default;
 $document-list-line-height: 1.25 !default;
 $document-list-style-position: inside !default;
+$document-list-item-margin:0 0 .5em 0 !default;
 $document-list-margin: 1em !default;
 $document-highlight-color: #c7254e !default;
 $document-highlight-background: map-get($Base,off-white) !default;
@@ -56,6 +57,7 @@ $Document: (
         list-line-height:$document-list-line-height,
         list-style-position:$document-list-style-position,
         list-margin:$document-list-margin,
+        list-item-margin:$document-list-item-margin,
         highlight-color:$document-highlight-color,
         highlight-background:$document-highlight-background,
         code-font-weight:$document-code-font-weight,

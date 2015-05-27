@@ -1,9 +1,9 @@
-@import "../base/breakpoints";
 @import "../settings/component";
 @import "../settings/icons";
 @import "../settings/semantic";
 @import "../settings/form";
 @import "../utilities/functions";
+@import "../utilities/media";
 @import "../base/web-component";
 
 @mixin input() {
@@ -142,7 +142,7 @@ $touch-border-radius: null
 
  }
 
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     @if $touch-border-radius == null{
       $touch-border-radius: $border-radius;
     }

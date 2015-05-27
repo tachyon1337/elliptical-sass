@@ -12,8 +12,6 @@ $typography-aside-paragraph-font-size: map-get($Document,font-size) !default;
 $typography-aside-paragraph-font-style: italic !default;
 $typography-aside-paragraph-line-height: 150% !default;
 $typography-inset: 0 1px 0 map-get($Base,white) !default;
-$typography-list-style-position: inside !default;
-$typography-list-line-height: 1.25 !default;
 $typography-hr-border-top: 1px solid map-get($Base,gray) !default;
 $typography-hr-border-bottom: 1px solid lighten(map-get($Base,gray), 10%) !default;
 $typography-hr-height: 1px !default;
@@ -66,8 +64,6 @@ $Typography: (
         aside-paragraph-font-style:$typography-aside-paragraph-font-style,
         aside-paragraph-line-height:$typography-aside-paragraph-line-height,
         inset:$typography-inset,
-        list-style-position:$typography-list-style-position,
-        list-line-height:$typography-list-line-height,
         hr-border-top:$typography-hr-border-top,
         hr-border-bottom:$typography-hr-border-bottom,
         hr-height:$typography-hr-height,

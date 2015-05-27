@@ -72,7 +72,7 @@ $font-size:null){
     }
   }
 
-  @include grid-contain-content() {
+  @include grid-content() {
     -webkit-column-count: $contain-count;
     -moz-column-count:$contain-count;
     column-count: $contain-count;
@@ -362,7 +362,7 @@ flex-box,.flex-box{
 ///               gap:<value>,
 ///               width:<value>
 ///         )
-///         grid-contain:(
+///         grid:(
 ///               count:<value>,
 ///               gap:<value>
 ///         ),
@@ -379,15 +379,15 @@ flex-box,.flex-box{
   $gap:map-nested-get-default($map,column,gap,1em);
   $width:map-nested-get-default($map,column,width,100px);
   $font-size:map-get-default($map,font-size,1em);
-  $grid-contain-count:map-nested-get-default($map,grid-contain,count,2);
-  $grid-contain-gap:map-nested-get-default($map,grid-contain,gap,1em);
+  $grid-count:map-nested-get-default($map,grid,count,2);
+  $grid-gap:map-nested-get-default($map,grid,gap,1em);
   $touch-count:map-nested-get-default($map,touch,count,2);
   $touch-gap:map-nested-get-default($map,touch,gap,1em);
   $touch-item-margin:map-nested-get-default($map,touch,item-margin,0 0 .5em 0);
   $touch-font-size:map-nested-get-default($map,touch,font-size,1em);
 
   $column-percentage: columns-to-percentage($count);
-  $contain-column-percentage: columns-to-percentage($grid-contain-count);
+  $contain-column-percentage: columns-to-percentage($grid-count);
   $touch-column-percentage: columns-to-percentage($touch-count);
 
 
@@ -396,17 +396,17 @@ flex-box,.flex-box{
     @if $class != null{
       &.#{$class} {
         @include _ui-columns($count,
-                $gap,
-                $width,
-                $grid-contain-count,
-                $grid-contain-gap,
-                $contain-column-percentage,
-                $touch-count,
-                $touch-gap,
-                $touch-column-percentage,
-                $touch-item-margin,
-                $touch-font-size,
-                $font-size);
+        $gap,
+        $width,
+        $grid-count,
+        $grid-gap,
+        $contain-column-percentage,
+        $touch-count,
+        $touch-gap,
+        $touch-column-percentage,
+        $touch-item-margin,
+        $touch-font-size,
+        $font-size);
         @content;
       }
 
@@ -414,8 +414,8 @@ flex-box,.flex-box{
       @include _ui-columns($count,
               $gap,
               $width,
-              $grid-contain-count,
-              $grid-contain-gap,
+              $grid-count,
+              $grid-gap,
               $contain-column-percentage,
               $touch-count,
               $touch-gap,
@@ -472,18 +472,18 @@ flex-box,.flex-box{
     @if $class != null{
       &.#{$class} {
         @include _ui-icons($component,
-                $justification,
-                $alignment,
-                $type,
-                $include-animation,
-                $animation,
-                $item-margin,
-                $item-padding,
-                $font-size,
-                $mark-font-size,
-                $mark-font-weight,
-                $mark-font-family,
-                $mark-margin
+        $justification,
+        $alignment,
+        $type,
+        $include-animation,
+        $animation,
+        $item-margin,
+        $item-padding,
+        $font-size,
+        $mark-font-size,
+        $mark-font-weight,
+        $mark-font-family,
+        $mark-margin
         );
         @content;
       }
@@ -502,7 +502,7 @@ flex-box,.flex-box{
               $mark-font-family,
               $mark-margin
       );
-      @content;
+        @content;
     }
   }
 }
@@ -512,11 +512,13 @@ flex-box,.flex-box{
 @mixin ui-sticky-footer(){
   ////sticky bottom footer
   .ui-sticky-footer {
+    @include flexbox();
     min-height: 100vh;
-    height: 100%;
-    @include flexbox-column();
-    & > footer[data-role=footer] {
-      margin-top: auto;
+    height:100%;
+    @include flex-direction(column);
+    & > *:not([data-role=footer]) {
+      //@include flex(1);
+      @include flex(1 0 auto);//ie workaround
     }
     &.ns{
       height:900px;//not supported workaround

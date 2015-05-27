@@ -254,7 +254,7 @@ $stacked-section-height:null
       }
     }
   }
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     ui-navbar ui-topbar + *{
       margin-top:0 !important;
     }
@@ -348,7 +348,7 @@ $stacked-section-height:null
 
 ///@public
 @mixin phone-navbar-brand(){
-  @media #{$breakpoint-phone}{
+  @include phone-content(){
     touch-ui-brand{
       @content;
     }
@@ -357,7 +357,7 @@ $stacked-section-height:null
 
 ///@public
 @mixin touch-navbar-brand(){
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     touch-ui-brand{
       @content;
     }

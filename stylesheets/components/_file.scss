@@ -159,7 +159,7 @@ $preview-columns:null
   }
 
   @if $hide-for-touch == true{
-    @media #{$breakpoint-touch}{
+    @include touch-content(){
       ui-file,[data-ui=file],.ui-file {
         border:none;
         ui-upload-overlay,.ui-upload-overlay {

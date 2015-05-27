@@ -1,6 +1,6 @@
 @import "../settings/core";
 @import "../utilities/functions";
-@import "breakpoints";
+@import "../utilities/media";
 @import "../utilities/component";
 
 ///@public
@@ -21,14 +21,18 @@
 ///                 font-color:<value>,
 ///                 border:<value>,
 ///                 text-shadow:<value>,
-///                 box-shadow:<value>
+///                 box-shadow:<value>,
+///                 icon:<value>,
+///                 icon-text-shadow:<value>
 ///         ),
 ///         active:(
 ///                 background:<value>,
 ///                 font-color:<value>,
 ///                 border:<value>,
 ///                 text-shadow:<value>,
-///                 box-shadow:<value>
+///                 box-shadow:<value>,
+///                 icon:<value>,
+///                 icon-text-shadow:<value>
 ///         ),
 ///         disabled:(
 ///                 background:<value>,
@@ -52,11 +56,15 @@
   $border-hover: map-nested-get($map,hover,border);
   $text-shadow-hover: map-nested-get($map,hover,text-shadow);
   $box-shadow-hover: map-nested-get($map,hover,box-shadow);
+  $icon-color-hover: map-nested-get($map,hover,icon-color);
+  $icon-text-shadow-hover: map-nested-get($map,hover,icon-text-shadow);
   $background-active: map-nested-get($map,active,background);
   $font-color-active: map-nested-get($map,active,font-color);
   $border-active: map-nested-get($map,active,border);
   $text-shadow-active: map-nested-get($map,active,text-shadow);
   $box-shadow-active: map-nested-get($map,active,box-shadow);
+  $icon-color-active: map-nested-get($map,active,icon-color);
+  $icon-text-shadow-active: map-nested-get($map,active,icon-text-shadow);
   $background-disabled: map-nested-get($map,disabled,background);
   $font-color-disabled: map-nested-get($map,disabled,font-color);
 
@@ -152,6 +160,22 @@
     }
   }
 
+  %#{$component}-icon-hover {
+    @if $icon-color-hover != null{
+      @include component-font-hover($icon-color-hover, $icon-text-shadow-hover);
+    }@else{
+      @extend %#{$component}-icon !optional;
+    }
+  }
+
+  %#{$component}-icon-active {
+    @if $icon-color-active != null{
+      @include component-font-hover($icon-color-active, $icon-text-shadow-active);
+    }@else{
+      @extend %#{$component}-icon-hover !optional;
+    }
+  }
+
   %#{$component}-placeholder {
     $_placeholder-color:$font-color;
     @if $placeholder-color !=null{
@@ -171,7 +195,7 @@
 ///@param {String} $component
 ///@param {Map} $map
 @mixin touch-component($component: null,$map:()) {
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     @include component($component,$map);
   }
 }
@@ -180,7 +204,7 @@
 ///@param {String} $component
 ///@param {Map} $map
 @mixin desktop-component($component: null,$map:()) {
-  @media #{$breakpoint-desktop}{
+  @include desktop-content(){
     @include component($component,$map);
   }
 }
@@ -345,7 +369,7 @@
 ///@param {String} $extend-component
 ///@param {Map} $map
 @mixin extend-touch-component($component:null,$extend-component:null,$map:()) {
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     @include extend-component($extend-component, $component,$map);
   }
 }

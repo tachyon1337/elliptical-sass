@@ -415,7 +415,14 @@
   @include component($component:css-collapse-header,$map:(
           background:map-nested-get($Theme,collapse-header,background),
           font-color:map-nested-get($Theme,collapse-header,font-color),
-          border:0
+          border:0,
+          hover:(
+                   font-color:map-nested-get($Theme,collapse-header,font-color-hover)
+          ),
+          active:(
+                  background:map-nested-get($Theme,collapse-header,background-active),
+                  font-color:map-nested-get($Theme,collapse-header,font-color-active)
+          )
   ));
 
   @include component($component:css-collapse-section,$map:(

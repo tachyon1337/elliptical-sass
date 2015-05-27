@@ -1,0 +1,126 @@
+@import "../settings/media";
+
+
+///@public
+@mixin touch-content(){
+  @media #{map-get($Media,touch)}{
+    @content;
+  }
+}
+
+
+///@public
+@mixin tablet-content(){
+  @media #{map-get($Media,tablet)}{
+    @content;
+  }
+}
+
+
+///@public
+@mixin tablet-portrait-content(){
+  @media #{map-get($Media,tablet-portrait)}{
+    @content;
+  }
+}
+
+
+///@public
+@mixin tablet-landscape-content(){
+  @media #{map-get($Media,tablet-landscape)}{
+    @content;
+  }
+}
+
+
+///@public
+@mixin phone-content(){
+  @media #{map-get($Media,phone)}{
+    @content;
+  }
+}
+
+
+///@public
+@mixin phone-portrait-content(){
+  @media #{map-get($Media,phone-portrait)}{
+    @content;
+  }
+}
+
+///@public
+@mixin phone-landscape-content(){
+  @media #{map-get($Media,phone-landscape)}{
+    @content;
+  }
+}
+
+///@public
+@mixin desktop-content(){
+  @media #{map-get($Media,desktop)}{
+    @content;
+  }
+}
+
+///@public
+@mixin medium-content(){
+  @media #{map-get($Media,medium)}{
+    @content;
+  }
+}
+
+///@public
+@mixin large-content(){
+  @media #{map-get($Media,large)}{
+    @content;
+  }
+}
+
+///@public
+@mixin x-large-content(){
+  @media #{map-get($Media,x-large)}{
+    @content;
+  }
+}
+
+///@public
+@mixin grid-content(){
+  @media #{map-get($Media,grid)}{
+    @content;
+  }
+}
+
+///@public
+@mixin portrait-content(){
+  @media #{map-get($Media,portrait)}{
+    @content;
+  }
+}
+
+///@public
+@mixin landscape-content(){
+  @media #{map-get($Media,landscape)}{
+    @content;
+  }
+}
+
+///@public
+@mixin media-breakpoint($width:null,$min-width:null){
+  @if $min-width==null{
+    @media only screen and (max-width: #{$width}){
+      @content;
+    }
+  }@else{
+    @media only screen and (max-width: #{$width}) and (min-width:#{$min-width}){
+      @content;
+    }
+  }
+
+}
+
+///@public
+@mixin media-breakpoint-min($width:null){
+  @media only screen and (min-width: #{$width}){
+    @content;
+  }
+}

@@ -115,7 +115,7 @@ $star-color-empty: null
 ///@public
 /// @param {String} $star-color
 @mixin touch-ui-rating($star-color:map-get($Base,gray-light)) {
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     &>rating-item {
       .star {
         color: $star-color;

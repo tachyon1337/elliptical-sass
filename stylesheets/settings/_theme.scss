@@ -25,35 +25,43 @@ $theme-input-border-hover: 1px solid #2b9af3 !default;
 $theme-input-placeholder-color: #d4d4d4 !default;
 $theme-input-alt-box-shadow: #f4f4f4 0 0 0 4px !default;
 $theme-input-border-active:1px solid #2b9af3 !default;
+
 //checkbox
 $theme-checkbox-color: $_off-black !default;
 $theme-checkbox-border: 2px solid $_gray !default;
 $theme-checkbox-icon-color: #5c5c5c !default;
+
 //switch
 $theme-switch-background: $_white, #fefefe !default;
 $theme-switch-background-active: #00e02a !default;
 $theme-switch-border: $_gray $_gray #bbb $_gray !default;
 $theme-switch-border-active: darken($theme-switch-background-active, 10%) !default;
+
 //switch toggle
 $theme-switch-toggle-border-active: 2px solid darken($_gray, 10%) !default;
+
 //file input
 $theme-input-file-background: $_off-white !default;
 $theme-input-file-font-color: #aaa !default;
 $theme-input-file-font-color-active: $_gray-medium-light !default;
 $theme-input-file-border: 5px dashed $_gray !default;
 $theme-input-file-border-hover: 5px dashed darken($_gray, 10%) !default;
+
 //datepicker
 $theme-datepicker-background: ($_white, #f5f5f5);
 $theme-datepicker-icon-color: #bbb;
 $theme-datepicker-button-background: #f5f5f5 !default;
+
 //dropdown
 $theme-dropdown-background: $_white, #fcfcfc !default;
 $theme-dropdown-font-color: $_gray-medium !default;
 $theme-dropdown-background-disabled: none !default;
 $theme-dropdown-border: $_gray-light $_gray-light #bbb $_gray-light !default;
+
 //divider
 $theme-divider-background: $_gray !default;
 $theme-divider-border: #f2f2f2 !default;
+
 //tabs
 $theme-tabs-background: $_gray-light !default;
 $theme-tabs-background-active: $_white !default;
@@ -61,38 +69,46 @@ $theme-tabs-border: 1px solid $_gray-light !default;
 $theme-tabs-border-active: 1px solid $_gray-light !default;
 $theme-tabs-font-color: $_font-color !default;
 $theme-tabs-font-color-active: $theme-tabs-font-color !default;
+
 //rating
 $theme-rating-font-color: $_font-color !default;
 $theme-rating-empty-color: $_gray-light !default;
+
 //social
 $theme-social-background: $_transparent !default;
 $theme-social-border: none !default;
 $theme-social-icon-color: #bbb !default;
 $theme-social-icon-text-shadow: rgba(0, 0, 0, .80) 0 -1px 0 !default;
+
 //css-bar
 $theme-topbar-background: $_dark-light !default;
 $theme-topbar-font-color: $_gray-medium-light !default;
 $theme-topbar-text-shadow: none !default;
 $theme-topbar-border: 0 !default;
 $theme-topbar-box-shadow: none !default;
+
 //menu
 $theme-menu-background-hover: $_black !default;
 $theme-menu-font-color: $_gray !default;
 $theme-menu-font-color-hover: $_gray !default;
 $theme-menu-font-color-active: $_gray !default;
+
 //menu-divider
 $theme-menu-divider-background: none !default;
 $theme-menu-divider-border: lighten($theme-topbar-background, 10%) !default;
+
 //window
 $theme-window-background: $_white !default;
 $theme-window-font-color: $_font-color !default;
 $theme-window-border: 1px solid $_white !default;
 $theme-window-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3) !default;
+
 //window header
 $theme-window-header-background: #f7f7f7, #f5f5f5 !default;
 $theme-window-header-font-color: $_gray-medium-light !default;
 $theme-window-header-text-shadow: 0px 2px 3px $_white !default;
 $theme-window-header-border: 1px solid $_gray-light !default;
+
 //window close
 $theme-window-close-background: #f5f5f5 !default;
 $theme-window-close-background-hover: $_off-white !default;
@@ -101,23 +117,32 @@ $theme-window-close-font-color-hover: #8f8f8f !default;
 $theme-window-close-text-shadow: 0px 1px 0px $_white !default;
 $theme-window-close-border: 1px solid $_gray-light !default;
 $theme-window-close-box-shadow: inset 1px 0 0 rgba(255, 255, 255, .5) !default;
+
 //window footer
 $theme-window-footer-text-shadow: none !default;
 $theme-window-footer-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5) !default;
+
 //sliding panel
 $theme-sliding-panel-background: $_white !default;
 $theme-sliding-panel-font-color: $_font-color !default;
 $theme-sliding-panel-border: 0 !default;
 $theme-sliding-panel-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3) !default;
+
 //collapse
 $theme-collapse-background: #e0e0e0 !default;
 $theme-collapse-border: 2px solid #e0e0e0 !default;
+
 //collapse header
 $theme-collapse-header-background: #f4f4f4 !default;
 $theme-collapse-header-font-color: $_font-color !default;
+$theme-collapse-header-font-color-hover: $theme-collapse-header-font-color !default;
+$theme-collapse-header-font-color-active:$theme-collapse-header-font-color-hover !default;
+$theme-collapse-header-background-active:$theme-collapse-header-background !default;
+
 //collapse section
 $theme-collapse-section-background: $_white !default;
 $theme-collapse-section-font-color: $_font-color !default;
+
 //oauth
 $theme-oauth-font-color:$_white !default;
 $theme-oauth-google:#dd4b39 !default;
@@ -263,13 +288,16 @@ $Theme: (
                 border:$theme-sliding-panel-border,
                 box-shadow:$theme-sliding-panel-box-shadow
         ),
-        collpase:(
+        collapse:(
                 background:$theme-collapse-background,
                 border:$theme-collapse-border
         ),
         collapse-header:(
                 background:$theme-collapse-header-background,
-                font-color:$theme-collapse-header-font-color
+                font-color:$theme-collapse-header-font-color,
+                font-color-hover:$theme-collapse-header-font-color-hover,
+                font-color-active:$theme-collapse-header-font-color-active,
+                background-active:$theme-collapse-header-background-active
         ),
         collapse-section:(
                 background:$theme-collapse-section-background,

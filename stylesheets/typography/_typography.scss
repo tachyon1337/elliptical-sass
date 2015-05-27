@@ -4,7 +4,7 @@
 @import "../settings/component";
 @import "../settings/semantic";
 @import "../utilities/functions";
-@import "../base/breakpoints";
+@import "../utilities/media";
 
 @mixin typography-reset(){
   $_zero:map-get($Base,zero);
@@ -246,7 +246,7 @@
     font-size: map-get($Typography,header-6);
   }
 
-  @media #{$breakpoint-tablet} {
+  @include medium-content() {
 
     h1 {
       font-size: $tablet-factor*map-get($Typography,header-1);
@@ -263,7 +263,7 @@
   }
 
   ///Media queries
-  @media #{$breakpoint-phone} {
+  @include phone-content() {
     h1 {
       font-size: $phone-factor*map-get($Typography,header-1);
     }

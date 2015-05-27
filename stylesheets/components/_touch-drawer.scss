@@ -94,7 +94,7 @@ $tags: null, $template-tag: null, $class: null, $map: ()) {
   $search-input-icon-top: map-nested-get-default($map, search, input-icon-top, .4em);
   $search-input-icon-right: map-nested-get-default($map, search, input-icon-right, .4em);
 
-  @media #{$breakpoint-desktop}{
+  @include desktop-content(){
     touch-ui-drawer {
       display: none;
     }

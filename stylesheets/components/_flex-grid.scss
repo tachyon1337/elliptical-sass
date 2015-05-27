@@ -327,6 +327,17 @@ $grid-tag:null
         }
       }
     }
+    &:empty{
+      min-height:200px;
+      &:after{
+        content:'There is no data available for this query...';
+        margin:1em 0 0 1em;
+        @include phone-content(){
+          font-size:.9em;
+        }
+      }
+
+    }
   }
   @for $j from 2 through $_max-columns{
     &[columns="#{$j}"]{

@@ -4,6 +4,7 @@
 @import "../css3/flexbox";
 @import "../settings/form";
 @import "../utilities/form";
+@import "../utilities/media";
 
 
 
@@ -21,14 +22,14 @@ $touch-border-radius: null){
     $icon:$search-icon;
   }
   display:block;
-  @media #{$breakpoint-desktop}{
+  @include desktop-content(){
     $padding-right: 3em;
     $right: .3em;
     width:100%;
     @include _form-input-icon($component:$component, $font-size:$font-size, $border-radius:$border-radius,
     $icon:$icon,$icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
   }
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     @if $touch-border-radius == null{
       $touch-border-radius: $border-radius;
     }
@@ -699,7 +700,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
     }
   }
 
-  @media #{$breakpoint-phone} {
+  @include phone-content() {
     @include element-tag($tag:$tag,$tags:$tags,$class:$class){
       width: 90%;
     }
@@ -783,5 +784,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   }
 
 }
+
+
 
 

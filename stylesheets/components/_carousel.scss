@@ -2,8 +2,10 @@
 
 ///@private
 @mixin _ui-carousel($component: null,
-$height: null,
+$max-height: null,
+$min-height:null,
 $width: null,
+$max-width:null,
 $margin: null,
 $justification: null,
 $alignment: null,
@@ -53,9 +55,12 @@ $indicator-icon-margin: null) {
   position: relative;
   @include flexbox($justification: $justification, $alignment: $alignment);
   width: $width;
-  @if $height !=null {
-    height: $height;
+  max-width:$max-width;
+  @if $max-height !=null {
+    max-height: $max-height;
+    overflow:hidden;
   }
+  min-height:$min-height;
   @include touch-content(){
     height:auto;
   }
@@ -257,16 +262,12 @@ $indicator-icon-margin: null) {
       opacity: 1;
     }
 
-    //-webkit-justify-content: center;
-    //justify-content: center;
-
     carousel-inner-container {
       width:85%;
       carousel-items, ui-template {
         width: auto;
         & > carousel-item {
           @include flexbox-column($justification: $item-justification, $alignment: $item-alignment);
-          //display: inline-block;
           @if $item-width !=null {
             min-width: $item-width !important;
             max-width: $item-width !important;
@@ -313,7 +314,7 @@ $indicator-icon-margin: null) {
           height: auto;
         }
         @if $include-touch-media-queries==true {
-          @include tablet-content() {
+          @include medium-content() {
             img {
               max-width: 150% !important;
               margin-left: -25% !important;
@@ -336,7 +337,7 @@ $indicator-icon-margin: null) {
         max-width: 100%;
         min-width: 100%;
         @if $include-touch-media-queries==true {
-          @include tablet-content() {
+          @include medium-content() {
             img {
               max-width: 150% !important;
               margin-left: -25% !important;
@@ -366,10 +367,13 @@ $indicator-icon-margin: null) {
 ///         constrain-image-to-width:<value>,
 ///         z-index:<value>,
 ///         height:<value>,
+///         min-height:<value>,
 ///         width:<value>,
+///         max-width:<value>,
 ///         margin:<value>,
 ///         justification:<value>,
 ///         alignment:<value>,
+///         full-width-breakpoint:<value>,
 ///         inner-container:(
 ///                 width:<value>,
 ///                 max-width:<value>
@@ -422,6 +426,11 @@ $indicator-icon-margin: null) {
 ///                 icon-color:<value>,
 ///                 icon-active-color:<value>,
 ///                 icon-margin:<value>
+///         ),
+///         touch:(
+///                 width:<value>,
+///                 max-width:<value>,
+///                 min-height:<value>
 ///         )
 ///
 /// )
@@ -433,10 +442,13 @@ $indicator-icon-margin: null) {
   $include-touch-media-queries: map-get-default($map, include-touch-media-queries, true);
   $constrain-image-to-width: map-get-default($map, constrain-image-to-width, true);
   $z-index: map-get-default($map, z-index, $_z-index + 99);
-  $height: map-get-default($map, height, auto);
-  $width: map-get-default($map, width, 100%);
+  $max-height: map-get($map, height);
+  $min-height:map-get-default($map, min-height, 0);
+  $width: map-get-default($map, width, auto);
+  $max-width: map-get-default($map, max-width, 100%);
   $margin: map-get($map, margin);
   $justification: map-get-default($map, justification, center);
+  $full-width-breakpoint:map-get($map,full-width-breakpoint);
   $alignment: map-get-default($map, alignment, flex-start);
   $inner-container-width: map-nested-get($map, inner-container, width);
   $inner-container-max-width: map-nested-get-default($map, inner-container, max-width, none);
@@ -477,12 +489,17 @@ $indicator-icon-margin: null) {
   $indicator-icon-color: map-nested-get-default($map, indicator, icon-color, $_white);
   $indicator-icon-active-color: map-nested-get-default($map, indicator, icon-active-color, $indicator-icon-color);
   $indicator-icon-margin: map-nested-get-default($map, indicator, icon-margin, 0 .75em 0 0);
+  $touch-width:map-nested-get-default($map, touch, width, auto);
+  $touch-max-width:map-nested-get-default($map, touch, max-width, 100%);
+  $touch-min-height:map-nested-get-default($map, touch, min-height, 0);
 
   $tag: ui-carousel;
   @include element-tag($tag: $tag, $tags: $tags, $template-tag: $template-tag, $class: $class) {
     @include _ui-carousel($component,
-            $height,
+            $max-height,
+            $min-height,
             $width,
+            $max-width,
             $margin,
             $justification,
             $alignment,
@@ -531,16 +548,25 @@ $indicator-icon-margin: null) {
     );
 
     @content;
-  }
 
-  //don't show navigation for touch
-  @include touch-content() {
-    ui-carousel {
+    @if $full-width-breakpoint !=null{
+      @include media-breakpoint($full-width-breakpoint){
+        width:100%;
+        max-width:100%;
+      }
+    }
+
+    @include touch-content() {
+      width:$touch-width;
+      max-width:$touch-max-width;
+      min-height:$touch-min-height;
       .ui-button, carousel-navigation {
-        display: none;
+        display: none;//don't show navigation for touch
       }
       overflow-x: hidden;
     }
+
+
   }
 }
 

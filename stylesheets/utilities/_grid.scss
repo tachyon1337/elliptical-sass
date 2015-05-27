@@ -1,5 +1,5 @@
 @import "../settings/grid";
-@import "breakpoints";
+@import "media";
 @import "../css3/flexbox";
 
 @mixin gutter-bleed(){
@@ -46,7 +46,6 @@
     @content;
   }
 }
-
 
 
 

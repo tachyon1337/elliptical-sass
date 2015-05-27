@@ -236,7 +236,7 @@ $item-stacked-padding:null
     @content;
   }
 
-  @media #{$breakpoint-touch}{
+  @include touch-content(){
     ui-menu{
       display:none;
     }

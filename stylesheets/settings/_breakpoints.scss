@@ -1,20 +1,27 @@
 
-///Screen Breakpoints
-$screen-tablet: 1200px !default;
-$screen-grid-tablet: 1100px !default;
-$screen-smartphone: 600px !default;
-$screen-tablet-portrait: $screen-smartphone + 1 !default;
-$screen-tabs: 800px !default;
-$screen-smartphone-portrait: 320px !default;
-$screen-desktop: $screen-tablet + 1 !default;
-
+///Media Breakpoints
+$breakpoint-tablet: 1280px !default;
+$breakpoint-medium:1024px !default;
+$breakpoint-smartphone: 600px !default;
+$breakpoint-tablet-portrait: $breakpoint-smartphone + 1 !default;
+$breakpoint-smartphone-portrait: 220px !default;
+$breakpoint-desktop: $breakpoint-tablet + 1 !default;
+$breakpoint-tabs: 800px !default;
+$include-desktop-medium:false !default;
+$breakpoint-desktop-medium: 1100px !default;
+$breakpoint-desktop-medium-height:700px !default;
+$breakpoint-x-large:1440px !default;
 
 $Breakpoint: (
-        tablet:$screen-tablet,
-        tablet-portrait:$screen-tablet-portrait,
-        smartphone:$screen-smartphone,
-        smartphone-portrait:$screen-smartphone-portrait,
-        grid-tablet:$screen-grid-tablet,
-        desktop:$screen-desktop,
-        tabs:$screen-tabs
+        tablet:$breakpoint-tablet,
+        medium:$breakpoint-medium,
+        tablet-portrait:$breakpoint-tablet-portrait,
+        smartphone:$breakpoint-smartphone,
+        smartphone-portrait:$breakpoint-smartphone-portrait,
+        desktop:$breakpoint-desktop,
+        tabs:$breakpoint-tabs,
+        include-desktop-medium:$include-desktop-medium,
+        desktop-medium:$breakpoint-desktop-medium,
+        desktop-medium-height:$breakpoint-desktop-medium-height,
+        x-large:$breakpoint-x-large
 );

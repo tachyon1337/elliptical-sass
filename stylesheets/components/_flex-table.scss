@@ -3,7 +3,7 @@
 
 
 ///@private
-@mixin _flex-table-breakpoint($breakpoint,$headers,$len,$tag){
+@mixin _flex-table-breakpoint($breakpoint,$headers,$len,$tag,$font,$color){
   @include media-breakpoint($breakpoint){
     section {
       #{$tag} {
@@ -11,6 +11,12 @@
           &:nth-of-type(#{$len}n + #{$i}){
             &:before{
               content: '#{nth($headers,$i)}';
+              @if $font !=null{
+                font-family:$font;
+              }
+              @if $color !=null{
+                color:$color;
+              }
             }
           }
         }
@@ -20,36 +26,36 @@
 }
 
 
-@mixin _flex-table-touch-headers($breakpoint,$headers,$len,$tag){
+@mixin _flex-table-touch-headers($breakpoint,$headers,$len,$tag,$font,$color){
   &.breakpoint{
-    @include _flex-table-breakpoint($breakpoint,$headers,$len,$tag);
+    @include _flex-table-breakpoint($breakpoint,$headers,$len,$tag,$font,$color);
   }
-  &[breakpoint="1000"]{
-    @include _flex-table-breakpoint(1000px,$headers,$len,$tag);
+  &[breakpoint="1024"]{
+    @include _flex-table-breakpoint(1024px,$headers,$len,$tag,$font,$color);
   }
   &[breakpoint="950"]{
-    @include _flex-table-breakpoint(950px,$headers,$len,$tag);
+    @include _flex-table-breakpoint(950px,$headers,$len,$tag,$font,$color);
   }
   &[breakpoint="900"]{
-    @include _flex-table-breakpoint(900px,$headers,$len,$tag);
+    @include _flex-table-breakpoint(900px,$headers,$len,$tag,$font,$color);
   }
   &[breakpoint="850"]{
-    @include _flex-table-breakpoint(850px,$headers,$len,$tag);
+    @include _flex-table-breakpoint(850px,$headers,$len,$tag,$font,$color);
   }
   &[breakpoint="800"]{
-    @include _flex-table-breakpoint(800px,$headers,$len,$tag);
+    @include _flex-table-breakpoint(800px,$headers,$len,$tag,$font,$color);
   }
-  &[breakpoint="750"]{
-    @include _flex-table-breakpoint(750px,$headers,$len,$tag);
+  &[breakpoint="768"]{
+    @include _flex-table-breakpoint(768px,$headers,$len,$tag,$font,$color);
   }
   &[breakpoint="700"]{
-    @include _flex-table-breakpoint(700px,$headers,$len,$tag);
+    @include _flex-table-breakpoint(700px,$headers,$len,$tag,$font,$color);
   }
   &[breakpoint="650"]{
-    @include _flex-table-breakpoint(650px,$headers,$len,$tag);
+    @include _flex-table-breakpoint(650px,$headers,$len,$tag,$font,$color);
   }
   &[breakpoint="600"]{
-    @include _flex-table-breakpoint(600px,$headers,$len,$tag);
+    @include _flex-table-breakpoint(600px,$headers,$len,$tag,$font,$color);
   }
 }
 
@@ -98,13 +104,18 @@
 ///        cell-border-bottom:<value>,
 ///        font-size:<value>,
 ///        border-radius:<value>,
-///        header-left:<value>
+///        header-left:<value>,
+///        header-font:<value>,
+///        header-font-color:<value>
 ///   )
 /// )
-@mixin flex-table($component:css-flex-table,$tags:null,$template-tag:null,$class:null,$headers:(),$map:()){
+@mixin flex-table($component:css-flex-table,$tags:null,$template-tag:null,$class:null,$columns:(),$map:()){
 
   $_white:map-get($Base,white);
   $_icon-font-family:map-get($Icons,font-family);
+
+  $_columns:length($columns);
+  $touch-breakpoint:map-get-default($map,breakpoint,750px);
 
   $font-size:map-get-default($map,font-size,1em);
   $border-radius:map-get-default($map,border-radius,0);
@@ -126,7 +137,6 @@
   $cell-background:map-nested-get-default($map,cell,background,$_white);
   $cell-background-alt:map-nested-get-default($map,cell,background-alt,#f5f5f5);
   $footer-background:map-nested-get-default($map,footer,background,$_white);
-  $touch-breakpoint:map-nested-get-default($map,touch,breakpoint,750px);
   $touch-cell-padding:map-nested-get-default($map,touch,cell-padding,0 .5em 1em 11em);
   $touch-cell-padding-bottom:map-nested-get-default($map,touch,cell-padding-bottom,2em);
   $touch-cell-margin-top:map-nested-get-default($map,touch,cell-margin-top,1em);
@@ -134,18 +144,20 @@
   $touch-font-size:map-nested-get-default($map,touch,font-size,16px);
   $touch-border-radius:map-nested-get-default($map,touch,border-radius,0);
   $touch-header-left:map-nested-get-default($map,touch,header-left,10px);
+  $touch-header-font:map-nested-get($map,touch,header-font);
+  $touch-header-font-color:map-nested-get($map,touch,header-font-color);
 
   $tag:flex-table;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
-    @include _flex-grid($component,$font-size,$border-radius,$columns,$header-color,$header-font,$header-bold,$header-background,$header-icon-font,$header-icon-up,$header-icon-down,
+    @include _flex-grid($component,$font-size,$border-radius,$_columns,$header-color,$header-font,$header-bold,$header-background,$header-icon-font,$header-icon-up,$header-icon-down,
             $justification,$alignment,$cell-justification,$cell-alignment,$cell-padding,$cell-height,$cell-show-borders,$cell-background,$cell-background-alt,
             $footer-background, $touch-breakpoint, $touch-cell-padding,$touch-cell-padding-bottom,$touch-cell-margin-top,$touch-cell-border-bottom,
             $touch-font-size,$touch-border-radius,$touch-header-left,cell-item);
     @content;
 
-    $len:length($headers);
-    @if $len > 0{
-      @include _flex-table-touch-headers($touch-breakpoint,$headers,$len,cell-item);
+
+    @if $_columns > 0{
+      @include _flex-table-touch-headers($touch-breakpoint,$columns,$_columns,cell-item,$touch-header-font,$touch-header-font-color);
     }
 
   }

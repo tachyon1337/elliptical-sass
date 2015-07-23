@@ -51,6 +51,11 @@
   .inline{
     display:inline;
   }
+
+  .inline-important{
+    display:inline !important;
+  }
+
   .absolute {
     position: absolute;
   }
@@ -248,6 +253,13 @@
     font-size:1em
   }
 
+  .size-12{
+    font-size:12px;
+  }
+
+  .size-14{
+    font-size:14px;
+  }
 
   .size-16{
     font-size:16px;
@@ -304,6 +316,21 @@
 
   .pressed {
     background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .opacity-0{
+    opacity:0;
+  }
+
+  .opacity-1{
+    opacity:1;
+  }
+
+  .hover{
+    cursor:pointer;
+  }
+  [hover]{
+    cursor:pointer;
   }
 
 }

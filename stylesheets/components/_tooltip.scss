@@ -47,7 +47,7 @@ $tip-color:null
   $padding:map-get-default($map,padding,.2em .5em .2em .5em);
   $font-size:map-get-default($map,font-size,.8em);
   $z-index:map-get-default($map,z-index,$_z-index + 99999);
-  $tip-color:map-nested-get-default($map,tip,color,$_tip-color);
+  $tip-color:map-get-default($map,tip-color,$_tip-color);
 
   .data-tooltip {
     @if $class != null{

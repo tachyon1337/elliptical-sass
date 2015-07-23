@@ -1,0 +1,17 @@
+@import "../settings/core";
+
+///@public
+@mixin utilities-color(){
+  .primary{
+    color:map-nested-get($Core,primary,color);
+  }
+
+  .secondary{
+    color:map-nested-get($Core,secondary,color);
+  }
+
+  .inverse{
+    color:map-nested-get($Core,inverse,color);
+  }
+}
+

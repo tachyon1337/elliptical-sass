@@ -1,5 +1,26 @@
 @import "media";
 
+///@access private
+@mixin _visibility-display(){
+  display: initial !important;
+  &.block{
+    display:block !important;
+  }
+  &.inline{
+    display:inline !important;
+  }
+  &.flex{
+    display:-webkit-flex !important;
+    display:flex !important
+  }
+}
+
+/// semantic visibility classes
+/// @access public
+/// @require {Mixin} _visibility-display -  display properties mixin
+/// @example
+///   <div class="hide-for-medium-down"></div>
+///   <div class="show-for-medium-up flex"></div>
 @mixin utilities-visibility(){
   .hide-for-desktop,
   .hide-for-large,
@@ -21,7 +42,7 @@
   .show-for-medium-up
   .show-for-desktop,
   .show-for-large{
-    display: inherit !important;
+    @include _visibility-display();
   }
 
   .hide-for-touch,
@@ -29,7 +50,7 @@
   .hide-for-small,
   .hide-for-tablet-down,
   .hide-for-medium-down{
-    display: inherit !important;
+
   }
 
 
@@ -38,7 +59,7 @@
     .show-for-small,
     .show-for-tablet-down,
     .show-for-medium-down{
-      display: inherit !important;
+      @include _visibility-display();
     }
 
     .hide-for-tablet-down,
@@ -58,7 +79,7 @@
     .hide-for-medium-up,
     .hide-for-desktop,
     .hide-for-large{
-      display: inherit !important;
+      @include _visibility-display();
     }
 
     .hide-for-phone,
@@ -67,7 +88,7 @@
     }
 
     .show-for-touch{
-      display: inherit !important;
+      @include _visibility-display();
     }
     .hide-for-touch{
       display: none !important;
@@ -88,7 +109,7 @@
     .show-for-medium,
     .show-for-tablet-up,
     .show-for-medium-up{
-      display: inherit !important;
+      @include _visibility-display();
     }
 
     .show-for-desktop,
@@ -106,10 +127,10 @@
     }
     .hide-for-desktop,
     .hide-for-large{
-      display: inherit !important;
+      @include _visibility-display();
     }
     .show-for-touch{
-      display: inherit !important;
+      display: initial !important;
     }
     .hide-for-touch{
       display: none !important;
@@ -119,7 +140,7 @@
   @include portrait-content(){
     .show-for-portrait,
     .hide-for-landscape{
-      display:inherit;
+      @include _visibility-display();
     }
     .show-for-landscape,
     .hide-for-portrait{
@@ -133,7 +154,7 @@
     }
     .show-for-landscape,
     .hide-for-portrait{
-      display:inherit;
+      @include _visibility-display();
     }
   }
 

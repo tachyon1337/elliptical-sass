@@ -8,6 +8,13 @@
   }
 }
 
+///@public
+@mixin medium-content(){
+  @media #{map-get($Media,medium)}{
+    @content;
+  }
+}
+
 
 ///@public
 @mixin tablet-content(){
@@ -36,6 +43,13 @@
 ///@public
 @mixin phone-content(){
   @media #{map-get($Media,phone)}{
+    @content;
+  }
+}
+
+///@public
+@mixin small-content(){
+  @media #{map-get($Media,small)}{
     @content;
   }
 }

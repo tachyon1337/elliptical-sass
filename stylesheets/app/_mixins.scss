@@ -49,23 +49,42 @@
   @include utilities-visibility();
 }
 
+@mixin elliptical-skeleton-utilities(){
+  @include utilities-convenience();
+  @include utilities-hardware-acceleration();
+  @include utilities-visibility();
+}
 
 @mixin elliptical-animations(){
+  @include animations-base();
   @include animations-fade();
   @include animations-slide();
 }
 
+@mixin elliptical-skeleton(){
+  @include normalize();
+  @include flexbox-container();
+  @include elliptical-document();
+  @include elliptical-skeleton-utilities();
+  @include elliptical-semantic();
+  @include animations-base();
+  @include animations-fade();
+}
+
+
 @mixin elliptical-project(){
   @include normalize();
+  @include flexbox-container();
   @include elliptical-fonts();
   @include elliptical-document();
   @include elliptical-typography();
   @include elliptical-utilities();
+  @include utilities-color();
   @include elliptical-forms();
   @include elliptical-grid();
   @include elliptical-buttons();
   @include elliptical-notification();
   @include elliptical-semantic();
   @include elliptical-animations();
-
 }
+

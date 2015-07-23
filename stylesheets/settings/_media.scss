@@ -8,7 +8,7 @@ $_desktop-medium: map-get($Breakpoint, desktop-medium);
 $_desktop-medium-height: map-get($Breakpoint, desktop-medium-height);
 $_touch-device-max-height: $_desktop-medium-height - 1;
 $_medium: map-get($Breakpoint, medium);
-$_large: $_desktop-medium + 1;
+$_large: map-get($Breakpoint,x-large);
 $_small-portrait: map-get($Breakpoint, smartphone-portrait);
 
 ///screen
@@ -55,7 +55,7 @@ $media-desktop: "only screen and (min-width: #{map-get($Breakpoint,desktop)})" !
 };
 
 ///large
-$media-large: "only screen and (min-width: #{$_large})" !default;
+$media-large: "only screen and (max-width: #{$_large})" !default;
 
 ///grid contain
 $media-grid: "only screen and (max-width:#{map-get($Grid,width)}) and (min-width: #{map-get($Breakpoint,desktop)})" !default;
@@ -70,16 +70,17 @@ $Media: (
         screen:$media-screen,
         touch:$media-touch,
         phone:$media-phone,
+        small:$media-phone,
         phone-landscape:$media-phone-landscape,
         phone-portrait:$media-phone-portrait,
         tablet:$media-tablet,
         tablet-landscape:$media-tablet-landscape,
         tablet-portrait:$media-tablet-portrait,
         desktop:$media-desktop,
+        large:$media-large,
         tabs:$media-tabs,
         grid:$media-grid,
         medium:$media-medium,
-        large:$media-large,
         x-large:$media-x-large
 );
 

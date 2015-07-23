@@ -273,10 +273,12 @@
   }
 }
 
-///@public
-/// {String} $component
-/// {String} $active-component
-/// {String} $class
+///@access public
+///@param {String} $component
+///@param {String} $active-component
+///@param {String} $class
+///@content css
+///@require {Mixin}  _ui-button-group
 @mixin ui-button-group($component: default, $active-component: null,$class: null) {
 
   ui-button-group {

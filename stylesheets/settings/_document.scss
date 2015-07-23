@@ -9,7 +9,7 @@ $document-font-weight: normal !default;
 $document-font-smoothing: antialiased !default;
 $document-margin: 0 !default;
 $document-padding: 0 !default;
-$document-link-font-size: $document-font-size !default;
+$document-link-font-size: 1em !default;
 $document-link-color: #888 !default;
 $document-link-color-hover: darken($document-link-color, 15%) !default;
 $document-link-font-weight: normal !default;
@@ -41,7 +41,7 @@ $Document: (
         font-smoothing:$document-font-smoothing,
         margin:$document-margin,
         padding:$document-padding,
-        link-font-size:$document-font-size,
+        link-font-size:$document-link-font-size,
         link-color:$document-link-color,
         link-color-hover:$document-link-color-hover,
         link-font-weight:$document-link-font-weight,

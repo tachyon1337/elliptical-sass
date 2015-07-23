@@ -1,6 +1,18 @@
 @import "../base/common-web-component";
 
+@mixin loading-rotation(){
+  @-webkit-keyframes loading-rotation {
+    0% 		{ -webkit-transform: rotate(0deg); }
+    50% 	{ -webkit-transform: rotate(180deg); }
+    100% 	{ -webkit-transform: rotate(360deg); }
+  }
 
+  @keyframes loading-rotation {
+    0% 		{ transform: rotate(0deg); }
+    50% 	{ transform: rotate(180deg); }
+    100% 	{ transform: rotate(360deg); }
+  }
+}
 /// @public
 ///@param {Map} $map
 /// $map:(
@@ -14,7 +26,7 @@
 ///         )
 /// )
 @mixin ui-loading($map:()){
-
+  @include loading-rotation();
   $_secondary-color:map-nested-get($Core,secondary,color);
   $_white:map-get($Base,white);
   $_inner-border-color:darken($_secondary-color,10%);
@@ -77,14 +89,3 @@
   }
 }
 
-@-webkit-keyframes loading-rotation {
-  0% 		{ -webkit-transform: rotate(0deg); }
-  50% 	{ -webkit-transform: rotate(180deg); }
-  100% 	{ -webkit-transform: rotate(360deg); }
-}
-
-@keyframes loading-rotation {
-  0% 		{ transform: rotate(0deg); }
-  50% 	{ transform: rotate(180deg); }
-  100% 	{ transform: rotate(360deg); }
-}

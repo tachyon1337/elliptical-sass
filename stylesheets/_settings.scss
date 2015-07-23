@@ -18,7 +18,7 @@
 /// breakpoints -------------------
 //$breakpoint-tablet: 1280px;
 //$breakpoint-medium:1024px;
-//$breakpoint-smartphone: 600px;
+//$breakpoint-smartphone: 640px;
 //$breakpoint-tablet-portrait: $breakpoint-smartphone + 1;
 //$breakpoint-smartphone-portrait: 220px;
 //$breakpoint-desktop: $breakpoint-tablet + 1;
@@ -38,7 +38,7 @@
 //$document-font-smoothing: antialiased;
 //$document-margin: 0;
 //$document-padding: 0;
-//$document-link-font-size: $document-font-size;
+//$document-link-font-size: 1em;
 //$document-link-color: #888;
 //$document-link-color-hover: darken($document-link-color, 15%);
 //$document-link-font-weight: normal;

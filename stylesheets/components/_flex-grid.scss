@@ -112,6 +112,72 @@ $phone-info-font-size:null
   }
 };
 
+///@private
+@mixin _flex-grid-columns-breakpoint($breakpoint,$headers,$len,$tag,$font,$color){
+  @include media-breakpoint($breakpoint){
+    section {
+      #{$tag} {
+        width:100%;
+        @for $i from 1 through $len{
+          &:nth-of-type(#{$len}n + #{$i}){
+            &:before{
+              content: '#{nth($headers,$i)}';
+              @if $font !=null{
+                font-family:$font;
+              }
+              @if $color !=null{
+                color:$color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@mixin _flex-grid-touch-columns($breakpoint,$headers,$len,$tag,$font,$color){
+  &.breakpoint{
+    @include _flex-grid-columns-breakpoint($breakpoint,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="1024"]{
+    @include _flex-grid-columns-breakpoint(1024px,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="950"]{
+    @include _flex-grid-columns-breakpoint(950px,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="900"]{
+    @include _flex-grid-columns-breakpoint(900px,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="850"]{
+    @include _flex-grid-columns-breakpoint(850px,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="800"]{
+    @include _flex-grid-columns-breakpoint(800px,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="768"]{
+    @include _flex-grid-columns-breakpoint(768px,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="700"]{
+    @include _flex-grid-columns-breakpoint(700px,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="650"]{
+    @include _flex-grid-columns-breakpoint(650px,$headers,$len,$tag,$font,$color);
+  }
+  &[breakpoint="600"]{
+    @include _flex-grid-columns-breakpoint(600px,$headers,$len,$tag,$font,$color);
+  }
+}
+
+
+
+
+
+
+
+
+
 
 ///@private
 @mixin _flex-grid-breakpoint($touch-breakpoint,$touch-cell-padding,$columns,$touch-cell-padding-bottom,$touch-cell-margin-top,
@@ -159,19 +225,40 @@ $touch-cell-border-bottom,$touch-font-size,$header-font,$header-color,$touch-bor
       }
     }
   }
-  @include media-breakpoint(400px){
+  @include media-breakpoint(600px){
     @include gutter-bleed();
     border-right:0 !important;
     border-left:0 !important;
+    padding-left:.5em;
     section{
       &>grid-item{
         padding-right:16px;
+        font-size:14px;
         &:nth-of-type(n){
           &:before{
             left:16px;
           }
         }
       }
+    }
+  }
+}
+
+///@private
+@mixin _even-cell-alt($columns,$cell-background-alt){
+  @for $i from 1 through $columns{
+    &:nth-of-type(#{2*$columns}n + #{$i + $columns}){
+      background:$cell-background-alt;
+    }
+  }
+}
+
+///@private
+@mixin _odd-cell-alt($columns,$cell-background-alt){
+  @for $i from 1 through $columns{
+
+    &:nth-of-type(#{2*$columns}n + #{$i} ){
+      background:$cell-background-alt;
     }
   }
 }
@@ -217,6 +304,7 @@ $cell-height:null,
 $cell-show-borders:null,
 $cell-background:null,
 $cell-background-alt:null,
+$cell-alt-type:null,
 $footer-background:null,
 $touch-breakpoint:null,
 $touch-cell-padding:null,
@@ -257,6 +345,8 @@ $grid-tag:null
       border-bottom:0 !important;
       padding:$cell-padding;
       min-height:$cell-height;
+      max-height:$cell-height;
+      overflow:hidden;
       @include flexbox($justification:$justification,$alignment:$alignment);
 
       @if $header-color !=null{
@@ -270,6 +360,10 @@ $grid-tag:null
       }
       &[sortable]{
         cursor:pointer;
+      }
+      &>.label{
+        overflow:hidden;
+        max-height:.85*$cell-height;
       }
       &.up{
         &:after{
@@ -321,11 +415,13 @@ $grid-tag:null
           border-right:0 !important;
         }
       }
-      @for $i from 1 through $columns{
-        &:nth-of-type(#{2*$columns}n + #{$i + $columns}){
-          background:$cell-background-alt;
-        }
+      @if($cell-alt-type==even){
+        @include _even-cell-alt($columns,$cell-background-alt);
+      }@else{
+        @include _odd-cell-alt($columns,$cell-background-alt);
       }
+
+
     }
     &:empty{
       min-height:200px;
@@ -359,7 +455,8 @@ $grid-tag:null
     @include _flex-grid-breakpoint($touch-breakpoint,$touch-cell-padding,$columns,$touch-cell-padding-bottom,$touch-cell-margin-top,
             $touch-cell-border-bottom,$touch-font-size,$header-font,$header-color,$touch-border-radius,$touch-header-left,$grid-tag);
   }
-  &[breakpoint="1000"]{
+
+  &[breakpoint="1024"]{
     @include _flex-grid-breakpoint(1000px,$touch-cell-padding,$columns,$touch-cell-padding-bottom,$touch-cell-margin-top,
             $touch-cell-border-bottom,$touch-font-size,$header-font,$header-color,$touch-border-radius,$touch-header-left,$grid-tag);
   }
@@ -379,8 +476,8 @@ $grid-tag:null
     @include _flex-grid-breakpoint(800px,$touch-cell-padding,$columns,$touch-cell-padding-bottom,$touch-cell-margin-top,
             $touch-cell-border-bottom,$touch-font-size,$header-font,$header-color,$touch-border-radius,$touch-header-left,$grid-tag);
   }
-  &[breakpoint="750"]{
-    @include _flex-grid-breakpoint(750px,$touch-cell-padding,$columns,$touch-cell-padding-bottom,$touch-cell-margin-top,
+  &[breakpoint="768"]{
+    @include _flex-grid-breakpoint(768px,$touch-cell-padding,$columns,$touch-cell-padding-bottom,$touch-cell-margin-top,
             $touch-cell-border-bottom,$touch-font-size,$header-font,$header-color,$touch-border-radius,$touch-header-left,$grid-tag);
   }
   &[breakpoint="700"]{
@@ -405,8 +502,10 @@ $grid-tag:null
 /// @param {List} $tags
 /// @param {String} $template-tag
 /// @param {String} $class
+/// @param {List} $columns
 /// @param {Map} $map
 ///  $map:(
+///   breakpoint:<value>,
 ///   font-size:<value>,
 ///   border-radius:<value>,
 ///   columns:<value>,
@@ -429,7 +528,8 @@ $grid-tag:null
 ///        height:<value>,
 ///        show-borders:<value>,
 ///        background:<value>
-///        background-alt:<value>
+///        background-alt:<value>,
+///        alt-type:<value>,
 ///   ),
 ///   footer:(
 ///        background:<value>
@@ -442,17 +542,21 @@ $grid-tag:null
 ///        cell-border-bottom:<value>,
 ///        font-size:<value>,
 ///        border-radius:<value>,
-///        header-left:<value>
+///        header-left:<value>,
+///        header-font:<value>,
+///        header-font-color:<value>
 ///   )
 /// )
-@mixin flex-grid($component:css-flex-grid,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin flex-grid($component:css-flex-grid,$tags:null,$template-tag:null,$class:null,$map:(),$columns:()){
 
   $_white:map-get($Base,white);
   $_icon-font-family:map-get($Icons,font-family);
 
+  $_columns:length($columns);
+  $touch-breakpoint:map-get-default($map,breakpoint,750px);
+
   $font-size:map-get-default($map,font-size,1em);
   $border-radius:map-get-default($map,border-radius,0);
-  $columns:map-get-default($map,columns,4);
   $header-background:map-nested-get-default($map,header,background,$_white);
   $header-color:map-nested-get($map,header,color);
   $header-font:map-nested-get($map,header,font);
@@ -469,8 +573,8 @@ $grid-tag:null
   $cell-show-borders:map-nested-get-default($map,cell,show-borders,true);
   $cell-background:map-nested-get-default($map,cell,background,$_white);
   $cell-background-alt:map-nested-get-default($map,cell,background-alt,#f5f5f5);
+  $cell-alt-type:map-nested-get-default($map,cell,alt-type,even);
   $footer-background:map-nested-get-default($map,footer,background,$_white);
-  $touch-breakpoint:map-nested-get-default($map,touch,breakpoint,750px);
   $touch-cell-padding:map-nested-get-default($map,touch,cell-padding,0 .5em 1em 11em);
   $touch-cell-padding-bottom:map-nested-get-default($map,touch,cell-padding-bottom,2em);
   $touch-cell-margin-top:map-nested-get-default($map,touch,cell-margin-top,1em);
@@ -478,14 +582,21 @@ $grid-tag:null
   $touch-font-size:map-nested-get-default($map,touch,font-size,16px);
   $touch-border-radius:map-nested-get-default($map,touch,border-radius,0);
   $touch-header-left:map-nested-get-default($map,touch,header-left,10px);
+  $touch-header-font:map-nested-get($map,touch,header-font);
+  $touch-header-font-color:map-nested-get($map,touch,header-font-color);
 
   $tag:flex-grid;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
-    @include _flex-grid($component,$font-size,$border-radius,$columns,$header-color,$header-font,$header-bold,$header-background,$header-icon-font,$header-icon-up,$header-icon-down,
-            $justification,$alignment,$cell-justification,$cell-alignment,$cell-padding,$cell-height,$cell-show-borders,$cell-background,$cell-background-alt,
+    @include _flex-grid($component,$font-size,$border-radius,$_columns,$header-color,$header-font,$header-bold,$header-background,$header-icon-font,$header-icon-up,$header-icon-down,
+            $justification,$alignment,$cell-justification,$cell-alignment,$cell-padding,$cell-height,$cell-show-borders,$cell-background,$cell-background-alt,$cell-alt-type,
             $footer-background, $touch-breakpoint, $touch-cell-padding,$touch-cell-padding-bottom,$touch-cell-margin-top,$touch-cell-border-bottom,
             $touch-font-size,$touch-border-radius,$touch-header-left,grid-item);
     @content;
+
+    @if $_columns > 0{
+      @include _flex-grid-touch-columns($touch-breakpoint,$columns,$_columns,grid-item,$touch-header-font,$touch-header-font-color);
+    }
+
   }
 }
 

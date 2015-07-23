@@ -2,7 +2,7 @@
 
 
 ///@extend
-%ui-semantic-label{
+@mixin semantic-label(){
   margin:map-nested-get($Label,semantic,margin);
   padding:map-nested-get($Label,semantic,padding);
   width:100%;
@@ -34,10 +34,12 @@
 }
 
 
+
 ///@private
 @mixin _semantic-label($component) {
   .ui-semantic-label,ui-semantic-label{
-    @extend %ui-semantic-label;
+    //@extend %ui-semantic-label;
+    @include semantic-label();
     &.#{$component}{
       @include web-component-default($component:$component);
       box-shadow:none !important;
@@ -225,6 +227,5 @@
   @include _semantic-component(info);
   @include _semantic-component(warning);
   @include _semantic-component(success);
-
 
 }

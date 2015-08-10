@@ -127,6 +127,9 @@ $item-stacked-padding:null
       }
       &>ui-mega-dropdown{
         display:block !important;
+        &.hide{
+            display:none !important;
+        }
       }
       @extend %#{$component}-background-hover !optional;
       &>a{

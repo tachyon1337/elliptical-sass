@@ -511,6 +511,7 @@ $grid-tag:null
 ///   columns:<value>,
 ///   justification:<value>,
 ///   alignment:<value>,
+///   column-count,
 ///   header:(
 ///       background:<value>,
 ///       color:<value>,
@@ -548,13 +549,15 @@ $grid-tag:null
 ///   )
 /// )
 @mixin flex-grid($component:css-flex-grid,$tags:null,$template-tag:null,$class:null,$map:(),$columns:()){
-
+  
   $_white:map-get($Base,white);
   $_icon-font-family:map-get($Icons,font-family);
 
   $_columns:length($columns);
+  @if $_columns==0{
+      $_columns:map-get-default($map,column-count,4);
+  }
   $touch-breakpoint:map-get-default($map,breakpoint,750px);
-
   $font-size:map-get-default($map,font-size,1em);
   $border-radius:map-get-default($map,border-radius,0);
   $header-background:map-nested-get-default($map,header,background,$_white);
@@ -593,7 +596,7 @@ $grid-tag:null
             $touch-font-size,$touch-border-radius,$touch-header-left,grid-item);
     @content;
 
-    @if $_columns > 0{
+    @if length($columns) > 0{
       @include _flex-grid-touch-columns($touch-breakpoint,$columns,$_columns,grid-item,$touch-header-font,$touch-header-font-color);
     }
 

@@ -1,0 +1,226 @@
+
+
+/// strips unit
+/// @access public
+/// @param {Number} $num
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+
+/// converts a value to em
+/// @access public
+/// @param {*} $value
+/// @param {*} $base-value
+@function convert-to-em($value, $base-value: map-get($Document, font-size)) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if ($value == 0em) {
+    $value: 0;
+  }
+  @return $value;
+}
+
+
+/// @access public
+/// @param {*} $value
+/// @param {*} $base-value
+@function em-calc($values, $base-value: map-get($Document, font-size)) {
+  $max: length($values);
+  @if $max == 1 {
+    @return convert-to-em(nth($values, 1), $base-value);
+  }
+
+  $emValues: ();
+  @for $i from 1 through $max {
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+  }
+  @return $emValues;
+}
+
+
+/// @access public
+/// @param {Number} $column-number
+/// @param {Number} $total-columns
+@function grid-calc($column-number, $total-columns) {
+  @return percentage(($column-number / $total-columns));
+}
+
+
+/// converts columns to percentage
+/// @access public
+/// @param {Number} $columns
+/// @return {Number}
+@function columns-to-percentage($columns) {
+ 
+  $v: (1/$columns)*100;
+  $v1: $v;
+  $v2: ($v1/100)*100%;
+  @return $v2;
+}
+
+
+/// convert fraction to decimal
+/// @access public
+/// @param {Number}
+/// @return {Number}
+@function convert-to-decimal($fraction) {
+  $result: ($fraction*100)/100;
+  @return $result;
+}
+
+
+/// returns the margin-left/padding-left value for a margin/padding shorthand list
+/// @access public
+/// @param {List} $margin
+/// @return {*}
+@function margin-left($margin) {
+  @if (type_of($margin) == list) {
+    $length: length($margin);
+    @if $length == 1 {
+      @return $margin;
+    } @else if $length == 2 {
+      @return nth($margin, 2);
+    } @else if $length == 3 {
+      @return nth($margin, 2);
+    } @else {
+      @return nth($margin, 4);
+    }
+  } @else {
+    @return $margin;
+  }
+}
+
+
+/// returns the margin-right/padding-right value for a margin/padding shorthand list
+/// @access public
+/// @param {List} $margin
+/// @return {*}
+@function margin-right($margin) {
+  @if (type_of($margin) == list) {
+    $length: length($margin);
+    @if $length == 1 {
+      @return $margin;
+    } @else {
+      @return nth($margin, 2);
+    }
+  } @else {
+    @return $margin;
+  }
+}
+
+
+/// returns the margin-top/padding-top value for a margin/padding shorthand list
+/// @access public
+/// @param {List} $margin
+/// @return {*}
+@function margin-top($margin) {
+  @if (type_of($margin) == list) {
+    $length: length($margin);
+    @if $length == 1 {
+      @return $margin;
+    } @else {
+      @return nth($margin, 1);
+    }
+  } @else {
+    @return $margin;
+  }
+}
+
+
+/// returns the margin-bottom/padding-bottom value for a margin/padding shorthand list
+/// @access public
+/// @param {List} $margin
+/// @return {*}
+@function margin-bottom($margin) {
+  @if (type_of($margin) == list) {
+    $length: length($margin);
+    @if $length == 1 {
+      @return $margin;
+    } @else if $length == 2 {
+      @return nth($margin, 1);
+    } @else {
+      @return nth($margin, 3);
+    }
+  } @else {
+    @return $margin;
+  }
+}
+
+
+/// returns an absolute top position for an icon
+/// @access public
+/// @param {List} $padding
+/// @param {*} $icon-size
+/// @return {*}
+@function icon-position($padding, $icon-size) {
+  $padding-top: margin-top($padding);
+  $padding-top: strip-unit($padding-top);
+  $padding-bottom: margin-top($padding);
+  $padding-bottom: strip-unit($padding-bottom);
+  $size: strip-unit($icon-size);
+  $size: $size*2;
+  $fraction-top: ($padding-top + $padding-bottom);
+  $fraction: $fraction-top/$size;
+  $decimal: convert-to-decimal($fraction);
+  $top: #{$decimal}em;
+  @return $top;
+
+}
+
+
+/// returns an absolute right position for an icon
+/// @access public
+/// @param {*} $icon-size
+/// @return {*}
+@function icon-position-right($icon-size) {
+  $size: strip-unit($icon-size);
+  @if $size <= 1.1 {
+    @return .5em;
+  } @else if ($size > 1.1 and $size <=2) {
+    @return .1em;
+  } @else {
+    @return 1px;
+  }
+}
+
+
+/// returns an absolute left position for an icon
+/// @access public
+/// @param {*} $icon-size
+/// @return {*}
+@function icon-position-left($icon-size) {
+  $pos: icon-position-right($icon-size);
+  @return $pos;
+}
+
+
+/// returns a line height
+/// @access public
+/// @param {*} $icon-size
+/// @param {*} $line-height
+/// @return {*}
+@function component-line-height($icon-size, $line-height) {
+  $size: strip-unit($icon-size);
+  $decimal: convert-to-decimal($line-height/$size);
+  @return $decimal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

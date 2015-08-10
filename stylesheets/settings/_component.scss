@@ -1,7 +1,6 @@
 @import "base";
 
 $include-component-gradient: true !default;
-$include-component-gradient-inset: true !default;
 $include-component-text-shadow: false !default;
 $include-component-box-shadow: false !default;
 $include-component-active-box-shadow: true !default;
@@ -13,7 +12,6 @@ $component-hover-darken-factor: 4% !default;
 $component-border-hover-darken-factor: 4% !default;
 $component-border: 1px solid !default;
 $component-text-shadow: 0 1px 0 !default;
-$component-inset-box-shadow: rgba(0, 0, 0, .20) 0px 1px 1px, rgba(255, 255, 255, .40) 0 1px 0 0 inset !default;
 $component-box-shadow: rgba(0, 0, 0, .20) 0px 1px 1px !default;
 $component-box-shadow-active: inset 0 3px 5px rgba(0, 0, 0, .175) !default;
 $component-background-disabled: map-get($Base,off-white) !default;
@@ -33,7 +31,6 @@ $component-touch-icon-size:32px !default;
 
 $Component: (
         include-gradient:$include-component-gradient,
-        include-gradient-inset:$include-component-gradient-inset,
         include-text-shadow:$include-component-text-shadow,
         include-box-shadow:$include-component-box-shadow,
         include-active-box-shadow:$include-component-active-box-shadow,
@@ -45,7 +42,6 @@ $Component: (
         border-hover-darken-factor:$component-border-hover-darken-factor,
         border:$component-border,
         text-shadow:$component-text-shadow,
-        inset-box-shadow:$component-inset-box-shadow,
         box-shadow:$component-box-shadow,
         box-shadow-active:$component-box-shadow-active,
         background-disabled:$component-background-disabled,

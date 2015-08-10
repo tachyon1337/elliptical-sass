@@ -1,7 +1,7 @@
 @import "../settings/grid";
-@import "../utilities/unit-functions";
-@import "../utilities/document";
-@import "../utilities/media";
+@import "../functions/functions";
+@import "../mixins/document";
+@import "../mixins/media";
 
 ///grid
 
@@ -16,7 +16,7 @@
 
 
 
-///@public
+/// @access public
 @mixin grid-row($type: null,
 $row-width: map-get($Grid,width),
 $column-gutter: map-get($Grid,column-gutter)) {
@@ -48,7 +48,7 @@ $column-gutter: map-get($Grid,column-gutter)) {
   @include clearfix();
 }
 
-///@public
+/// @access public
 @mixin grid-column($columns: false,
 $last-column: false,
 $center: false,
@@ -107,7 +107,7 @@ $total-columns: map-get($Grid,columns)) {
 
 }
 
-///@public
+/// @access public
 @mixin grid($row-width: map-get($Grid,width),
 $column-gutter: map-get($Grid,column-gutter),
 $total-columns: map-get($Grid,columns),

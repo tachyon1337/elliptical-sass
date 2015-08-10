@@ -1,22 +1,36 @@
 @import "../settings/media";
 
 
-///@public
+/// @access public
 @mixin touch-content(){
   @media #{map-get($Media,touch)}{
     @content;
   }
 }
 
-///@public
+/// @access public
 @mixin medium-content(){
   @media #{map-get($Media,medium)}{
     @content;
   }
 }
 
+/// @access public
+@mixin medium-landscape-content(){
+  @media #{map-get($Media,medium-landscape)}{
+    @content;
+  }
+}
 
-///@public
+/// @access public
+@mixin medium-portrait-content(){
+  @media #{map-get($Media,medium-portrait)}{
+    @content;
+  }
+}
+
+
+/// @access public
 @mixin tablet-content(){
   @media #{map-get($Media,tablet)}{
     @content;
@@ -24,7 +38,7 @@
 }
 
 
-///@public
+/// @access public
 @mixin tablet-portrait-content(){
   @media #{map-get($Media,tablet-portrait)}{
     @content;
@@ -32,22 +46,14 @@
 }
 
 
-///@public
+/// @access public
 @mixin tablet-landscape-content(){
   @media #{map-get($Media,tablet-landscape)}{
     @content;
   }
 }
 
-
-///@public
-@mixin phone-content(){
-  @media #{map-get($Media,phone)}{
-    @content;
-  }
-}
-
-///@public
+/// @access public
 @mixin small-content(){
   @media #{map-get($Media,small)}{
     @content;
@@ -55,70 +61,87 @@
 }
 
 
-///@public
+/// @access public
+@mixin small-portrait-content(){
+  @media #{map-get($Media,phone-portrait)}{
+    @content;
+  }
+}
+
+/// @access public
+@mixin small-landscape-content(){
+  @media #{map-get($Media,phone-landscape)}{
+    @content;
+  }
+}
+
+
+/// @access public
+@mixin phone-content(){
+  @media #{map-get($Media,phone)}{
+    @content;
+  }
+}
+
+
+/// @access public
 @mixin phone-portrait-content(){
   @media #{map-get($Media,phone-portrait)}{
     @content;
   }
 }
 
-///@public
+/// @access public
 @mixin phone-landscape-content(){
   @media #{map-get($Media,phone-landscape)}{
     @content;
   }
 }
 
-///@public
-@mixin desktop-content(){
-  @media #{map-get($Media,desktop)}{
-    @content;
-  }
-}
-
-///@public
-@mixin medium-content(){
-  @media #{map-get($Media,medium)}{
-    @content;
-  }
-}
-
-///@public
+/// @access public
 @mixin large-content(){
   @media #{map-get($Media,large)}{
     @content;
   }
 }
 
-///@public
+/// @access public
+@mixin desktop-content(){
+  @media #{map-get($Media,desktop)}{
+    @content;
+  }
+}
+
+
+/// @access public
 @mixin x-large-content(){
   @media #{map-get($Media,x-large)}{
     @content;
   }
 }
 
-///@public
+/// @access public
 @mixin grid-content(){
   @media #{map-get($Media,grid)}{
     @content;
   }
 }
 
-///@public
+/// @access public
 @mixin portrait-content(){
   @media #{map-get($Media,portrait)}{
     @content;
   }
 }
 
-///@public
+/// @access public
 @mixin landscape-content(){
   @media #{map-get($Media,landscape)}{
     @content;
   }
 }
 
-///@public
+/// @access public
 @mixin media-breakpoint($width:null,$min-width:null){
   @if $min-width==null{
     @media only screen and (max-width: #{$width}){
@@ -132,7 +155,7 @@
 
 }
 
-///@public
+/// @access public
 @mixin media-breakpoint-min($width:null){
   @media only screen and (min-width: #{$width}){
     @content;

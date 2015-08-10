@@ -2,9 +2,8 @@
 @import "../settings/icons";
 @import "../settings/semantic";
 @import "../settings/form";
-@import "../utilities/functions";
-@import "../utilities/media";
-@import "../base/web-component";
+@import "../functions/functions";
+@import "../mixins/media";
 
 @mixin input() {
   input[type="text"],

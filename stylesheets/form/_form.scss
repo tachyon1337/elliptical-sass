@@ -1,10 +1,8 @@
 @import "../base/common-web-component";
-@import "../utilities/document";
-@import "../css3/transition";
-@import "../css3/flexbox";
+@import "../mixins/document";
 @import "../settings/form";
-@import "../utilities/form";
-@import "../utilities/media";
+@import "../mixins/form";
+@import "../mixins/media";
 
 
 
@@ -271,6 +269,9 @@ $touch-border-radius: null){
   ui-checkbox{
     display:block;
     position:relative;
+     &:hover{
+        cursor:pointer;
+    }
     input[type="checkbox"] {
       position: absolute;
       left: 0;
@@ -344,6 +345,9 @@ $touch-border-radius: null){
   ui-radio{
     display:block;
     position:relative;
+    &:hover{
+        cursor:pointer;
+    }
     input[type="radio"] {
       opacity: 0;
     }
@@ -356,6 +360,7 @@ $touch-border-radius: null){
       padding-bottom: 0;
       margin-bottom: 0;
       line-height: 1;
+      cursor:pointer;
       &:before {
         content: "";
         display: block;

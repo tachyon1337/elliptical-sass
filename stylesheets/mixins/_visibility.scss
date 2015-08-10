@@ -21,7 +21,7 @@
 /// @example
 ///   <div class="hide-for-medium-down"></div>
 ///   <div class="show-for-medium-up flex"></div>
-@mixin utilities-visibility(){
+@mixin mixins-visibility(){
   .hide-for-desktop,
   .hide-for-large,
   .show-for-phone,

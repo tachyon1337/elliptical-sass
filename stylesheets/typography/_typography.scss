@@ -3,8 +3,8 @@
 @import "../settings/typography";
 @import "../settings/component";
 @import "../settings/semantic";
-@import "../utilities/functions";
-@import "../utilities/media";
+@import "../functions/functions";
+@import "../mixins/media";
 
 @mixin typography-reset(){
   $_zero:map-get($Base,zero);

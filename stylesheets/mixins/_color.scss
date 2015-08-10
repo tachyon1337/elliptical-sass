@@ -1,7 +1,7 @@
 @import "../settings/core";
 
 ///@public
-@mixin utilities-color(){
+@mixin mixins-color(){
   .primary{
     color:map-nested-get($Core,primary,color);
   }

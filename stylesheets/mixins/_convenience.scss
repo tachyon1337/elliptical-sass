@@ -1,7 +1,7 @@
 @import "media";
 
 ///@public
-@mixin utilities-convenience() {
+@mixin mixins-convenience() {
 
   .flex-right,.flex-end{
     margin-left:auto !important;

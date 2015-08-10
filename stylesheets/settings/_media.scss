@@ -1,39 +1,44 @@
 @import "breakpoints";
 @import "grid";
 
-$_include-desktop-medium: map-get($Breakpoint, include-desktop-medium);
-$_touch-device-width: map-get($Breakpoint, tablet);
-$_desktop-device-width: $_touch-device-width + 1;
-$_desktop-medium: map-get($Breakpoint, desktop-medium);
-$_desktop-medium-height: map-get($Breakpoint, desktop-medium-height);
-$_touch-device-max-height: $_desktop-medium-height - 1;
-$_medium: map-get($Breakpoint, medium);
-$_large: map-get($Breakpoint,x-large);
-$_small-portrait: map-get($Breakpoint, smartphone-portrait);
+$_enforce-hybrid-display: map-get($Breakpoint, enforce-hybrid-display);
+$_hybrid-large:map-get($Breakpoint,hybrid-medium) + 1;
 
 ///screen
 $media-screen: "only screen" !default;
 
-///smartphone
-$media-phone: "only screen and (max-width: #{map-get($Breakpoint,smartphone)})" !default;
+///small,phone
+$media-small: "only screen and (max-width: #{map-get($Breakpoint,small)})" !default;
+$media-phone:$media-small;
 
-///smartphone-landscape
-$media-phone-landscape: "only screen and (max-width: #{map-get($Breakpoint,smartphone)}) and (orientation:landscape)" !default;
+///small-landscape,phone landscape
+$media-small-landscape: "only screen and (max-width: #{map-get($Breakpoint,small)}) and (orientation:landscape)" !default;
+$media-phone-landscape:$media-small-landscape;
 
-///smartphone-portrait
-$media-phone-portrait: "only screen and (max-width: #{map-get($Breakpoint,smartphone-portrait)}) and (orientation:portrait)" !default;
-
-///tablet
-$media-tablet: "only screen and (max-width: #{map-get($Breakpoint,tablet)}) and (min-width: #{map-get($Breakpoint,smartphone)})" !default;
-
-///tablet-landscape
-$media-tablet-landscape: "only screen and (max-width: #{map-get($Breakpoint,tablet)}) and (min-width: #{map-get($Breakpoint,smartphone)}) and (orientation:landscape)" !default;
-
-///tablet-portrait
-$media-tablet-portrait: "only screen and (max-width: #{map-get($Breakpoint,tablet-portrait)}) and (min-width: #{map-get($Breakpoint,smartphone)}) and (orientation:portrait)" !default;
+///smart-portrait,phone-portrait
+$media-small-portrait: "only screen and (max-width: #{map-get($Breakpoint,small-portrait)}) and (orientation:portrait)" !default;
+$media-phone-portrait:$media-small-portrait;
 
 ///medium
-$media-medium: "only screen and (max-width: #{$_medium}) and (min-width: #{map-get($Breakpoint,smartphone)})" !default;
+$media-medium: "only screen and (max-width: #{map-get($Breakpoint,medium)}) and (min-width: #{map-get($Breakpoint,small)})" !default;
+
+///medium-landscape
+$media-medium-landscape: "only screen and (max-width: #{map-get($Breakpoint,medium)}) and (min-width: #{map-get($Breakpoint,small)}) and (orientation:landscape)" !default;
+
+///medium-portrait
+$media-medium-portrait: "only screen and (max-width: #{map-get($Breakpoint,medium-portrait)}) and (min-width: #{map-get($Breakpoint,small)}) and (orientation:portrait)" !default;
+
+/// touch
+$media-touch: "only screen and (max-width: #{map-get($Breakpoint,medium)}) and (min-width: #{map-get($Breakpoint,tiny)})" !default;
+
+/// large
+$media-large: "only screen and (min-width: #{map-get($Breakpoint,large)})" !default;
+
+/// x-large
+$media-x-large: "only screen and (min-width: #{map-get($Breakpoint,x-large)})" !default;
+
+//grid contain
+$media-grid: "only screen and (max-width:#{map-get($Grid,width)}) and (min-width: #{map-get($Breakpoint,desktop)})" !default;
 
 ///landscape
 $media-landscape: "only screen and (orientation: landscape)" !default;
@@ -41,47 +46,45 @@ $media-landscape: "only screen and (orientation: landscape)" !default;
 ///portrait
 $media-portrait: "only screen and (orientation: portrait)" !default;
 
-///touch
-$media-touch: "only screen and (max-width: #{map-get($Breakpoint,tablet)}) and (min-width: #{map-get($Breakpoint,smartphone-portrait)})" !default;
-
-@if $_include-desktop-medium==true {
-  $media-touch: "only screen and (max-width: #{$_desktop-medium}) and (min-width: #{$_small-portrait}),only screen and (max-width:#{$_touch-device-width}) and (max-height:#{$_touch-device-max-height}) and (orientation:landscape),only screen and (max-width:#{$_touch-device-width}) and (min-width:#{$_small-portrait}) and (orientation:portrait)";
-};
-
-///desktop
-$media-desktop: "only screen and (min-width: #{map-get($Breakpoint,desktop)})" !default;
-@if $_include-desktop-medium==true {
-  $media-desktop: "only screen and (min-width:#{$_large}) and (min-height:#{$_desktop-medium-height}) and (orientation:landscape),only screen and (min-width:#{$_desktop-device-width})";
-};
-
-///large
-$media-large: "only screen and (max-width: #{$_large})" !default;
-
-///grid contain
-$media-grid: "only screen and (max-width:#{map-get($Grid,width)}) and (min-width: #{map-get($Breakpoint,desktop)})" !default;
-
 ///tabs
 $media-tabs: "only screen and (min-width: #{map-get($Breakpoint,tabs)})" !default;
 
-///x-large
-$media-x-large:"only screen and (min-width: #{map-get($Breakpoint,x-large)})" !default;
+@if $_enforce-hybrid-display==true{
+        $media-touch: "only screen and (max-width: #{map-get($Breakpoint,medium)}) and (min-width: #{map-get($Breakpoint,tiny)}), only screen and (max-width:#{map-get($Breakpoint,hybrid-medium)}) and (max-height:#{map-get($Breakpoint,hybrid-medium-height)}) and (orientation:landscape)" !default;
+        $media-medium: "only screen and (max-width: #{map-get($Breakpoint,medium)}) and (min-width: #{map-get($Breakpoint,small)}), only screen and (max-width:#{map-get($Breakpoint,hybrid-medium)}) and (max-height:#{map-get($Breakpoint,hybrid-medium-height)}) and (orientation:landscape)" !default;
+        $media-medium-landscape: "only screen and (max-width: #{map-get($Breakpoint,medium)}) and (min-width: #{map-get($Breakpoint,small)}) and (orientation:landscape), only screen and (max-width:#{map-get($Breakpoint,hybrid-medium)}) and (max-height:#{map-get($Breakpoint,hybrid-medium-height)}) and (orientation:landscape)" !default;
+        $media-large: "only screen and (min-width:#{map-get($Breakpoint,medium)}) and (max-width:#{map-get($Breakpoint,hybrid-medium)}) and (min-height:#{map-get($Breakpoint,hybrid-medium-height)}) and (orientation:landscape), only screen and (min-width:#{$_hybrid-large})" !default;
+}
+
+$media-tablet:$media-medium;
+$media-tablet-landscape:$media-medium-landscape;
+$media-tablet-portrait:$media-medium-portrait;
+$media-desktop:$media-large;
+
+
 
 $Media: (
         screen:$media-screen,
         touch:$media-touch,
-        phone:$media-phone,
-        small:$media-phone,
-        phone-landscape:$media-phone-landscape,
-        phone-portrait:$media-phone-portrait,
+        medium:$media-medium,
+        medium-landscape:$media-tablet-landscape,
+        medium-portrait:$media-tablet-portrait,
         tablet:$media-tablet,
         tablet-landscape:$media-tablet-landscape,
         tablet-portrait:$media-tablet-portrait,
-        desktop:$media-desktop,
+        small:$media-small,
+        small-landscape:$media-small-landscape,
+        small-portrait:$media-small-portrait,
+        phone:$media-phone,
+        phone-landscape:$media-phone-landscape,
+        phone-portrait:$media-phone-portrait,
         large:$media-large,
-        tabs:$media-tabs,
+        desktop:$media-desktop,
+        x-large:$media-x-large,
         grid:$media-grid,
-        medium:$media-medium,
-        x-large:$media-x-large
+        landscape:$media-landscape,
+        portrait:$media-portrait,
+        tabs:$media-tabs
 );
 
 

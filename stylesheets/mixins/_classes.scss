@@ -5,7 +5,7 @@
 
 
 ///@public
-@mixin utilities-classes(){
+@mixin mixins-classes(){
   // box shadow
   .ui-left-box-shadow {
     box-shadow: map-get($Component,drawer-box-shadow);
@@ -29,7 +29,7 @@
     }
   }
 
-  ui-container[name=base]{
+  ui-container[content-placeholder]{
     position:relative;
   }
 
@@ -145,6 +145,12 @@
     visibility:visible;
   }
 
+  .hidden{
+      [data-upgraded=true]{
+          visibility:hidden !important;
+      }
+  }
+
   [html5-imported=true][data-upgraded=true]{
     visibility:inherit;
   }
@@ -165,7 +171,7 @@
 
 }
 
-@mixin utilities-template(){
+@mixin mixins-template(){
 
   [template],[ui-template],ui-template{
     visibility:hidden;

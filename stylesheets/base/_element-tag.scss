@@ -1,10 +1,10 @@
 
-///mixin for generating element outer css wrapper class scope, given the 5 input params
-///@public
-///@param {String} $tag
-///@param {List} $tags
-///@param {String} $template-tag
-///@param {String} $class
+/// mixin for generating element outer css wrapper class scope, given the 5 input params
+/// @access public
+/// @param {String} $tag
+/// @param {List} $tags
+/// @param {String} $template-tag
+/// @param {String} $class
 @mixin element-tag($tag:null,$tags:null,$template-tag:null,$class:null){
 
   $component-tags:null;

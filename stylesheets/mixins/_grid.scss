@@ -1,6 +1,5 @@
 @import "../settings/grid";
 @import "media";
-@import "../css3/flexbox";
 
 @mixin gutter-bleed(){
   $_column-gutter:map-get($Grid,column-gutter);
@@ -50,7 +49,7 @@
 
 
 
-@mixin utilities-grid() {
+@mixin mixins-grid() {
   .contain-to-grid {
     max-width: map-get($Grid,width) - map-get($Grid,column-gutter);
     margin: 0 auto;

@@ -1,6 +1,6 @@
 ///Hardware Accleration
 
-@mixin utilities-hardware-acceleration() {
+@mixin mixins-hardware-acceleration() {
 
   %ui-hardware-accelerate {
     -webkit-transform: translate3d(0, 0, 0);
@@ -18,8 +18,8 @@
   }
 
   .ui-perspective {
-    -webkit-perspective: 1000;
-    perspective: 1000;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
   }
 
 }

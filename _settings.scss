@@ -12,21 +12,21 @@
 //$off-black: #222;
 //$zero: 0;
 //$transparent:transparent;
-//$flex-justification:flex-start;
-//$flex-alignment:flex-start;
+
 
 /// breakpoints -------------------
-//$breakpoint-tablet: 1280px;
 //$breakpoint-medium:1024px;
-//$breakpoint-smartphone: 640px;
-//$breakpoint-tablet-portrait: $breakpoint-smartphone + 1;
-//$breakpoint-smartphone-portrait: 220px;
-//$breakpoint-desktop: $breakpoint-tablet + 1;
-//$breakpoint-tabs: 800px;
-//$include-desktop-medium:false;
-//$breakpoint-desktop-medium: 1000px;
-//$breakpoint-desktop-medium-height:700px;
+//$breakpoint-medium-portrait:768px;
+//$breakpoint-large: $breakpoint-medium + 1;
+//$breakpoint-small: 640px;
+//$breakpoint-small-portrait: 415px;
+//$breakpoint-tiny:220px;
 //$breakpoint-x-large:1440px;
+//$enforce-hybrid-display:true;
+//$breakpoint-hybrid-medium: 1280px;
+//$breakpoint-hybrid-medium-height:700px;
+//$breakpoint-tabs: 800px;
+
 
 /// document ----------------------
 //$document-background: $white;
@@ -90,7 +90,6 @@
 
 /// component -----------------------------
 //$include-component-gradient: true;
-//$include-component-gradient-inset: true;
 //$include-component-text-shadow: false;
 //$include-component-box-shadow: false;
 //$include-component-active-box-shadow: true;
@@ -102,7 +101,6 @@
 //$component-border-hover-darken-factor: 4%;
 //$component-border: 1px solid;
 //$component-text-shadow: 0 1px 0;
-//$component-inset-box-shadow: rgba(0, 0, 0, .20) 0px 1px 1px, rgba(255, 255, 255, .40) 0 1px 0 0 inset;
 //$component-box-shadow: rgba(0, 0, 0, .20) 0px 1px 1px;
 //$component-box-shadow-active: inset 0 3px 5px rgba(0, 0, 0, .175);
 //$component-background-disabled: $off-white;
@@ -609,4 +607,18 @@
 //$component-touch-search-white-box-shadow:none;
 //$component-touch-search-white-icon-color:$white;
 //$component-touch-search-white-placeholder-color:#e5e7e9;
+
+
+/// animations ----------------------------------------------
+//$animation-slide-horizontal-distance:100px;
+//$animation-slide-vertical-distance:200px;
+//$animation-slide-big-distance:2000px;
+//$animation-fade-horizontal-distance:20px;
+//$animation-fade-vertical-distance:20px;
+//$animation-fade-big-distance:2000px;
+
+
+/// flexbox --------------------------------------------------
+//$flex-justification:flex-start;
+//$flex-alignment:flex-start;
 

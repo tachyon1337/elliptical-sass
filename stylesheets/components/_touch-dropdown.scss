@@ -65,7 +65,6 @@ $item-link-transform:null
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 ///    $map:(
@@ -78,7 +77,7 @@ $item-link-transform:null
 ///              link-transform:<value>
 ///         )
 ///    )
-@mixin touch-ui-dropdown($component:css-touch-dropdown,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin touch-ui-dropdown($component:css-touch-dropdown,$tags:null,$class:null,$map:()){
   $item-padding:map-nested-get-default($map,item,padding,20px 0 20px 20px);
   $link-font-size:map-nested-get-default($map,link,font-size,14px);
   $item-border-bottom:map-nested-get-default($map,item,border-bottom,1px dashed);
@@ -86,7 +85,7 @@ $item-link-transform:null
 
   @include touch-content(){
     $tag:touch-ui-dropdown;
-    @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include element-tag($tag:$tag,$tags:$tags,$class:$class){
       @include _touch-ui-dropdown($component,$item-padding,$link-font-size,$item-border-bottom,$item-link-transform);
       @content;
     }

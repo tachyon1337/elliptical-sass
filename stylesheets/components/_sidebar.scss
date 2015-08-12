@@ -100,7 +100,6 @@ $header-font-size:null
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 
@@ -122,7 +121,7 @@ $header-font-size:null
 //        )
 //)
 
-@mixin ui-sidebar($component:css-sidebar,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin ui-sidebar($component:css-sidebar,$tags:null,$class:null,$map:()){
 
   $_border-radius:get-border-radius();
   $padding:map-get-default($map,padding,24px);
@@ -133,10 +132,10 @@ $header-font-size:null
   $menu-item-line-height:map-nested-get-default($map,menu,item-line-height,2em);
   $menu-dropdown-margin:map-nested-get-default($map,menu,dropdown-margin,0 0 0 1em);
   $menu-header-margin-top:map-nested-get-default($map,menu,header-margin-top,2em);
-  $header-font-size:1.25emmap-nested-get-default($map,header,font-size,1.25em);
+  $header-font-size:map-nested-get-default($map,header,font-size,1.25em);
 
   $tag:ui-sidebar;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-sidebar($component,$padding,$item-padding-left,$alignment,$min-height,
             $border-radius,
             $menu-item-line-height,

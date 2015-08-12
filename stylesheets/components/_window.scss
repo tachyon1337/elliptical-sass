@@ -159,7 +159,6 @@ $footer-padding:null
 /// @param {String} $close-component
 /// @param {String} $footer-component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 ///  $map:(
@@ -180,7 +179,7 @@ $footer-padding:null
 ///  )
 ///
 @mixin ui-window($component:css-window,$header-component:css-window-header,$close-component:css-window-close,
-$footer-component:css-window-footer,$tags:null,$template-tag:null,$class:null,$map:()) {
+$footer-component:css-window-footer,$tags:null,$class:null,$map:()) {
 
   $_tiny-padding:map-get($Button,tiny-padding);
   $_z-index:get-z-index() + 9999999;
@@ -195,7 +194,7 @@ $footer-component:css-window-footer,$tags:null,$template-tag:null,$class:null,$m
   $footer-padding:map-nested-get-default($map,footer,padding,14px 1em 1em);
 
   $tag:ui-window;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-window($component,$header-component,$close-component,$footer-component,
             $border-radius,$z-index,$width,$height,$top,$header-height,$section-padding,$footer-padding);
 

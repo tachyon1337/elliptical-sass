@@ -78,7 +78,7 @@ $touch-border-radius: null){
   }
   .form-width{
     form{
-      width:map--get($Form,width);;
+      width:map-get($Form,width);;
       max-width:100%;
     }
   }
@@ -594,7 +594,6 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -758,7 +757,6 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(

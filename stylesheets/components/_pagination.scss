@@ -80,7 +80,6 @@ $touch-font-size:null
 ///@param {String} $component
 ///@param {String} $active-component
 ///@param {List} $tags
-/// @param {String} $template-tag
 ///@param {String} $class
 ///@param {Map} $map
 // $map:(
@@ -95,7 +94,7 @@ $touch-font-size:null
 //                font-size:<value>
 //        )
 // )
-@mixin ui-pagination($component: default, $active-component: inverse,$tags:null,$template-tag:null,$class:null,$map:()) {
+@mixin ui-pagination($component: default, $active-component: inverse,$tags:null,$class:null,$map:()) {
 
   $_border-radius:get-border-radius();
   $border-radius:map-get-default($map,border-radius,$_border-radius);
@@ -103,11 +102,11 @@ $touch-font-size:null
   $page-margin:map-nested-get-default($map,page,margin,0 0 0 .5em);
   $page-padding:map-nested-get-default($map,page,padding,.5em .7em .5em .7em);
   $page-font-size:map-nested-get-default($map,page,font-size,1em);
-  $touch-font-size:mmap-nested-get-default($map,touch,font-size,.8em);
+  $touch-font-size:map-nested-get-default($map,touch,font-size,.8em);
 
 
   $tag:ui-pagination;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-pagination($component, $active-component, $border-radius, $margin, $page-margin,
             $page-padding,$page-font-size,$touch-font-size);
     @content;

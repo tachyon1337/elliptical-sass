@@ -63,7 +63,6 @@ $star-color-empty: null
 /// @param {String} $component
 /// @param {String} $divider
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 
@@ -84,7 +83,7 @@ $star-color-empty: null
 //                color-empty:<value>
 //        )
 //)
-@mixin ui-rating($component: css-rating, $divider: css-divider, $tags:null,$template-tag:null,$class:null,$map:()) {
+@mixin ui-rating($component: css-rating, $divider: css-divider, $tags:null,$class:null,$map:()) {
 
   $_gray-light:map-get($Base,gray-light);
   $link:map-get($map,link);
@@ -98,7 +97,7 @@ $star-color-empty: null
   $star-color-empty:map-nested-get-default($map,star,color-empty,$_gray-light);
 
   $tag:ui-rating;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-rating($component,$divider,$link,$item-margin,$font-size,$divider-height,
             $divider-border,$divider-margin,$divider-padding,$star-size,$star-color-empty);
   }

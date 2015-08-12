@@ -35,7 +35,6 @@ $icon-font-family:null
 
 ///@public
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -48,7 +47,7 @@ $icon-font-family:null
 ///                 font-family:<value>
 ///         )
 /// )
-@mixin toggle-arrow($tags:null,$template-tag:null,$class:null,$map:()){
+@mixin toggle-arrow($tags:null,$class:null,$map:()){
 
   $margin:map-get-default($map,margin,0);
   $padding:map-get-default($map,padding,0);
@@ -58,7 +57,7 @@ $icon-font-family:null
   $_icon-font-family:map-nested-get-default($map,icon,font-family,map-get($Icons,font-family));
 
   $tag:toggle-arrow;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _toggle-arrow($color,$font-size,$icon,$margin,$padding,$_icon-font-family);
     @content;
   }

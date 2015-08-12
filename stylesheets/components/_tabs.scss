@@ -264,7 +264,6 @@ $breakpoint: null) {
 /// @param {String} $component
 /// @param {String} $active-tab
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -298,11 +297,11 @@ $breakpoint: null) {
 ///   )
 ///
 /// )
-@mixin ui-tabs($component: css-tabs, $active-tab: null, $tags: null, $template-tag: null, $class: null, $map: ()) {
+@mixin ui-tabs($component: css-tabs, $active-tab: null, $tags: null, $class: null, $map: ()) {
 
   $_border-radius: get-border-radius();
   $_gray-light: map-get($Base, gray-light);
-  $_breakpoint: map-get($Breakpoint, tabs);
+  $_breakpoint: $breakpoint-tabs;
   $_touch-enabled: map-get($Component, tabs-touch-enabled);
   $font-size: map-get-default($map, font-size, 1em);
   $justification: map-get-default($map, justification, flex-start);
@@ -327,7 +326,7 @@ $breakpoint: null) {
   $breakpoint: map-nested-get-default($map, touch, breakpoint, $_breakpoint);
 
   $tag: ui-tabs;
-  @include element-tag($tag: $tag, $tags: $tags, $template-tag: $template-tag, $class: $class) {
+  @include element-tag($tag: $tag, $tags: $tags, $class: $class) {
     @include _ui-tabs($component, $active-tab, $justification, $tab-padding, $tab-margin, $tab-border-radius, $tab-min-width, $content-border, $content-padding,
             $content-min-height, $content-border-radius, $flex-amount, $stacked-tab-min-height, $stacked-tab-max-width, $stacked-tab-padding, $stacked-tab-margin, $stacked-tab-border-radius,
             $stacked-content-min-height, $stacked-content-padding, $stacked-content-border-radius, $font-size, $breakpoint);

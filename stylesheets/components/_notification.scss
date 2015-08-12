@@ -54,7 +54,6 @@ $right:null
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 // $map:(
@@ -68,7 +67,7 @@ $right:null
 //         bottom:<value>,
 //         right:<value>
 // )
-@mixin ui-notification($component:inverse,$tags:null,$template-tag:null,$class:null, $map:()) {
+@mixin ui-notification($component:inverse,$tags:null,$class:null, $map:()) {
 
   $padding:map-get-default($map,padding,1em 2em 1em 2em);
   $font-size:map-get-default($map,font-size,1em);
@@ -81,7 +80,7 @@ $right:null
   $right:map-get($map,right);
 
   $tag:ui-notification;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-notification($component,$padding,$font-size,$border-radius,$z-index,$width,$top,$left,$bottom,$right);
     @content;
 

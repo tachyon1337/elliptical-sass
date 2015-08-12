@@ -157,7 +157,6 @@ $item-stacked-padding:null
 /// @param {String} $component
 /// @param {String} $divider
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 //  $map:(
@@ -184,7 +183,7 @@ $item-stacked-padding:null
 ///        stacked-padding:<value>
 ///   )
 /// )
-@mixin ui-menu($component:null,$divider:css-menu-divider,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin ui-menu($component:null,$divider:css-menu-divider,$tags:null,$class:null,$map:()){
 
   $_z-index:get-z-index();
 
@@ -212,7 +211,7 @@ $item-stacked-padding:null
 
 
   $tag:ui-menu;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class) {
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class) {
     @include _ui-menu($component,$divider,
             $margin,
             $padding,

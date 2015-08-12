@@ -175,7 +175,6 @@ $vertical-label-margin:null
 /// @param {String} $complete-component
 /// @param {String} $complete-icon-component,
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -204,7 +203,7 @@ $vertical-label-margin:null
 /// )
 ///
 @mixin ui-step-progress($component:null,$icon-component:null,$complete-component:null,
-     $complete-icon-component:null, $tags:null,$template-tag:null,$class:null,$map:()){
+     $complete-icon-component:null, $tags:null,$class:null,$map:()){
 
   $_icon-font-family:map-get($Icons,font-family);
   $current-font-weight:map-get-default($map,current-font-weight,bold);
@@ -223,7 +222,7 @@ $vertical-label-margin:null
   $vertical-label-margin:map-nested-get-default($map,vertical,label-margin,.3em 0 0 1em);
 
   $tag:ui-step-progress;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-step-progress($component,$icon-component,$complete-component, $complete-icon-component,
             $icon-font-family,
             $icon-size,

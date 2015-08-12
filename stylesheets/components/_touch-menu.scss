@@ -116,7 +116,6 @@ $icon-dropdown:null
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -139,7 +138,7 @@ $icon-dropdown:null
 ///                 dropdown:<value>
 ///         )
 /// )
-@mixin touch-ui-menu($component:css-touch-menu,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin touch-ui-menu($component:css-touch-menu,$tags:null,$class:null,$map:()){
 
   $_icon-font-family:map-get($Icons,font-family);
   $_icon-dropdown:map-get($Icons,dropdown);
@@ -163,7 +162,7 @@ $icon-dropdown:null
 
 
   $tag:touch-ui-menu;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _touch-ui-menu($component,
             $z-index,
             $padding,

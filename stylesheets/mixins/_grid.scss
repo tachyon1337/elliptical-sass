@@ -1,13 +1,5 @@
 @import "../settings/grid";
-@import "media";
 
-@mixin gutter-bleed(){
-  $_column-gutter:map-get($Grid,column-gutter);
-  margin-right: - $_column-gutter/2 !important;
-  margin-left: - $_column-gutter/2 !important;
-  width:108%;
-  @content;
-}
 
 @mixin gutter-bleed-padding($padding-left:1.5em,$padding-right:1.5em){
   $_column-gutter:map-get($Grid,column-gutter);

@@ -226,7 +226,7 @@ $indicator-icon-margin: null) {
     .multi-border {
       border: 1px solid transparent;
     }
-    carousel-items, ui-template {
+    carousel-items {
       list-style: none;
       @include flexbox($justification: flex-start, $alignment: flex-start);
       width: 100%;
@@ -264,7 +264,7 @@ $indicator-icon-margin: null) {
 
     carousel-inner-container {
       width:85%;
-      carousel-items, ui-template {
+      carousel-items {
         width: auto;
         & > carousel-item {
           @include flexbox-column($justification: $item-justification, $alignment: $item-alignment);
@@ -294,7 +294,7 @@ $indicator-icon-margin: null) {
   }
 
   &[animation=fade] {
-    carousel-items, ui-template {
+    carousel-items {
       display: block;
       & > carousel-item {
         display: none;
@@ -332,7 +332,7 @@ $indicator-icon-margin: null) {
   }
 
   &[animation=slide] {
-    carousel-items, ui-template {
+    carousel-items {
       & > carousel-item {
         max-width: 100%;
         min-width: 100%;
@@ -359,7 +359,6 @@ $indicator-icon-margin: null) {
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -434,7 +433,7 @@ $indicator-icon-margin: null) {
 ///         )
 ///
 /// )
-@mixin ui-carousel($component: null, $tags: null, $template-tag: null, $class: null, $map: ()) {
+@mixin ui-carousel($component: null, $tags: null, $class: null, $map: ()) {
 
   $_z-index: get-z-index();
   $_white: map-get($Base, white);
@@ -494,7 +493,7 @@ $indicator-icon-margin: null) {
   $touch-min-height:map-nested-get-default($map, touch, min-height, 0);
 
   $tag: ui-carousel;
-  @include element-tag($tag: $tag, $tags: $tags, $template-tag: $template-tag, $class: $class) {
+  @include element-tag($tag: $tag, $tags: $tags, $class: $class) {
     @include _ui-carousel($component,
             $max-height,
             $min-height,

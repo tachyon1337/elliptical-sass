@@ -34,7 +34,6 @@ $font-size:null
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -44,7 +43,7 @@ $font-size:null
 ///         border-radius:<value>,
 ///         font-size:<value>
 /// )
-@mixin ui-badge($component:inverse,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin ui-badge($component:inverse,$tags:null,$class:null,$map:()){
 
   $_border-radius:get-border-radius();
   $padding:map-get-default($map,padding,.2em .5em);
@@ -54,7 +53,7 @@ $font-size:null
   $font-size:map-get-default($map,font-size,1em);
 
   $tag:ui-badge;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-badge($component,$padding,$margin,$line-height,$border-radius,$font-size);
     @content;
   }

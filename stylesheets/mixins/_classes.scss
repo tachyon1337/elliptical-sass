@@ -1,7 +1,6 @@
 @import "../settings/component";
 @import "../settings/document";
 @import "document";
-@import "hardware-acceleration";
 
 
 ///@public
@@ -137,28 +136,6 @@
     position:relative;
   }
 
-  [data-upgraded=false]{
-    visibility:hidden;
-  }
-
-  [data-upgraded=true]{
-    visibility:visible;
-  }
-
-  .hidden{
-      [data-upgraded=true]{
-          visibility:hidden !important;
-      }
-  }
-
-  [html5-imported=true][data-upgraded=true]{
-    visibility:inherit;
-  }
-
-  [data-upgraded=true][html5-imported=true]{
-    visibility:inherit;
-  }
-
   [validation-summary]{
     ul{
       list-style:none;
@@ -173,7 +150,7 @@
 
 @mixin mixins-template(){
 
-  [template],[ui-template],ui-template{
+  [template],template{
     visibility:hidden;
   }
 
@@ -183,11 +160,25 @@
     }
   }
 
-  touch-template{
-    display:none;
+  [data-upgraded=false]{
+    visibility:hidden;
   }
 
-  empty-template{
+  [data-upgraded=true]{
+    visibility:visible;
+  }
+
+  .hidden{
+    [data-upgraded=true]{
+      visibility:hidden !important;
+    }
+  }
+
+  [data-upgraded=true]{
+    visibility:inherit;
+  }
+
+  [empty-template]{
     display:none;
     &.show{
       display:block;

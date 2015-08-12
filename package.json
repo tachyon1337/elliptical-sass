@@ -12,7 +12,12 @@
     "sass-functions": "git+https://github.com/tachyon1337/sass-functions.git",
     "sass-flexbox": "git+https://github.com/tachyon1337/sass-flexbox.git",
     "sass-animations": "git+https://github.com/tachyon1337/sass-animations.git",
-    "sass-component": "git+https://github.com/tachyon1337/sass-component.git"
+    "sass-media-query": "git+https://github.com/tachyon1337/sass-media-query.git",
+    "sass-component": "git+https://github.com/tachyon1337/sass-component.git",
+    "sass-semantic-components":"git+https://github.com/tachyon1337/sass-semantic-components.git",
+    "sass-visibility":"git+https://github.com/tachyon1337/sass-visibility.git",
+    "sass-element-tag":"git+https://github.com/tachyon1337/sass-element-tag.git",
+    "sass-flex-grid":"git+https://github.com/tachyon1337/sass-flex-grid.git"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

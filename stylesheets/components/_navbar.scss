@@ -134,7 +134,6 @@ $stacked-section-height:null
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 // $map:(
@@ -180,7 +179,7 @@ $stacked-section-height:null
 //                 icon-margin:<value>
 //         )
 // )
-@mixin ui-navbar($component:null,$touch-component:css-touch,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin ui-navbar($component:null,$touch-component:css-touch,$tags:null,$class:null,$map:()){
 
   $_touch-height:map-get($Component,touch-bar-height);
   $height: map-get-default($map,height,none);
@@ -217,7 +216,7 @@ $stacked-section-height:null
 
 
   $tag:ui-navbar;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-navbar($component,
             $height,
             $margin,

@@ -52,7 +52,6 @@ $z-index:null
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -67,7 +66,7 @@ $z-index:null
 ///                 font-size:<value>
 ///         )
 /// )
-@mixin ui-pop-over($component:css-pop-over,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin ui-pop-over($component:css-pop-over,$tags:null,$class:null,$map:()){
 
   $_border-radius:get-border-radius();
   $_z-index:get-z-index();
@@ -83,7 +82,7 @@ $z-index:null
 
 
   $tag:ui-pop-over;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-pop-over($component,$content-font-size,$display,$width,$min-height,$top,$padding,$border-radius,$z-index);
     @content;
   }

@@ -42,7 +42,6 @@ $link-font-weight: null
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -53,7 +52,7 @@ $link-font-weight: null
 ///               font-weight:<value>
 ///         )
 /// )
-@mixin ui-breadcrumb($component: null,$tags:null,$template-tag:null,$class:null,$map:()) {
+@mixin ui-breadcrumb($component: null,$tags:null,$class:null,$map:()) {
 
   $font-size:map-get-default($map,font-size,1em);
   $padding:map-get-default($map,padding,0 .3em 0 .3em);
@@ -61,7 +60,7 @@ $link-font-weight: null
   $link-font-weight:map-nested-get-default($map,link,font-weight,normal);
 
   $tag:ui-breadcrumb;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-breadcrumb($component, $font-size, $padding, $font-weight, $link-font-weight);
     @content;
   }

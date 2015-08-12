@@ -111,7 +111,6 @@ $item-section-border-radius:null
 /// @param {String} $header-component
 /// @param {String} $section-component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -132,7 +131,7 @@ $item-section-border-radius:null
 ///                 section-border-radius:<value>
 ///         )
 /// )
-@mixin ui-collapse($component:css-collapse,$header-component:css-collapse-header,$section-component:css-collapse-section,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin ui-collapse($component:css-collapse,$header-component:css-collapse-header,$section-component:css-collapse-section,$tags:null,$class:null,$map:()){
 
   $_border-radius:get-border-radius();
 
@@ -154,7 +153,7 @@ $item-section-border-radius:null
 
 
   $tag:ui-collapse;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-collapse($component,$header-component,$section-component,
             $margin,
             $padding,

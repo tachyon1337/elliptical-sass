@@ -35,7 +35,6 @@
 }
 
 ///@public
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -59,7 +58,7 @@
   $width:map-get-default($map,width,15);
 
   $tag:ui-tip;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:null,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-tip($background, $border-color, $right, $top, $position, $width);
     @content;
   }

@@ -4,7 +4,6 @@
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -24,7 +23,7 @@
 ///
 ///   )
 /// )
-@mixin ui-toggle($component:css-toggle,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin ui-toggle($component:css-toggle,$tags:null,$class:null,$map:()){
   $_z-index:get-z-index();
   $_icon:map-get($Icons,toggle);
   $_icon-font-family:map-get($Icons,font-family);
@@ -53,7 +52,7 @@
 
   @include touch-content(){
     $tag:ui-toggle;
-    @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+    @include element-tag($tag:$tag,$tags:$tags,$class:$class){
       @include _touch-ui-toggle($component,
               $height,
               $width,

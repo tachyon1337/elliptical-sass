@@ -1,15 +1,11 @@
 @import "../functions/functions";
 @import "../settings/component";
 @import "../settings/core";
-@import "../settings/semantic";
 @import "../settings/label";
 @import "../settings/icons";
 @import "../settings/base";
-@import "../settings/media";
-@import "element-tag";
 @import "../settings/grid";
 @import "../mixins/document";
-@import "../mixins/media";
 @import "../mixins/grid";
 
 @function get-border-radius(){

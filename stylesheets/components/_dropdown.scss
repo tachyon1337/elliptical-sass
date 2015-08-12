@@ -156,7 +156,6 @@ $border-radius: null
 /// @param {String} $component
 /// @param {String} $divider
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 ///   $map:(
@@ -186,7 +185,7 @@ $border-radius: null
 ///                   margin:<value>
 ///          )
 ///  )
-@mixin ui-dropdown($component: css-dropdown, $divider: css-divider,$tags:null,$template-tag:null,$class:null,$map:()) {
+@mixin ui-dropdown($component: css-dropdown, $divider: css-divider,$tags:null,$class:null,$map:()) {
 
   $_z-index:get-z-index();
   $_border-radius:get-border-radius();
@@ -213,7 +212,7 @@ $border-radius: null
 
 
   $tag:ui-dropdown;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-dropdown($component, $divider, $width,$min-width, $top, $margin,$padding, $float, $z-index, $font-size, $border, $item-padding,
             $item-divider-padding, $item-divider-border, $border-radius, $span-icon-margin
     );
@@ -233,7 +232,7 @@ $border-radius: null
   }
 
   $tag:ui-mega-dropdown;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-mega-dropdown($component, $mega-width, $mega-min-width, $top, $margin, $mega-padding, $z-index, $font-size, $border, $mega-min-height, $border-radius);
     @content;
   }

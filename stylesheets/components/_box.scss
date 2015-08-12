@@ -45,7 +45,6 @@ $alignment:null
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
-/// @param {String} $template-tag
 /// @param {String} $class
 /// @param {Map} $map
 /// $map:(
@@ -57,7 +56,7 @@ $alignment:null
 ///         justification:<value>,
 ///         alignment:<value>
 /// )
-@mixin ui-box($component: null,$tags:null,$template-tag:null,$class:null,$map:()){
+@mixin ui-box($component: null,$tags:null,$class:null,$map:()){
 
   $_border-radius:get-border-radius();
   $margin:map-get-default($map,margin,0);
@@ -69,7 +68,7 @@ $alignment:null
   $alignment:map-get-default($map,alignment,center);
 
   $tag:ui-box;
-  @include element-tag($tag:$tag,$tags:$tags,$template-tag:$template-tag,$class:$class){
+  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-box($component,$margin,$padding,$height,$width,$border-radius, $justification, $alignment);
     @content;
   }

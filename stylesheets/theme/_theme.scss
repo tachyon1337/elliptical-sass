@@ -3,7 +3,6 @@
 @import "../settings/component";
 @import "../settings/document";
 @import "../settings/core";
-@import "../settings/semantic";
 @import "../settings/theme";
 @import "../settings/touch";
 
@@ -71,41 +70,6 @@
 
 }
 
-/// @private
-/// create the semantic sass component theme from the $Semantic Map
-@mixin _semantic-theme(){
-  ///error
-  @include component($component:error,$map:(
-          background: map-nested-get($Semantic,error,background),
-          font-color: map-nested-get($Semantic,error,font-color),
-          border: map-nested-get($Semantic,error,border),
-          text-shadow: map-nested-get($Semantic,error,text-shadow)
-  ));
-
-  ///info
-  @include component($component:info,$map:(
-          background: map-nested-get($Semantic,info,background),
-          font-color: map-nested-get($Semantic,info,font-color),
-          border: map-nested-get($Semantic,info,border),
-          text-shadow: map-nested-get($Semantic,info,text-shadow)
-  ));
-
-  ///success
-  @include component($component:success,$map:(
-          background: map-nested-get($Semantic,success,background),
-          font-color: map-nested-get($Semantic,success,font-color),
-          border: map-nested-get($Semantic,success,border),
-          text-shadow: map-nested-get($Semantic,success,text-shadow)
-  ));
-
-  ///warning
-  @include component($component:warning,$map:(
-          background: map-nested-get($Semantic,warning,background),
-          font-color: map-nested-get($Semantic,warning,font-color),
-          border: map-nested-get($Semantic,warning,border),
-          text-shadow: map-nested-get($Semantic,warning,text-shadow)
-  ));
-}
 
 
 /// returns a component map
@@ -449,35 +413,6 @@
           border:map-nested-get($Theme,oauth,twitter)
   ));
 
-  //flex-grid
-  @include component($component:css-flex-grid,$map:(
-          background:map-nested-get($Theme,flex-grid,background),
-          font-color:map-nested-get($Theme,flex-grid,font-color),
-          border:map-nested-get($Theme,flex-grid,border)
-  ));
-
-  //flex-table
-  @include component($component:css-flex-table,$map:(
-          background:map-nested-get($Theme,flex-table,background),
-          font-color:map-nested-get($Theme,flex-table,font-color),
-          border:map-nested-get($Theme,flex-table,border)
-  ));
-
-  //grid-pagination
-  @include component($component:css-grid-pagination,$map:(
-          background:map-nested-get($Theme,grid-pagination,background),
-          font-color:map-nested-get($Theme,grid-pagination,font-color),
-          text-shadow:map-nested-get($Theme,grid-pagination,text-shadow),
-          border:map-nested-get($Theme,grid-pagination,border),
-          icon-color:map-nested-get($Theme,grid-pagination,icon-color),
-          hover:(
-                  background:map-nested-get($Theme,grid-pagination,background-hover),
-                  font-color:map-nested-get($Theme,grid-pagination,font-color-hover),
-                  text-shadow:map-nested-get($Theme,grid-pagination,text-shadow-hover),
-                  border:map-nested-get($Theme,grid-pagination,border-hover),
-                  icon-color:map-nested-get($Theme,grid-pagination,icon-color-hover)
-          )
-  ));
 
 }
 
@@ -491,7 +426,7 @@
 @mixin component-theme($theme:null,$touch:null,$touch-menu:null,$extend-theme:false){
 
   @include _core-theme();
-  @include _semantic-theme();
+  //@include _semantic-theme();
 
   $_touch-theme:map-nested-get($Theme,touch,theme);
 

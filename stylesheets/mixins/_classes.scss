@@ -168,14 +168,16 @@
     visibility:visible;
   }
 
+  [data-upgraded=true]{
+    [template]{
+      visibility:visible;
+    }
+  }
+
   .hidden{
     [data-upgraded=true]{
       visibility:hidden !important;
     }
-  }
-
-  [data-upgraded=true]{
-    visibility:inherit;
   }
 
   [empty-template]{

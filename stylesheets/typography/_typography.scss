@@ -116,34 +116,34 @@
       }
     }
     &.info{
-      border-left:map-get($Typography,blockquote-border-left) $_info-color;
+      border-left:map-get($Typography,blockquote-border-left) $_info-color !important;
       background:$_info-background;
       color:$_info-color;
-      a{
+      a,h6,h5,h4,h3,h2{
         color:$_info-color;
       }
     }
     &.warning{
-      border-left:map-get($Typography,blockquote-border-left) $_warning-color;
+      border-left:map-get($Typography,blockquote-border-left) $_warning-color !important;
       background:$_warning-background;
       color:$_warning-color;
-      a{
+      a,h6,h5,h4,h3,h2{
         color:$_warning-color;
       }
     }
     &.success{
-      border-left:map-get($Typography,blockquote-border-left) $_success-color;
+      border-left:map-get($Typography,blockquote-border-left) $_success-color !important;
       background:$_success-background;
       color:$_success-color;
-      a{
+      a,h6,h5,h4,h3,h2{
         color:$_success-color;
       }
     }
     &.error{
-      border-left:map-get($Typography,blockquote-border-left) $_error-color;
+      border-left:map-get($Typography,blockquote-border-left) $_error-color !important;
       background:$_error-background;
       color:$_error-color;
-      a{
+      a,h6,h5,h4,h3,h2{
         color:$_error-color;
       }
     }

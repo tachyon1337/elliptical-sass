@@ -85,6 +85,23 @@
     color:map-get($Component,font-color-disabled);
     text-shadow:map-get($Component,text-shadow-disabled);
     box-shadow:map-get($Component,box-shadow-disabled);
+    cursor:default;
+    a,span{
+      background:none !important;
+      color:map-get($Component,font-color-disabled) !important;
+      cursor:default;
+      &:hover{
+        cursor:default;
+      }
+    }
+    &:hover{
+      cursor:default;
+      background:map-get($Component,background-disabled);
+      border:map-get($Component,border-disabled);
+      color:map-get($Component,font-color-disabled);
+      text-shadow:map-get($Component,text-shadow-disabled);
+      box-shadow:map-get($Component,box-shadow-disabled);
+    }
   }
 
   span{
@@ -179,6 +196,7 @@
       visibility:hidden !important;
     }
   }
+
 
   [empty-template]{
     display:none;

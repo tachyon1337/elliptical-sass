@@ -1,5 +1,4 @@
 @import "settings/base";
-//@import "settings/breakpoints";
 @import "settings/media";
 @import "settings/button";
 @import "settings/component";
@@ -9,28 +8,15 @@
 @import "settings/grid";
 @import "settings/icons";
 @import "settings/label";
-//@import "settings/semantic";
 @import "settings/theme";
 @import "settings/touch";
 @import "settings/typography";
 @import "base/normalize";
-//@import "base/component";
 @import "base/document";
-//@import "base/element-tag";
-//@import "base/web-component";
 @import "base/common-web-component";
 @import "theme/theme";
 @import "font/icons";
 @import "font/ubuntu";
-
-//@import "css3/mixins";
-//@import "css3/flexbox";
-//@import "css3/animation";
-//@import "css3/transform";
-//@import "css3/transition";
-//@import "animation/animations";
-//@import "animation/transitions";
-
 @import "functions/functions";
 
 @import "mixins/media";
@@ -42,8 +28,6 @@
 @import "mixins/form";
 @import "mixins/grid";
 @import "mixins/form";
-//@import "mixins/hardware-acceleration";
-//@import "mixins/visibility";
 @import "mixins/prefixer";
 @import "typography/typography";
 @import "grid/grid";
@@ -57,7 +41,6 @@
 @import "components/touch-topbar";
 @import "components/touch-togglemenu";
 @import "components/togglearrow";
-@import "components/autocomplete";
 @import "components/badge";
 @import "components/box";
 @import "components/breadcrumb";
@@ -78,7 +61,6 @@
 @import "components/pagination";
 @import "components/popover";
 @import "components/rating";
-//@import "components/semantic";
 @import "components/screentab";
 @import "components/sidebar";
 @import "components/slidingpanel";
@@ -93,8 +75,6 @@
 @import "components/tooltip";
 @import "components/topbar";
 @import "components/window";
-//@import "components/flex-table";
-//@import "components/flex-grid";
 
 @import "app/mixins";
 

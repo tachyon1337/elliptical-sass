@@ -75,7 +75,7 @@
 @mixin elliptical-project(){
   @include normalize();
   @include flexbox-container();
-  @include elliptical-fonts();
+  @include font-icons();
   @include elliptical-document();
   @include elliptical-typography();
   @include elliptical-mixins();

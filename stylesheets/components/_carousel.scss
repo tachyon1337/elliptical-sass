@@ -332,6 +332,7 @@ $indicator-icon-margin: null) {
   }
 
   &[animation=slide] {
+    overflow: hidden;
     carousel-items {
       & > carousel-item {
         max-width: 100%;

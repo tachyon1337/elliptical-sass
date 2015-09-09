@@ -1,7 +1,7 @@
 @import "../base/common-web-component";
 
 ///@private
-@mixin _touch-ui-drawer($component: null, $header-component: null, $input-component: null,
+@mixin _touch-ui-drawer($component: null, $header-component: null, $input-component: input-component,
 $width: null,
 $header-height: null,
 $search-margin: null,
@@ -39,7 +39,7 @@ $search-input-icon-right: null) {
         border-radius: $search-input-border-radius;
         transition: none;
         -webkit-transition: none;
-        @include web-component-default($component: input-component, $include-disabled: false);
+        @include web-component-default($component: $input-component, $include-disabled: false);
         @extend %#{$input-component}-placeholder !optional;
         &:focus {
           @extend %#{$input-component}-background !optional;

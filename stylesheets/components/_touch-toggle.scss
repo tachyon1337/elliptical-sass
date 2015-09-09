@@ -21,13 +21,9 @@ $icon-font-family:null
 
   width: $width;
   border-width: 0;
-  @if $border-show==true{
-    border-right: $border-right;
-    height: $height;
-  }@else{
-    border-right:0;
-    height: $height - 1;
-  }
+  border-right:0;
+  height: $height - 1;
+
   z-index:$z-index;
   @include web-component-base($component:$component,$include-font:false);
   &:before {

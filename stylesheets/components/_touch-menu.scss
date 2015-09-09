@@ -4,7 +4,6 @@
 @mixin _touch-ui-menu($component:null,
 $z-index:null,
 $padding:null,
-$item-border-bottom:null,
 $item-padding:null,
 $item-link-padding:null,
 $item-link-transform:null,
@@ -31,8 +30,9 @@ $icon-dropdown:null
   width: 100%;
 
   menu-item,menu-item-dropdown {
-    border: 0;
-    border-bottom: $item-border-bottom;
+    border-top: 0;
+    border-left:0;
+    border-right:0;
     padding: $item-padding;
     margin-right:0;
     display:list-item;
@@ -147,7 +147,6 @@ $icon-dropdown:null
 
   $z-index:map-get-default($map,z-index,$_z-index + 98);
   $padding:map-get-default($map,padding,58px 0 0 0);
-  $item-border-bottom:map-nested-get-default($map,item,border-bottom,1px solid);
   $item-padding:map-nested-get-default($map,item,padding,20px 0 20px 20px);
   $item-link-padding:map-nested-get-default($map,item,padding,0);
   $item-link-transform:map-nested-get-default($map,item,link-transform,none);
@@ -166,7 +165,6 @@ $icon-dropdown:null
     @include _touch-ui-menu($component,
             $z-index,
             $padding,
-            $item-border-bottom,
             $item-padding,
             $item-link-padding,
             $item-link-transform,

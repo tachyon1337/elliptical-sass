@@ -273,6 +273,13 @@ $mark-margin:null){
     &.responsive{
       @include reponsive-container();
     }
+    &.responsive-center{
+      @include touch-content(){
+        @include flex-wrap(wrap);
+        @include justify-content(center);
+        @include align-items(center);
+      }
+    }
     &.align-space-between{
       @include align-items(space-between);
     }

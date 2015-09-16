@@ -71,7 +71,10 @@ $footer-padding:null
   z-index: $z-index;
   outline: none;
   display: none;
-  //overflow: hidden;
+
+  &.show{
+    display:block;
+  }
   @include web-component-base($component:$component,$include-font:false);
   &.no-shadow {
     box-shadow:none;

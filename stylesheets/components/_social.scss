@@ -172,13 +172,13 @@ $color-font-size:null
   $facebook-color:map-nested-get-default($map,facebook,color,#3b5998);
   $facebook-icon:map-nested-get-default($map,facebook,icon,map-get($Icons,facebook));
   $facebook-icon-2:map-nested-get-default($map,facebook,icon-2,map-get($Icons,facebook-2));
-  $twitter-color:map-get-default($map,facebook-color,#5ec5fb);
+  $twitter-color:map-get-default($map,twitter-color,#5ec5fb);
   $twitter-icon:map-nested-get-default($map,twitter,icon,map-get($Icons,twitter));
   $twitter-icon-2:map-nested-get-default($map,twitter,icon-2,map-get($Icons,twitter-2));
-  $google-color:map-get-default($map,facebook-color,#d23e2b);
+  $google-color:map-get-default($map,google-color,#d23e2b);
   $google-icon:map-nested-get-default($map,google,icon,map-get($Icons,google));
   $google-icon-2:map-nested-get-default($map,google,icon-2,map-get($Icons,google-2));
-  $github-color:map-get-default($map,facebook-color,#020202);
+  $github-color:map-get-default($map,github-color,#020202);
   $github-icon:map-nested-get-default($map,github,icon,map-get($Icons,github));
   $github-icon-2:map-nested-get-default($map,github,icon,map-get($Icons,github-2));
   $item-padding:map-nested-get-default($map,item,padding,0 .7em 0 .7em);

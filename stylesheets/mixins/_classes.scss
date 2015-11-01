@@ -6,7 +6,7 @@
 ///@public
 @mixin mixins-classes(){
   // box shadow
-  .ui-left-box-shadow {
+  .ui-drawer-box-shadow {
     box-shadow: map-get($Component,drawer-box-shadow);
   }
 

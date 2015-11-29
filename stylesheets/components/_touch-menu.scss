@@ -4,18 +4,16 @@
 @mixin _touch-ui-menu($component:null,
 $z-index:null,
 $padding:null,
-$item-border-bottom:null,
 $item-padding:null,
 $item-link-padding:null,
 $item-link-transform:null,
-$icon-font-size:null,
-$icon-padding:null,
-$icon-expand-top:null,
-$icon-expand-right:null,
-$icon-expand-font-size:null,
+$item-icon-padding:null,
 $icon-font-family:null,
-$icon-hide:null,
-$icon-dropdown:null
+$icon-font-size:null,
+$icon-top:null,
+$icon-right:null,
+$icon-up:null,
+$icon-down:null
 
 ){
 
@@ -31,8 +29,9 @@ $icon-dropdown:null
   width: 100%;
 
   menu-item,menu-item-dropdown {
-    border: 0;
-    border-bottom: $item-border-bottom;
+    border-left: 0;
+    border-right:0;
+    border-top:0;
     padding: $item-padding;
     margin-right:0;
     display:list-item;
@@ -42,28 +41,26 @@ $icon-dropdown:null
       border-bottom: 0;
     }
     a {
-      text-transform: $item-link-transform !important;
+      //text-transform: $item-link-transform !important;
       text-decoration: none !important;
       padding: $item-link-padding;
       @extend %#{$component}-font !optional;
       &:hover, &:focus {
-        text-transform: $item-link-transform !important;
+        //text-transform: $item-link-transform !important;
         text-decoration: none !important;
       }
       &:active {
-        text-transform: $item-link-transform !important;
+        //text-transform: $item-link-transform !important;
         text-decoration: none !important;
       }
       &.active {
-        text-transform: $item-link-transform !important;
+        //text-transform: $item-link-transform !important;
         text-decoration: none !important;
       }
     }
     &>span {
       &.touch,&[class*='icon-'] {
-        font-size: $icon-font-size;
-        padding: $icon-padding;
-        @extend %#{$component}-icon !optional;
+        padding: $item-icon-padding;
       }
     }
     &.label {
@@ -81,15 +78,15 @@ $icon-dropdown:null
     &:after {
       position: absolute;
       font-family: $icon-font-family;
-      content: "#{$icon-dropdown}";
-      top: $icon-expand-top;
-      right: $icon-expand-right;
-      font-size: $icon-expand-font-size;
+      content: "#{$icon-down}";
+      top: $icon-top;
+      right: $icon-right;
+      font-size: $icon-font-size;
       @extend %#{$component}-icon !optional;
     }
     &.close {
       &:after {
-        content: "#{$icon-hide}";
+        content: "#{$icon-up}";
       }
     }
     &>ui-dropdown,&>touch-ui-dropdown,&>ui-mega-dropdown{
@@ -108,11 +105,6 @@ $icon-dropdown:null
 
 
 
-
-
-
-
-
 ///@public
 /// @param {String} $component
 /// @param {List} $tags
@@ -122,43 +114,41 @@ $icon-dropdown:null
 ///         z-index:<value>,
 ///         padding:<value>,
 ///         item:(
-///                 border-bottom:<value>,
 ///                 padding:<value>,
 ///                 link-padding:<value>,
-///                 link-transform:<value>
+///                 link-transform:<value>,
+///                 icon-padding:<value>
 ///         ),
 ///         icon:(
-///                 font-size:<value>,
-///                 padding:<value>,
-///                 expand-top:<value>,
-///                 expand-right:<value>,
-///                 expand-font-size:<value>,
 ///                 font-family:<value>,
-///                 hide:<value>,
-///                 dropdown:<value>
+//                  font-size:<value>,
+///                 top:<value>,
+///                 right:<value>,
+///                 down:<value>,
+///                 up:<value>
 ///         )
 /// )
 @mixin touch-ui-menu($component:css-touch-menu,$tags:null,$class:null,$map:()){
 
   $_icon-font-family:map-get($Icons,font-family);
-  $_icon-dropdown:map-get($Icons,dropdown);
-  $_icon-hide:map-get($Icons,hide);
+  $_icon-down:map-get($Icons,chevron-down);
+  $_icon-up:map-get($Icons,chevron-up);
   $_z-index:get-z-index();
+  $_icon-size:16px;
 
   $z-index:map-get-default($map,z-index,$_z-index + 98);
-  $padding:map-get-default($map,padding,58px 0 0 0);
-  $item-border-bottom:map-nested-get-default($map,item,border-bottom,1px solid);
+  $padding:map-get-default($map,padding,0 0 0 0);
   $item-padding:map-nested-get-default($map,item,padding,20px 0 20px 20px);
   $item-link-padding:map-nested-get-default($map,item,padding,0);
   $item-link-transform:map-nested-get-default($map,item,link-transform,none);
+  $item-icon-padding:map-nested-get-default($map,icon,padding,0 10px 0 0);
   $icon-font-size:map-nested-get-default($map,icon,font-size,map-get($Component,touch-icon-size));
-  $icon-padding:map-nested-get-default($map,icon,padding,0 10px 0 0);
-  $icon-expand-top:map-nested-get-default($map,icon,expand-top,20px);
-  $icon-expand-right:map-nested-get-default($map,icon,expand-right,20px);
-  $icon-expand-font-size:map-nested-get-default($map,icon,expand-font-size,8px);
-  $_icon-font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);
-  $_icon-hide:map-nested-get-default($map,icon,font-family,$_icon-hide);
-  $_icon-dropdown:map-nested-get-default($map,icon,font-family,$_icon-dropdown);
+  $icon-top:map-nested-get-default($map,icon,top,20px);
+  $icon-right:map-nested-get-default($map,icon,right,20px);
+  $icon-font-size:map-nested-get-default($map,icon,font-size,$_icon-size);
+  $icon-font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);
+  $icon-up:map-nested-get-default($map,icon,up,$_icon-up);
+  $icon-down:map-nested-get-default($map,icon,down,$_icon-down);
 
 
   $tag:touch-ui-menu;
@@ -166,18 +156,16 @@ $icon-dropdown:null
     @include _touch-ui-menu($component,
             $z-index,
             $padding,
-            $item-border-bottom,
             $item-padding,
             $item-link-padding,
             $item-link-transform,
+            $item-icon-padding,
+            $icon-font-family,
             $icon-font-size,
-            $icon-padding,
-            $icon-expand-top,
-            $icon-expand-right,
-            $icon-expand-font-size,
-            $_icon-font-family,
-            $_icon-hide,
-            $_icon-dropdown
+            $icon-top,
+            $icon-right,
+            $icon-up,
+            $icon-down
     );
     @content;
   }

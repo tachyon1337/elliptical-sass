@@ -142,7 +142,7 @@
   @include extend-component($component:css-white,$extend-component:default,$map:(
           background:map-get($Base,white),
           box-shadow:none,
-          border:1px solid map-nested-get($Theme,input,border)
+          border:map-nested-get($Theme,input,border)
   ));
 
 
@@ -156,6 +156,9 @@
           placeholder-color:map-nested-get($Theme,input,placeholder-color),
           hover:(
                border: map-nested-get($Theme,input,border-hover)
+          ),
+          active:(
+                  border: map-nested-get($Theme,input,border-active)
           )
   ));
 
@@ -426,7 +429,6 @@
 @mixin component-theme($theme:null,$touch:null,$touch-menu:null,$extend-theme:false){
 
   @include _core-theme();
-  //@include _semantic-theme();
 
   $_touch-theme:map-nested-get($Theme,touch,theme);
 

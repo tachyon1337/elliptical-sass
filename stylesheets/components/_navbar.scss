@@ -3,128 +3,54 @@
 
 ///@private
 @mixin _ui-navbar($component:null,
-$height:null,
 $margin:null,
 $font-size:null,
-$nav-height:null,
+$nav-margin:null,
 $nav-font-size:null,
-$section-padding:null,
-$section-height:null,
-$section-justification:null,
-$section-alignment:null,
-$brand-font:null,
-$brand-alignment:null,
-$brand-justification:null,
-$brand-margin:null,
-$brand-padding:null,
-$stacked-height:null,
-$stacked-brand-font:null,
-$stacked-brand-alignment:null,
-$stacked-brand-justification:null,
-$stacked-brand-margin:null,
-$stacked-brand-padding:null,
-$stacked-brand-height:null,
-$stacked-brand-background:null,
-$stacked-section-height:null
+$nav-column-gutter:null,
+$section-margin:null,
+$section-position:null,
+$section-width:null
 
 ){
 
-  $_ui-navbar-contained-to-grid: $grid-width - $grid-column-gutter;
-
+  $_ui-navbar-contained-to-grid: $grid-width;
+  @if($nav-column-gutter==true){
+    $_ui-navbar-contained-to-grid: $grid-width - $grid-column-gutter;
+  }
   width: 100%;
   position: relative;
-  max-height:$height;
   display:block;
   font-size:$font-size;
-  nav{
-    width:100%;
+  &>nav{
     margin: $margin;
-    height: $nav-height;
-    min-height: 45px;
     position: relative;
     font-size:$nav-font-size;
+    max-width: $_ui-navbar-contained-to-grid;
     @include web-component-base($component:$component,$include-font:false);
-    ul{
-      list-style: none;
+    @include flexbox-column($justification:flex-start,$alignment:flex-start);
+    &>.center{
+      @include justify-content(center);
     }
-    &>section{
-      position:relative;
-      padding: $section-padding;
-      margin:0 auto;
-      width:100%;
-      max-width: $_ui-navbar-contained-to-grid;
-      @include flexbox($justification:$section-justification,$alignment:$section-alignment);
-      @if $section-height != null{
-        height:$section-height;
-      }
-      &.center{
-        @include flexbox($justification:center,$alignment:center);
+    &>.space-between{
+      @include justify-content(space-between);
+    }
+    &>.align-center{
+      @include align-content(center);
+    }
+    .logo{
+      &:hover{
+        cursor:pointer;
       }
     }
-    &> ui-brand{
-      @extend %#{$component}-font !optional;
-      @include flexbox($alignment:$brand-alignment,$justification:$brand-justification);
-      margin: $brand-margin;
-      padding: $brand-padding;
-      .logo{
-        &:hover{
-          cursor:pointer;
-        }
-      }
-      &>section{
-        position:relative;
-        margin:0 auto;
-        width:100%;
-        max-width: $_ui-navbar-contained-to-grid;
-      }
+    &>*{
+      margin:$section-margin;
+      position:$section-position;
+      width:$section-width !important;
     }
-    ///stacked navbar(brand stacked above the menu)
-    &.stacked {
-      height: $stacked-height;
-      &>.touch-brand{
-        display:none;
-      }
-      &> ui-brand{
-        @extend %#{$component}-font !optional;
-        font: $stacked-brand-font;
-        @include flexbox($alignment:$stacked-brand-alignment,$justification:$stacked-brand-justification);
-        margin: $stacked-brand-margin;
-        padding: $stacked-brand-padding;
-        height: $stacked-brand-height;
-        background:$stacked-brand-background;
-        &.center{
-          @include flexbox($justification:center,$alignment:center);
-        }
-        &>section{
-          ul{
-            display:block;
-            float:left;
-          }
-        }
-      }
-      &>section{
-        height:$stacked-section-height;
-        padding:0;
-        &.center{
-          @include flexbox($justification:center,$alignment:center);
-        }
-      }
-    }
-    ///when the screen width matches grid width, we must further subtract gutter width from the max-width and use gutter width as the margin
-    @media only screen and (max-width:$grid-width){
-      &>section{
-        left:0;
-        margin:0;
-        max-width:$grid-width - $grid-column-gutter - $grid-column-gutter;
-        padding: 0 $grid-column-gutter/2 !important;
-      }
-      &>.brand{
-        &>section{
-          padding: 0 $grid-column-gutter/2 !important;
-          max-width:100% !important;
-        }
-      }
-    }
+  }
+  &>touch-nav,&>touch-section,&>touch-header{
+    display:none;
   }
 }
 
@@ -141,32 +67,14 @@ $stacked-section-height:null
 //         margin:<value>,
 //         font-size:<value>,
 //         nav:(
-//                 height:<value>,
-//                 font-size:<value>
+//                 margin:<value>,
+//                 font-size:<value>,
+//                 column-gutter:<value>
 //         ),
 //         section:(
-//                 padding:<value>,
-//                 height:<value>,
-//                 justification:<value>,
-//                 alignment:<value>
-//         ),
-//         brand:(
-//                 font:<value>,
-//                 alignment:<value>,
-//                 justification:<value>,
 //                 margin:<value>,
-//                 padding:<value>
-//         ),
-//         stacked:(
-//                 height:<value>,
-//                 brand-font:<value>,
-//                 brand-alignment:<value>,
-//                 brand-justification:<value>,
-//                 brand-margin:<value>,
-//                 brand-padding:<value>,
-//                 brand-height:<value>,
-//                 brand-background:<value>,
-//                 section-height:<value>
+//                 position:<value>,
+//                 width:<value>
 //         ),
 //         touch:(
 //                 position:<value>,
@@ -176,35 +84,23 @@ $stacked-section-height:null
 //                 brand-font:<value>,
 //                 brand-margin:<value>,
 //                 icon-font-size:<value>,
-//                 icon-margin:<value>
+//                 icon-margin:<value>,
+//                 nav-alignment:<value>,
+//                 brand-alignment:<value>,
+//                 icon-alignment:<value>
 //         )
 // )
 @mixin ui-navbar($component:null,$touch-component:css-touch,$tags:null,$class:null,$map:()){
 
   $_touch-height:map-get($Component,touch-bar-height);
-  $height: map-get-default($map,height,none);
   $margin: map-get-default($map,margin,0 auto);
   $font-size:map-get-default($map,font-size,1em);
-  $nav-height:map-nested-get-default($map,nav,height,65px);
+  $nav-margin:map-nested-get-default($map,nav,margin,0);
   $nav-font-size:map-nested-get-default($map,nav,font-size,1em);
-  $section-padding:map-nested-get-default($map,section,padding,0);
-  $section-height:map-nested-get($map,section,height);
-  $section-justification:map-nested-get-default($map,section,justification,space-between);
-  $section-alignment:map-nested-get-default($map,section,alignment,center);
-  $brand-font:map-nested-get-default($map,brand,font,1.5em);
-  $brand-alignment:map-nested-get-default($map,brand,justification,flex-start);
-  $brand-justification:map-nested-get-default($map,brand,alignment,center);
-  $brand-margin:map-nested-get-default($map,brand,margin,0);
-  $brand-padding:map-nested-get-default($map,brand,padding,0);
-  $stacked-height:map-nested-get-default($map,stacked,height,auto);
-  $stacked-brand-font:map-nested-get-default($map,stacked,brand-font,inherit);
-  $stacked-brand-alignment:map-nested-get-default($map,stacked,brand-alignment,flex-start);
-  $stacked-brand-justification:map-nested-get-default($map,stacked,brand-justification,center);
-  $stacked-brand-margin:map-nested-get-default($map,stacked,brand-margin,0);
-  $stacked-brand-padding:map-nested-get-default($map,stacked,brand-padding,0);
-  $stacked-brand-height:map-nested-get-default($map,stacked,brand-height,75px);
-  $stacked-brand-background:map-nested-get-default($map,stacked,brand-background,inherit);
-  $stacked-section-height:map-nested-get-default($map,stacked,section-height,45px);
+  $nav-column-gutter:map-nested-get-default($map,nav,column-gutter,false);
+  $section-margin:map-nested-get-default($map,section,margin,0);
+  $section-position:map-nested-get-default($map,section,position,relative);
+  $section-width:map-nested-get-default($map,section,width,100%);
   $touch-position:map-nested-get-default($map,touch,position,fixed);
   $touch-height:map-nested-get-default($map,touch,height,$_touch-height);
   $touch-z-index:map-nested-get-default($map,touch,z-index,get-z-index() + 9999);
@@ -213,35 +109,21 @@ $stacked-section-height:null
   $touch-brand-margin:map-nested-get-default($map,touch,brand-margin,0);
   $touch-icon-font-size:map-nested-get-default($map,touch,icon-font-size,22px);
   $touch-icon-margin:map-nested-get-default($map,touch,icon-margin,.8em);
-
+  $touch-nav-alignment:map-nested-get-default($map,touch,nav-alignment,center);
+  $touch-brand-alignment:map-nested-get-default($map,touch,brand-alignment,center);
+  $touch-icon-alignment:map-nested-get-default($map,touch,icon-alignment,center);
 
   $tag:ui-navbar;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-navbar($component,
-            $height,
             $margin,
             $font-size,
-            $nav-height,
+            $nav-margin,
             $nav-font-size,
-            $section-padding,
-            $section-height,
-            $section-justification,
-            $section-alignment,
-            $brand-font,
-            $brand-alignment,
-            $brand-justification,
-            $brand-margin,
-            $brand-padding,
-            $stacked-height,
-            $stacked-brand-font,
-            $stacked-brand-alignment,
-            $stacked-brand-justification,
-            $stacked-brand-margin,
-            $stacked-brand-padding,
-            $stacked-brand-height,
-            $stacked-brand-background,
-            $stacked-section-height
-
+            $nav-column-gutter,
+            $section-margin,
+            $section-position,
+            $section-width
     );
     @content;
   }
@@ -262,20 +144,11 @@ $stacked-section-height:null
         display:none !important;
       }
       &>nav{
-        &>ui-brand{
-          display:none;
-        }
-        &>section{
-          display:none;
-        }
-        &.stacked{
-          &>ui-brand{
-            display:none !important;
-          }
-          &>section{
-            display:none;
-          }
-        }
+        display:none;
+      }
+      &>touch-nav{
+        width:100%;
+        @include flexbox($justification:space-between,$alignment:center);
       }
 
       @if $class != null{
@@ -287,7 +160,10 @@ $stacked-section-height:null
             $touch-brand-font,
             $touch-brand-margin,
             $touch-icon-font-size,
-            $touch-icon-margin
+            $touch-icon-margin,
+            $touch-nav-alignment,
+            $touch-brand-alignment,
+            $touch-icon-alignment
           );
         }
 
@@ -300,7 +176,10 @@ $stacked-section-height:null
           $touch-brand-font,
           $touch-brand-margin,
           $touch-icon-font-size,
-          $touch-icon-margin
+          $touch-icon-margin,
+          $touch-nav-alignment,
+          $touch-brand-alignment,
+          $touch-icon-alignment
         );
       }
 
@@ -323,27 +202,7 @@ $stacked-section-height:null
   }
 }
 
-///@public
-@mixin navbar-brand(){
-  &>nav{
-    &.stacked{
-      &>ui-brand{
-        @content;
-      }
-    }
-  }
-}
 
-///@public
-@mixin navbar-stacked-brand(){
-    &>nav{
-      &.stacked{
-        &>ui-brand{
-          @content;
-        }
-      }
-    }
-}
 
 ///@public
 @mixin phone-navbar-brand(){

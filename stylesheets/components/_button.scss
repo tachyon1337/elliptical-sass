@@ -4,10 +4,10 @@
 
 ///@private
 @mixin _button-size($font-size, $padding, $icon-padding) {
-  $_icon-next:map-get($Icons,next);
+  $_icon-next:map-get($Icons,right);
   $_icon-down:map-get($Icons,down);
   $_icon-up:map-get($Icons,up);
-  $_icon-previous:map-get($Icons,previous);
+  $_icon-previous:map-get($Icons,left);
   $_icon-font-family:map-get($Icons,font-family);
   $_button-line-height:map-get($Button,line-height);
 
@@ -169,6 +169,10 @@
   &.left-align {
     text-align: left;
     text-indent: .75em;
+  }
+  &.icon{
+    @include flexbox($alignment:center,$justification:center);
+    //@include _button-size($_button-small-font-size, $_button-small-padding, $_button-icon-padding);
   }
 }
 

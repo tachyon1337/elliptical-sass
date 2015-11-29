@@ -35,7 +35,7 @@
 //$document-font-size: 16px;
 //$document-font-color: #777;
 //$document-font-weight: normal;
-//$document-font-smoothing: antialiased;
+//$document-font-smoothing: true;
 //$document-margin: 0;
 //$document-padding: 0;
 //$document-link-font-size: 1em;
@@ -278,35 +278,21 @@
 
 /// icons -------------------------------------
 //$icon-font-family:elliptical;
-//$icon-search:\e01a;
-//$icon-search-2:\e0ec;
-//$icon-checkmark:\e035;
-//$icon-radio:\e158;
-//$icon-dropdown:\e1a9;
-//$icon-hide:\e1aa;
-//$icon-toggle:\e1f3;
-//$icon-toggle-16:\e1f4;
-//$icon-down-arrow:\e1a2;
-//$icon-up-arrow:\e1a0;
-//$icon-down-arrow-2:\e00e;
-//$icon-up-arrow-2:\e00c;
-//$icon-next:\e0f9;
-//$icon-previous:\e0fa;
-//$icon-down:\e1a9;
-//$icon-up:\e1aa;
-//$icon-back:\e0f6;
-//$icon-forward:\e037;
-//$icon-remove:\e0db;
-//$icon-plus:\e095;
-//$icon-minus:\e093;
-//$icon-facebook:\e14a;
-//$icon-facebook-2:\e227;
-//$icon-twitter:\e14e;
-//$icon-twitter-2:\e228;
-//$icon-google:\e145;
-//$icon-google-2:\e229;
-//$icon-github:\e160;
-//$icon-github-2:\e16f;
+//$icon-search:\e016;
+//$icon-check:\e912;
+//$icon-down:\e903;
+//$icon-up:\e902;
+//$icon-right:\e901;
+//$icon-left:\e900;
+//$icon-chevron-down:\e00f;
+//$icon-chevron-up:\e075;
+//$icon-chevron-right:\e00b;
+//$icon-chevron-left:\e012;
+//$icon-plus:\e915;
+//$icon-minus:\e914;
+//$icon-circle-fill:\e158;
+//$icon-circle:\e05d;
+//$icon-close:\e906;
 
 
 
@@ -314,11 +300,11 @@
 ///input
 //$theme-input-background: $white;
 //$theme-input-color: $document-font-color;
-//$theme-input-border: #d6d6d6;
-//$theme-input-border-hover: ($white, 30%);
+//$theme-input-border:1px solid #d6d6d6;
+//$theme-input-border-hover:1px solid #2b9af3;
 //$theme-input-placeholder-color: #d4d4d4;
 //$theme-input-alt-box-shadow: #f4f4f4 0 0 0 4px;
-//$theme-input-border-active:#2b9af3;
+//$theme-input-border-active:1px solid #2b9af3;
 
 ///checkbox
 //$theme-checkbox-color: $off-black;
@@ -487,8 +473,8 @@
 //$component-toggle-black-background: $transparent;
 //$component-toggle-black-font-color: $gray-medium-light;
 //$component-toggle-black-text-shadow: rgba(0, 0, 0, 1) 0 1px 1px ;
-//$component-toggle-black-border: $black;
-//$component-toggle-black-box-shadow: darken($gray-medium,14%) 0px -1px 0px 1px ;
+//$component-toggle-black-border: 0;
+//$component-toggle-black-box-shadow:none ;
 
 
 ///drawer-header-black
@@ -515,9 +501,9 @@
 
 ///toggle-white
 //$component-toggle-white-background: $transparent;
-//$component-toggle-white-font-color: darken(#d8d8d8,10%);
+//$component-toggle-white-font-color: #333;
 //$component-toggle-white-text-shadow: rgba(0, 0, 0, 1) 0 1px 1px;
-//$component-toggle-white-border: #d8d8d8;
+//$component-toggle-white-border: 0;
 //$component-toggle-white-box-shadow: none;
 
 ///drawer-header-white

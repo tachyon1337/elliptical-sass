@@ -22,7 +22,11 @@
     font-size: map-get($Document,font-size);
     color:map-get($Document,font-color);
     line-height: map-get($Document,line-height);
-    -webkit-font-smoothing: map-get($Document,font-smoothing);
+    $_font-smoothing:map-get($Document,font-smoothing);
+    @if($_font-smoothing==true){
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
     margin: map-get($Document,margin);
     padding: map-get($Document,padding);
   }

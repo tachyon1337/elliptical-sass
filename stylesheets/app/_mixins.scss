@@ -1,7 +1,7 @@
 
 
 @mixin elliptical-fonts(){
-  @include font-icons();
+  @include core-icons();
   @include font-ubuntu();
 }
 
@@ -75,7 +75,7 @@
 @mixin elliptical-project(){
   @include normalize();
   @include flexbox-container();
-  @include font-icons();
+  //@include elliptical-fonts();
   @include elliptical-document();
   @include elliptical-typography();
   @include elliptical-mixins();

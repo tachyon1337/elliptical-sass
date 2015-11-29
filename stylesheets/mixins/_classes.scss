@@ -167,8 +167,13 @@
 
 @mixin mixins-template(){
 
-  [template],template{
-    visibility:hidden;
+
+  [template]{
+    visibility:hidden !important;
+  }
+
+  [template].visible{
+    visibility:visible !important;
   }
 
   [role=form]{
@@ -183,12 +188,6 @@
 
   [data-upgraded=true]{
     visibility:visible;
-  }
-
-  [data-upgraded=true]{
-    [template]{
-      visibility:visible;
-    }
   }
 
   .hidden{

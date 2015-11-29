@@ -30,8 +30,8 @@ $component-touch-black-icon-color:darken($_gray-medium-light,5%) !default;
 $component-toggle-black-background: $transparent !default;
 $component-toggle-black-font-color: $_gray-medium-light !default;
 $component-toggle-black-text-shadow: rgba(0, 0, 0, 1) 0 1px 1px !default;
-$component-toggle-black-border: $_black !default;
-$component-toggle-black-box-shadow: darken($_gray-medium,14%) 0px -1px 0px 1px !default;
+$component-toggle-black-border: 0 !default;
+$component-toggle-black-box-shadow: none !default;
 
 
 //drawer-header-black
@@ -52,15 +52,15 @@ $component-drawer-black-box-shadow:none !default;
 $component-touch-white-background: $_white !default;
 $component-touch-white-font-color: darken(#d8d8d8,10%) !default;
 $component-touch-white-text-shadow: none !default;
-$component-touch-white-border: 0 !default;
+$component-touch-white-border: 1px solid #ddd !default;
 $component-touch-white-box-shadow: none !default;
 $component-touch-white-icon-color: #55acee !default;
 
 //toggle-white
 $component-toggle-white-background: transparent !default;
-$component-toggle-white-font-color: darken(#d8d8d8,10%) !default;
+$component-toggle-white-font-color: #333 !default;
 $component-toggle-white-text-shadow: rgba(0, 0, 0, 1) 0 1px 1px !default;
-$component-toggle-white-border: #d8d8d8 !default;
+$component-toggle-white-border: 0 !default;
 $component-toggle-white-box-shadow: none !default;
 
 //drawer-header-white

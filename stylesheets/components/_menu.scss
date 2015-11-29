@@ -1,6 +1,26 @@
 @import "../base/common-web-component";
 
+@mixin _first-last-of-type-link-padding(){
+  &[first]{
+    &>a{
+      padding-left:0 !important;
+    }
+  }
+  &[last]{
+    &>a{
+      padding-right:0 !important;
+    }
+  }
+}
 
+@mixin _first-last-of-type-padding(){
+  &[first]{
+    padding-left:0 !important;
+  }
+  &[last]{
+    padding-right:0 !important;
+  }
+}
 ///@private
 @mixin _ui-menu($component:null,$divider:null,
 $margin:null,
@@ -43,6 +63,7 @@ $item-stacked-padding:null
     height:100%;
     position:relative;
     font-size:$item-font-size;
+    @include _first-last-of-type-link-padding();
     &:hover,&:focus{
       cursor:pointer;
       @extend %#{$component}-background-hover !optional;
@@ -103,6 +124,7 @@ $item-stacked-padding:null
     padding:$item-padding;
     height:100%;
     font-size:$item-font-size;
+    @include _first-last-of-type-padding();
     &.static{
       position:static;
       &.inactive{
@@ -180,7 +202,7 @@ $item-stacked-padding:null
 ///        label-font-size:<value>,
 ///        label-padding:<value>,
 ///        search-padding:<value>,
-///        stacked-padding:<value>
+///        stacked-padding:<value>,
 ///   )
 /// )
 @mixin ui-menu($component:null,$divider:css-menu-divider,$tags:null,$class:null,$map:()){
@@ -198,6 +220,7 @@ $item-stacked-padding:null
   $alignment:map-get-default($map,alignment,center);
   $item-margin:map-nested-get-default($map,item,margin,0);
   $item-padding:map-nested-get-default($map,item,padding,1em);
+  $item-first-last-padding:map-nested-get-default($map,item,first-last-padding,true);
   $item-divider-border:map-nested-get-default($map,item,divider-border,1px solid);
   $item-divider-padding:map-nested-get-default($map,item,divider-padding,0);
   $item-divider-margin:map-nested-get-default($map,item,divider-padding,0);
@@ -241,11 +264,6 @@ $item-stacked-padding:null
   @include touch-content(){
     ui-menu{
       display:none;
-    }
-  }
-  ui-menu{
-    &.center{
-      margin-left:auto;
     }
   }
 }

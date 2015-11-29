@@ -55,6 +55,15 @@ $search-input-icon-right: null) {
       }
     }
   }
+  &>section{
+    padding-top:58px;
+  }
+  touch-section{
+    display:block;
+  }
+  touch-header{
+    display:block;
+  }
 }
 
 ///@public

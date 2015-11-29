@@ -259,6 +259,7 @@ $touch-border-radius: null){
         }
       }
     }
+    @content;
   }
 }
 
@@ -313,7 +314,7 @@ $touch-border-radius: null){
 
     input[type="checkbox"]:checked + label {
       &:before {
-        content: "#{map-get($Icons,checkmark)}";
+        content: "#{map-get($Icons,check)}";
         @extend %#{$component}-font !optional;
         font-family: map-get($Icons,font-family);
         font-size: map-nested-get($Form,checkbox,icon-font-size);
@@ -384,7 +385,7 @@ $touch-border-radius: null){
     input[type="radio"]:checked + label {
       &:after {
         line-height: 1;
-        content: '#{map-get($Icons,radio)}';
+        content: '#{map-get($Icons,circle-fill)}';
         font-size:map-nested-get($Form,radio,icon-font-size);
         @extend %#{$component}-icon !optional;
         font-family: map-get($Icons,font-family);

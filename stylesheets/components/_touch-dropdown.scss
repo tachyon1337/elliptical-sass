@@ -4,9 +4,8 @@
 ///@private
 @mixin _touch-ui-dropdown($component:null,
 $item-padding:null,
-$itemnk-font-size:null,
-$item-border-bottom:null,
-$item-link-transform:null
+$item-font-size:null,
+$item-border-bottom:null
 
 ){
 
@@ -32,22 +31,18 @@ $item-link-transform:null
       margin-right:.5em;
     }
     a{
-      font-size:$itemnk-font-size;
-      text-transform:$item-link-transform !important;
-      text-decoration:none !important;
+      font-size:$item-font-size;
+      text-decoration:none;
       @extend %#{$component}-font !optional;
       &:hover,&:focus{
         @extend %#{$component}-font !optional;
-        text-transform:$item-link-transform !important;
-        text-decoration:none !important;
+        text-decoration:none;
       }
       &:active{
-        text-transform:$item-link-transform !important;
-        text-decoration:none !important;
+        text-decoration:none;
       }
       &.active{
-        text-transform:$item-link-transform !important;
-        text-decoration:none !important;
+        text-decoration:none;
       }
     }
   }
@@ -68,25 +63,22 @@ $item-link-transform:null
 /// @param {String} $class
 /// @param {Map} $map
 ///    $map:(
-///         link:(
-///              font-size:<value>
-///         ),
+///
 ///         item:(
 ///              padding:<value>,
 ///              border-bottom:<value>,
-///              link-transform:<value>
+///              font-size:<value>
 ///         )
 ///    )
 @mixin touch-ui-dropdown($component:css-touch-dropdown,$tags:null,$class:null,$map:()){
   $item-padding:map-nested-get-default($map,item,padding,20px 0 20px 20px);
-  $link-font-size:map-nested-get-default($map,link,font-size,14px);
+  $item-font-size:map-nested-get-default($map,item,font-size,14px);
   $item-border-bottom:map-nested-get-default($map,item,border-bottom,1px dashed);
-  $item-link-transform:map-nested-get-default($map,item,link-transform,none);
 
   @include touch-content(){
     $tag:touch-ui-dropdown;
     @include element-tag($tag:$tag,$tags:$tags,$class:$class){
-      @include _touch-ui-dropdown($component,$item-padding,$link-font-size,$item-border-bottom,$item-link-transform);
+      @include _touch-ui-dropdown($component,$item-padding,$item-font-size,$item-border-bottom);
       @content;
     }
   }

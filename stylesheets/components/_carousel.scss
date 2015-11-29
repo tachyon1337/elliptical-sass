@@ -11,6 +11,11 @@ $justification: null,
 $alignment: null,
 $inner-container-width: null,
 $inner-container-max-width: null,
+$inner-container-multi-width: null,
+$items-justification: null,
+$items-alignment: null,
+$items-multi-alignment: null,
+$items-multi-min-width: null,
 $item-width: null,
 $item-max-width: null,
 $item-max-height: null,
@@ -21,6 +26,8 @@ $item-margin-right: null,
 $item-border: null,
 $item-border-active: null,
 $item-padding: null,
+$item-multi-height:null,
+$item-multi-min-width:null,
 $button-padding: null,
 $button-width: null,
 $button-top-position: null,
@@ -260,19 +267,38 @@ $indicator-icon-margin: null) {
   &[animation=multi-slide] {
     & > carousel-navigation {
       opacity: 1;
+      &.next{
+        right:0;
+      }
+      &.prev{
+        left:0;
+      }
     }
 
     carousel-inner-container {
-      width:85%;
+      width:$inner-container-multi-width;
       carousel-items {
-        width: auto;
+        @include align-items($items-multi-alignment);
+        @if($item-multi-height !=null) {
+          min-width: $items-multi-min-width;
+        }@else{
+          width: auto;
+        }
         & > carousel-item {
           @include flexbox-column($justification: $item-justification, $alignment: $item-alignment);
-          @if $item-width !=null {
-            min-width: $item-width !important;
-            max-width: $item-width !important;
+          @if($item-multi-height !=null) {
+            height: $item-multi-height !important;
+            min-width: $item-multi-min-width;
+            max-width:none !important;
+            width:auto;
+          }@else{
+            height: auto;
+            @if $item-width !=null {
+              min-width: $item-width !important;
+              max-width: $item-width !important;
+            }@else {width: auto};
           }
-          height: auto;
+
           margin-right: $item-margin-right;
           overflow: hidden;
           position: relative;
@@ -376,8 +402,16 @@ $indicator-icon-margin: null) {
 ///         full-width-breakpoint:<value>,
 ///         inner-container:(
 ///                 width:<value>,
-///                 max-width:<value>
+///                 max-width:<value>,
+///                 multi-width:<value>
 ///         ),
+///
+///         items:(
+///                justification:<value>,
+///                alignment:<value>,
+///                multi-alignment:<value>,
+///                multi-min-width:<value>
+//          )
 ///         item:(
 ///                 width:<value>,
 ///                 max-width:<value>,
@@ -388,7 +422,10 @@ $indicator-icon-margin: null) {
 ///                 margin-right:<value>,
 ///                 border:<value>,
 ///                 border-active:<value>,
-///                 padding:<value>
+///                 padding:<value>,
+///                 multi-height:<value>,
+///                 multi-min-width:<value>
+///
 ///         ),
 ///         button:(
 ///                 padding:<value>,
@@ -452,16 +489,23 @@ $indicator-icon-margin: null) {
   $alignment: map-get-default($map, alignment, flex-start);
   $inner-container-width: map-nested-get($map, inner-container, width);
   $inner-container-max-width: map-nested-get-default($map, inner-container, max-width, none);
+  $inner-container-multi-width: map-nested-get-default($map, inner-container, multi-width, 85%);
+  $items-justification: map-nested-get-default($map, items, justification, flex-start);
+  $items-alignment: map-nested-get-default($map, items, alignment, center);
+  $items-multi-alignment: map-nested-get-default($map, items, multi-alignment, flex-end);
+  $items-multi-min-width: map-nested-get-default($map, items, multi-min-width, 3000px);
   $item-width: map-nested-get($map, item, width);
   $item-max-width: map-nested-get-default($map, item, max-width, none);
   $item-max-height: map-nested-get($map, item, max-height);
   $item-height: map-nested-get-default($map, item, height, auto);
   $item-justification: map-nested-get-default($map, item, justification, flex-start);
-  $item-alignment: map-nested-get-default($map, item, justification, center);
+  $item-alignment: map-nested-get-default($map, item, alignment, center);
   $item-margin-right: map-nested-get-default($map, item, margin-right, 12px);
   $item-border: map-nested-get-default($map, item, border, 0);
   $item-border-active: map-nested-get-default($map, item, border-active, 0);
   $item-padding: map-nested-get-default($map, item, padding, 0);
+  $item-multi-height: map-nested-get-default($map, item, multi-height, null);
+  $item-multi-min-width: map-nested-get-default($map, item, multi-min-width, 50px);
   $_button-padding: map-nested-get-default($map, button, padding, 30px 15px 30px 15px);
   $button-width: map-nested-get-default($map, button, width, 26px);
   $button-top-position: map-nested-get-default($map, button, top-position, 45%);
@@ -469,23 +513,23 @@ $indicator-icon-margin: null) {
   $button-right-position: map-nested-get-default($map, button, right-position, 0);
   $button-prev-icon-left-position: map-nested-get-default($map, button, prev-icon-left-position, 0);
   $button-next-icon-left-position: map-nested-get-default($map, button, next-icon-left-position, 0);
-  $icon-size: map-nested-get-default($map, icon, size, 20px);
+  $icon-size: map-nested-get-default($map, icon, size, 32px);
   $icon-top-position: map-nested-get-default($map, icon, top-position, 20px);
   $_icon-font-family: map-nested-get-default($map, icon, font-family, map-get($Icons, font-family));
   $image-top-position: map-nested-get-default($map, image, top-position, 0);
   $navigation-top-position: map-nested-get-default($map, navigation, top-position, 40%);
   $navigation-position: map-nested-get-default($map, navigation, position, 2em);
-  $navigation-next-icon: map-nested-get-default($map, navigation, next-icon, \e179);
-  $navigation-prev-icon: map-nested-get-default($map, navigation, prev-icon, \e178);
-  $navigation-font-size: map-nested-get-default($map, navigation, font-size, 2em);
+  $navigation-next-icon: map-nested-get-default($map, navigation, next-icon, map-get($Icons,right));
+  $navigation-prev-icon: map-nested-get-default($map, navigation, prev-icon, map-get($Icons,left));
+  $navigation-font-size: map-nested-get-default($map, navigation, font-size, 32px);
   $navigation-color: map-nested-get-default($map, navigation, color, $_white);
   $navigation-hover-opacity: map-nested-get-default($map, navigation, hover-opacity, .8);
   $navigation-hover: map-nested-get-default($map, navigation, hover, true);
   $indicator-top: map-nested-get-default($map, indicator, top, 80%);
   $indicator-right: map-nested-get-default($map, indicator, right, 10%);
-  $indicator-icon: map-nested-get-default($map, indicator, icon, map-get($Icons, indicator));
-  $indicator-icon-active: map-nested-get-default($map, indicator, icon-active, map-get($Icons, indicator-active));
-  $indicator-icon-size: map-nested-get-default($map, indicator, icon-size, 1em);
+  $indicator-icon: map-nested-get-default($map, indicator, icon, map-get($Icons, circle));
+  $indicator-icon-active: map-nested-get-default($map, indicator, icon-active, map-get($Icons, circle-fill));
+  $indicator-icon-size: map-nested-get-default($map, indicator, icon-size, 16px);
   $indicator-icon-color: map-nested-get-default($map, indicator, icon-color, $_white);
   $indicator-icon-active-color: map-nested-get-default($map, indicator, icon-active-color, $indicator-icon-color);
   $indicator-icon-margin: map-nested-get-default($map, indicator, icon-margin, 0 .75em 0 0);
@@ -505,6 +549,11 @@ $indicator-icon-margin: null) {
             $alignment,
             $inner-container-width,
             $inner-container-max-width,
+            $inner-container-multi-width,
+            $items-justification,
+            $items-alignment,
+            $items-multi-alignment,
+            $items-multi-min-width,
             $item-width,
             $item-max-width,
             $item-max-height,
@@ -515,6 +564,8 @@ $indicator-icon-margin: null) {
             $item-border,
             $item-border-active,
             $item-padding,
+            $item-multi-height,
+            $item-multi-min-width,
             $_button-padding,
             $button-width,
             $button-top-position,

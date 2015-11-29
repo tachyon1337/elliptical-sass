@@ -281,9 +281,6 @@
 }
 
 @mixin typography-header-margins(){
-  h2 + hr{
-    margin-top:3em;
-  }
 
   section + section{
     margin-top:2em;
@@ -292,11 +289,7 @@
   p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
     margin: 1em 0 .4em 0;
   }
-  section{
-    h4{
-      margin-bottom:.3em;
-    }
-  }
+
   @content;
 }
 

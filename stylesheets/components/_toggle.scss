@@ -25,8 +25,8 @@
 /// )
 @mixin ui-toggle($component:css-toggle,$tags:null,$class:null,$map:()){
   $_z-index:get-z-index();
-  $_icon:map-get($Icons,toggle);
-  $_icon-font-family:map-get($Icons,font-family);
+  $_icon:\e902;
+  $_icon-font-family:content;
   $_height:map-get($Component,touch-bar-height);
   $_toggle-size:map-get($Component,toggle-size);
   $_toggle-top:map-get($Component,toggle-top);
@@ -40,7 +40,7 @@
   $icon-size:map-nested-get-default($map,icon,size,$_toggle-size);
   $icon-left:map-nested-get-default($map,icon,left,$_toggle-left);
   $icon-top:map-nested-get-default($map,icon,top,$_toggle-top);
-  $_icon-font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);
+  $icon-font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);
 
   @if $border-show==null{
     $border-show:map-get($Toggle,border-show);
@@ -63,7 +63,7 @@
               $icon-size,
               $icon-left,
               $icon-top,
-              $_icon-font-family
+              $icon-font-family
       );
       @content;
     }

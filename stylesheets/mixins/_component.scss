@@ -27,7 +27,7 @@
     position: relative;
     &:before {
       font-family: 'elliptical';
-      content: '\e0a3';
+      content: '\e002';
       font-size: 32px;
       color: map-get($Base, gray);
       top: 100px;

@@ -8,25 +8,31 @@ $font-size:null,
 $brand-font:null,
 $brand-margin:null,
 $icon-font-size:null,
-$icon-margin:null
+$icon-margin:null,
+$nav-alignment:null,
+$brand-alignment:null,
+$icon-alignment:null
 ){
-
+  margin:0;
   position:$position;
   @if $position != relative {
     z-index:$z-index;
     top:0;
     left:0;
   }
+  &>nav{
+    display:none !important;
+  }
   font-size:$font-size;
-  &>nav,&>nav.stacked{
-    &>section{
-      display:none !important;
-    }
+  &>touch-nav{
     height:$height;
     @include web-component-base($component:$component,$include-font:false);
-    @include flexbox($justification: center, $alignment:center);
+    @include flexbox($justification: center, $alignment:$nav-alignment);
+    border-left:0;
+    border-right:0;
+    border-top:0;
     touch-ui-brand{
-      @include flexbox($justification: center, $alignment:center);
+      @include flexbox($justification: center, $alignment:$brand-alignment);
       margin-top:$brand-margin;
       height:$height;
       h1,h2,h3,h4,h5,h6{
@@ -41,16 +47,11 @@ $icon-margin:null
       list-style: none;
       position:absolute;
       top:0;
-      right:5px;
-      @include flexbox($justification: center, $alignment:center);
+      right:25px;
+      @include flexbox($justification: center, $alignment:$icon-alignment);
       height:100%;
       &>touch-icon{
         display:list-item;
-        @include span-icon(){
-          font-size:$icon-font-size;
-          margin-right:$icon-margin;
-          @extend %#{$component}-icon !optional;
-        }
       }
 
     }

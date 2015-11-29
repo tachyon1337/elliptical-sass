@@ -17,14 +17,17 @@ $_dark-medium:map-get($Base,dark-medium);
 $_transparent:map-get($Base,transparent);
 $_primary-color:map-nested-get($Core,primary,color);
 
+
 //input
 $theme-input-background: $_white !default;
 $theme-input-color: $_font-color !default;
 $theme-input-border: 1px solid #d6d6d6 !default;
-$theme-input-border-hover: 1px solid #2b9af3 !default;
+$theme-input-border-hover: 1px solid $_primary-color !default;
 $theme-input-placeholder-color: #d4d4d4 !default;
 $theme-input-alt-box-shadow: #f4f4f4 0 0 0 4px !default;
-$theme-input-border-active:1px solid #2b9af3 !default;
+$theme-input-border-active:1px solid $_primary-color !default;
+
+
 
 //checkbox
 $theme-checkbox-color: $_off-black !default;
@@ -173,7 +176,7 @@ $theme-grid-pagination-icon-color-hover:#8ebc00 !default;
 
 
 //touch theme
-$theme-touch: black !default;
+$theme-touch: white !default;
 
 
 $Theme: (

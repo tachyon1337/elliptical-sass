@@ -1,69 +1,38 @@
 
 $icon-font-family:elliptical !default;
-$icon-search:\e01a !default;
-$icon-search-2:\e0ec !default;
-$icon-checkmark:\e035 !default;
-$icon-radio:\e158 !default;
-$icon-dropdown:\e1a9 !default;
-$icon-hide:\e1aa !default;
-$icon-toggle:\e1f3 !default;
-$icon-toggle-16:\e1f4 !default;
-$icon-down-arrow:\e1a2 !default;
-$icon-up-arrow:\e1a0 !default;
-$icon-down-arrow-2:\e00e  !default;
-$icon-up-arrow-2:\e00c !default;
-$icon-next:\e1a8  !default;
-$icon-previous:\e1a7  !default;
-$icon-down:\e1a5 !default;
-$icon-up:\e1a6 !default;
-$icon-back:\e1a7 !default;
-$icon-forward:\e1a8 !default;
-$icon-remove:\e0db !default;
-$icon-plus:\e095 !default;
-$icon-minus:\e093 !default;
-$icon-indicator-active:\e158 !default;
-$icon-indicator: \e05d !default;
-$icon-facebook:\e14a !default;
-$icon-facebook-2:\e227 !default;
-$icon-twitter:\e14e !default;
-$icon-twitter-2:\e228 !default;
-$icon-google:\e145 !default;
-$icon-google-2:\e229 !default;
-$icon-github:\e160 !default;
-$icon-github-2:\e16f !default;
+$icon-search:map-get($Core-Icons,search) !default;
+$icon-check:map-get($Core-Icons,checkmark) !default;
+$icon-down:map-get($Core-Icons,arrow-down) !default;
+$icon-up:map-get($Core-Icons,arrow-up) !default;
+$icon-right:map-get($Core-Icons,arrow-right) !default;
+$icon-left:map-get($Core-Icons,arrow-left) !default;
+$icon-chevron-down:map-get($Core-Icons,chevron-down)  !default;
+$icon-chevron-up:map-get($Core-Icons,chevron-up) !default;
+$icon-chevron-right:map-get($Core-Icons,chevron-right)  !default;
+$icon-chevron-left:map-get($Core-Icons,chevron-left)  !default;
+$icon-plus:map-get($Core-Icons,add) !default;
+$icon-minus:map-get($Core-Icons,minus) !default;
+$icon-circle-fill:map-get($Core-Icons,circle-filled) !default;
+$icon-circle:map-get($Core-Icons,circle) !default;
+$icon-close:map-get($Core-Icons,cross) !default;
 
 
 $Icons:(
         font-family:$icon-font-family,
         search:$icon-search,
-        search-2:$icon-search-2,
-        checkmark:$icon-checkmark,
-        radio:$icon-radio,
-        dropdown:$icon-dropdown,
-        hide:$icon-hide,
-        toggle:$icon-toggle,
-        toggle-16:$icon-toggle-16,
-        down-arrow:$icon-down-arrow,
-        down-arrow-2:$icon-down-arrow-2,
-        up-arrow:$icon-up-arrow,
-        up-arrow-2:$icon-up-arrow-2,
-        next:$icon-next,
-        previous:$icon-previous,
+        check:$icon-check,
         down:$icon-down,
         up:$icon-up,
-        back:$icon-back,
-        forward:$icon-forward,
-        remove:$icon-remove,
+        chevron-down:$icon-chevron-down,
+        chevron-up:$icon-chevron-up,
+        right:$icon-right,
+        left:$icon-chevron-left,
+        chevron-right:$icon-chevron-right,
+        chevron-left:$icon-chevron-left,
         plus:$icon-plus,
         minus:$icon-minus,
-        indicator-active:$icon-indicator-active,
-        indicator:$icon-indicator,
-        facebook:$icon-facebook,
-        facebook-2:$icon-facebook-2,
-        twitter:$icon-twitter,
-        twitter-2:$icon-twitter-2,
-        google:$icon-google,
-        google-2:$icon-google-2,
-        github:$icon-github,
-        github-2:$icon-github-2
+        circle:$icon-circle,
+        circle-fill:$icon-circle-fill,
+        close:$icon-close
+
 );

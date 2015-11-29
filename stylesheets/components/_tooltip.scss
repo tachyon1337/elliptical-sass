@@ -34,9 +34,7 @@ $tip-color:null
 ///   padding:<value>,
 ///   font-size:<value>,
 ///   z-index:<value>,
-///   tip:(
-///      color:<value>
-///   )
+///   tip-color:<value>
 /// )
 @mixin ui-tooltip($component:primary,$class:null,$map:()) {
   $_tip-color:map-nested-get($Core,primary,color);

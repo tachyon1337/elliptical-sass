@@ -66,6 +66,7 @@
 @mixin elliptical-skeleton(){
   @include normalize();
   @include flexbox-container();
+  @include ui-sticky-footer();
   @include elliptical-document();
   @include elliptical-convenience-mixins();
   @include elliptical-semantic();

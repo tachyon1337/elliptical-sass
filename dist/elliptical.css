@@ -483,6 +483,23 @@ flex-box, .flex-box {
   flex-box.relative, .flex-box.relative {
     position: relative; }
 
+.ui-sticky-footer {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+  height: 100%;
+  -webkit-flex-direction: column;
+  flex-direction: column; }
+  .ui-sticky-footer > *:not([data-role=footer]) {
+    -webkit-flex: 1 0 auto;
+    flex: 1 0 auto; }
+  .ui-sticky-footer.ns {
+    height: 900px; }
+
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

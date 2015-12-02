@@ -1,8 +1,9 @@
 
 
-@mixin elliptical-fonts(){
+@mixin elliptical-icons(){
   @include core-icons();
-  @include font-ubuntu();
+  @include content-icons();
+  @include social-icons();
 }
 
 @mixin elliptical-document(){
@@ -41,18 +42,18 @@
   @include semantic-components();
 }
 
-@mixin elliptical-mixins(){
-  @include mixins-classes();
+
+@mixin elliptical-convenience-mixins(){
   @include mixins-convenience();
-  @include mixins-grid();
   @include mixins-hardware-acceleration();
   @include mixins-visibility();
 }
 
-@mixin elliptical-skeleton-mixins(){
-  @include mixins-convenience();
-  @include mixins-hardware-acceleration();
-  @include mixins-visibility();
+@mixin elliptical-mixins(){
+  @include elliptical-convenience-mixins();
+  @include mixins-classes();
+  @include mixins-grid();
+  @include mixins-color();
 }
 
 @mixin elliptical-animations(){
@@ -61,30 +62,63 @@
   @include animations-slide();
 }
 
+//bare minimum
 @mixin elliptical-skeleton(){
   @include normalize();
   @include flexbox-container();
   @include elliptical-document();
-  @include elliptical-skeleton-mixins();
+  @include elliptical-convenience-mixins();
   @include elliptical-semantic();
-  @include animations-base();
-  @include animations-fade();
 }
 
-
-@mixin elliptical-project(){
-  @include normalize();
-  @include flexbox-container();
-  //@include elliptical-fonts();
-  @include elliptical-document();
+//project, minus icons,animations,notification
+@mixin elliptical-basic(){
+  @include elliptical-skeleton();
   @include elliptical-typography();
   @include elliptical-mixins();
-  @include mixins-color();
   @include elliptical-forms();
   @include elliptical-grid();
   @include elliptical-buttons();
+}
+
+//project
+@mixin elliptical-project(){
+  @include elliptical-basic();
   @include elliptical-notification();
-  @include elliptical-semantic();
+  @include elliptical-icons();
   @include elliptical-animations();
+}
+
+@mixin elliptical-components(){
+  @include elliptical-notification();
+  @include ui-badge();
+  @include ui-box();
+  @include ui-breadcrumb();
+  @include ui-carousel();
+  @include ui-collapse();
+  @include touch-toggle-menu();
+  @include ui-label();
+  @include ui-media-object();
+  @include ui-menu();
+  @include ui-modal();
+  @include ui-navbar();
+  @include ui-pagination();
+  @include ui-pop-over();
+  @include ui-rating();
+  @include ui-sidebar();
+  @include ui-social();
+  @include ui-table();
+  @include ui-flex-table();
+  @include ui-tabs();
+  @include ui-tabs();
+  @include ui-tip();
+  @include ui-tooltip();
+  @include ui-topbar();
+  @include ui-window();
+}
+
+@mixin elliptical-distribution(){
+  @include elliptical-basic();
+  @include elliptical-components();
 }
 

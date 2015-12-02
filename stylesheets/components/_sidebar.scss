@@ -126,7 +126,7 @@ $header-font-size:null
   $_border-radius:get-border-radius();
   $padding:map-get-default($map,padding,24px);
   $alignment:map-get-default($map,alignment,flex-start);
-  $min-height:map-get($map,padding,min-height);
+  $min-height:map-get-default($map,min-height,200px);
   $border-radius:map-get-default($map,border-radius,$_border-radius);
   $item-padding-left:map-nested-get-default($map,item,padding-left,8px);
   $menu-item-line-height:map-nested-get-default($map,menu,item-line-height,2em);

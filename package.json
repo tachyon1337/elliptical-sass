@@ -1,7 +1,7 @@
 {
   "name": "elliptical-sass",
-  "description": "Sass library for elliptical web components",
-  "version": "1.1.5",
+  "description": "Sass library for responsive web components",
+  "version": "1.1.8",
   "author": "S. Francis",
   "license": "MIT",
   "repository": {
@@ -14,13 +14,21 @@
     "sass-animations": "git+https://github.com/ellipticaljs/sass-animations.git",
     "sass-media-query": "git+https://github.com/ellipticaljs/sass-media-query.git",
     "sass-component": "git+https://github.com/ellipticaljs/sass-component.git",
-    "sass-semantic-components":"git+https://github.com/ellipticaljs/sass-semantic-components.git",
-    "sass-visibility":"git+https://github.com/ellipticaljs/sass-visibility.git",
-    "sass-element-tag":"git+https://github.com/ellipticaljs/sass-element-tag.git",
-    "sass-flex-grid":"git+https://github.com/ellipticaljs/sass-flex-grid.git"
+    "sass-semantic-components": "git+https://github.com/ellipticaljs/sass-semantic-components.git",
+    "sass-visibility": "git+https://github.com/ellipticaljs/sass-visibility.git",
+    "sass-element-tag": "git+https://github.com/ellipticaljs/sass-element-tag.git",
+    "sass-flex-grid": "git+https://github.com/ellipticaljs/sass-flex-grid.git",
+    "sass-ubuntu": "git+https://github.com/ellipticaljs/sass-ubuntu.git",
+    "sass-core-icons": "git+https://github.com/ellipticaljs/sass-core-icons.git",
+    "sass-content-icons": "git+https://github.com/ellipticaljs/sass-content-icons.git",
+    "sass-social-icons": "git+https://github.com/ellipticaljs/sass-social-icons.git"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "sassdoc": "^2.1.15"
+    "sassdoc": "^2.1.15",
+    "gulp-sass": "^2.1.0",
+    "gulp-concat": "^2.2.0",
+    "gulp-uglify": "^0.2.1",
+    "gulp-minify-css": "^1.2.2"
   }
 }

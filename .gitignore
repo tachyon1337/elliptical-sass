@@ -38,6 +38,9 @@ nbproject
 #Node
 node_modules/
 
+#bower
+bower_components/
+
 #Visual Studio
 obj/
 bin/

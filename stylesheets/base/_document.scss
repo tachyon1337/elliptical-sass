@@ -16,9 +16,6 @@
   }
 
   body {
-    background: map-get($Document,background);
-    font-family: map-get($Document,font);
-    font-weight: map-get($Document,font-weight);
     font-size: map-get($Document,font-size);
     color:map-get($Document,font-color);
     line-height: map-get($Document,line-height);

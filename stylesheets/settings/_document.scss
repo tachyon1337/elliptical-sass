@@ -1,11 +1,7 @@
 @import "base";
-
-$document-background: map-get($Base,white) !default;
 $document-line-height: 150% !default;
-$document-font: 'ubuntulight' !default;
 $document-font-size: 16px !default;
 $document-font-color: #777 !default;
-$document-font-weight: normal !default;
 $document-font-smoothing: true !default;
 $document-margin: 0 !default;
 $document-padding: 0 !default;
@@ -32,12 +28,9 @@ $document-code-font-weight: normal !default;
 $document-code-border-radius: 3px !default;
 
 $Document: (
-        background:$document-background,
         line-height:$document-line-height,
-        font:$document-font,
         font-size:$document-font-size,
         font-color:$document-font-color,
-        font-weight:$document-font-weight,
         font-smoothing:$document-font-smoothing,
         margin:$document-margin,
         padding:$document-padding,

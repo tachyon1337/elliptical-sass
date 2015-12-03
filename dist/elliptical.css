@@ -621,13 +621,6 @@ img {
   display: inline-block;
   vertical-align: middle; }
 
-code {
-  font-weight: normal;
-  background: #eee;
-  color: #c7254e;
-  white-space: nowrap;
-  border-radius: 3px; }
-
 button {
   line-height: 1; }
   button:focus {
@@ -2074,9 +2067,7 @@ p {
     font-size: 24px; }
 
 aside p {
-  font-size: 16px;
-  line-height: 150%;
-  font-style: italic; }
+  line-height: 150%; }
 
 p + hr {
   margin: 2.5em 0 2.5em 0; }
@@ -2088,7 +2079,7 @@ hr {
   border: 0;
   border-top: 1px solid #ccc;
   clear: both;
-  margin: 1em 0 1em;
+  margin: 1.25em 0;
   height: 1px; }
   hr.flush {
     margin-top: 0; }
@@ -2114,50 +2105,37 @@ small {
 
 blockquote, blockquote p {
   line-height: 1.6;
-  color: #919191;
   margin: 1em 0;
   padding: 1em;
-  font-size: 16px;
-  font-style: normal;
   border: 0; }
   blockquote.center, blockquote p.center {
     text-align: center; }
   blockquote cite, blockquote p cite {
     display: block;
     font-size: 0.8em;
-    color: #aaaaaa;
     font-style: normal; }
     blockquote cite:before, blockquote p cite:before {
-      content: ""; }
-  blockquote.info a, blockquote.warning a, blockquote.success a, blockquote.error a, blockquote p.info a, blockquote p.warning a, blockquote p.success a, blockquote p.error a {
-    text-decoration: underline;
-    font-weight: normal; }
-    blockquote.info a:hover, blockquote.warning a:hover, blockquote.success a:hover, blockquote.error a:hover, blockquote p.info a:hover, blockquote p.warning a:hover, blockquote p.success a:hover, blockquote p.error a:hover {
-      opacity: 0.7; }
+      content: "\\2014 \\0020 "; }
   blockquote.info, blockquote p.info {
     border-left: 6px solid #3a87ad !important;
-    background: #d9edf7;
-    color: #3a87ad; }
-    blockquote.info a, blockquote.info h6, blockquote.info h5, blockquote.info h4, blockquote.info h3, blockquote.info h2, blockquote p.info a, blockquote p.info h6, blockquote p.info h5, blockquote p.info h4, blockquote p.info h3, blockquote p.info h2 {
-      color: #3a87ad; }
+    background: #d9edf7; }
+    blockquote.info:hover, blockquote.info:active, blockquote.info.active, blockquote p.info:hover, blockquote p.info:active, blockquote p.info.active {
+      border-left: 6px solid #3a87ad !important; }
   blockquote.warning, blockquote p.warning {
     border-left: 6px solid #c09853 !important;
-    background: #fcf8e3;
-    color: #c09853; }
-    blockquote.warning a, blockquote.warning h6, blockquote.warning h5, blockquote.warning h4, blockquote.warning h3, blockquote.warning h2, blockquote p.warning a, blockquote p.warning h6, blockquote p.warning h5, blockquote p.warning h4, blockquote p.warning h3, blockquote p.warning h2 {
-      color: #c09853; }
+    background: #fcf8e3; }
+    blockquote.warning:hover, blockquote.warning:active, blockquote.warning.active, blockquote p.warning:hover, blockquote p.warning:active, blockquote p.warning.active {
+      border-left: 6px solid #c09853 !important; }
   blockquote.success, blockquote p.success {
     border-left: 6px solid #468847 !important;
-    background: #dff0d8;
-    color: #468847; }
-    blockquote.success a, blockquote.success h6, blockquote.success h5, blockquote.success h4, blockquote.success h3, blockquote.success h2, blockquote p.success a, blockquote p.success h6, blockquote p.success h5, blockquote p.success h4, blockquote p.success h3, blockquote p.success h2 {
-      color: #468847; }
+    background: #dff0d8; }
+    blockquote.success:hover, blockquote.success:active, blockquote.success.active, blockquote p.success:hover, blockquote p.success:active, blockquote p.success.active {
+      border-left: 6px solid #468847 !important; }
   blockquote.error, blockquote p.error {
     border-left: 6px solid #bc5251 !important;
-    background: #f2dede;
-    color: #bc5251; }
-    blockquote.error a, blockquote.error h6, blockquote.error h5, blockquote.error h4, blockquote.error h3, blockquote.error h2, blockquote p.error a, blockquote p.error h6, blockquote p.error h5, blockquote p.error h4, blockquote p.error h3, blockquote p.error h2 {
-      color: #bc5251; }
+    background: #f2dede; }
+    blockquote.error:hover, blockquote.error:active, blockquote.error.active, blockquote p.error:hover, blockquote p.error:active, blockquote p.error.active {
+      border-left: 6px solid #bc5251 !important; }
 
 a.disabled, a [disabled] {
   color: #e1e1e1; }
@@ -2182,14 +2160,13 @@ abbr {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
-  font-weight: 300;
-  color: #333;
+  font-weight: normal;
+  font-style: normal;
   text-rendering: optimizeLegibility;
   line-height: 1.1;
   margin: 0.2em 0 0.3em 0; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     font-size: 60%;
-    color: #c4c4c4;
     line-height: 0; }
   h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary {
     color: #2b9af3; }
@@ -4148,7 +4125,9 @@ grid-columns {
   grid-row {
     overflow-x: hidden; }
     grid-row.overflow {
-      overflow-x: visible; } }
+      overflow-x: visible; }
+    grid-row.padding {
+      padding-bottom: 1em; } }
 
 .ui-button, ui-button {
   padding: 0.7em 1em 0.7em 1em;

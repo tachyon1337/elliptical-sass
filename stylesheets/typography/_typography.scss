@@ -31,9 +31,7 @@
   }
 
   aside p {
-    font-size: map-get($Typography,aside-paragraph-font-size);
     line-height: map-get($Typography,aside-paragraph-line-height);
-    font-style: map-get($Typography,aside-paragraph-font-style);
   }
 
 
@@ -88,11 +86,8 @@
 
   blockquote, blockquote p {
     line-height: map-get($Typography,blockquote-line-height);
-    color: map-get($Typography,blockquote-font-color);
     margin: map-get($Typography,blockquote-margin);
     padding: map-get($Typography,blockquote-padding);
-    font-size: map-get($Typography,blockquote-font-size);
-    font-style: map-get($Typography,blockquote-font-style);
     border: map-get($Typography,blockquote-border);
     &.center{
       text-align: center;
@@ -100,51 +95,37 @@
     cite {
       display: block;
       font-size: map-get($Typography,cite-font-size);
-      color: map-get($Typography,cite-font-color);
       font-style: map-get($Typography,cite-font-style);
       &:before {
         content: "#{map-get($Typography,cite-before)}";
       }
     }
-    &.info,&.warning,&.success,&.error {
-      a{
-        text-decoration:map-get($Typography,blockquote-link-decoration);
-        font-weight:map-get($Typography,blockquote-link-weight);
-        &:hover{
-          opacity:map-get($Typography,blockquote-link-hover-opacity);
-        }
-      }
-    }
     &.info{
       border-left:map-get($Typography,blockquote-border-left) $_info-color !important;
       background:$_info-background;
-      color:$_info-color;
-      a,h6,h5,h4,h3,h2{
-        color:$_info-color;
+      &:hover,&:active,&.active{
+        border-left:map-get($Typography,blockquote-border-left) $_info-color !important;
       }
     }
     &.warning{
       border-left:map-get($Typography,blockquote-border-left) $_warning-color !important;
       background:$_warning-background;
-      color:$_warning-color;
-      a,h6,h5,h4,h3,h2{
-        color:$_warning-color;
+      &:hover,&:active,&.active{
+        border-left:map-get($Typography,blockquote-border-left) $_warning-color !important;
       }
     }
     &.success{
       border-left:map-get($Typography,blockquote-border-left) $_success-color !important;
       background:$_success-background;
-      color:$_success-color;
-      a,h6,h5,h4,h3,h2{
-        color:$_success-color;
+      &:hover,&:active,&.active{
+        border-left:map-get($Typography,blockquote-border-left) $_success-color !important;
       }
     }
     &.error{
       border-left:map-get($Typography,blockquote-border-left) $_error-color !important;
       background:$_error-background;
-      color:$_error-color;
-      a,h6,h5,h4,h3,h2{
-        color:$_error-color;
+      &:hover,&:active,&.active{
+        border-left:map-get($Typography,blockquote-border-left) $_error-color !important;
       }
     }
   }
@@ -186,13 +167,12 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: map-get($Typography,header-font-family);
     font-weight: map-get($Typography,header-font-weight);
-    color: map-get($Typography,header-font-color);
+    font-style: map-get($Typography,header-font-style);
     text-rendering: map-get($Typography,header-text-rendering);
     line-height: map-get($Typography,header-line-height);
     margin: map-get($Typography,header-margin);
     small {
       font-size: map-get($Typography,header-small-font-size);
-      color: map-get($Typography,header-small-font-color);
       line-height: map-get($Typography,header-small-line-height);
     }
     &.primary {

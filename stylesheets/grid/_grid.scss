@@ -279,6 +279,9 @@ $touch-margin-bottom:null) {
           ///re-enable on per row basis, if needed
           overflow-x: visible;
         }
+        &.padding{
+          padding-bottom:1em;
+        }
         @if($touch-margin-top !=null){
           margin-top:$touch-margin-top;
         }

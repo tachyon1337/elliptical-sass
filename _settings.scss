@@ -54,8 +54,6 @@
 //$document-list-item-margin:0 0 .5em 0;
 //$document-highlight-color: #c7254e;
 //$document-highlight-background: $off-white;
-//$document-code-font-weight: normal;
-//$document-code-border-radius: 3px;
 
 
 /// core ----------------------------------
@@ -230,8 +228,6 @@
 //$typography-paragraph-header-sibling-margin: 2em 0 1em 0;
 //$typography-paragraph-hr-sibling-margin: 2.5em 0 2.5em 0;
 //$typography-grid-header-first-child-margin-top: 1em;
-//$typography-aside-paragraph-font-size: $document-font-size;
-//$typography-aside-paragraph-font-style: italic;
 //$typography-aside-paragraph-line-height: 150%;
 //$typography-inset: 0 1px 0 $white;
 //$typography-hr-border-top: 1px solid $gray;
@@ -243,28 +239,19 @@
 //$typography-highlight-font-weight: bold;
 //$typography-blockquote-border: 0;
 //$typography-blockquote-border-left: 6px solid;
-//$typography-blockquote-font-color: lighten($document-font-color, 10%);
-//$typography-blockquote-font-size: $document-font-size;
-//$typography-blockquote-font-weight: normal;
-//$typography-blockquote-font-style: normal;
 //$typography-blockquote-line-height: 1.6;
 //$typography-blockquote-margin: 1em 0;
 //$typography-blockquote-padding: 1em;
-//$typography-blockquote-link-decoration: underline;
-//$typography-blockquote-link-weight: normal;
-//$typography-blockquote-link-hover-opacity: .7;
 //$typography-cite-font-size: .8em;
-//$typography-cite-font-color: lighten($document-font-color, 20%);
 //$typography-cite-font-style: normal;
 //$typography-cite-before: \2014 \0020;
 //$typography-header-font-family: inherit;
-//$typography-header-font-color: inherit;
-//$typography-header-font-weight: 300;
+//$typography-header-font-weight:normal;
+//$typography-header-font-style:normal;
 //$typography-header-line-height: 1.1;
 //$typography-header-margin: .2em 0 .3em 0;
 //$typography-header-text-rendering: optimizeLegibility;
 //$typography-header-small-font-size: 60%;
-//$typography-header-small-font-color: lighten($document-font-color, 30%);
 //$typography-header-small-line-height: 0;
 //$typography-header-1: 4.9em;
 //$typography-header-2: 3.375em;

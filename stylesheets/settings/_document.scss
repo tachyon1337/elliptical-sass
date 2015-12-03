@@ -24,8 +24,7 @@ $document-list-item-margin:0 0 .5em 0 !default;
 $document-list-margin: 1em !default;
 $document-highlight-color: #c7254e !default;
 $document-highlight-background: map-get($Base,off-white) !default;
-$document-code-font-weight: normal !default;
-$document-code-border-radius: 3px !default;
+
 
 $Document: (
         line-height:$document-line-height,
@@ -52,7 +51,5 @@ $Document: (
         list-margin:$document-list-margin,
         list-item-margin:$document-list-item-margin,
         highlight-color:$document-highlight-color,
-        highlight-background:$document-highlight-background,
-        code-font-weight:$document-code-font-weight,
-        code-border-radius:$document-code-border-radius
+        highlight-background:$document-highlight-background
 );

@@ -157,13 +157,6 @@
     display: inline-block;
     vertical-align: middle;
   }
-  code {
-    font-weight: map-get($Document,code-font-weight);
-    background: map-get($Document,highlight-background);
-    color: map-get($Document,highlight-color);
-    white-space: nowrap;
-    border-radius: map-get($Document,code-border-radius);
-  }
 
   button {
     line-height: map-get($Document,button-line-height);

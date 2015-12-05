@@ -116,9 +116,11 @@
   @include ui-tooltip();
   @include ui-topbar();
   @include ui-window();
+
 }
 
 @mixin elliptical-distribution(){
+  @include component-theme();
   @include elliptical-basic();
   @include elliptical-components();
 }

@@ -2795,6 +2795,18 @@ input[type="url"].warning:-ms-input-placeholder,
 textarea.warning:-ms-input-placeholder {
   color: #c09853 !important; }
 
+*.error-label {
+  color: #bc5251 !important; }
+
+*.info-label {
+  color: #3a87ad !important; }
+
+*.warning-label {
+  color: #c09853 !important; }
+
+*.success-label {
+  color: #468847 !important; }
+
 *.error {
   background: #f2dede !important;
   color: #bc5251 !important;

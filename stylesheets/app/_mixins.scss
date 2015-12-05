@@ -123,5 +123,6 @@
   @include component-theme();
   @include elliptical-basic();
   @include elliptical-components();
+  @include mixins-template();
 }
 

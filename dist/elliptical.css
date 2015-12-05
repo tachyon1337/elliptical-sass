@@ -7595,3 +7595,29 @@ ui-window {
         margin-left: 5px;
         margin-bottom: 0;
         padding: 0.5em 0.7em 0.5em 0.7em; } }
+
+[template] {
+  visibility: hidden !important; }
+
+[template].visible {
+  visibility: visible !important; }
+
+[role=form] > form {
+  visibility: hidden; }
+
+[data-upgraded=false] {
+  visibility: hidden; }
+
+[data-upgraded=true] {
+  visibility: visible; }
+
+.hidden [data-upgraded=true] {
+  visibility: hidden !important; }
+
+[empty-template] {
+  display: none; }
+  [empty-template].show {
+    display: block; }
+
+form.visible {
+  visibility: visible !important; }

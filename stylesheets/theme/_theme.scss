@@ -162,7 +162,6 @@
           )
   ));
 
-  @debug(form-input);
   ///input-alt
   @include extend-component($component:css-input-alt,$extend-component:css-input,$map:(
           box-shadow:map-nested-get($Theme,input,alt-box-shadow)

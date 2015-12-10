@@ -1,4 +1,3 @@
-@charset "UTF-8";
 ui-sidebar, ui-sidebar > ui-menu > menu-item.header:hover {
   background: #eee; }
 
@@ -3063,7 +3062,7 @@ blockquote, blockquote p {
     font-size: 0.8em;
     font-style: normal; }
     blockquote cite:before, blockquote p cite:before {
-      content: "\\2014 \\0020 "; }
+      content: "\2014 \0020 "; }
   blockquote.info, blockquote p.info {
     border-left: 6px solid #3a87ad !important;
     background: #d9edf7; }
@@ -4221,7 +4220,7 @@ ui-checkbox {
     ui-checkbox input[type="checkbox"] + label.inline {
       display: inline-block; }
   ui-checkbox input[type="checkbox"]:checked + label:before {
-    content: "";
+    content: "\e912";
     font-family: elliptical;
     font-size: 1em; }
   ui-checkbox input[type="checkbox"]:disabled + label {
@@ -4271,7 +4270,7 @@ ui-radio {
       margin-bottom: 1em; }
   ui-radio input[type="radio"]:checked + label:after {
     line-height: 1;
-    content: "";
+    content: "\e158";
     font-size: 0.625em;
     font-family: elliptical;
     bottom: .4em;
@@ -4362,14 +4361,14 @@ ui-input-number {
         top: 0.3em;
         left: 0.38em;
         font-size: 1em;
-        content: ""; }
+        content: "\e915"; }
       ui-input-number label .input-number > .minus:before {
         font-family: elliptical;
         position: absolute;
         top: 0.3em;
         left: 0.38em;
         font-size: 1em;
-        content: ""; }
+        content: "\e914"; }
 
 ui-select {
   position: relative;
@@ -4396,7 +4395,7 @@ ui-select {
   ui-select ::-ms-expand {
     display: none; }
   ui-select:after {
-    content: "";
+    content: "\e903";
     font-family: elliptical;
     font-size: 1em;
     position: absolute;
@@ -4441,7 +4440,7 @@ ui-search {
         border-radius: 5px !important;
         padding-right: 3em; }
       ui-search:after {
-        content: "";
+        content: "\e016";
         position: absolute;
         font-size: 1em;
         right: 0.3em;
@@ -4467,7 +4466,7 @@ ui-search {
         border-radius: 5px !important;
         padding-right: 2em; }
       ui-search:after {
-        content: "";
+        content: "\e016";
         position: absolute;
         font-size: 0.9em;
         right: 0.5em;
@@ -5112,7 +5111,7 @@ grid-columns {
     padding-right: 2.5em; }
     .ui-button.next:after, ui-button.next:after {
       font-size: 1em;
-      content: "";
+      content: "\e901";
       right: 0.5em;
       top: 0.7em;
       line-height: 1; }
@@ -5120,7 +5119,7 @@ grid-columns {
     padding-left: 2.5em; }
     .ui-button.prev:after, ui-button.prev:after {
       font-size: 1em;
-      content: "";
+      content: "\e012";
       left: 0.5em;
       top: 0.7em;
       line-height: 1; }
@@ -5163,7 +5162,7 @@ grid-columns {
       padding-right: 3em; }
       .ui-button.jumbo.next:after, ui-button.jumbo.next:after {
         font-size: 1.5em;
-        content: "";
+        content: "\e901";
         right: 0.1em;
         top: 0.76667em;
         line-height: 0.66667; }
@@ -5171,7 +5170,7 @@ grid-columns {
       padding-left: 3em; }
       .ui-button.jumbo.prev:after, ui-button.jumbo.prev:after {
         font-size: 1.5em;
-        content: "";
+        content: "\e012";
         left: 0.1em;
         top: 0.76667em;
         line-height: 0.66667; }
@@ -5200,7 +5199,7 @@ grid-columns {
       padding-right: 2.65em; }
       .ui-button.large.next:after, ui-button.large.next:after {
         font-size: 1.15em;
-        content: "";
+        content: "\e901";
         right: 0.1em;
         top: 0.69565em;
         line-height: 0.86957; }
@@ -5208,7 +5207,7 @@ grid-columns {
       padding-left: 2.65em; }
       .ui-button.large.prev:after, ui-button.large.prev:after {
         font-size: 1.15em;
-        content: "";
+        content: "\e012";
         left: 0.1em;
         top: 0.69565em;
         line-height: 0.86957; }
@@ -5237,7 +5236,7 @@ grid-columns {
       padding-right: 2.3em; }
       .ui-button.small.next:after, ui-button.small.next:after {
         font-size: 0.9em;
-        content: "";
+        content: "\e901";
         right: 0.5em;
         top: 0.66667em;
         line-height: 1.11111; }
@@ -5245,7 +5244,7 @@ grid-columns {
       padding-left: 2.3em; }
       .ui-button.small.prev:after, ui-button.small.prev:after {
         font-size: 0.9em;
-        content: "";
+        content: "\e012";
         left: 0.5em;
         top: 0.66667em;
         line-height: 1.11111; }
@@ -5274,7 +5273,7 @@ grid-columns {
       padding-right: 2.2em; }
       .ui-button.tiny.next:after, ui-button.tiny.next:after {
         font-size: 0.8em;
-        content: "";
+        content: "\e901";
         right: 0.5em;
         top: 0.625em;
         line-height: 1.25; }
@@ -5282,7 +5281,7 @@ grid-columns {
       padding-left: 2.2em; }
       .ui-button.tiny.prev:after, ui-button.tiny.prev:after {
         font-size: 0.8em;
-        content: "";
+        content: "\e012";
         left: 0.5em;
         top: 0.625em;
         line-height: 1.25; }
@@ -5699,14 +5698,14 @@ ui-carousel {
       right: 2em;
       visibility: hidden; }
       ui-carousel > carousel-navigation.next:after {
-        content: "";
+        content: "\e901";
         font-family: elliptical;
         font-size: 32px; }
     ui-carousel > carousel-navigation.prev {
       left: 2em;
       visibility: hidden; }
       ui-carousel > carousel-navigation.prev:after {
-        content: "";
+        content: "\e012";
         font-family: elliptical;
         font-size: 32px; }
     ui-carousel > carousel-navigation.indicators {
@@ -5731,9 +5730,9 @@ ui-carousel {
           font-family: elliptical;
           font-size: 16px;
           color: #fff;
-          content: ""; }
+          content: "\e05d"; }
         ui-carousel > carousel-navigation.indicators > li.active:before {
-          content: "";
+          content: "\e158";
           color: #fff; }
       @media only screen and (max-width: 640px) {
         ui-carousel > carousel-navigation.indicators {
@@ -6002,12 +6001,12 @@ touch-ui-drawer touch-ui-menu {
     touch-ui-drawer touch-ui-menu menu-item-dropdown:after {
       position: absolute;
       font-family: elliptical;
-      content: "";
+      content: "\e00f";
       top: 20px;
       right: 20px;
       font-size: 16px; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown.close:after {
-      content: ""; }
+      content: "\e075"; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown > ui-dropdown, touch-ui-drawer touch-ui-menu menu-item-dropdown > touch-ui-dropdown, touch-ui-drawer touch-ui-menu menu-item-dropdown > ui-mega-dropdown {
       height: auto;
       margin-top: 20px !important;
@@ -6067,7 +6066,7 @@ ui-toggle {
     z-index: 999; }
     ui-toggle:before {
       font-family: content;
-      content: "\\e902";
+      content: "\e902";
       font-size: 24px;
       left: 16px;
       top: 12px;

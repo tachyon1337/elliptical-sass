@@ -97,7 +97,7 @@
       font-size: map-get($Typography,cite-font-size);
       font-style: map-get($Typography,cite-font-style);
       &:before {
-        content: "#{map-get($Typography,cite-before)}";
+        @include content-icon(map-get($Typography,cite-before));
       }
     }
     &.info{

@@ -25,7 +25,7 @@
 /// )
 @mixin ui-toggle($component:css-toggle,$tags:null,$class:null,$map:()){
   $_z-index:get-z-index();
-  $_icon:\e902;
+  $_icon:map-get($Content-Icons,toggle);
   $_icon-font-family:content;
   $_height:map-get($Component,touch-bar-height);
   $_toggle-size:map-get($Component,toggle-size);

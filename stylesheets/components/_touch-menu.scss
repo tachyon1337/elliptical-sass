@@ -78,7 +78,7 @@ $icon-down:null
     &:after {
       position: absolute;
       font-family: $icon-font-family;
-      content: "#{$icon-down}";
+      @include content-icon($icon-down);
       top: $icon-top;
       right: $icon-right;
       font-size: $icon-font-size;
@@ -86,7 +86,7 @@ $icon-down:null
     }
     &.close {
       &:after {
-        content: "#{$icon-up}";
+        @include content-icon($icon-up);
       }
     }
     &>ui-dropdown,&>touch-ui-dropdown,&>ui-mega-dropdown{

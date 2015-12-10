@@ -57,3 +57,7 @@
   }
 }
 
+@mixin content-icon($icon){
+  $icon:unquote($icon);
+  content:unquote("\"#{$icon}\"");
+}

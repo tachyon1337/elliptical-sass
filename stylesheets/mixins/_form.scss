@@ -99,7 +99,7 @@ $right: null) {
   }
   &:after {
     font-family: $icon-font-family;
-    content: '#{$icon}';
+    @include content-icon($icon);
     position: absolute;
     @extend %#{$component}-icon !optional;
     font-size: $font-size;

@@ -314,7 +314,7 @@ $touch-border-radius: null){
 
     input[type="checkbox"]:checked + label {
       &:before {
-        content: "#{map-get($Icons,check)}";
+        @include content-icon(map-get($Icons,check));
         @extend %#{$component}-font !optional;
         font-family: map-get($Icons,font-family);
         font-size: map-nested-get($Form,checkbox,icon-font-size);
@@ -385,7 +385,7 @@ $touch-border-radius: null){
     input[type="radio"]:checked + label {
       &:after {
         line-height: 1;
-        content: '#{map-get($Icons,circle-fill)}';
+        @include content-icon(map-get($Icons,circle-fill));
         font-size:map-nested-get($Form,radio,icon-font-size);
         @extend %#{$component}-icon !optional;
         font-family: map-get($Icons,font-family);
@@ -536,7 +536,7 @@ $touch-border-radius: null){
             top: $input-number-icon-top;
             left: $input-number-icon-left;
             font-size: 1em;
-            content: '#{map-get($Icons,plus)}';
+            @include content-icon(map-get($Icons,plus));
             @extend %#{$component}-icon !optional;
           }
         }
@@ -547,7 +547,7 @@ $touch-border-radius: null){
             top: $input-number-icon-top;
             left:$input-number-icon-left;
             font-size: 1em;
-            content: '#{map-get($Icons,minus)}';
+            @include content-icon(map-get($Icons,minus));
             @extend %#{$component}-icon !optional;
           }
         }
@@ -671,7 +671,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
       display: none;
     }
     &:after {
-      content: "#{$icon}";
+      @include content-icon($icon);
       @extend %#{$component}-icon !optional;
       font-family: $_icon-font-family;
       font-size: $icon-font-size;

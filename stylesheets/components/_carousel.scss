@@ -129,7 +129,7 @@ $indicator-icon-margin: null) {
       right: $navigation-position;
       visibility: hidden;
       &:after {
-        content: '#{$navigation-next-icon}';
+        @include content-icon($navigation-next-icon);
         font-family: $icon-font-family;
         font-size: $navigation-font-size;
         @extend %#{$component}-font !optional;
@@ -139,7 +139,7 @@ $indicator-icon-margin: null) {
       left: $navigation-position;
       visibility: hidden;
       &:after {
-        content: '#{$navigation-prev-icon}';
+        @include content-icon($navigation-prev-icon);
         font-family: $icon-font-family;
         font-size: $navigation-font-size;
         @extend %#{$component}-font !optional;
@@ -169,11 +169,11 @@ $indicator-icon-margin: null) {
           font-family: $icon-font-family;
           font-size: $indicator-icon-size;
           color: $indicator-icon-color;
-          content: '#{$indicator-icon}';
+          @include content-icon($indicator-icon);
         }
         &.active {
           &:before {
-            content: '#{$indicator-icon-active}';
+            @include content-icon($indicator-icon-active);
             color:$indicator-icon-active-color;
           }
         }

@@ -87,7 +87,7 @@ $vertical-label-margin:null
         @include web-component-base($component:$complete-icon-component,$include-font:false,$include-box-shadow:false);
         &:after{
           font-family:$icon-font-family;
-          content:$complete-icon;
+          @include content-icon($complete-icon);
           @extend %#{$complete-icon-component}-icon !optional;
           font-size:16px;
           left:$complete-icon-left;
@@ -205,6 +205,7 @@ $vertical-label-margin:null
 @mixin ui-step-progress($component:null,$icon-component:null,$complete-component:null,
      $complete-icon-component:null, $tags:null,$class:null,$map:()){
 
+  $_icon:map-get($Icons,check);
   $_icon-font-family:map-get($Icons,font-family);
   $current-font-weight:map-get-default($map,current-font-weight,bold);
   $icon-font-family:map-get-default($map,icon-font-family,$_icon-font-family);
@@ -215,7 +216,7 @@ $vertical-label-margin:null
   $label-left:map-nested-get-default($map,label,left,7px);
   $label-font-family:map-nested-get-default($map,label,font-family,"Helvetica Neue");
   $label-font-weight:map-nested-get-default($map,label,font-weight,500);
-  $complete-icon:map-nested-get-default($map,complete,icon,'\e035');
+  $complete-icon:map-nested-get-default($map,complete,icon,$_icon);
   $complete-icon-top:map-nested-get-default($map,complete,icon-top,-4px);
   $complete-icon-left:map-nested-get-default($map,complete,icon-left,4px);
   $vertical-item-height:map-nested-get-default($map,vertical,item-height,5em);

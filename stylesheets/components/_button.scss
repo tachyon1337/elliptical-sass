@@ -39,7 +39,7 @@
     padding-right: convert-to-decimal($icon-padding + margin-right($padding));
     &:after {
       font-size: $font-size;
-      content: '#{$_icon-next}';
+      @include content-icon($_icon-next);
       right: icon-position-right($font-size);
       top: icon-position($padding, $font-size);
       line-height: component-line-height($font-size, $_button-line-height);
@@ -49,7 +49,7 @@
     padding-left: convert-to-decimal($icon-padding + margin-left($padding));
     &:after {
       font-size: $font-size;
-      content: '#{$_icon-previous}';
+      @include content-icon($_icon-previous);
       left: icon-position-left($font-size);
       top: icon-position($padding, $font-size);
       line-height: component-line-height($font-size, $_button-line-height);

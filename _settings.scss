@@ -345,11 +345,11 @@
 //$theme-social-icon-text-shadow: rgba(0, 0, 0, .80) 0 -1px 0;
 
 ///css-bar
-//$theme-topbar-background: $dark-light;
-//$theme-topbar-font-color: $gray-medium-light;
-//$theme-topbar-text-shadow: none;
-//$theme-topbar-border: 0;
-//$theme-topbar-box-shadow: none;
+//$theme-bar-background: $gray-medium;
+//$theme-bar-font-color: $white;
+//$theme-bar-text-shadow: none;
+//$theme-bar-border: 0;
+//$theme-bar-box-shadow: none;
 
 ///menu
 //$theme-menu-background-hover: $black;
@@ -549,7 +549,7 @@
 //$component-touch-dropdown-font-color:#373737;
 //$component-touch-dropdown-text-shadow:none;
 //$component-touch-dropdown-border: $gray-medium-light;
-//$component-touch-dropdown-box-shadow:inset 0px 3px 12px rgba(0,0,0,.1);
+//$component-touch-dropdown-box-shadow:none;
 
 ///touch-input
 //$component-touch-input-background: $white;
@@ -568,15 +568,8 @@
 //$component-touch-search-placeholder-color:$gray-light;
 
 ///touch-search-white
-//$component-touch-search-white-background:#a3acb2;
-//$component-touch-search-white-background-hover:#a3acb2;
-//$component-touch-search-white-background-active:#66757f;
-//$component-touch-search-white-font-color:#f1f2f3;
-//$component-touch-search-white-text-shadow:none;
-//$component-touch-search-white-border:0;
-//$component-touch-search-white-box-shadow:none;
-//$component-touch-search-white-icon-color:$white;
-//$component-touch-search-white-placeholder-color:#e5e7e9;
+
+//$component-touch-search-white-border:1px solid $gray-light;
 
 
 /// animations ----------------------------------------------

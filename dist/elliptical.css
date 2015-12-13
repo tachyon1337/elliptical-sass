@@ -558,12 +558,12 @@ ui-tabs > tab-items > tab-item.disabled, ui-tabs > tab-items > tab-item[disabled
 
 @media only screen and (min-width: 1025px) {
   ui-topbar {
-    background: #272727; }
+    background: #666; }
   ui-topbar, ui-topbar ui-brand a, ui-topbar ui-brand {
-    color: #999;
+    color: #fff;
     text-shadow: none; }
   ui-topbar ui-brand a:hover {
-    color: #999;
+    color: #fff;
     text-shadow: none; }
   ui-topbar {
     border: none; }
@@ -605,18 +605,6 @@ ui-tabs > tab-items > tab-item.disabled, ui-tabs > tab-items > tab-item[disabled
   ui-search input[type="url"],
   ui-search textarea {
     background: #fff; }
-  ui-search input[type="text"]:focus,
-  ui-search input[type="password"]:focus,
-  ui-search input[type="date"]:focus,
-  ui-search input[type="datetime"]:focus,
-  ui-search input[type="email"]:focus,
-  ui-search input[type="number"]:focus,
-  ui-search input[type="search"]:focus,
-  ui-search input[type="tel"]:focus,
-  ui-search input[type="time"]:focus,
-  ui-search input[type="url"]:focus,
-  ui-search textarea:focus {
-    background: whitesmoke; }
   ui-search:after, ui-search input[type="text"],
   ui-search input[type="password"],
   ui-search input[type="date"],
@@ -693,7 +681,7 @@ ui-tabs > tab-items > tab-item.disabled, ui-tabs > tab-items > tab-item[disabled
 
 ui-menu > menu-divider {
   border: 1px solid;
-  border-color: #414141; }
+  border-color: gray; }
 
 ui-window, ui-window > section {
   background: #fff; }
@@ -806,7 +794,7 @@ ui-collapse collapse-item > section {
 
 @media only screen and (max-width: 1024px) and (min-width: 220px) {
   touch-ui-drawer {
-    background: #fff; }
+    background: #eee; }
   touch-ui-drawer > header > .ui-search:after, touch-ui-drawer > header > ui-search:after {
     color: #ccc;
     text-shadow: none; } }
@@ -826,7 +814,7 @@ ui-collapse collapse-item > section {
   touch-ui-drawer touch-ui-menu {
     background: #f7f7f7; }
   touch-ui-drawer touch-ui-menu menu-item-dropdown:after, touch-ui-drawer touch-ui-menu menu-item, touch-ui-drawer touch-ui-menu menu-item-dropdown, touch-ui-drawer touch-ui-menu menu-item a, touch-ui-drawer touch-ui-menu menu-item-dropdown a {
-    color: #434444;
+    color: #666;
     text-shadow: none; }
   touch-ui-drawer touch-ui-menu menu-item, touch-ui-drawer touch-ui-menu menu-item-dropdown {
     border: 1px solid #ddd; }
@@ -843,7 +831,7 @@ ui-collapse collapse-item > section {
     border: 1px solid;
     border-color: #999; }
   touch-ui-drawer touch-ui-dropdown {
-    box-shadow: inset 0px 3px 12px rgba(0, 0, 0, 0.1); } }
+    box-shadow: none; } }
 
 @media only screen and (max-width: 1024px) and (min-width: 220px) {
   ui-search input[type="text"],
@@ -857,19 +845,7 @@ ui-collapse collapse-item > section {
   ui-search input[type="time"],
   ui-search input[type="url"],
   ui-search textarea, touch-ui-drawer > header > .ui-search input[type="text"], touch-ui-drawer > header > .ui-search input, touch-ui-drawer > header > ui-search input[type="text"], touch-ui-drawer > header > ui-search input, touch-ui-drawer > header > .ui-search input[type="text"]:focus, touch-ui-drawer > header > .ui-search input:focus, touch-ui-drawer > header > ui-search input[type="text"]:focus, touch-ui-drawer > header > ui-search input:focus {
-    background: #a3acb2; }
-  ui-search input[type="text"]:focus,
-  ui-search input[type="password"]:focus,
-  ui-search input[type="date"]:focus,
-  ui-search input[type="datetime"]:focus,
-  ui-search input[type="email"]:focus,
-  ui-search input[type="number"]:focus,
-  ui-search input[type="search"]:focus,
-  ui-search input[type="tel"]:focus,
-  ui-search input[type="time"]:focus,
-  ui-search input[type="url"]:focus,
-  ui-search textarea:focus {
-    background: #a3acb2; }
+    background: #fff; }
   ui-search:after, ui-search input[type="text"],
   ui-search input[type="password"],
   ui-search input[type="date"],
@@ -881,7 +857,7 @@ ui-collapse collapse-item > section {
   ui-search input[type="time"],
   ui-search input[type="url"],
   ui-search textarea, touch-ui-drawer > header > .ui-search input[type="text"], touch-ui-drawer > header > .ui-search input, touch-ui-drawer > header > ui-search input[type="text"], touch-ui-drawer > header > ui-search input, touch-ui-drawer > header > .ui-search input[type="text"]:focus, touch-ui-drawer > header > .ui-search input:focus, touch-ui-drawer > header > ui-search input[type="text"]:focus, touch-ui-drawer > header > ui-search input:focus {
-    color: #f1f2f3;
+    color: #666;
     text-shadow: none; }
   ui-search input[type="text"],
   ui-search input[type="password"],
@@ -898,7 +874,7 @@ ui-collapse collapse-item > section {
   touch-ui-drawer > header > .ui-search input[type="text"], touch-ui-drawer > header > .ui-search input, touch-ui-drawer > header > ui-search input[type="text"], touch-ui-drawer > header > ui-search input {
     box-shadow: none; }
   ui-search:after {
-    color: #fff; }
+    color: #666; }
   ui-search input[type="text"]::-webkit-input-placeholder,
   ui-search input[type="password"]::-webkit-input-placeholder,
   ui-search input[type="date"]::-webkit-input-placeholder,
@@ -910,7 +886,7 @@ ui-collapse collapse-item > section {
   ui-search input[type="time"]::-webkit-input-placeholder,
   ui-search input[type="url"]::-webkit-input-placeholder,
   ui-search textarea::-webkit-input-placeholder, touch-ui-drawer > header > .ui-search input[type="text"]::-webkit-input-placeholder, touch-ui-drawer > header > .ui-search input::-webkit-input-placeholder, touch-ui-drawer > header > ui-search input[type="text"]::-webkit-input-placeholder, touch-ui-drawer > header > ui-search input::-webkit-input-placeholder, touch-ui-drawer > header > .ui-search input[type="text"]:focus::-webkit-input-placeholder, touch-ui-drawer > header > .ui-search input:focus::-webkit-input-placeholder, touch-ui-drawer > header > ui-search input[type="text"]:focus::-webkit-input-placeholder, touch-ui-drawer > header > ui-search input:focus::-webkit-input-placeholder {
-    color: #e5e7e9 !important; }
+    color: #ddd !important; }
   ui-search input[type="text"]::-moz-placeholder,
   ui-search input[type="password"]::-moz-placeholder,
   ui-search input[type="date"]::-moz-placeholder,
@@ -922,7 +898,7 @@ ui-collapse collapse-item > section {
   ui-search input[type="time"]::-moz-placeholder,
   ui-search input[type="url"]::-moz-placeholder,
   ui-search textarea::-moz-placeholder, touch-ui-drawer > header > .ui-search input[type="text"]::-moz-placeholder, touch-ui-drawer > header > .ui-search input::-moz-placeholder, touch-ui-drawer > header > ui-search input[type="text"]::-moz-placeholder, touch-ui-drawer > header > ui-search input::-moz-placeholder, touch-ui-drawer > header > .ui-search input[type="text"]:focus::-moz-placeholder, touch-ui-drawer > header > .ui-search input:focus::-moz-placeholder, touch-ui-drawer > header > ui-search input[type="text"]:focus::-moz-placeholder, touch-ui-drawer > header > ui-search input:focus::-moz-placeholder {
-    color: #e5e7e9 !important; }
+    color: #ddd !important; }
   ui-search input[type="text"]::-o-placeholder,
   ui-search input[type="password"]::-o-placeholder,
   ui-search input[type="date"]::-o-placeholder,
@@ -934,7 +910,7 @@ ui-collapse collapse-item > section {
   ui-search input[type="time"]::-o-placeholder,
   ui-search input[type="url"]::-o-placeholder,
   ui-search textarea::-o-placeholder, touch-ui-drawer > header > .ui-search input[type="text"]::-o-placeholder, touch-ui-drawer > header > .ui-search input::-o-placeholder, touch-ui-drawer > header > ui-search input[type="text"]::-o-placeholder, touch-ui-drawer > header > ui-search input::-o-placeholder, touch-ui-drawer > header > .ui-search input[type="text"]:focus::-o-placeholder, touch-ui-drawer > header > .ui-search input:focus::-o-placeholder, touch-ui-drawer > header > ui-search input[type="text"]:focus::-o-placeholder, touch-ui-drawer > header > ui-search input:focus::-o-placeholder {
-    color: #e5e7e9 !important; }
+    color: #ddd !important; }
   ui-search input[type="text"]:-ms-input-placeholder,
   ui-search input[type="password"]:-ms-input-placeholder,
   ui-search input[type="date"]:-ms-input-placeholder,
@@ -946,7 +922,7 @@ ui-collapse collapse-item > section {
   ui-search input[type="time"]:-ms-input-placeholder,
   ui-search input[type="url"]:-ms-input-placeholder,
   ui-search textarea:-ms-input-placeholder, touch-ui-drawer > header > .ui-search input:-ms-input-placeholder, touch-ui-drawer > header > ui-search input:-ms-input-placeholder {
-    color: #e5e7e9 !important; } }
+    color: #ddd !important; } }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
@@ -4440,14 +4416,16 @@ ui-search {
         border-radius: 5px !important;
         padding-right: 3em; }
       ui-search:after {
+        font-family: elliptical;
         content: "\e016";
         position: absolute;
-        font-size: 1em;
+        font-size: 2em;
         right: 0.3em;
-        top: 0.5em;
-        line-height: 1;
+        top: 0.25em;
+        line-height: 0.5;
         z-index: 99;
-        pointer-events: none; } }
+        pointer-events: none;
+        margin-top: .1em; } }
   @media only screen and (max-width: 1024px) and (min-width: 220px) {
     ui-search {
       position: relative;
@@ -4466,6 +4444,7 @@ ui-search {
         border-radius: 5px !important;
         padding-right: 2em; }
       ui-search:after {
+        font-family: elliptical;
         content: "\e016";
         position: absolute;
         font-size: 0.9em;
@@ -4473,7 +4452,10 @@ ui-search {
         top: 0.55556em;
         line-height: 1.11111;
         z-index: 99;
-        pointer-events: none; } }
+        pointer-events: none;
+        margin-top: .1em; }
+      ui-search > input[type=text]:focus {
+        border: 0 !important; } }
 
 grid-row, grid-columns {
   display: block; }
@@ -4525,6 +4507,10 @@ grid-columns {
   padding-right: 15px;
   width: 100%;
   float: left; }
+
+grid-columns.no-gutter {
+  padding-left: 0;
+  padding-right: 0; }
 
 @media only screen {
   .default-1,
@@ -5944,14 +5930,13 @@ ui-collapse {
       z-index: 999; }
       touch-ui-drawer > header > .ui-search, touch-ui-drawer > header > ui-search {
         margin: 12px 0 1px 7px;
-        width: 80%;
+        width: 90%;
         position: relative;
         font-size: 16px; }
         touch-ui-drawer > header > .ui-search input[type="text"], touch-ui-drawer > header > .ui-search input, touch-ui-drawer > header > ui-search input[type="text"], touch-ui-drawer > header > ui-search input {
           width: 100% !important;
-          padding: 0.3em;
           font-size: 16px;
-          border-radius: 2px;
+          border-radius: 0;
           transition: none;
           -webkit-transition: none; }
         touch-ui-drawer > header > .ui-search:after, touch-ui-drawer > header > ui-search:after {
@@ -5959,7 +5944,7 @@ ui-collapse {
           top: 0.4em;
           right: 0.4em; }
     touch-ui-drawer > section {
-      padding-top: 58px; }
+      padding-top: 50px; }
     touch-ui-drawer touch-section {
       display: block; }
     touch-ui-drawer touch-header {
@@ -6000,13 +5985,13 @@ touch-ui-drawer touch-ui-menu {
     position: relative; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown:after {
       position: absolute;
-      font-family: elliptical;
-      content: "\e00f";
+      font-family: content;
+      content: "\e612";
       top: 20px;
       right: 20px;
-      font-size: 16px; }
+      font-size: 24px; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown.close:after {
-      content: "\e075"; }
+      content: "\e613"; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown > ui-dropdown, touch-ui-drawer touch-ui-menu menu-item-dropdown > touch-ui-dropdown, touch-ui-drawer touch-ui-menu menu-item-dropdown > ui-mega-dropdown {
       height: auto;
       margin-top: 20px !important;
@@ -6171,13 +6156,13 @@ ui-menu {
       cursor: pointer; }
     ui-menu > menu-item .label, ui-menu > menu-item label {
       font-size: 1em;
-      padding: 1em; }
+      padding: 0.5em 1em; }
     ui-menu > menu-item > a {
       font-size: 1em;
-      padding: 1em; }
+      padding: 0.5em 1em; }
     ui-menu > menu-item > ui-button-dropdown > a {
       font-size: 1em;
-      padding: 1em; }
+      padding: 0.5em 1em; }
   ui-menu > menu-divider {
     width: 0;
     height: 100%;
@@ -6194,7 +6179,7 @@ ui-menu {
     align-items: center;
     position: relative;
     margin: 0;
-    padding: 1em;
+    padding: 0.5em 1em;
     height: 100%;
     font-size: 1em; }
     ui-menu > menu-item-dropdown[first] {
@@ -6220,7 +6205,7 @@ ui-menu {
   ui-menu > menu-item-search {
     padding: 1em;
     margin-left: auto;
-    font-size: 1em; }
+    font-size: 0.5em 1em; }
   ui-menu.flex-start, ui-menu.left {
     margin-right: auto; }
   ui-menu.flex-end, ui-menu.right {
@@ -6252,21 +6237,20 @@ ui-modal, .ui-modal {
 ui-navbar {
   width: 100%;
   position: relative;
-  display: block;
-  font-size: 1em; }
+  display: block; }
   ui-navbar > nav {
-    margin: 0 auto;
     position: relative;
-    font-size: 1em;
-    max-width: 1300px;
+    width: 100%;
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: column;
     flex-direction: column;
-    -webkit-justify-content: flex-start;
-    justify-content: flex-start;
-    -webkit-align-items: flex-start;
-    align-items: flex-start; }
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center; }
+    ui-navbar > nav.padding {
+      padding: 8px 0; }
     ui-navbar > nav > .center {
       -webkit-justify-content: center;
       justify-content: center; }
@@ -6279,9 +6263,44 @@ ui-navbar {
     ui-navbar > nav .logo:hover {
       cursor: pointer; }
     ui-navbar > nav > * {
-      margin: 0;
       position: relative;
-      width: 100% !important; }
+      width: 1300px;
+      max-width: 100%; }
+      ui-navbar > nav > *.full-width {
+        width: 100% !important;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-align-items: center;
+        align-items: center; }
+        ui-navbar > nav > *.full-width > * {
+          width: 1300px;
+          max-width: 100%; }
+          ui-navbar > nav > *.full-width > * > section {
+            width: 100%;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+            -webkit-align-items: center;
+            align-items: center; }
+            ui-navbar > nav > *.full-width > * > section.space-between {
+              -webkit-justify-content: space-between;
+              justify-content: space-between; }
+            ui-navbar > nav > *.full-width > * > section > .center {
+              -webkit-justify-content: center;
+              justify-content: center; }
+      ui-navbar > nav > *.content {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -webkit-align-items: flex-end;
+        align-items: flex-end; }
+    ui-navbar > nav ui-dropdown, ui-navbar > nav ui-mega-dropdown {
+      top: 95%;
+      border-radius: 0; }
   ui-navbar > touch-nav, ui-navbar > touch-section, ui-navbar > touch-header {
     display: none; }
 
@@ -7261,6 +7280,12 @@ ui-tip {
     top: 0;
     left: 0;
     z-index: 1998; }
+    ui-topbar.static {
+      position: static; }
+    ui-topbar.relative {
+      position: relative; }
+    ui-topbar.fixed {
+      position: fixed; }
     ui-topbar ui-brand {
       position: absolute;
       left: 0;
@@ -7441,6 +7466,12 @@ ui-tip {
 
 ui-topbar + * {
   margin-top: 50px; }
+
+ui-topbar.static + * {
+  margin-top: 0; }
+
+ui-topbar.relative + * {
+  margin-top: 0; }
 
 @media only screen and (min-width: 1025px) {
   ui-topbar touch-ui-brand, ui-topbar touch-icons {

@@ -3,14 +3,10 @@
 
 ///@private
 @mixin _ui-navbar($component:null,
-$margin:null,
-$font-size:null,
-$nav-margin:null,
-$nav-font-size:null,
+$nav-padding:null,
 $nav-column-gutter:null,
-$section-margin:null,
-$section-position:null,
-$section-width:null
+$dropdown-top:null,
+$dropdown-border-radius:null
 
 ){
 
@@ -21,14 +17,14 @@ $section-width:null
   width: 100%;
   position: relative;
   display:block;
-  font-size:$font-size;
   &>nav{
-    margin: $margin;
     position: relative;
-    font-size:$nav-font-size;
-    max-width: $_ui-navbar-contained-to-grid;
+    width:100%;
     @include web-component-base($component:$component,$include-font:false);
-    @include flexbox-column($justification:flex-start,$alignment:flex-start);
+    @include flexbox-column($justification:flex-end,$alignment:center);
+    &.padding{
+      padding:$nav-padding;
+    }
     &>.center{
       @include justify-content(center);
     }
@@ -44,9 +40,34 @@ $section-width:null
       }
     }
     &>*{
-      margin:$section-margin;
-      position:$section-position;
-      width:$section-width !important;
+      position:relative;
+      width: $_ui-navbar-contained-to-grid;
+      max-width:100%;
+      &.full-width{
+        width:100% !important;
+        @include flexbox($justification:center,$alignment:center);
+        &>*{
+          width: $_ui-navbar-contained-to-grid;
+          max-width:100%;
+          &>section{
+            width:100%;
+            @include flexbox($justification:flex-start,$alignment:center);
+            &.space-between{
+              @include justify-content(space-between);
+            }
+            &>.center{
+              @include justify-content(center);
+            }
+          }
+        }
+      }
+      &.content{
+        @include flexbox($justification:space-between,$alignment:flex-end);
+      }
+    }
+    ui-dropdown,ui-mega-dropdown{
+      top:$dropdown-top;
+      border-radius:$dropdown-border-radius;
     }
   }
   &>touch-nav,&>touch-section,&>touch-header{
@@ -63,19 +84,14 @@ $section-width:null
 /// @param {String} $class
 /// @param {Map} $map
 // $map:(
-//         height:<value>,
-//         margin:<value>,
-//         font-size:<value>,
 //         nav:(
-//                 margin:<value>,
-//                 font-size:<value>,
-//                 column-gutter:<value>
+//                 column-gutter:<value>,
+//                 padding:<value>
 //         ),
-//         section:(
-//                 margin:<value>,
-//                 position:<value>,
-//                 width:<value>
-//         ),
+//         dropdown:(
+//                 top:<value>
+//                 border-radius:<value>
+//         )
 //         touch:(
 //                 position:<value>,
 //                 height:<value>,
@@ -93,14 +109,10 @@ $section-width:null
 @mixin ui-navbar($component:null,$touch-component:css-touch,$tags:null,$class:null,$map:()){
 
   $_touch-height:map-get($Component,touch-bar-height);
-  $margin: map-get-default($map,margin,0 auto);
-  $font-size:map-get-default($map,font-size,1em);
-  $nav-margin:map-nested-get-default($map,nav,margin,0);
-  $nav-font-size:map-nested-get-default($map,nav,font-size,1em);
+  $nav-padding:map-nested-get-default($map,nav,padding,8px 0);
   $nav-column-gutter:map-nested-get-default($map,nav,column-gutter,false);
-  $section-margin:map-nested-get-default($map,section,margin,0);
-  $section-position:map-nested-get-default($map,section,position,relative);
-  $section-width:map-nested-get-default($map,section,width,100%);
+  $dropdown-top:map-nested-get-default($map,dropdown,top,95%);
+  $dropdown-border-radius:map-nested-get-default($map,dropdown,border-radius,0);
   $touch-position:map-nested-get-default($map,touch,position,fixed);
   $touch-height:map-nested-get-default($map,touch,height,$_touch-height);
   $touch-z-index:map-nested-get-default($map,touch,z-index,get-z-index() + 9999);
@@ -116,14 +128,10 @@ $section-width:null
   $tag:ui-navbar;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-navbar($component,
-            $margin,
-            $font-size,
-            $nav-margin,
-            $nav-font-size,
+            $nav-padding,
             $nav-column-gutter,
-            $section-margin,
-            $section-position,
-            $section-width
+            $dropdown-top,
+            $dropdown-border-radius
     );
     @content;
   }

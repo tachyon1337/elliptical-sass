@@ -130,11 +130,11 @@ $icon-down:null
 /// )
 @mixin touch-ui-menu($component:css-touch-menu,$tags:null,$class:null,$map:()){
 
-  $_icon-font-family:map-get($Icons,font-family);
-  $_icon-down:map-get($Icons,chevron-down);
-  $_icon-up:map-get($Icons,chevron-up);
+  $_icon-font-family:content;
+  $_icon-down:map-get($Content-Icons,down-arrow);
+  $_icon-up:map-get($Content-Icons,up-arrow);
   $_z-index:get-z-index();
-  $_icon-size:16px;
+  $_icon-size:24px;
 
   $z-index:map-get-default($map,z-index,$_z-index + 98);
   $padding:map-get-default($map,padding,0 0 0 0);

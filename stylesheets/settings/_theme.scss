@@ -84,11 +84,11 @@ $theme-social-icon-color: #bbb !default;
 $theme-social-icon-text-shadow: rgba(0, 0, 0, .80) 0 -1px 0 !default;
 
 //css-bar
-$theme-topbar-background: $_dark-light !default;
-$theme-topbar-font-color: $_gray-medium-light !default;
-$theme-topbar-text-shadow: none !default;
-$theme-topbar-border: 0 !default;
-$theme-topbar-box-shadow: none !default;
+$theme-bar-background: $_gray_medium !default;
+$theme-bar-font-color: $_white !default;
+$theme-bar-text-shadow: none !default;
+$theme-bar-border: 0 !default;
+$theme-bar-box-shadow: none !default;
 
 //menu
 $theme-menu-background-hover: $_black !default;
@@ -98,7 +98,7 @@ $theme-menu-font-color-active: $_gray !default;
 
 //menu-divider
 $theme-menu-divider-background: none !default;
-$theme-menu-divider-border: lighten($theme-topbar-background, 10%) !default;
+$theme-menu-divider-border: lighten($theme-bar-background, 10%) !default;
 
 //window
 $theme-window-background: $_white !default;
@@ -243,12 +243,12 @@ $Theme: (
                 icon-color:$theme-social-icon-color,
                 icon-text-shadow:$theme-social-icon-text-shadow
         ),
-        topbar:(
-                background:$theme-topbar-background,
-                font-color:$theme-topbar-font-color,
-                text-shadow:$theme-topbar-text-shadow,
-                border:$theme-topbar-border,
-                box-shadow:$theme-topbar-box-shadow
+        bar:(
+                background:$theme-bar-background,
+                font-color:$theme-bar-font-color,
+                text-shadow:$theme-bar-text-shadow,
+                border:$theme-bar-border,
+                box-shadow:$theme-bar-box-shadow
         ),
         menu:(
                 background-hover:$theme-menu-background-hover,

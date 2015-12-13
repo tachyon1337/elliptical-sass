@@ -36,7 +36,11 @@ $touch-border-radius: null){
     $font-size: .9em;
     @include _form-input-icon($component:$touch-component, $font-size:$font-size, $border-radius:$touch-border-radius,
     $icon:$icon,$icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
-
+    &>input[type=text]{
+      &:focus{
+        border:0 !important;
+      }
+    }
   }
 
 }
@@ -737,10 +741,10 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 
   $_default-border-radius:map-nested-get($Form,input,border-radius);
   $border-radius: map-get-default($map,border-radius,$_default-border-radius);
-  $_icon-font-family:map-nested-get($map,icon,font-family);
+  $_icon-font-family:map-nested-get-default($map,icon,font-family,elliptical);
   $search-icon:map-nested-get($map,icon,search);
   $touch-border-radius: map-nested-get($map,touch,border-radius);
-  $font-size:map-get-default($map,font-size,1em);
+  $font-size:map-get-default($map,font-size,2em);
 
   $tag:ui-search;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){

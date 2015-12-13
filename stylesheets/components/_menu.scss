@@ -219,7 +219,7 @@ $item-stacked-padding:null
   $justification:map-get-default($map,justification,flex-start);
   $alignment:map-get-default($map,alignment,center);
   $item-margin:map-nested-get-default($map,item,margin,0);
-  $item-padding:map-nested-get-default($map,item,padding,1em);
+  $item-padding:map-nested-get-default($map,item,padding,.5em 1em);
   $item-first-last-padding:map-nested-get-default($map,item,first-last-padding,true);
   $item-divider-border:map-nested-get-default($map,item,divider-border,1px solid);
   $item-divider-padding:map-nested-get-default($map,item,divider-padding,0);

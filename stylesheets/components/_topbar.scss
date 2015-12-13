@@ -41,6 +41,15 @@ $menu-justification:null) {
     max-height:$height;
   }
   @include web-component-default($component:$component);
+  &.static{
+    position:static;
+  }
+  &.relative{
+    position:relative;
+  }
+  &.fixed{
+    position:fixed;
+  }
   ui-brand {
     position:absolute;
     left:0;
@@ -254,6 +263,14 @@ $menu-justification:null) {
         margin-top: $height;
       }
     }
+  }
+
+  ui-topbar.static + * {
+    margin-top:0;
+  }
+
+  ui-topbar.relative + * {
+    margin-top:0;
   }
 
   @include desktop-content(){

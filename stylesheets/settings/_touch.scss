@@ -71,7 +71,7 @@ $component-drawer-header-white-border:0 !default;
 $component-drawer-header-white-box-shadow:none !default;
 
 //drawer-white
-$component-drawer-white-background: $_white !default;
+$component-drawer-white-background: $_off-white !default;
 $component-drawer-white-font-color: $_gray !default;
 $component-drawer-white-text-shadow:none !default;
 $component-drawer-white-border:0 !default;
@@ -110,19 +110,19 @@ $component-drawer-header-box-shadow:none !default;
 
 //menu
 $component-touch-menu-background: #f7f7f7 !default;
-$component-touch-menu-font-color:#434444 !default;
+$component-touch-menu-font-color:$_gray-medium !default;
 $component-touch-menu-text-shadow:none !default;
 $component-touch-menu-border: 1px solid $_gray-light !default;
 $component-touch-menu-box-shadow:false !default;
 $component-touch-menu-icon-color:$_gray-medium !default;
-$component-touch-menu-icon-text-shadow:0 -1px 0 #373737 !default;
+$component-touch-menu-icon-text-shadow:none !default;
 
 //dropdown
 $component-touch-dropdown-background: #e2e4e5 !default;
 $component-touch-dropdown-font-color:#373737 !default;
 $component-touch-dropdown-text-shadow:none !default;
 $component-touch-dropdown-border: $_gray-medium-light !default;
-$component-touch-dropdown-box-shadow:inset 0px 3px 12px rgba(0,0,0,.1) !default;
+$component-touch-dropdown-box-shadow:none !default;
 
 //touch-input
 $component-touch-input-background: $_white !default;
@@ -137,19 +137,10 @@ $component-touch-search-font-color:$_gray-medium !default;
 $component-touch-search-text-shadow:none !default;
 $component-touch-search-border:0 !default;
 $component-touch-search-box-shadow:none !default;
-$component-touch-search-icon-color:#b3b8ba !default;
+$component-touch-search-icon-color:$_gray-medium !default;
 $component-touch-search-placeholder-color:$_gray-light !default;
 
-//touch-search-white
-$component-touch-search-white-background:#a3acb2 !default;
-$component-touch-search-white-background-hover:#a3acb2 !default;
-$component-touch-search-white-background-active:#66757f !default;
-$component-touch-search-white-font-color:#f1f2f3 !default;
-$component-touch-search-white-text-shadow:none !default;
 $component-touch-search-white-border:0 !default;
-$component-touch-search-white-box-shadow:none !default;
-$component-touch-search-white-icon-color:$_white !default;
-$component-touch-search-white-placeholder-color:#e5e7e9 !default;
 
 $Toggle:(
       border-show:$component-toggle-border-show
@@ -285,20 +276,16 @@ $Touch-Menu:(
                 icon-color:$component-touch-search-icon-color,
                 placeholder-color:$component-touch-search-placeholder-color
         ),
+
         search-white:(
-                background:$component-touch-search-white-background,
-                font-color:$component-touch-search-white-font-color,
-                text-shadow:$component-touch-search-white-text-shadow,
+                background:$component-touch-search-background,
+                font-color:$component-touch-search-font-color,
+                text-shadow:$component-touch-search-text-shadow,
                 border:$component-touch-search-white-border,
-                box-shadow:$component-touch-search-white-box-shadow,
-                icon-color:$component-touch-search-white-icon-color,
-                placeholder-color:$component-touch-search-white-placeholder-color,
-                hover:(
-                        background:$component-touch-search-white-background-hover
-                ),
-                active:(
-                        background:$component-touch-search-white-background-active
-                )
+                box-shadow:$component-touch-search-box-shadow,
+                icon-color:$component-touch-search-icon-color,
+                placeholder-color:$component-touch-search-placeholder-color
         )
+
 );
 

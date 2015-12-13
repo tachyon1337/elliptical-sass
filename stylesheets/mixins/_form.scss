@@ -92,10 +92,6 @@ $right: null) {
     @extend %#{$component}-placeholder !optional;
     border-radius:$border-radius !important;
     padding-right: $padding-right;
-
-    &:focus {
-      @extend %#{$component}-background-hover !optional;
-    }
   }
   &:after {
     font-family: $icon-font-family;
@@ -108,6 +104,7 @@ $right: null) {
     line-height: component-line-height($font-size, 1);
     z-index: 99;
     pointer-events: none;
+    margin-top:.1em;
   }
 }
 

@@ -142,6 +142,13 @@ $touch-margin-bottom:null) {
     @include grid-column($columns: $total-columns, $column-gutter: $column-gutter, $total-columns: $total-columns);
   }
 
+  grid-columns{
+    &.no-gutter{
+      padding-left:0;
+      padding-right:0;
+    }
+  }
+
   ///default screen
   @media only screen {
 

@@ -262,11 +262,11 @@
 
   ///css-bar
   @include desktop-component($component:css-bar,$map:(
-          background: map-nested-get($Theme,topbar,background),
-          font-color: map-nested-get($Theme,topbar,font-color),
-          border: map-nested-get($Theme,topbar,border),
-          text-shadow: map-nested-get($Theme,topbar,text-shadow),
-          box-shadow: map-nested-get($Theme,topbar,box-shadow)
+          background: map-nested-get($Theme,bar,background),
+          font-color: map-nested-get($Theme,bar,font-color),
+          border: map-nested-get($Theme,bar,border),
+          text-shadow: map-nested-get($Theme,bar,text-shadow),
+          box-shadow: map-nested-get($Theme,bar,box-shadow)
   ));
 
   ///css-bar-menu

@@ -769,17 +769,17 @@ ui-collapse collapse-item > section {
   border: none; }
 
 @media only screen and (max-width: 1024px) and (min-width: 220px) {
-  ui-navbar > touch-nav, ui-topbar {
+  ui-navbar > touch-bar, ui-topbar {
     background: #fff; }
-  ui-topbar .touch-right > touch-icon span[class*='icon-'], ui-topbar .touch-right > li span[class*='icon-'], ui-topbar touch-icons > touch-icon span[class*='icon-'], ui-topbar touch-icons > li span[class*='icon-'], ui-navbar > touch-nav touch-ui-brand h1, ui-navbar > touch-nav touch-ui-brand h2, ui-navbar > touch-nav touch-ui-brand h3, ui-navbar > touch-nav touch-ui-brand h4, ui-navbar > touch-nav touch-ui-brand h5, ui-navbar > touch-nav touch-ui-brand h6, ui-topbar ui-brand, ui-topbar ui-brand a {
+  ui-topbar .touch-right > touch-icon span[class*='icon-'], ui-topbar .touch-right > li span[class*='icon-'], ui-topbar touch-icons > touch-icon span[class*='icon-'], ui-topbar touch-icons > li span[class*='icon-'], ui-navbar > touch-bar touch-ui-brand h1, ui-navbar > touch-bar touch-ui-brand h2, ui-navbar > touch-bar touch-ui-brand h3, ui-navbar > touch-bar touch-ui-brand h4, ui-navbar > touch-bar touch-ui-brand h5, ui-navbar > touch-bar touch-ui-brand h6, ui-topbar ui-brand, ui-topbar ui-brand a {
     color: #bfbfbf;
     text-shadow: none; }
-  ui-navbar > touch-nav, ui-topbar {
+  ui-navbar > touch-bar, ui-topbar {
     border: 1px solid #ddd; }
-  ui-navbar > touch-nav, ui-topbar {
+  ui-navbar > touch-bar, ui-topbar {
     box-shadow: none; }
   ui-topbar .touch-right > touch-icon span[class*='icon-'], ui-topbar .touch-right > li span[class*='icon-'], ui-topbar touch-icons > touch-icon span[class*='icon-'], ui-topbar touch-icons > li span[class*='icon-'] {
-    color: #55acee; } }
+    color: #bfbfbf; } }
 
 @media only screen and (max-width: 1024px) and (min-width: 220px) {
   ui-toggle {
@@ -1565,6 +1565,22 @@ summary {
   textarea[contenteditable] {
     -webkit-appearance: none; } }
 
+.flex {
+  display: -webkit-flex;
+  display: flex; }
+  .flex.center {
+    -webkit-justify-content: center;
+    justify-content: center; }
+  .flex.end {
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end; }
+  .flex.align-center {
+    -webkit-align-items: center;
+    align-items: center; }
+  .flex.align-end {
+    -webkit-align-items: flex-end;
+    align-items: flex-end; }
+
 .flex-right, .flex-end {
   margin-left: auto !important; }
 
@@ -1794,7 +1810,7 @@ size-22 {
   font-size: 24px; }
 
 .size-32 {
-  font-size: 32px; }
+  font-size: 32px !important; }
 
 .size-36 {
   font-size: 36px; }
@@ -1806,10 +1822,10 @@ size-22 {
   font-size: 44px; }
 
 .size-48 {
-  font-size: 48px; }
+  font-size: 48px !important; }
 
 .size-64 {
-  font-size: 64px; }
+  font-size: 64px !important; }
 
 .tiny-font {
   font-size: .8em; }
@@ -1831,6 +1847,14 @@ size-22 {
 
 [hover] {
   cursor: pointer; }
+
+@media only screen and (min-width: 1025px) {
+  .touch {
+    display: none; } }
+
+@media only screen and (max-width: 1024px) and (min-width: 220px) {
+  .desktop {
+    display: none; } }
 
 .ui-hardware-accelerated, .hardware-accelerated, .hardware-accelerate {
   -webkit-transform: translate3d(0, 0, 0);
@@ -3152,6 +3176,22 @@ section + section {
 p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
   margin: 1em 0 .4em 0; }
 
+.flex {
+  display: -webkit-flex;
+  display: flex; }
+  .flex.center {
+    -webkit-justify-content: center;
+    justify-content: center; }
+  .flex.end {
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end; }
+  .flex.align-center {
+    -webkit-align-items: center;
+    align-items: center; }
+  .flex.align-end {
+    -webkit-align-items: flex-end;
+    align-items: flex-end; }
+
 .flex-right, .flex-end {
   margin-left: auto !important; }
 
@@ -3381,7 +3421,7 @@ size-22 {
   font-size: 24px; }
 
 .size-32 {
-  font-size: 32px; }
+  font-size: 32px !important; }
 
 .size-36 {
   font-size: 36px; }
@@ -3393,10 +3433,10 @@ size-22 {
   font-size: 44px; }
 
 .size-48 {
-  font-size: 48px; }
+  font-size: 48px !important; }
 
 .size-64 {
-  font-size: 64px; }
+  font-size: 64px !important; }
 
 .tiny-font {
   font-size: .8em; }
@@ -3418,6 +3458,14 @@ size-22 {
 
 [hover] {
   cursor: pointer; }
+
+@media only screen and (min-width: 1025px) {
+  .touch {
+    display: none; } }
+
+@media only screen and (max-width: 1024px) and (min-width: 220px) {
+  .desktop {
+    display: none; } }
 
 .ui-hardware-accelerated, .hardware-accelerated, .hardware-accelerate {
   -webkit-transform: translate3d(0, 0, 0);
@@ -5948,7 +5996,10 @@ ui-collapse {
     touch-ui-drawer touch-section {
       display: block; }
     touch-ui-drawer touch-header {
-      display: block; } }
+      display: block; }
+      touch-ui-drawer touch-header ui-search, touch-ui-drawer touch-header [role=search] {
+        width: 90%;
+        margin-top: .5em; } }
 
 touch-ui-drawer touch-ui-menu {
   display: block;
@@ -6137,6 +6188,10 @@ ui-menu {
   padding: 0;
   width: auto;
   height: inherit; }
+  ui-menu.flush-left > menu-item:first-of-type > a {
+    padding-left: 0; }
+  ui-menu.flush-right > menu-item:last-of-type > a {
+    padding-right: 0; }
   ui-menu > menu-item {
     display: -webkit-flex;
     display: flex;
@@ -6266,42 +6321,39 @@ ui-navbar {
       position: relative;
       width: 1300px;
       max-width: 100%; }
-      ui-navbar > nav > *.full-width {
-        width: 100% !important;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-align-items: center;
-        align-items: center; }
-        ui-navbar > nav > *.full-width > * {
-          width: 1300px;
-          max-width: 100%; }
-          ui-navbar > nav > *.full-width > * > section {
-            width: 100%;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-justify-content: flex-start;
-            justify-content: flex-start;
-            -webkit-align-items: center;
-            align-items: center; }
-            ui-navbar > nav > *.full-width > * > section.space-between {
-              -webkit-justify-content: space-between;
-              justify-content: space-between; }
-            ui-navbar > nav > *.full-width > * > section > .center {
-              -webkit-justify-content: center;
-              justify-content: center; }
-      ui-navbar > nav > *.content {
+    ui-navbar > nav > section {
+      width: 100% !important;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      align-items: center; }
+      ui-navbar > nav > section > ui-menu {
+        width: 1300px;
+        max-width: 100%; }
+        ui-navbar > nav > section > ui-menu.auto {
+          width: auto; }
+      ui-navbar > nav > section > div {
+        width: 1300px;
+        max-width: 100%;
         display: -webkit-flex;
         display: flex;
         -webkit-justify-content: space-between;
         justify-content: space-between;
-        -webkit-align-items: flex-end;
-        align-items: flex-end; }
+        -webkit-align-items: center;
+        align-items: center; }
+    ui-navbar > nav > header {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+      -webkit-align-items: flex-end;
+      align-items: flex-end; }
     ui-navbar > nav ui-dropdown, ui-navbar > nav ui-mega-dropdown {
       top: 95%;
       border-radius: 0; }
-  ui-navbar > touch-nav, ui-navbar > touch-section, ui-navbar > touch-header {
+  ui-navbar > touch-bar, ui-navbar > touch-drawer {
     display: none; }
 
 @media only screen and (min-width: 1025px) {
@@ -6322,7 +6374,7 @@ ui-navbar {
       display: none !important; }
     ui-navbar > nav {
       display: none; }
-    ui-navbar > touch-nav {
+    ui-navbar > touch-bar {
       width: 100%;
       display: -webkit-flex;
       display: flex;
@@ -6332,7 +6384,7 @@ ui-navbar {
       align-items: center; }
     ui-navbar > nav {
       display: none !important; }
-    ui-navbar > touch-nav {
+    ui-navbar > touch-bar {
       height: 50px;
       display: -webkit-flex;
       display: flex;
@@ -6343,7 +6395,7 @@ ui-navbar {
       border-left: 0;
       border-right: 0;
       border-top: 0; }
-      ui-navbar > touch-nav touch-ui-brand {
+      ui-navbar > touch-bar touch-ui-brand {
         display: -webkit-flex;
         display: flex;
         -webkit-justify-content: center;
@@ -6352,11 +6404,11 @@ ui-navbar {
         align-items: center;
         margin-top: 0;
         height: 50px; }
-        ui-navbar > touch-nav touch-ui-brand h1, ui-navbar > touch-nav touch-ui-brand h2, ui-navbar > touch-nav touch-ui-brand h3, ui-navbar > touch-nav touch-ui-brand h4, ui-navbar > touch-nav touch-ui-brand h5, ui-navbar > touch-nav touch-ui-brand h6 {
+        ui-navbar > touch-bar touch-ui-brand h1, ui-navbar > touch-bar touch-ui-brand h2, ui-navbar > touch-bar touch-ui-brand h3, ui-navbar > touch-bar touch-ui-brand h4, ui-navbar > touch-bar touch-ui-brand h5, ui-navbar > touch-bar touch-ui-brand h6 {
           margin: 0; }
-        ui-navbar > touch-nav touch-ui-brand h4 {
+        ui-navbar > touch-bar touch-ui-brand h4 {
           font: inherit; }
-      ui-navbar > touch-nav .touch-right, ui-navbar > touch-nav touch-icons {
+      ui-navbar > touch-bar .touch-right, ui-navbar > touch-bar touch-icons {
         list-style: none;
         position: absolute;
         top: 0;
@@ -6368,7 +6420,7 @@ ui-navbar {
         -webkit-align-items: center;
         align-items: center;
         height: 100%; }
-        ui-navbar > touch-nav .touch-right > touch-icon, ui-navbar > touch-nav touch-icons > touch-icon {
+        ui-navbar > touch-bar .touch-right > touch-icon, ui-navbar > touch-bar touch-icons > touch-icon {
           display: list-item; }
   [data-role=navigation] + * {
     padding-top: 50px; }
@@ -7284,8 +7336,6 @@ ui-tip {
       position: static; }
     ui-topbar.relative {
       position: relative; }
-    ui-topbar.fixed {
-      position: fixed; }
     ui-topbar ui-brand {
       position: absolute;
       left: 0;
@@ -7448,7 +7498,6 @@ ui-tip {
       ui-topbar .touch-right > touch-icon, ui-topbar .touch-right > li, ui-topbar touch-icons > touch-icon, ui-topbar touch-icons > li {
         display: list-item; }
         ui-topbar .touch-right > touch-icon span[class*='icon-'], ui-topbar .touch-right > li span[class*='icon-'], ui-topbar touch-icons > touch-icon span[class*='icon-'], ui-topbar touch-icons > li span[class*='icon-'] {
-          font-size: 32px;
           margin-right: 0.8em; }
     ui-topbar > section {
       display: none !important; }
@@ -7472,6 +7521,9 @@ ui-topbar.static + * {
 
 ui-topbar.relative + * {
   margin-top: 0; }
+
+ui-topbar > touch-bar, ui-topbar > touch-drawer {
+  display: none; }
 
 @media only screen and (min-width: 1025px) {
   ui-topbar touch-ui-brand, ui-topbar touch-icons {
@@ -7663,3 +7715,11 @@ ui-window {
 
 form.visible {
   visibility: visible !important; }
+
+ui-menu.default-light a {
+  color: #f2f2f2; }
+  ui-menu.default-light a:hover {
+    opacity: .7; }
+
+nav .bg-default-light {
+  background: #f7f7f7; }

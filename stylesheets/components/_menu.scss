@@ -55,7 +55,24 @@ $item-stacked-padding:null
   @if($height !=null){
     height:$height;
   }
-
+  &.flush-left{
+    &>menu-item{
+      &:first-of-type{
+        &>a{
+          padding-left:0;
+        }
+      }
+    }
+  }
+  &.flush-right{
+    &>menu-item{
+      &:last-of-type{
+        &>a{
+          padding-right:0;
+        }
+      }
+    }
+  }
   @extend %#{$component}-background !optional;
   &>menu-item{
     @include flexbox($alignment:$alignment,$justification:$justification);

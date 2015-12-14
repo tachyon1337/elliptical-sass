@@ -47,9 +47,6 @@ $menu-justification:null) {
   &.relative{
     position:relative;
   }
-  &.fixed{
-    position:fixed;
-  }
   ui-brand {
     position:absolute;
     left:0;
@@ -271,6 +268,12 @@ $menu-justification:null) {
 
   ui-topbar.relative + * {
     margin-top:0;
+  }
+
+  ui-topbar{
+     &>touch-bar,&>touch-drawer{
+       display:none;
+     }
   }
 
   @include desktop-content(){

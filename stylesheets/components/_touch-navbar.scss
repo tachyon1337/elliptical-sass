@@ -9,7 +9,7 @@ $brand-font:null,
 $brand-margin:null,
 $icon-font-size:null,
 $icon-margin:null,
-$nav-alignment:null,
+$bar-alignment:null,
 $brand-alignment:null,
 $icon-alignment:null
 ){
@@ -24,10 +24,10 @@ $icon-alignment:null
     display:none !important;
   }
   font-size:$font-size;
-  &>touch-nav{
+  &>touch-bar{
     height:$height;
     @include web-component-base($component:$component,$include-font:false);
-    @include flexbox($justification: center, $alignment:$nav-alignment);
+    @include flexbox($justification: center, $alignment:$bar-alignment);
     border-left:0;
     border-right:0;
     border-top:0;

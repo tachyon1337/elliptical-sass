@@ -49,7 +49,7 @@ $icon-margin: null) {
     & > touch-icon, & > li {
       display: list-item;
       @include span-icon() {
-        font-size: $icon-font-size;
+        //font-size: $icon-font-size;
         @extend %#{$component}-icon !optional;
         margin-right: $icon-margin;
       }

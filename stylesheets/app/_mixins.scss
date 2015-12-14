@@ -119,10 +119,29 @@
 
 }
 
+@mixin menu-light(){
+  ui-menu{
+    &.default-light{
+      a{
+        color:#f2f2f2;
+        &:hover{
+          opacity:.7;
+        }
+      }
+    }
+  }
+  nav{
+    .bg-default-light{
+      background: #f7f7f7;
+    }
+  }
+}
+
 @mixin elliptical-distribution(){
   @include component-theme();
   @include elliptical-basic();
   @include elliptical-components();
   @include mixins-template();
+  @include menu-light();
 }
 

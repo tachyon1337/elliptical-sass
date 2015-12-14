@@ -43,34 +43,32 @@ $dropdown-border-radius:null
       position:relative;
       width: $_ui-navbar-contained-to-grid;
       max-width:100%;
-      &.full-width{
-        width:100% !important;
-        @include flexbox($justification:center,$alignment:center);
-        &>*{
-          width: $_ui-navbar-contained-to-grid;
-          max-width:100%;
-          &>section{
-            width:100%;
-            @include flexbox($justification:flex-start,$alignment:center);
-            &.space-between{
-              @include justify-content(space-between);
-            }
-            &>.center{
-              @include justify-content(center);
-            }
-          }
+    }
+    &>section{
+      width:100% !important;
+      @include flexbox($justification:center,$alignment:center);
+      &>ui-menu{
+        width: $_ui-navbar-contained-to-grid;
+        max-width:100%;
+        &.auto{
+          width:auto;
         }
       }
-      &.content{
-        @include flexbox($justification:space-between,$alignment:flex-end);
+      &>div{
+        width: $_ui-navbar-contained-to-grid;
+        max-width:100%;
+        @include flexbox($justification:space-between,$alignment:center);
       }
+    }
+    &>header{
+      @include flexbox($justification:space-between,$alignment:flex-end);
     }
     ui-dropdown,ui-mega-dropdown{
       top:$dropdown-top;
       border-radius:$dropdown-border-radius;
     }
   }
-  &>touch-nav,&>touch-section,&>touch-header{
+  &>touch-bar,&>touch-drawer{
     display:none;
   }
 }
@@ -121,7 +119,7 @@ $dropdown-border-radius:null
   $touch-brand-margin:map-nested-get-default($map,touch,brand-margin,0);
   $touch-icon-font-size:map-nested-get-default($map,touch,icon-font-size,22px);
   $touch-icon-margin:map-nested-get-default($map,touch,icon-margin,.8em);
-  $touch-nav-alignment:map-nested-get-default($map,touch,nav-alignment,center);
+  $touch-bar-alignment:map-nested-get-default($map,touch,bar-alignment,center);
   $touch-brand-alignment:map-nested-get-default($map,touch,brand-alignment,center);
   $touch-icon-alignment:map-nested-get-default($map,touch,icon-alignment,center);
 
@@ -154,7 +152,7 @@ $dropdown-border-radius:null
       &>nav{
         display:none;
       }
-      &>touch-nav{
+      &>touch-bar{
         width:100%;
         @include flexbox($justification:space-between,$alignment:center);
       }
@@ -169,7 +167,7 @@ $dropdown-border-radius:null
             $touch-brand-margin,
             $touch-icon-font-size,
             $touch-icon-margin,
-            $touch-nav-alignment,
+            $touch-bar-alignment,
             $touch-brand-alignment,
             $touch-icon-alignment
           );
@@ -185,7 +183,7 @@ $dropdown-border-radius:null
           $touch-brand-margin,
           $touch-icon-font-size,
           $touch-icon-margin,
-          $touch-nav-alignment,
+          $touch-bar-alignment,
           $touch-brand-alignment,
           $touch-icon-alignment
         );

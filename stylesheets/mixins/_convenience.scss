@@ -3,6 +3,27 @@
 /// @access public
 @mixin mixins-convenience() {
 
+  .flex{
+    display:-webkit-flex;
+    display:flex;
+    &.center{
+      -webkit-justify-content:center;
+      justify-content:center;
+    }
+    &.end{
+      -webkit-justify-content:flex-end;
+      justify-content:flex-end;
+    }
+    &.align-center{
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    &.align-end{
+      -webkit-align-items: flex-end;
+      align-items: flex-end;
+    }
+  }
+
   .flex-right,.flex-end{
     margin-left:auto !important;
   }
@@ -282,7 +303,7 @@
   }
 
   .size-32{
-    font-size:32px;
+    font-size:32px !important;
   }
 
   .size-36{
@@ -298,11 +319,11 @@
   }
 
   .size-48{
-    font-size:48px;
+    font-size:48px !important;
   }
 
   .size-64{
-    font-size:64px;
+    font-size:64px !important;
   }
 
 
@@ -331,6 +352,18 @@
   }
   [hover]{
     cursor:pointer;
+  }
+
+  @include desktop-content(){
+    .touch{
+      display:none;
+    }
+  }
+
+  @include touch-content(){
+    .desktop{
+      display:none;
+    }
   }
 
 }

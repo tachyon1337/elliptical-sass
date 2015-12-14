@@ -61,6 +61,10 @@ $search-input-icon-right: null) {
   }
   touch-header{
     display:block;
+    ui-search,[role=search]{
+      width:90%;
+      margin-top:.5em;
+    }
   }
 }
 

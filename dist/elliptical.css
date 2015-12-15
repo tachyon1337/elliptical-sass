@@ -237,10 +237,20 @@ input[type="search"],
 input[type="tel"],
 input[type="time"],
 input[type="url"],
-textarea {
+textarea, ui-input-icon input[type="text"],
+ui-input-icon input[type="password"],
+ui-input-icon input[type="date"],
+ui-input-icon input[type="datetime"],
+ui-input-icon input[type="email"],
+ui-input-icon input[type="number"],
+ui-input-icon input[type="search"],
+ui-input-icon input[type="tel"],
+ui-input-icon input[type="time"],
+ui-input-icon input[type="url"],
+ui-input-icon textarea {
   background: #fff; }
 
-ui-radio input[type="radio"]:checked + label:after, ui-checkbox input[type="checkbox"]:checked + label:before, input[type="text"],
+ui-radio input[type="radio"]:checked + label:after, ui-input-icon:after, ui-checkbox input[type="checkbox"]:checked + label:before, input[type="text"],
 input[type="password"],
 input[type="date"],
 input[type="datetime"],
@@ -250,7 +260,17 @@ input[type="search"],
 input[type="tel"],
 input[type="time"],
 input[type="url"],
-textarea {
+textarea, ui-input-icon input[type="text"],
+ui-input-icon input[type="password"],
+ui-input-icon input[type="date"],
+ui-input-icon input[type="datetime"],
+ui-input-icon input[type="email"],
+ui-input-icon input[type="number"],
+ui-input-icon input[type="search"],
+ui-input-icon input[type="tel"],
+ui-input-icon input[type="time"],
+ui-input-icon input[type="url"],
+ui-input-icon textarea {
   color: #777;
   text-shadow: none; }
 
@@ -274,7 +294,17 @@ input[type="search"][readonly]:focus,
 input[type="tel"][readonly]:focus,
 input[type="time"][readonly]:focus,
 input[type="url"][readonly]:focus,
-textarea[readonly]:focus {
+textarea[readonly]:focus, ui-input-icon input[type="text"],
+ui-input-icon input[type="password"],
+ui-input-icon input[type="date"],
+ui-input-icon input[type="datetime"],
+ui-input-icon input[type="email"],
+ui-input-icon input[type="number"],
+ui-input-icon input[type="search"],
+ui-input-icon input[type="tel"],
+ui-input-icon input[type="time"],
+ui-input-icon input[type="url"],
+ui-input-icon textarea {
   border: 1px solid #d6d6d6; }
 
 input[type="text"]:focus,
@@ -3888,6 +3918,9 @@ http-form {
 ui-notify {
   display: none; }
 
+ui-tooltip {
+  display: none; }
+
 .contain-to-grid {
   max-width: 1270px;
   margin: 0 auto; }
@@ -4470,8 +4503,8 @@ ui-search {
         border-radius: 5px !important;
         padding-right: 3em; }
       ui-search:after {
-        font-family: elliptical;
-        content: "\e016";
+        font-family: attr(font);
+        content: attr(icon);
         position: absolute;
         font-size: 2em;
         right: 0.3em;
@@ -4498,8 +4531,8 @@ ui-search {
         border-radius: 5px !important;
         padding-right: 2em; }
       ui-search:after {
-        font-family: elliptical;
-        content: "\e016";
+        font-family: attr(font);
+        content: attr(icon);
         position: absolute;
         font-size: 0.9em;
         right: 0.5em;
@@ -7695,6 +7728,34 @@ ui-window {
         margin-left: 5px;
         margin-bottom: 0;
         padding: 0.5em 0.7em 0.5em 0.7em; } }
+
+ui-input-icon {
+  position: relative;
+  display: block; }
+  ui-input-icon input[type="text"],
+  ui-input-icon input[type="password"],
+  ui-input-icon input[type="date"],
+  ui-input-icon input[type="datetime"],
+  ui-input-icon input[type="email"],
+  ui-input-icon input[type="number"],
+  ui-input-icon input[type="search"],
+  ui-input-icon input[type="tel"],
+  ui-input-icon input[type="time"],
+  ui-input-icon input[type="url"],
+  ui-input-icon textarea {
+    border-radius: 5px !important;
+    padding-right: 3em; }
+  ui-input-icon:after {
+    font-family: attr(font);
+    content: attr(icon);
+    position: absolute;
+    font-size: 1.5em;
+    right: 0.3em;
+    top: 0.33333em;
+    line-height: 0.66667;
+    z-index: 99;
+    pointer-events: none;
+    margin-top: .1em; }
 
 [template] {
   visibility: hidden !important; }

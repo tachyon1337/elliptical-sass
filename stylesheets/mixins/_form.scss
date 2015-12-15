@@ -94,8 +94,9 @@ $right: null) {
     padding-right: $padding-right;
   }
   &:after {
-    font-family: $icon-font-family;
-    @include content-icon($icon);
+    font-family: attr(font);
+    //@include content-icon($icon);
+    content:attr(icon);
     position: absolute;
     @extend %#{$component}-icon !optional;
     font-size: $font-size;

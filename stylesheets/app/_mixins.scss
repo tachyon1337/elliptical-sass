@@ -141,6 +141,7 @@
   @include component-theme();
   @include elliptical-basic();
   @include elliptical-components();
+  @include ui-input-icon();
   @include mixins-template();
   @include menu-light();
 }

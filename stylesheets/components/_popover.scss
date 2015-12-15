@@ -81,7 +81,7 @@ $z-index:null
   $content-font-size:map-nested-get-default($map,content,font-size,12px);
 
 
-  $tag:ui-pop-over;
+  $tag:ui-popover;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-pop-over($component,$content-font-size,$display,$width,$min-height,$top,$padding,$border-radius,$z-index);
     @content;

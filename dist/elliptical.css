@@ -3882,6 +3882,9 @@ ui-container {
 ui-form {
   display: block; }
 
+ui-notify {
+  display: none; }
+
 .contain-to-grid {
   max-width: 1270px;
   margin: 0 auto; }
@@ -6480,10 +6483,10 @@ ui-pagination {
       ui-pagination ul > li a {
         box-shadow: none; } }
 
-ui-pop-over {
+ui-popover {
   display: block;
   position: relative; }
-  ui-pop-over pop-content {
+  ui-popover pop-content {
     display: none;
     opacity: 0;
     position: absolute;
@@ -6494,12 +6497,12 @@ ui-pop-over {
     top: 2.5em;
     right: 0;
     padding: 1.5em; }
-    ui-pop-over pop-content:hover {
+    ui-popover pop-content:hover {
       cursor: default; }
     @media only screen and (max-width: 640px) {
-      ui-pop-over pop-content {
+      ui-popover pop-content {
         max-width: 320px !important; } }
-    ui-pop-over pop-content.show {
+    ui-popover pop-content.show {
       display: block; }
 
 ui-rating {

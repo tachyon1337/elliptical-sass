@@ -163,6 +163,10 @@
     display:block;
   }
 
+  ui-notify{
+    display:none;
+  }
+
 }
 
 @mixin mixins-template(){

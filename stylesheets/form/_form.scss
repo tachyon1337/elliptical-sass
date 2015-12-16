@@ -742,7 +742,8 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   $_default-border-radius:map-nested-get($Form,input,border-radius);
   $border-radius: map-get-default($map,border-radius,$_default-border-radius);
   $_icon-font-family:map-nested-get-default($map,icon,font-family,elliptical);
-  $search-icon:map-nested-get($map,icon,search);
+  $_search-icon:map-get($Core-Icons,search);
+  $search-icon:map-nested-get-default($map,icon,search,$_search-icon);
   $touch-border-radius: map-nested-get($map,touch,border-radius);
   $font-size:map-get-default($map,font-size,2em);
 
@@ -753,7 +754,11 @@ $number-component:default,$input-component:css-input-number,$map:()) {
     @content;
 
   }
-
+  ui-search{
+    &:after{
+       @include content-icon($search-icon);
+    }
+  }
 
 }
 

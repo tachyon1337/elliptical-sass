@@ -4503,7 +4503,7 @@ ui-search {
         border-radius: 5px !important;
         padding-right: 3em; }
       ui-search:after {
-        font-family: attr(font);
+        font-family: elliptical;
         content: attr(icon);
         position: absolute;
         font-size: 2em;
@@ -4531,7 +4531,7 @@ ui-search {
         border-radius: 5px !important;
         padding-right: 2em; }
       ui-search:after {
-        font-family: attr(font);
+        font-family: elliptical;
         content: attr(icon);
         position: absolute;
         font-size: 0.9em;
@@ -4543,6 +4543,9 @@ ui-search {
         margin-top: .1em; }
       ui-search > input[type=text]:focus {
         border: 0 !important; } }
+
+ui-search:after {
+  content: "\e016"; }
 
 grid-row, grid-columns {
   display: block; }
@@ -7746,7 +7749,7 @@ ui-input-icon {
     border-radius: 5px !important;
     padding-right: 3em; }
   ui-input-icon:after {
-    font-family: attr(font);
+    font-family: elliptical;
     content: attr(icon);
     position: absolute;
     font-size: 1.5em;

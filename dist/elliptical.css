@@ -5195,7 +5195,7 @@ grid-columns.no-gutter {
     padding-left: 2.5em; }
     .ui-button.prev:after, ui-button.prev:after {
       font-size: 1em;
-      content: "\e012";
+      content: "\e900";
       left: 0.5em;
       top: 0.7em;
       line-height: 1; }
@@ -5246,7 +5246,7 @@ grid-columns.no-gutter {
       padding-left: 3em; }
       .ui-button.jumbo.prev:after, ui-button.jumbo.prev:after {
         font-size: 1.5em;
-        content: "\e012";
+        content: "\e900";
         left: 0.1em;
         top: 0.76667em;
         line-height: 0.66667; }
@@ -5283,7 +5283,7 @@ grid-columns.no-gutter {
       padding-left: 2.65em; }
       .ui-button.large.prev:after, ui-button.large.prev:after {
         font-size: 1.15em;
-        content: "\e012";
+        content: "\e900";
         left: 0.1em;
         top: 0.69565em;
         line-height: 0.86957; }
@@ -5320,7 +5320,7 @@ grid-columns.no-gutter {
       padding-left: 2.3em; }
       .ui-button.small.prev:after, ui-button.small.prev:after {
         font-size: 0.9em;
-        content: "\e012";
+        content: "\e900";
         left: 0.5em;
         top: 0.66667em;
         line-height: 1.11111; }
@@ -5357,7 +5357,7 @@ grid-columns.no-gutter {
       padding-left: 2.2em; }
       .ui-button.tiny.prev:after, ui-button.tiny.prev:after {
         font-size: 0.8em;
-        content: "\e012";
+        content: "\e900";
         left: 0.5em;
         top: 0.625em;
         line-height: 1.25; }
@@ -5751,6 +5751,10 @@ ui-carousel {
     align-items: center; }
   ui-carousel[indicators=true] > carousel-navigation.prev, ui-carousel[indicators=true] > carousel-navigation.next {
     display: none; }
+  ui-carousel[large-icons] > carousel-navigation.next:after {
+    font-size: 64px; }
+  ui-carousel[large-icons] > carousel-navigation.prev:after {
+    font-size: 64px; }
   ui-carousel > carousel-navigation {
     position: absolute;
     top: 40%;
@@ -5771,19 +5775,21 @@ ui-carousel {
       cursor: pointer;
       opacity: 0.8; }
     ui-carousel > carousel-navigation.next {
-      right: 2em;
+      right: 4em;
       visibility: hidden; }
       ui-carousel > carousel-navigation.next:after {
         content: "\e901";
         font-family: elliptical;
-        font-size: 32px; }
+        font-size: 32px;
+        color: #fff; }
     ui-carousel > carousel-navigation.prev {
       left: 2em;
       visibility: hidden; }
       ui-carousel > carousel-navigation.prev:after {
-        content: "\e012";
+        content: "\e900";
         font-family: elliptical;
-        font-size: 32px; }
+        font-size: 32px;
+        color: #fff; }
     ui-carousel > carousel-navigation.indicators {
       display: none;
       list-style: none;
@@ -5946,6 +5952,9 @@ ui-carousel {
       overflow-x: hidden; }
       ui-carousel .ui-button, ui-carousel carousel-navigation {
         display: none; } }
+
+ui-carousel > carousel-item {
+  visibility: hidden; }
 
 ui-collapse {
   list-style: none;

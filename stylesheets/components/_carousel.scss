@@ -30,19 +30,20 @@ $item-multi-height:null,
 $item-multi-min-width:null,
 $button-padding: null,
 $button-width: null,
-$button-top-position: null,
-$button-left-position: null,
-$button-right-position: null,
-$button-prev-icon-left-position: null,
-$button-next-icon-left-position: null,
+$button-position-top: null,
+$button-position-left: null,
+$button-position-right: null,
+$button-prev-icon-position-left: null,
+$button-next-icon-position-left: null,
 $icon-size: null,
-$icon-top-position: null,
+$icon-position-top: null,
 $icon-font-family: null,
 $z-index: null,
 $constrain-image-to-width: null,
-$image-top-position: null,
-$navigation-top-position: null,
-$navigation-position: null,
+$image-position-top: null,
+$navigation-position-top: null,
+$navigation-position-left: null,
+$navigation-position-right: null,
 $navigation-next-icon: null,
 $navigation-prev-icon: null,
 $navigation-font-size: null,
@@ -95,10 +96,23 @@ $indicator-icon-margin: null) {
       }
     }
   }
-
+  &[large-icons]{
+    & > carousel-navigation{
+      &.next{
+        &:after{
+          font-size:64px;
+        }
+      }
+      &.prev{
+        &:after{
+          font-size:64px;
+        }
+      }
+    }
+  }
   & > carousel-navigation {
     position: absolute;
-    top: $navigation-top-position;
+    top: $navigation-position-top;
     z-index: $z-index;
     height: $navigation-font-size;
     width: $navigation-font-size;
@@ -126,22 +140,24 @@ $indicator-icon-margin: null) {
 
     }
     &.next {
-      right: $navigation-position;
+      right: $navigation-position-right;
       visibility: hidden;
       &:after {
         @include content-icon($navigation-next-icon);
         font-family: $icon-font-family;
         font-size: $navigation-font-size;
+        color:$navigation-color;
         @extend %#{$component}-font !optional;
       }
     }
     &.prev {
-      left: $navigation-position;
+      left: $navigation-position-left;
       visibility: hidden;
       &:after {
         @include content-icon($navigation-prev-icon);
         font-family: $icon-font-family;
         font-size: $navigation-font-size;
+        color:$navigation-color;
         @extend %#{$component}-font !optional;
       }
     }
@@ -187,25 +203,25 @@ $indicator-icon-margin: null) {
   button {
     &.ui-button {
       position: absolute;
-      top: $button-top-position;
+      top: $button-position-top;
       z-index: $z-index;
       padding: $button-padding;
       width: $button-width;
 
       &.next {
-        right: $button-right-position;
+        right: $button-position-right;
         &:after {
           font-size: $icon-size;
-          left: $button-next-icon-left-position;
-          top: $icon-top-position;
+          left: $button-next-icon-position-left;
+          top: $icon-position-top;
         }
       }
       &.prev {
-        left: $button-left-position;
+        left: $button-position-left;
         &:after {
           font-size: $icon-size;
-          left: $button-prev-icon-left-position;
-          top: $icon-top-position;
+          left: $button-prev-icon-position-left;
+          top: $icon-position-top;
         }
       }
     }
@@ -257,7 +273,7 @@ $indicator-icon-margin: null) {
           max-height: $item-max-height;
           overflow: hidden;
           img {
-            margin-top: $image-top-position;
+            margin-top: $image-position-top;
           }
         }
       }
@@ -430,11 +446,11 @@ $indicator-icon-margin: null) {
 ///         button:(
 ///                 padding:<value>,
 ///                 width:<value>,
-///                 top-position:<value>,
-///                 left-position:<value>,
-///                 right-position:<value>,
-///                 prev-icon-left-position:<value>,
-///                 next-icon-left-position:<value>
+///                 position-top:<value>,
+///                 position-left:<value>,
+///                 position-right:<value>,
+///                 prev-icon-position-left:<value>,
+///                 next-icon-position-left:<value>
 ///         ),
 ///         icon:(
 ///                 size:<value>,
@@ -442,11 +458,12 @@ $indicator-icon-margin: null) {
 ///                 font-family:<value>
 ///         ),
 ///         image:(
-///                 top-position:<value>
+///                 position-top:<value>
 ///         ),
 ///         navigation:(
-///                 top-position:<value>,
-///                 position:<value>,
+///                 position-top:<value>,
+///                 position-left:<value>,
+///                 position-right:<value>,
 ///                 next-icon:<value>,
 ///                 prev-icon:<value>,
 ///                 font-size:<value>,
@@ -508,17 +525,18 @@ $indicator-icon-margin: null) {
   $item-multi-min-width: map-nested-get-default($map, item, multi-min-width, 50px);
   $_button-padding: map-nested-get-default($map, button, padding, 30px 15px 30px 15px);
   $button-width: map-nested-get-default($map, button, width, 26px);
-  $button-top-position: map-nested-get-default($map, button, top-position, 45%);
-  $button-left-position: map-nested-get-default($map, button, left-position, 0);
-  $button-right-position: map-nested-get-default($map, button, right-position, 0);
-  $button-prev-icon-left-position: map-nested-get-default($map, button, prev-icon-left-position, 0);
-  $button-next-icon-left-position: map-nested-get-default($map, button, next-icon-left-position, 0);
+  $button-position-top: map-nested-get-default($map, button, position-top, 45%);
+  $button-position-left: map-nested-get-default($map, button, position-left, 0);
+  $button-position-right: map-nested-get-default($map, button, position-right, 0);
+  $button-prev-icon-position-left: map-nested-get-default($map, button, prev-icon-position-left, 0);
+  $button-next-icon-position-left: map-nested-get-default($map, button, next-icon-position-left, 0);
   $icon-size: map-nested-get-default($map, icon, size, 32px);
-  $icon-top-position: map-nested-get-default($map, icon, top-position, 20px);
+  $icon-position-top: map-nested-get-default($map, icon, position-top, 20px);
   $_icon-font-family: map-nested-get-default($map, icon, font-family, map-get($Icons, font-family));
-  $image-top-position: map-nested-get-default($map, image, top-position, 0);
-  $navigation-top-position: map-nested-get-default($map, navigation, top-position, 40%);
-  $navigation-position: map-nested-get-default($map, navigation, position, 2em);
+  $image-position-top: map-nested-get-default($map, image, position-top, 0);
+  $navigation-position-top: map-nested-get-default($map, navigation, position-top, 40%);
+  $navigation-position-left: map-nested-get-default($map, navigation, position-left, 2em);
+  $navigation-position-right: map-nested-get-default($map, navigation, position-right, 4em);
   $navigation-next-icon: map-nested-get-default($map, navigation, next-icon, map-get($Icons,right));
   $navigation-prev-icon: map-nested-get-default($map, navigation, prev-icon, map-get($Icons,left));
   $navigation-font-size: map-nested-get-default($map, navigation, font-size, 32px);
@@ -568,19 +586,20 @@ $indicator-icon-margin: null) {
             $item-multi-min-width,
             $_button-padding,
             $button-width,
-            $button-top-position,
-            $button-left-position,
-            $button-right-position,
-            $button-prev-icon-left-position,
-            $button-next-icon-left-position,
+            $button-position-top,
+            $button-position-left,
+            $button-position-right,
+            $button-prev-icon-position-left,
+            $button-next-icon-position-left,
             $icon-size,
-            $icon-top-position,
+            $icon-position-top,
             $_icon-font-family,
             $z-index,
             $constrain-image-to-width,
-            $image-top-position,
-            $navigation-top-position,
-            $navigation-position,
+            $image-position-top,
+            $navigation-position-top,
+            $navigation-position-left,
+            $navigation-position-right,
             $navigation-next-icon,
             $navigation-prev-icon,
             $navigation-font-size,
@@ -617,7 +636,9 @@ $indicator-icon-margin: null) {
       overflow-x: hidden;
     }
 
-
+  }
+  ui-carousel>carousel-item{
+    visibility: hidden;
   }
 }
 

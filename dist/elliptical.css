@@ -7667,6 +7667,11 @@ ui-window {
       margin-left: 5px;
       margin-bottom: 0; }
 
+ui-window[hide-buttons] > footer {
+  min-height: 50px; }
+  ui-window[hide-buttons] > footer > button {
+    display: none; }
+
 @media only screen and (max-width: 640px) {
   ui-window {
     width: 300px !important;

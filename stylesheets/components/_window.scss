@@ -204,6 +204,14 @@ $footer-component:css-window-footer,$tags:null,$class:null,$map:()) {
     @content;
   }
 
+  ui-window[hide-buttons]{
+    &>footer{
+      min-height:50px;
+      &>button{
+        display:none;
+      }
+    }
+  }
 
   @include phone-content(){
     ui-window {

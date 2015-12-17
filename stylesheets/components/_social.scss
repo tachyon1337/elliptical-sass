@@ -89,7 +89,7 @@ $github-color:null
 
 @mixin ui-social($component:css-social,$tags:null,$class:null,$map:()) {
 
-  $color:map-get-default($map,color,#bbb);
+  $_color:map-get-default($map,color,#bbb);
   $margin:map-get-default($map,margin,0);
   $padding:map-get-default($map,padding,0);
   $font-size:map-get-default($map,font-size,32px);
@@ -104,7 +104,7 @@ $github-color:null
 
   $tag:ui-social;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
-    @include _ui-social($color,
+    @include _ui-social($_color,
             $margin,
             $padding,
             $justification,

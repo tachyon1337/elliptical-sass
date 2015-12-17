@@ -248,16 +248,18 @@ $menu-justification:null) {
 
   ///if fixed position, margin of next element =topbar height + 1em
   @if $position != relative {
-    [data-role=navigation] + *{
-      padding-top:$touch-height;
-    }
-    @if $class != null {
-      ui-topbar.#{$class} + * {
-        margin-top: $height;
+    @include desktop-content(){
+      [data-role=navigation] + *{
+        padding-top:$touch-height;
       }
-    } @else {
-      ui-topbar + * {
-        margin-top: $height;
+      @if $class != null {
+        ui-topbar.#{$class} + * {
+          margin-top: $height;
+        }
+      } @else {
+        ui-topbar + * {
+          margin-top: $height;
+        }
       }
     }
   }

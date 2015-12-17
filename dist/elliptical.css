@@ -7561,11 +7561,11 @@ ui-tip {
   ui-topbar touch-ui-brand {
     font-size: 1em; } }
 
-[data-role=navigation] + * {
-  padding-top: 50px; }
-
-ui-topbar + * {
-  margin-top: 50px; }
+@media only screen and (min-width: 1025px) {
+  [data-role=navigation] + * {
+    padding-top: 50px; }
+  ui-topbar + * {
+    margin-top: 50px; } }
 
 ui-topbar.static + * {
   margin-top: 0; }

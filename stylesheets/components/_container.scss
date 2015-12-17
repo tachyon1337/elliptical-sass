@@ -280,9 +280,6 @@ $mark-margin:null){
         @include align-items(center);
       }
     }
-    &.align-space-between{
-      @include align-items(space-between);
-    }
     &.column{
       @include flex-direction(column);
       &.center{
@@ -299,6 +296,9 @@ $mark-margin:null){
       }
       &.right,&.flex-end{
         @include align-items(flex-end);
+      }
+      &.align-space-between{
+        @include justify-content(space-between);
       }
     }
     &>.right, &>.flex-end{

@@ -29,8 +29,13 @@ $alignment:null
   }
 
   @include phone-content(){
-    max-width:100%;
-    border-radius:0;
+    &[responsive]{
+      width:100% !important;
+      border-radius:0;
+      min-height:0 !important;
+      height:auto !important;
+    }
+
   }
   div{
     width:100%;
@@ -38,6 +43,31 @@ $alignment:null
       width:100%;
     }
   }
+  &[height-300]{
+    min-height:300px;
+  }
+  &[height-400]{
+    min-height:400px;
+  }
+  &[height-500]{
+    min-height:500px;
+  }
+  &[width-25]{
+    width:25%;
+  }
+  &[width-30]{
+    width:30%;
+  }
+  &[width-40]{
+    width:40%;
+  }
+  &[width-50]{
+    width:50%;
+  }
+  &[width-100]{
+    width:100%;
+  }
+
 }
 
 
@@ -61,7 +91,7 @@ $alignment:null
   $_border-radius:get-border-radius();
   $margin:map-get-default($map,margin,0);
   $padding:map-get-default($map,padding,.5em 1em);
-  $height:map-get-default($map,padding,18.75em);
+  $height:map-get-default($map,height,18.75em);
   $width:map-get-default($map,width,18.75em);
   $border-radius:map-get-default($map,width,$_border-radius);
   $justification:map-get-default($map,justification,space-between);

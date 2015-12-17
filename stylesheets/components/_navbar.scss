@@ -71,6 +71,9 @@ $dropdown-border-radius:null
   &>touch-bar,&>touch-drawer{
     display:none;
   }
+  [home]{
+    cursor:pointer;
+  }
 }
 
 

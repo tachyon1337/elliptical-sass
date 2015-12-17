@@ -68,6 +68,10 @@ $menu-justification:null) {
     @extend %#{$component}-font !optional;
   }
 
+  [home]{
+    cursor:pointer;
+  }
+
   &>* {
     list-style: none;
     &.right{

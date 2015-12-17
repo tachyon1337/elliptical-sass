@@ -6424,6 +6424,8 @@ ui-navbar {
       border-radius: 0; }
   ui-navbar > touch-bar, ui-navbar > touch-drawer {
     display: none; }
+  ui-navbar [home] {
+    cursor: pointer; }
 
 @media only screen and (min-width: 1025px) {
   ui-navbar touch-ui-brand, ui-navbar touch-icons {
@@ -7428,6 +7430,8 @@ ui-tip {
         justify-content: flex-start;
         -webkit-align-items: center;
         align-items: center; }
+    ui-topbar [home] {
+      cursor: pointer; }
     ui-topbar > * {
       list-style: none; }
       ui-topbar > *.right {

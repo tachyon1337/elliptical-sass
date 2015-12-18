@@ -50,6 +50,9 @@ $navigation-font-size: null,
 $navigation-color: null,
 $navigation-hover-opacity: null,
 $navigation-hover: null,
+$multi-slide-color:null,
+$multi-slide-position-left:null,
+$multi-slide-position-right:null,
 $include-touch-media-queries: null,
 $indicator-top: null,
 $indicator-right: null,
@@ -284,10 +287,16 @@ $indicator-icon-margin: null) {
     & > carousel-navigation {
       opacity: 1;
       &.next{
-        right:0;
+        right:$multi-slide-position-right;
+        &:after{
+          color:$multi-slide-color;
+        }
       }
       &.prev{
-        left:0;
+        left:$multi-slide-position-left;
+        &:after{
+          color:$multi-slide-color;
+        }
       }
     }
 
@@ -471,6 +480,12 @@ $indicator-icon-margin: null) {
 ///                 hover-opacity:<value>,
 ///                 hover:<value>
 ///         ),
+///         multi-slide:(
+///                 position-left:<value>,
+///                 position-right:<value>,
+///                 color:<value>
+///        )
+///
 ///         indicator:(
 ///                 top:<value>,
 ///                 right:<value>,
@@ -543,6 +558,9 @@ $indicator-icon-margin: null) {
   $navigation-color: map-nested-get-default($map, navigation, color, $_white);
   $navigation-hover-opacity: map-nested-get-default($map, navigation, hover-opacity, .8);
   $navigation-hover: map-nested-get-default($map, navigation, hover, true);
+  $multi-slide-color:map-nested-get-default($map, multi-slide, color, inherit);
+  $multi-slide-position-left:map-nested-get-default($map, multi-slide, position-left, -.5em);
+  $multi-slide-position-right:map-nested-get-default($map, multi-slide, position-right, -.5em);
   $indicator-top: map-nested-get-default($map, indicator, top, 80%);
   $indicator-right: map-nested-get-default($map, indicator, right, 10%);
   $indicator-icon: map-nested-get-default($map, indicator, icon, map-get($Icons, circle));
@@ -606,6 +624,9 @@ $indicator-icon-margin: null) {
             $navigation-color,
             $navigation-hover-opacity,
             $navigation-hover,
+            $multi-slide-color,
+            $multi-slide-position-left,
+            $multi-slide-position-right,
             $include-touch-media-queries,
             $indicator-top,
             $indicator-right,

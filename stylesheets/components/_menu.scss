@@ -176,17 +176,11 @@ $item-stacked-padding:null
       }
     }
   }
-  &>menu-item-search{
-    padding:$item-search-padding;
-    margin-left:auto;
-    font-size:$item-search-font-size;
-  }
-
-  &.flex-start,&.left{
+  &.left{
     margin-right:auto;
 
   }
-  &.flex-end,&.right{
+  &.right{
     margin-left:auto;
   }
 }

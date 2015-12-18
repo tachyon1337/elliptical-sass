@@ -5920,9 +5920,13 @@ ui-carousel {
   ui-carousel[animation=multi-slide] > carousel-navigation {
     opacity: 1; }
     ui-carousel[animation=multi-slide] > carousel-navigation.next {
-      right: 0; }
+      right: -0.5em; }
+      ui-carousel[animation=multi-slide] > carousel-navigation.next:after {
+        color: inherit; }
     ui-carousel[animation=multi-slide] > carousel-navigation.prev {
-      left: 0; }
+      left: -0.5em; }
+      ui-carousel[animation=multi-slide] > carousel-navigation.prev:after {
+        color: inherit; }
   ui-carousel[animation=multi-slide] carousel-inner-container {
     width: 85%; }
     ui-carousel[animation=multi-slide] carousel-inner-container carousel-items {
@@ -6350,13 +6354,9 @@ ui-menu {
         display: block !important; }
         ui-menu > menu-item-dropdown:hover > ui-mega-dropdown.hide, ui-menu > menu-item-dropdown:focus > ui-mega-dropdown.hide {
           display: none !important; }
-  ui-menu > menu-item-search {
-    padding: 1em;
-    margin-left: auto;
-    font-size: 0.5em 1em; }
-  ui-menu.flex-start, ui-menu.left {
+  ui-menu.left {
     margin-right: auto; }
-  ui-menu.flex-end, ui-menu.right {
+  ui-menu.right {
     margin-left: auto; }
 
 @media only screen and (max-width: 1024px) and (min-width: 220px) {

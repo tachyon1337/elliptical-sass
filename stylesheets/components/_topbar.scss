@@ -95,12 +95,12 @@ $menu-justification:null) {
     background:none;
     @include flexbox($justification:flex-start, $alignment: $alignment);
     &>*{
-      &.right,&.flex-end {
+      &.right{
         margin-left:auto;
         height:100%;
         @include flexbox($justification: $menu-justification, $alignment: $alignment);
       }
-      &.left,&.flex-start{
+      &.left{
         margin-right:auto;
         height:100%;
         @include flexbox($justification: $menu-justification, $alignment:$alignment);

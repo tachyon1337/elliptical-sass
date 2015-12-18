@@ -24,11 +24,20 @@
     }
   }
 
-  .flex-right,.flex-end{
+  .flex-right{
     margin-left:auto !important;
   }
-  .flex-left,.flex-start{
+  .flex-left{
     margin-right:auto !important;
+  }
+  .flex-start{
+    @include justify-content(flex-start);
+  }
+  .flex-end{
+    @include justify-content(flex-end);
+  }
+  .flex-center{
+    @include justify-content(center);
   }
   .text-left {
     text-align: left !important;

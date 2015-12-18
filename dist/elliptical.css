@@ -1611,11 +1611,23 @@ summary {
     -webkit-align-items: flex-end;
     align-items: flex-end; }
 
-.flex-right, .flex-end {
+.flex-right {
   margin-left: auto !important; }
 
-.flex-left, .flex-start {
+.flex-left {
   margin-right: auto !important; }
+
+.flex-start {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start; }
+
+.flex-end {
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end; }
+
+.flex-center {
+  -webkit-justify-content: center;
+  justify-content: center; }
 
 .text-left {
   text-align: left !important; }
@@ -3222,11 +3234,23 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
     -webkit-align-items: flex-end;
     align-items: flex-end; }
 
-.flex-right, .flex-end {
+.flex-right {
   margin-left: auto !important; }
 
-.flex-left, .flex-start {
+.flex-left {
   margin-right: auto !important; }
+
+.flex-start {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start; }
+
+.flex-end {
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end; }
+
+.flex-center {
+  -webkit-justify-content: center;
+  justify-content: center; }
 
 .text-left {
   text-align: left !important; }
@@ -7456,7 +7480,7 @@ ui-tip {
       justify-content: flex-start;
       -webkit-align-items: center;
       align-items: center; }
-      ui-topbar > section > *.right, ui-topbar > section > *.flex-end {
+      ui-topbar > section > *.right {
         margin-left: auto;
         height: 100%;
         display: -webkit-flex;
@@ -7465,7 +7489,7 @@ ui-tip {
         justify-content: center;
         -webkit-align-items: center;
         align-items: center; }
-      ui-topbar > section > *.left, ui-topbar > section > *.flex-start {
+      ui-topbar > section > *.left {
         margin-right: auto;
         height: 100%;
         display: -webkit-flex;

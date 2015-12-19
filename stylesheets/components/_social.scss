@@ -1,6 +1,5 @@
 @import "../base/common-web-component";
 
-
 ///@private
 @mixin _ui-social($color:null,
 $margin:null,
@@ -13,48 +12,127 @@ $item-margin:null,
 $facebook-color:null,
 $twitter-color:null,
 $google-color:null,
-$github-color:null
+$github-color:null,
+$youtube-color:null,
+$instagram-color:null,
+$linkedin-color:null,
+$vine-color:null,
+$pinterest-color:null,
+$soundcloud-color:null,
+$large-font-size:null,
+$x-large-font-size:null,
+$responsive-font-size:null
 ) {
 
-      @include flexbox($justification: $justification, $alignment: $alignment);
-      list-style: none;
-      padding: $padding;
-      margin:$margin;
-      social-icon {
-        padding: $item-padding;
-        margin:$item-margin;
-        position:relative;
-        font-size:$font-size;
-        color:$color;
-        a {
-          color:$color;
-          font-size:$font-size;
+  @include flexbox($justification: $justification, $alignment: $alignment);
+  list-style: none;
+  padding: $padding;
+  margin: $margin;
+  social-icon {
+    padding: $item-padding;
+    margin: $item-margin;
+    position: relative;
+    font-size: $font-size;
+    color: $color;
+    a,span {
+      color: $color;
+      font-size: $font-size;
+    }
+  }
+  &.snug{
+    &>social-icon{
+      margin:0 .15em !important;
+    }
+  }
+  &.color {
+    &>social-icon {
+      padding: 0;
+      margin: $item-margin;
+      font-size: $font-size;
+      &.facebook{
+        a,span{
+          color: $facebook-color;
         }
       }
-      &.color{
-        social-icon{
-          padding:0;
-          margin:$item-margin;
-          font-size:$font-size;
-          a{
-            font-size:$font-size;
-            &.facebook{
-              color:$facebook-color;
-            }
-            &.twitter{
-              color:$twitter-color;
-            }
-            &.google{
-              color:$google-color;
-            }
-            &.github{
-              color:$github-color;
-            }
-          }
+      &.twitter{
+        a,span{
+          color: $twitter-color;
         }
       }
-}
+      &.google{
+        a,span{
+          color: $google-color;
+        }
+      }
+      &.github{
+        a,span{
+          color: $github-color;
+        }
+      }
+      &.youtube{
+        a,span{
+          color: $youtube-color;
+        }
+      }
+      &.instagram{
+        a,span{
+          color: $instagram-color;
+        }
+      }
+      &.linkedin{
+        a,span{
+          color: $linkedin-color;
+        }
+      }
+      &.vine{
+        a,span{
+          color: $vine-color;
+        }
+      }
+      &.pinterest{
+        a,span{
+          color: $pinterest-color;
+        }
+      }
+      &.soundcloud{
+        a,span{
+          color: $soundcloud-color;
+        }
+      }
+    }
+  }
+  &[flush-left]{
+    &>social-icon{
+      &:first-of-type{
+        margin-left:0;
+      }
+    }
+  }
+  &[large-font]{
+    &>social-icon{
+      a,span{
+        font-size:$large-font-size;
+      }
+    }
+  }
+  &[x-large-font]{
+    &>social-icon{
+      a,span{
+        font-size:$x-large-font-size;
+      }
+    }
+  }
+  &[responsive-font]{
+    @include touch-content(){
+      &>social-icon{
+        a,span{
+          font-size:$responsive-font-size;
+        }
+      }
+    }
+  }
 
+}
 
 ///@public
 /// @param {String} $component
@@ -68,6 +146,9 @@ $github-color:null
 //        font-size:<value>,
 //        justification:<value>,
 //        alignment:<value>,
+//        large-font-size:<value>,
+//        x-large-font-size:<value>,
+//        responsive-font-size:<value>
 //        facebook:(
 //                color:<value>
 //        ),
@@ -80,30 +161,56 @@ $github-color:null
 //        github:(
 //                color:<value>
 //        ),
+//        youtube:(
+//                color:<value>
+//        ),
+//        instagram:(
+//                color:<value>,
+//        ),
+//        linkedin:(
+//                color:<value>,
+//        ),
+//        vine:(
+//                color:<value>,
+//        ),
+//        pinterest:(
+//                color:<value>,
+//        ),
+//        soundcloud:(
+//                color:<value>,
+//        ),
 //        item:(
 //                padding:<value>,
 //                margin:<value>
 //        )
 //)
 
-
 @mixin ui-social($component:css-social,$tags:null,$class:null,$map:()) {
 
-  $_color:map-get-default($map,color,#bbb);
-  $margin:map-get-default($map,margin,0);
-  $padding:map-get-default($map,padding,0);
-  $font-size:map-get-default($map,font-size,32px);
-  $justification:map-get-default($map,justification,flex-start);
-  $alignment:map-get-default($map,alignment,center);
-  $facebook-color:map-nested-get-default($map,facebook,color,#3b5998);
-  $twitter-color:map-get-default($map,twitter-color,#5ec5fb);
-  $google-color:map-get-default($map,google-color,#d23e2b);
-  $github-color:map-get-default($map,github-color,#020202);
-  $item-padding:map-nested-get-default($map,item,padding,0 .7em 0 .7em);
-  $item-margin:map-nested-get-default($map,item,margin,0 .5em 0 .5em);
+  $_color: map-get-default($map, color, #bbb);
+  $margin: map-get-default($map, margin, 0);
+  $padding: map-get-default($map, padding, 0);
+  $font-size: map-get-default($map, font-size, 32px);
+  $justification: map-get-default($map, justification, flex-start);
+  $alignment: map-get-default($map, alignment, center);
+  $facebook-color: map-nested-get-default($map, facebook, color, #3b5998);
+  $twitter-color: map-nested-get-default($map, twitter,color, #5ec5fb);
+  $google-color: map-nested-get-default($map, google,color, #d23e2b);
+  $github-color: map-nested-get-default($map, github,color, #020202);
+  $youtube-color: map-nested-get-default($map, youtube,color, #c33a21);
+  $instagram-color: map-nested-get-default($map, instagram,color, #c66527);
+  $linkedin-color: map-nested-get-default($map, linkedin,color, #2f63a0);
+  $vine-color: map-nested-get-default($map, vine,color, #18bc86);
+  $pinterest-color: map-nested-get-default($map, pinterest,color, #c33b31);
+  $soundcloud-color: map-nested-get-default($map, soundcloud,color, #fb3a06);
+  $item-padding: map-nested-get-default($map, item, padding, 0);
+  $item-margin: map-nested-get-default($map, item, margin, 0 .25em);
+  $large-font-size: map-get-default($map, large-font-size, 48px);
+  $x-large-font-size: map-get-default($map, x-large-font-size, 64px);
+  $responsive-font-size: map-get-default($map, responsive-font-size, 32px);
 
-  $tag:ui-social;
-  @include element-tag($tag:$tag,$tags:$tags,$class:$class){
+  $tag: ui-social;
+  @include element-tag($tag: $tag, $tags: $tags, $class: $class) {
     @include _ui-social($_color,
             $margin,
             $padding,
@@ -115,35 +222,19 @@ $github-color:null
             $facebook-color,
             $twitter-color,
             $google-color,
-            $github-color
-
+            $github-color,
+            $youtube-color,
+            $instagram-color,
+            $linkedin-color,
+            $vine-color,
+            $pinterest-color,
+            $soundcloud-color,
+            $large-font-size,
+            $x-large-font-size,
+            $responsive-font-size
     );
 
     @content;
   }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

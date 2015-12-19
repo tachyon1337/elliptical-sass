@@ -6697,28 +6697,49 @@ ui-social {
   padding: 0;
   margin: 0; }
   ui-social social-icon {
-    padding: 0 0.7em 0 0.7em;
-    margin: 0 0.5em 0 0.5em;
+    padding: 0;
+    margin: 0 0.25em;
     position: relative;
     font-size: 32px;
     color: #bbb; }
-    ui-social social-icon a {
+    ui-social social-icon a, ui-social social-icon span {
       color: #bbb;
       font-size: 32px; }
-  ui-social.color social-icon {
+  ui-social.snug > social-icon {
+    margin: 0 .15em !important; }
+  ui-social.color > social-icon {
     padding: 0;
-    margin: 0 0.5em 0 0.5em;
+    margin: 0 0.25em;
     font-size: 32px; }
-    ui-social.color social-icon a {
-      font-size: 32px; }
-      ui-social.color social-icon a.facebook {
-        color: #3b5998; }
-      ui-social.color social-icon a.twitter {
-        color: #5ec5fb; }
-      ui-social.color social-icon a.google {
-        color: #d23e2b; }
-      ui-social.color social-icon a.github {
-        color: #020202; }
+    ui-social.color > social-icon.facebook a, ui-social.color > social-icon.facebook span {
+      color: #3b5998; }
+    ui-social.color > social-icon.twitter a, ui-social.color > social-icon.twitter span {
+      color: #5ec5fb; }
+    ui-social.color > social-icon.google a, ui-social.color > social-icon.google span {
+      color: #d23e2b; }
+    ui-social.color > social-icon.github a, ui-social.color > social-icon.github span {
+      color: #020202; }
+    ui-social.color > social-icon.youtube a, ui-social.color > social-icon.youtube span {
+      color: #c33a21; }
+    ui-social.color > social-icon.instagram a, ui-social.color > social-icon.instagram span {
+      color: #c66527; }
+    ui-social.color > social-icon.linkedin a, ui-social.color > social-icon.linkedin span {
+      color: #2f63a0; }
+    ui-social.color > social-icon.vine a, ui-social.color > social-icon.vine span {
+      color: #18bc86; }
+    ui-social.color > social-icon.pinterest a, ui-social.color > social-icon.pinterest span {
+      color: #c33b31; }
+    ui-social.color > social-icon.soundcloud a, ui-social.color > social-icon.soundcloud span {
+      color: #fb3a06; }
+  ui-social[flush-left] > social-icon:first-of-type {
+    margin-left: 0; }
+  ui-social[large-font] > social-icon a, ui-social[large-font] > social-icon span {
+    font-size: 48px; }
+  ui-social[x-large-font] > social-icon a, ui-social[x-large-font] > social-icon span {
+    font-size: 64px; }
+  @media only screen and (max-width: 1024px) and (min-width: 220px) {
+    ui-social[responsive-font] > social-icon a, ui-social[responsive-font] > social-icon span {
+      font-size: 32px; } }
 
 table {
   max-width: 100%;

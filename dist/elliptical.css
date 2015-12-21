@@ -4269,6 +4269,8 @@ ui-input-addon {
     font-size: 2em;
     padding-left: .5em;
     padding-right: .5em; }
+  ui-input-addon[icon-padding] > ui-button {
+    padding: .2em .5em .2em 1em; }
 
 ui-checkbox {
   display: block;
@@ -5952,6 +5954,9 @@ ui-carousel {
         cursor: pointer; }
         ui-carousel[animation=multi-slide] carousel-inner-container carousel-items > carousel-item.active {
           border: 0; }
+        ui-carousel[animation=multi-slide] carousel-inner-container carousel-items > carousel-item.row {
+          -webkit-flex-direction: row;
+          flex-direction: row; }
   ui-carousel[animation=fade] carousel-items {
     display: block; }
     ui-carousel[animation=fade] carousel-items > carousel-item {

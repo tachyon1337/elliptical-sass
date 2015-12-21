@@ -339,6 +339,9 @@ $indicator-icon-margin: null) {
               position: absolute;
             }
           }
+          &.row{
+            @include flex-direction(row);
+          }
         }
       }
     }

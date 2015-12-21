@@ -264,6 +264,11 @@ $touch-border-radius: null){
       }
     }
     @content;
+    &[icon-padding]{
+      &>ui-button{
+        padding:.2em .5em .2em 1em;
+      }
+    }
   }
 }
 

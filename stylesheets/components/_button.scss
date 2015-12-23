@@ -13,28 +13,6 @@
 
   padding: $padding;
   font-size: $font-size;
-  &.icon {
-    padding-right:3em;
-    padding-left:.5em;
-    &.left {
-      padding-left: 3em;
-      padding-right:.5em;
-      span {
-        left: .1em;
-      }
-    }
-    span {
-      position: absolute;
-      right: .1em;
-      height: 100%;
-      font-size: 1em;
-      top: 0;
-      display:-webkit-flex;
-      display: flex;
-      -webkit-align-items:center;
-      align-items: center;
-    }
-  }
   &.next {
     padding-right: convert-to-decimal($icon-padding + margin-right($padding));
     &:after {
@@ -172,7 +150,14 @@
   }
   &.icon{
     @include flexbox($alignment:center,$justification:center);
-    //@include _button-size($_button-small-font-size, $_button-small-padding, $_button-icon-padding);
+    &>span{
+      &:first-of-type{
+        margin-right:6px;
+      }
+    }
+    &.tiny-padding{
+      padding:.25em .5em;
+    }
   }
 }
 
@@ -392,6 +377,4 @@
   @include ui-button(secondary);
   @include ui-button-dropdown();
 }
-
-
 

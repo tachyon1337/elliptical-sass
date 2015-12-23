@@ -5191,24 +5191,6 @@ grid-columns.no-gutter {
   cursor: pointer !important;
   display: inline-block;
   outline: 0; }
-  .ui-button.icon, ui-button.icon {
-    padding-right: 3em;
-    padding-left: .5em; }
-    .ui-button.icon.left, ui-button.icon.left {
-      padding-left: 3em;
-      padding-right: .5em; }
-      .ui-button.icon.left span, ui-button.icon.left span {
-        left: .1em; }
-    .ui-button.icon span, ui-button.icon span {
-      position: absolute;
-      right: .1em;
-      height: 100%;
-      font-size: 1em;
-      top: 0;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-align-items: center;
-      align-items: center; }
   .ui-button.next, ui-button.next {
     padding-right: 2.5em; }
     .ui-button.next:after, ui-button.next:after {
@@ -5242,24 +5224,6 @@ grid-columns.no-gutter {
   .ui-button.jumbo, ui-button.jumbo {
     padding: 1.15em 1.5em 1.15em 1.5em;
     font-size: 1.5em; }
-    .ui-button.jumbo.icon, ui-button.jumbo.icon {
-      padding-right: 3em;
-      padding-left: .5em; }
-      .ui-button.jumbo.icon.left, ui-button.jumbo.icon.left {
-        padding-left: 3em;
-        padding-right: .5em; }
-        .ui-button.jumbo.icon.left span, ui-button.jumbo.icon.left span {
-          left: .1em; }
-      .ui-button.jumbo.icon span, ui-button.jumbo.icon span {
-        position: absolute;
-        right: .1em;
-        height: 100%;
-        font-size: 1em;
-        top: 0;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-        align-items: center; }
     .ui-button.jumbo.next, ui-button.jumbo.next {
       padding-right: 3em; }
       .ui-button.jumbo.next:after, ui-button.jumbo.next:after {
@@ -5279,24 +5243,6 @@ grid-columns.no-gutter {
   .ui-button.large, ui-button.large {
     padding: 0.8em 1.15em 0.8em 1.15em;
     font-size: 1.15em; }
-    .ui-button.large.icon, ui-button.large.icon {
-      padding-right: 3em;
-      padding-left: .5em; }
-      .ui-button.large.icon.left, ui-button.large.icon.left {
-        padding-left: 3em;
-        padding-right: .5em; }
-        .ui-button.large.icon.left span, ui-button.large.icon.left span {
-          left: .1em; }
-      .ui-button.large.icon span, ui-button.large.icon span {
-        position: absolute;
-        right: .1em;
-        height: 100%;
-        font-size: 1em;
-        top: 0;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-        align-items: center; }
     .ui-button.large.next, ui-button.large.next {
       padding-right: 2.65em; }
       .ui-button.large.next:after, ui-button.large.next:after {
@@ -5316,24 +5262,6 @@ grid-columns.no-gutter {
   .ui-button.small, ui-button.small {
     padding: 0.6em 0.8em 0.6em 0.8em;
     font-size: 0.9em; }
-    .ui-button.small.icon, ui-button.small.icon {
-      padding-right: 3em;
-      padding-left: .5em; }
-      .ui-button.small.icon.left, ui-button.small.icon.left {
-        padding-left: 3em;
-        padding-right: .5em; }
-        .ui-button.small.icon.left span, ui-button.small.icon.left span {
-          left: .1em; }
-      .ui-button.small.icon span, ui-button.small.icon span {
-        position: absolute;
-        right: .1em;
-        height: 100%;
-        font-size: 1em;
-        top: 0;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-        align-items: center; }
     .ui-button.small.next, ui-button.small.next {
       padding-right: 2.3em; }
       .ui-button.small.next:after, ui-button.small.next:after {
@@ -5353,24 +5281,6 @@ grid-columns.no-gutter {
   .ui-button.tiny, ui-button.tiny {
     padding: 0.5em 0.7em 0.5em 0.7em;
     font-size: 0.8em; }
-    .ui-button.tiny.icon, ui-button.tiny.icon {
-      padding-right: 3em;
-      padding-left: .5em; }
-      .ui-button.tiny.icon.left, ui-button.tiny.icon.left {
-        padding-left: 3em;
-        padding-right: .5em; }
-        .ui-button.tiny.icon.left span, ui-button.tiny.icon.left span {
-          left: .1em; }
-      .ui-button.tiny.icon span, ui-button.tiny.icon span {
-        position: absolute;
-        right: .1em;
-        height: 100%;
-        font-size: 1em;
-        top: 0;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-        align-items: center; }
     .ui-button.tiny.next, ui-button.tiny.next {
       padding-right: 2.2em; }
       .ui-button.tiny.next:after, ui-button.tiny.next:after {
@@ -5408,6 +5318,10 @@ grid-columns.no-gutter {
     justify-content: center;
     -webkit-align-items: center;
     align-items: center; }
+    .ui-button.icon > span:first-of-type, ui-button.icon > span:first-of-type {
+      margin-right: 6px; }
+    .ui-button.icon.tiny-padding, ui-button.icon.tiny-padding {
+      padding: .25em .5em; }
   .ui-button.disabled, .ui-button[disabled], ui-button.disabled, ui-button[disabled] {
     cursor: default !important; }
 

@@ -52,6 +52,7 @@ $item-stacked-padding:null
   margin: $margin;
   padding:$padding;
   width:$width;
+
   @if($height !=null){
     height:$height;
   }
@@ -167,7 +168,7 @@ $item-stacked-padding:null
       &>ui-mega-dropdown{
         display:block !important;
         &.hide{
-            display:none !important;
+          display:none !important;
         }
       }
       @extend %#{$component}-background-hover !optional;
@@ -178,7 +179,6 @@ $item-stacked-padding:null
   }
   &.left{
     margin-right:auto;
-
   }
   &.right{
     margin-left:auto;

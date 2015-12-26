@@ -36,8 +36,8 @@ $tip-color:null
 ///   z-index:<value>,
 ///   tip-color:<value>
 /// )
-@mixin ui-tooltip($component:primary,$class:null,$map:()) {
-  $_tip-color:map-nested-get($Core,primary,color);
+@mixin ui-tooltip($component:inverse,$class:null,$map:()) {
+  $_tip-color:map-nested-get($Core,inverse,color);
   $_border-radius:get-border-radius();
   $_z-index:get-z-index();
   $position:map-get-default($map,position,absolute);

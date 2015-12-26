@@ -62,8 +62,8 @@ $theme-dropdown-background-disabled: none !default;
 $theme-dropdown-border: $_gray-light $_gray-light #bbb $_gray-light !default;
 
 //divider
-$theme-divider-background: $_gray !default;
-$theme-divider-border: #f2f2f2 !default;
+$theme-divider-background: #f0f0f0 !default;
+
 
 //tabs
 $theme-tabs-background: $_gray-light !default;
@@ -222,8 +222,7 @@ $Theme: (
                 border:$theme-dropdown-border
         ),
         divider:(
-                background:$theme-divider-background,
-                border:$theme-divider-border
+                background:$theme-divider-background
         ),
         tabs:(
                 background:$theme-tabs-background,

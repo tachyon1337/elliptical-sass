@@ -155,7 +155,7 @@
           icon-text-shadow:map-nested-get($Theme,input,icon-text-shadow),
           placeholder-color:map-nested-get($Theme,input,placeholder-color),
           hover:(
-               border: map-nested-get($Theme,input,border-hover)
+                  border: map-nested-get($Theme,input,border-hover)
           ),
           active:(
                   border: map-nested-get($Theme,input,border-active)
@@ -224,8 +224,8 @@
 
   ///divider
   @include component($component:css-divider,$map:(
-          background: map-nested-get($Theme,divider,background),
-          border: map-nested-get($Theme,divider,border)
+          background: map-nested-get($Theme,divider,background)
+
   ));
 
 
@@ -382,7 +382,7 @@
           font-color:map-nested-get($Theme,collapse-header,font-color),
           border:0,
           hover:(
-                   font-color:map-nested-get($Theme,collapse-header,font-color-hover)
+                  font-color:map-nested-get($Theme,collapse-header,font-color-hover)
           ),
           active:(
                   background:map-nested-get($Theme,collapse-header,background-active),
@@ -442,17 +442,4 @@
   @include _create-touch-components($touch-theme:$_touch-theme,$touch:$touch,$touch-menu:$touch-menu);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

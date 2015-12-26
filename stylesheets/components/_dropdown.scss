@@ -12,8 +12,7 @@ $z-index: null,
 $font-size: null,
 $border: null,
 $item-padding: null,
-$item-divider-padding: null,
-$item-divider-border: null,
+$item-divider-margin: null,
 $border-radius: null,
 $span-icon-margin:null
 ) {
@@ -89,11 +88,9 @@ $span-icon-margin:null
   }
   &>menu-divider {
     width: 100%;
-    height: 0;
-    border: 0;
-    border-bottom: $item-divider-border;
-    padding: $item-divider-padding;
-    @extend %#{$divider}-border !optional;
+    height: 1px;
+    margin: $item-divider-margin;
+    @extend %#{$divider}-background !optional;
     display:list-item;
   }
   &.show,&.active {
@@ -172,8 +169,7 @@ $border-radius: null
 ///           border:<value>
 ///           item:(
 ///                   padding:<value>,
-///                   divider-padding: <value>,
-///                   divider-border:<value>
+///                   divider-margin: <value>,
 ///           ),
 ///           mega:(
 ///                   min-width:<value>,
@@ -201,8 +197,7 @@ $border-radius: null
   $font-size:map-get-default($map,font-size,1em);
   $border:map-get-default($map,border,1px solid);
   $item-padding:map-nested-get-default($map,item,padding,.5em 1em);
-  $item-divider-padding: map-nested-get-default($map,item,divider-padding,0);
-  $item-divider-border:map-nested-get-default($map,item,divider-border,1px solid);
+  $item-divider-margin: map-nested-get-default($map,item,divider-margin,0);
   $mega-padding:map-nested-get-default($map,mega,padding,1em);
   $mega-min-width:map-nested-get-default($map,mega,min-width,450px);
   $mega-min-height:map-nested-get-default($map,mega,min-height,12.5em);
@@ -214,7 +209,7 @@ $border-radius: null
   $tag:ui-dropdown;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-dropdown($component, $divider, $width,$min-width, $top, $margin,$padding, $float, $z-index, $font-size, $border, $item-padding,
-            $item-divider-padding, $item-divider-border, $border-radius, $span-icon-margin
+            $item-divider-margin, $border-radius, $span-icon-margin
     );
     @content;
   }

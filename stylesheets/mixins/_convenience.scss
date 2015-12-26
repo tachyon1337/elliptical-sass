@@ -4,8 +4,8 @@
 @mixin mixins-convenience() {
 
   .flex{
-    display:-webkit-flex;
-    display:flex;
+    display:-webkit-flex !important;
+    display:flex !important;
     &.center{
       -webkit-justify-content:center;
       justify-content:center;
@@ -21,6 +21,10 @@
     &.align-end{
       -webkit-align-items: flex-end;
       align-items: flex-end;
+    }
+    &.space-between{
+      -webkit-justify-content:space-between;
+      justify-content:space-between;
     }
   }
 

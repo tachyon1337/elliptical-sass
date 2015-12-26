@@ -1,7 +1,7 @@
 {
   "name": "elliptical-sass",
   "description": "Sass library for responsive web components",
-  "version": "1.1.36",
+  "version": "1.1.37",
   "main": "dist/elliptical.css",
   "authors": [
     "S. Francis"

@@ -2,11 +2,11 @@
 
 ///@private
 @mixin _flex-list(
-$first-child-max-width:null,
-$alt-background:null,
-$justification:null,
-$alignment:null,
-$padding:null
+  $first-child-max-width:null,
+  $alt-background:null,
+  $justification:null,
+  $alignment:null,
+  $padding:null
 ){
   list-style: none;
   &>li,&>.list-item{
@@ -38,18 +38,18 @@ $padding:null
 
 ///@private
 @mixin _ui-columns(
-$count:null,
-$gap:null,
-$width:null,
-$contain-count:null,
-$contain-gap:null,
-$contain-width:null,
-$touch-count:null,
-$touch-gap:null,
-$touch-width:null,
-$touch-item-margin:null,
-$touch-font-size:null,
-$font-size:null){
+  $count:null,
+  $gap:null,
+  $width:null,
+  $contain-count:null,
+  $contain-gap:null,
+  $contain-width:null,
+  $touch-count:null,
+  $touch-gap:null,
+  $touch-width:null,
+  $touch-item-margin:null,
+  $touch-font-size:null,
+  $font-size:null){
 
   display:block;
   list-style: none;
@@ -434,17 +434,17 @@ $mark-margin:null){
     @if $class != null{
       &.#{$class} {
         @include _ui-columns($count,
-        $gap,
-        $width,
-        $grid-count,
-        $grid-gap,
-        $contain-column-percentage,
-        $touch-count,
-        $touch-gap,
-        $touch-column-percentage,
-        $touch-item-margin,
-        $touch-font-size,
-        $font-size);
+                $gap,
+                $width,
+                $grid-count,
+                $grid-gap,
+                $contain-column-percentage,
+                $touch-count,
+                $touch-gap,
+                $touch-column-percentage,
+                $touch-item-margin,
+                $touch-font-size,
+                $font-size);
         @content;
       }
 
@@ -510,18 +510,18 @@ $mark-margin:null){
     @if $class != null{
       &.#{$class} {
         @include _ui-icons($component,
-        $justification,
-        $alignment,
-        $type,
-        $include-animation,
-        $animation,
-        $item-margin,
-        $item-padding,
-        $font-size,
-        $mark-font-size,
-        $mark-font-weight,
-        $mark-font-family,
-        $mark-margin
+                $justification,
+                $alignment,
+                $type,
+                $include-animation,
+                $animation,
+                $item-margin,
+                $item-padding,
+                $font-size,
+                $mark-font-size,
+                $mark-font-weight,
+                $mark-font-family,
+                $mark-margin
         );
         @content;
       }
@@ -540,7 +540,7 @@ $mark-margin:null){
               $mark-font-family,
               $mark-margin
       );
-        @content;
+      @content;
     }
   }
 }

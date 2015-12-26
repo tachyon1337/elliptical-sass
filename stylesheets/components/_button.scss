@@ -296,7 +296,7 @@
   $_touch-font-size:map-nested-get-default($map,touch,font-size,.8em);
   $_touch-flex-breakpoint:map-nested-get-default($map,touch,flex-breakpoint,600px);
 
-  .ui-button-bar,ui-button-bar {
+  ui-button-bar {
     @include flexbox();
     @include justify-content(space-between);
 
@@ -345,7 +345,7 @@
   $_button-tiny-font-size:map-get($Button,tiny-font-size);
   $_button-tiny-padding:map-get($Button,tiny-padding);
 
-  [data-ui=dropdown],ui-button-dropdown{
+  ui-button-dropdown{
     position:relative;
     &:focus{
       @include tab-focus();
@@ -377,4 +377,6 @@
   @include ui-button(secondary);
   @include ui-button-dropdown();
 }
+
+
 

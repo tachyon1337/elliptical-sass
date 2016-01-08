@@ -6519,7 +6519,7 @@ ui-sidebar {
       padding: 0;
       margin-top: auto; }
   ui-sidebar header + * {
-    padding-top: 70px; }
+    padding-top: 70px !important; }
   ui-sidebar header.relative + * {
     padding-top: 0; }
   ui-sidebar hr {
@@ -6528,9 +6528,9 @@ ui-sidebar {
     ui-sidebar hr.border {
       margin-top: 0; }
   ui-sidebar > ui-menu {
-    width: 100%; }
+    width: 100% !important; }
   ui-sidebar > ui-menu > * > a {
-    padding: 0.75em 1em;
+    padding: 0.75em 1em !important;
     color: #ddd;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -7720,7 +7720,8 @@ ui-drawer-panel {
   position: fixed;
   top: 0;
   left: 0;
-  height: 50px; }
+  height: 50px;
+  z-index: 99; }
   ui-drawer-panel ui-toggle {
     display: block;
     position: absolute;

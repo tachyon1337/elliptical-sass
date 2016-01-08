@@ -61,7 +61,7 @@ $button-icon-top:null
   }
 
   header + *{
-    padding-top:$header-height + $header-fixed-offset;
+    padding-top:$header-height + $header-fixed-offset !important;
   }
 
   header.relative + *{
@@ -77,11 +77,11 @@ $button-icon-top:null
   }
 
   &> ui-menu{
-    width:100%;
+    width:100% !important;
   }
 
   &> ui-menu > * > a{
-    padding:$item-padding;
+    padding:$item-padding !important;
     color:$item-color;
     &:hover{
       color:$item-color-hover;

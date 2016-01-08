@@ -41,20 +41,16 @@ $icon-down:null
       border-bottom: 0;
     }
     a {
-      //text-transform: $item-link-transform !important;
       text-decoration: none !important;
       padding: $item-link-padding;
       @extend %#{$component}-font !optional;
       &:hover, &:focus {
-        //text-transform: $item-link-transform !important;
         text-decoration: none !important;
       }
       &:active {
-        //text-transform: $item-link-transform !important;
         text-decoration: none !important;
       }
       &.active {
-        //text-transform: $item-link-transform !important;
         text-decoration: none !important;
       }
     }

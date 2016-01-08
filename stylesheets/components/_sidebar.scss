@@ -1,98 +1,163 @@
 @import "../base/common-web-component";
 
-@include component(css-sidebar,(
-        background:#eee,
-        background-hover:darken(#eee,5%)
-));
 
 
 ///@private
-@mixin _ui-sidebar($component:null,
+@mixin _ui-sidebar(
+$background:null,
+$width:null,
 $padding:null,
-$item-padding-left:null,
-$alignment:null,
-$min-height:null,
-$border-radius:null,
-$menu-item-line-height:null,
-$menu-header-margin-top:null,
-$menu-dropdown-margin:null,
-$header-font-size:null
+$header-color:null,
+$header-height:null,
+$header-padding:null,
+$header-fixed-offset:null,
+$divider-color:null,
+$item-padding:null,
+$item-color:null,
+$item-color-hover:null,
+$dropdown-item-padding:null,
+$dropdown-item-color:null,
+$dropdown-item-color-hover:null,
+$button-icon-color:null,
+$button-icon-right:null,
+$button-icon-top:null
 ){
 
-  $_margin-left:margin-left($padding);
-  $_margin-right:margin-right($padding);
-
-  @include flexbox-column($alignment:$alignment);
-  @if $min-height != null{
-    min-height:$min-height;
-  }
-  list-style: none;
+  background:$background;
   padding:$padding;
-  border-radius:$border-radius;
-  @extend %#{$component}-background !optional;
-  h1,h2,h3,h4,h5,h6{
-    padding:0;
-    margin:0;
-    font-size:$header-font-size;
-    display:inline;
+  width:$width;
+  min-height:100vh;
+  @include flexbox-column();
+  border-radius:0;
+
+  &>header{
+    @include flexbox-column($alignment:flex-start,$justification:center);
+    position:relative;
+    color:$header-color;
+    height:$header-height;
+    width:$width;
+    &>*{
+      padding:$header-padding;
+      margin:0;
+    }
+    &>[close]{
+      position:absolute;
+      top:5px;
+      left:5px;
+      cursor:pointer;
+      padding:0;
+    }
+    position:fixed;
+    background:$background;
+    z-index:11000;
+    &.relative{
+      position:relative;
+    }
+    &>hr{
+      margin:0;
+      padding:0;
+      margin-top:auto;
+    }
   }
 
-  @include touch-content(){
-    display:none;
+  header + *{
+    padding-top:$header-height + $header-fixed-offset;
   }
-  &.show{
-    display:inherit !important;
+
+  header.relative + *{
+    padding-top:0;
   }
-  &>ui-menu{
-    width:100% !important;
-    display:block !important;
-    &>menu-item{
-      float:none !important;
-      line-height:$menu-item-line-height;
-      display:block;
-      list-style:none;
-      h1,h2,h3,h4,h5,h6{
-        line-height:$menu-item-line-height;
-      }
-      padding-left:$item-padding-left;
-      &.header{
-        padding-left:0;
-        &:hover{
-          cursor:default;
-          @extend %#{$component}-background !optional;
-        }
-      }
-      a{
-        white-space:nowrap;
-        text-overflow:ellipsis;
-        overflow:hidden;
-        width:100%;
-        display:block;
-      }
-      &:hover,&.active{
-        cursor:pointer;
-        margin-left:-#{$_margin-left};
-        margin-right:-#{$_margin-right};
-        @extend %#{$component}-background-hover !optional;
-        &>*{
-          padding-left:#{$_margin-left};
-        }
-        a{
-          width:91%;
-          @extend %#{$component}-font !optional;
-          &:hover{
-            @extend %#{$component}-font-hover !optional;
-          }
-        }
-      }
-      &.header:not(:first-child){
-        margin-top:$menu-header-margin-top;
-      }
-    }
-    ui-dropdown{
-      margin:$menu-dropdown-margin;
+
+  hr{
+    border-top:1px solid $divider-color;
+    width:100%;
+    &.border{
+      margin-top:0;
     }
   }
+
+  &> ui-menu{
+    width:100%;
+  }
+
+  &> ui-menu > * > a{
+    padding:$item-padding;
+    color:$item-color;
+    &:hover{
+      color:$item-color-hover;
+    }
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+  }
+
+  &> ui-menu > * > span{
+    color:$item-color;
+  }
+
+  ui-button-dropdown{
+    width:100%;
+    flex-wrap:wrap;
+    position:relative;
+    @include flex-wrap(wrap);
+    &:after{
+      font-family:'content';
+      content:'\e612';
+      color:$button-icon-color;
+      position:absolute;
+      right:$button-icon-right;
+      top:$button-icon-top;
+      font-size:24px;
+    }
+    &.open{
+      &:after{
+        content:'\e613';
+      }
+    }
+
+    &.ui-focus{
+      outline:0 !important;
+      &:focus{
+        outline:0 !important;
+      }
+    }
+    &:focus{
+      outline:0 !important;
+    }
+  }
+
+
+  ui-dropdown{
+    position:relative;
+    background:none;
+    border-radius:0;
+    width:100%;
+    border:0;
+    padding:0;
+    outline:0;
+  }
+
+  ui-dropdown menu-item{
+    border-radius:0 !important;
+    &:hover{
+      background:none;
+    }
+  }
+
+  ui-dropdown menu-item a{
+    padding:$dropdown-item-padding;
+    color:$dropdown-item-color;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    &:hover{
+      color:$dropdown-item-color-hover;
+    }
+  }
+  ui-dropdown a:hover{
+    background:none;
+  }
+
 }
 
 
@@ -104,44 +169,77 @@ $header-font-size:null
 /// @param {Map} $map
 
 //$map:(
-//        padding:<value>,
-//        alignment:<value>,
-//        min-height:<value>,
-//        border-radius:<value>,
-//        item:(
-//                padding-left:<value>
-//        ),
-//        menu:(
-//                item-line-height:<value>,
-//                dropdown-margin:<value>,
-//                header-margin-top:<value>
-//        ),
+//        background:<value>,
+//        width:<value>,
+//        padding:<value>
 //        header:(
-//                font-size:<value>
+//           color:<value>,
+//           height:<value>,
+//           padding:<value>,
+//           fixed-offset:<value>
+//        )
+//        item:(
+//                padding:<value>,
+//                color:<value>,
+//                color-hover:<value>
+//        ),
+//        divider:(
+//                color:<value>
+//        )
+//        dropdown-item:(
+//                padding:<value>,
+//                color:<value>,
+//                color-hover:<value>
+//        ),
+//        button-icon:(
+//                color:<value>,
+//                top:<value>,
+//                right:<value>
 //        )
 //)
 
-@mixin ui-sidebar($component:css-sidebar,$tags:null,$class:null,$map:()){
+@mixin ui-sidebar($tags:null,$class:null,$map:()){
 
-  $_border-radius:get-border-radius();
-  $padding:map-get-default($map,padding,24px);
-  $alignment:map-get-default($map,alignment,flex-start);
-  $min-height:map-get-default($map,min-height,200px);
-  $border-radius:map-get-default($map,border-radius,$_border-radius);
-  $item-padding-left:map-nested-get-default($map,item,padding-left,8px);
-  $menu-item-line-height:map-nested-get-default($map,menu,item-line-height,2em);
-  $menu-dropdown-margin:map-nested-get-default($map,menu,dropdown-margin,0 0 0 1em);
-  $menu-header-margin-top:map-nested-get-default($map,menu,header-margin-top,2em);
-  $header-font-size:map-nested-get-default($map,header,font-size,1.25em);
+
+  $background:map-get-default($map,background,#424242);
+  $width:map-get-default($map,width,277px);
+  $padding:map-get-default($map,padding,0 0 1em 0);
+  $header-color:map-nested-get-default($map,header,color,#797979);
+  $header-height:map-nested-get-default($map,header,height,50px);
+  $header-padding:map-nested-get-default($map,header,padding,.25em 0 0 2em);
+  $header-fixed-offset:map-nested-get-default($map,header,fixed-offset,20px);
+  $divider-color:map-nested-get-default($map,divider,color,#797979);
+  $item-padding:map-nested-get-default($map,item,padding,.75em 1em);
+  $item-color:map-nested-get-default($map,item,color,#ddd);
+  $item-color-hover:map-nested-get-default($map,item,color,#8a8a8a);
+  $dropdown-item-padding:map-nested-get-default($map,dropdown,item-padding,.5em 0 .5em 4em);
+  $dropdown-item-color:map-nested-get-default($map,dropdown,item-color,#ddd);
+  $dropdown-item-color-hover:map-nested-get-default($map,dropdown,item-color-hover,#8a8a8a);
+  $button-icon-color:map-nested-get-default($map,button-icon,color,#797979);
+  $button-icon-right:map-nested-get-default($map,button-icon,right,20px);
+  $button-icon-top:map-nested-get-default($map,button-icon,top,10px);
 
   $tag:ui-sidebar;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
-    @include _ui-sidebar($component,$padding,$item-padding-left,$alignment,$min-height,
-            $border-radius,
-            $menu-item-line-height,
-            $menu-header-margin-top,
-            $menu-dropdown-margin,
-            $header-font-size);
+    @include _ui-sidebar(
+            $background,
+            $width,
+            $padding,
+            $header-color,
+            $header-height,
+            $header-padding,
+            $header-fixed-offset,
+            $divider-color,
+            $item-padding,
+            $item-color,
+            $item-color-hover,
+            $dropdown-item-padding,
+            $dropdown-item-color,
+            $dropdown-item-color-hover,
+            $button-icon-color,
+            $button-icon-right,
+            $button-icon-top
+    );
     @content;
   }
 

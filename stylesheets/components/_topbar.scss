@@ -17,7 +17,8 @@ $brand-alignment:null,
 $brand-min-width:null,
 $brand-padding:null,
 $right-padding:null,
-$menu-justification:null) {
+$menu-justification:null,
+$dropdown-top:null) {
 
   $_grid-width:map-get($Grid,width);
   $_grid-column-gutter:map-get($Grid,column-gutter);
@@ -134,6 +135,10 @@ $menu-justification:null) {
     }
   }
 
+  ui-dropdown,ui-mega-dropdown{
+    top:$dropdown-top;
+  }
+
 }
 
 ///@public
@@ -162,6 +167,9 @@ $menu-justification:null) {
 ///          justification:<value>,
 ///          right-padding:<value>,
 ///      ),
+///      dropdown:(
+///
+///      )
 ///      touch:(
 ///          position:<value>,
 ///          height:<value>,
@@ -195,6 +203,7 @@ $menu-justification:null) {
   $brand-padding:map-nested-get-default($map,brand,padding,0 0 0 1em);
   $right-padding:map-nested-get-default($map,menu,right-padding,0 1em 0 0);
   $menu-justification:map-nested-get-default($map,menu,justification,center);
+  $dropdown-top:map-nested-get-default($map,dropdown,top,80%);
   $touch-position: map-nested-get-default($map,touch,position,fixed);
   $touch-height: map-nested-get-default($map,touch,height,$_touch-height);
   $touch-font-size:map-nested-get-default($map,touch,font-size,1em);
@@ -223,7 +232,8 @@ $menu-justification:null) {
               $brand-min-width,
               $brand-padding,
               $right-padding,
-              $menu-justification);
+              $menu-justification,
+              $dropdown-top);
     }
     @include touch-content(){
       @include _touch-ui-topbar($touch-component,
@@ -303,6 +313,9 @@ $menu-justification:null) {
           padding-top: $touch-height;
         }
       }
+    }
+    ui-topbar ui-menu{
+      display:none;
     }
   }
 }

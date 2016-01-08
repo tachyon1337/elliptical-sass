@@ -112,7 +112,7 @@ $dropdown-border-radius:null
   $_touch-height:map-get($Component,touch-bar-height);
   $nav-padding:map-nested-get-default($map,nav,padding,8px 0);
   $nav-column-gutter:map-nested-get-default($map,nav,column-gutter,false);
-  $dropdown-top:map-nested-get-default($map,dropdown,top,95%);
+  $dropdown-top:map-nested-get-default($map,dropdown,top,80%);
   $dropdown-border-radius:map-nested-get-default($map,dropdown,border-radius,0);
   $touch-position:map-nested-get-default($map,touch,position,fixed);
   $touch-height:map-nested-get-default($map,touch,height,$_touch-height);
@@ -190,6 +190,10 @@ $dropdown-border-radius:null
           $touch-brand-alignment,
           $touch-icon-alignment
         );
+      }
+
+      ui-menu{
+        display:none;
       }
 
     }

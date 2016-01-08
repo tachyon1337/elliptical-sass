@@ -28,6 +28,15 @@
     }
   }
 
+  .icon-flex{
+    display:-webkit-flex !important;
+    display:flex !important;
+    -webkit-justify-content:center;
+    justify-content:center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
   .flex-right{
     margin-left:auto !important;
   }
@@ -365,6 +374,11 @@
   }
   [hover]{
     cursor:pointer;
+  }
+
+  .touch-scroll{
+    overflow: scoll-y;
+    -webkit-overflow-scrolling: touch;
   }
 
   @include desktop-content(){

@@ -1,0 +1,110 @@
+@mixin _ui-drawer-panel(
+  $height:null,
+  $toggle-color:null
+) {
+
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $height;
+
+  ui-toggle {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    border-width: 0;
+    border-right: 0;
+    height: 48px;
+    z-index: 999;
+    cursor: pointer;
+    &:before {
+      font-family: content;
+      content: "\e902";
+      font-size: 24px;
+      left: 16px;
+      top: 12px;
+      position: absolute;
+      color: $toggle-color;
+    }
+  }
+
+  & > ui-sidebar {
+    display: none;
+  }
+
+}
+
+///@public
+///@param {Map} $map
+
+//$map:(
+//   height:<value>,
+//   toggle:(
+//     color:<value>
+//  ),
+//   drawer:(
+//      width:<value>,
+//      z-index:<value>
+//   )
+//)
+@mixin ui-drawer-panel($map:()) {
+
+  $drawer-width: map-nested-get-default($map, drawer,width, 277px);
+  $drawer-z-index:map-nested-get-default($map, drawer,z-index, 2500);
+  $height: map-get-default($map, height, 50px);
+  $toggle-color: map-nested-get-default($map, toggle,color, #333);
+
+  $tag: ui-drawer-panel;
+  @include element-tag($tag: $tag, $tags: null, $class: null) {
+    @include _ui-drawer-panel(
+                    $height,
+                    $toggle-color
+    );
+
+    @content;
+  }
+
+  ui-drawer-panel + * {
+    padding-top: $height;
+  }
+  ui-drawer {
+    height: 100vh;
+    width:$drawer-width;
+    overflow-y: scroll;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:$drawer-z-index;
+    -webkit-overflow-scrolling: touch;
+    display:none;
+  }
+  ui-drawer.show {
+    display: block;
+  }
+
+  $_grid-width:map-get($Grid,width);
+  $_media-width:$_grid-width + 2*$drawer-width;
+  $_brand-width:$_grid-width + 100px;
+  @include media-breakpoint-min($_media-width){
+    ui-drawer[visible=true]{
+       display:block;
+    }
+    ui-drawer[visible=true] + * ui-toggle{
+      display:none;
+    }
+    ui-drawer[visible=true] > ui-sidebar [close]{
+      display:none;
+    }
+  }
+
+  @include media-breakpoint($width:$_brand-width,$min-width:1025px){
+    ui-drawer + * [brand]{
+      margin-left:100px;
+    }
+  }
+
+
+}

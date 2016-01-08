@@ -351,21 +351,7 @@
       @include tab-focus();
     }
   }
-  ui-button-dropdown.ui-button{
-    @include _button-dropdown($_button-font-size, $_button-padding, $_button-icon-padding);
-    &.jumbo {
-      @include _button-dropdown($_button-jumbo-font-size, $_button-jumbo-padding, $_button-icon-padding);
-    }
-    &.large {
-      @include _button-dropdown($_button-large-font-size, $_button-large-padding, $_button-icon-padding);
-    }
-    &.small {
-      @include _button-dropdown($_button-small-font-size, $_button-small-padding, $_button-icon-padding);
-    }
-    &.tiny {
-      @include _button-dropdown($_button-tiny-font-size, $_button-tiny-padding, $_button-icon-padding);
-    }
-  }
+
 }
 
 /// Shortcut: Create Base Buttons

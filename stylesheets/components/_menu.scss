@@ -75,29 +75,18 @@ $item-stacked-padding:null
     }
   }
   @extend %#{$component}-background !optional;
-  &>menu-item{
+  &>*{
     @include flexbox($alignment:$alignment,$justification:$justification);
     margin:$item-margin;
     height:100%;
     position:relative;
     font-size:$item-font-size;
-    @include _first-last-of-type-link-padding();
     &:hover,&:focus{
       cursor:pointer;
       @extend %#{$component}-background-hover !optional;
       &>a{
         @extend %#{$component}-font-hover !optional;
       }
-      &>ui-button-dropdown{
-        &>a{
-          @extend %#{$component}-font-hover !optional;
-        }
-      }
-    }
-    .label,label{
-      @extend %#{$component}-font-active !optional;
-      font-size:$item-label-font-size;
-      padding:$item-label-padding;
     }
     &>a{
       @extend %#{$component}-font !optional;
@@ -116,12 +105,8 @@ $item-stacked-padding:null
         }
       }
     }
-    &>ui-button-dropdown{
-      &>a{
-        @extend %#{$component}-font !optional;
-        font-size:1em;
-        padding:$item-padding;
-      }
+    &>span[class*='icon-']{
+      margin-left:.5em;
     }
   }
   &>menu-divider{
@@ -136,13 +121,6 @@ $item-stacked-padding:null
     }
   }
   &>menu-item-dropdown{
-    @include flexbox($alignment:$alignment,$justification:$justification);
-    position:relative;
-    margin:$item-margin;
-    padding:$item-padding;
-    height:100%;
-    font-size:$item-font-size;
-    @include _first-last-of-type-padding();
     &.static{
       position:static;
       &.inactive{
@@ -156,10 +134,6 @@ $item-stacked-padding:null
     &>ui-dropdown,&>ui-mega-dropdown{
       display:none !important;
     }
-    &>a{
-      @extend %#{$component}-font !optional;
-      font-size:1em;
-    }
     &:hover,&:focus{
       cursor:pointer;
       &>ui-dropdown{
@@ -171,10 +145,6 @@ $item-stacked-padding:null
           display:none !important;
         }
       }
-      @extend %#{$component}-background-hover !optional;
-      &>a{
-        @extend %#{$component}-font-hover !optional;
-      }
     }
   }
   &.left{
@@ -182,6 +152,14 @@ $item-stacked-padding:null
   }
   &.right{
     margin-left:auto;
+  }
+  &.column{
+    @include flex-direction(column);
+    &>*{
+      //@include align-items(center);
+      width:100%;
+      height:auto;
+    }
   }
 }
 
@@ -272,11 +250,6 @@ $item-stacked-padding:null
     @content;
   }
 
-  @include touch-content(){
-    ui-menu{
-      display:none;
-    }
-  }
 }
 
 

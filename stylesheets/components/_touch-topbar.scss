@@ -25,7 +25,7 @@ $icon-margin: null) {
   @include web-component-base($component: $component, $include-font: false);
   ui-brand {
     @extend %#{$component}-font !optional;
-    font-size: $brand-font-size;
+    //font-size: $brand-font-size;
     margin-left: auto;
     margin-right: auto;
     @include flexbox($justification: center, $alignment: center);
@@ -37,7 +37,7 @@ $icon-margin: null) {
   }
   touch-ui-brand{
     @include flexbox($justification: center, $alignment: center);
-    font-size: $brand-font-size;
+    //font-size: $brand-font-size;
   }
   .touch-right, touch-icons {
     list-style: none;

@@ -41,7 +41,7 @@
 ///@param {Map} $map
 
 //$map:(
-//   height:<value>,
+//   height:<value>
 //   toggle:(
 //     color:<value>
 //  ),
@@ -68,7 +68,7 @@
   }
 
   ui-drawer-panel + * {
-    padding-top: $height;
+    margin-top: $height !important;
   }
   ui-drawer {
     height: 100vh;
@@ -90,7 +90,7 @@
   $_brand-width:$_grid-width + 100px;
   @include media-breakpoint-min($_media-width){
     ui-drawer[visible=true]{
-       display:block;
+      display:block;
     }
     ui-drawer[visible=true] + * ui-toggle{
       display:none;

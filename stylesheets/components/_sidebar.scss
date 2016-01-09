@@ -4,23 +4,23 @@
 
 ///@private
 @mixin _ui-sidebar(
-$background:null,
-$width:null,
-$padding:null,
-$header-color:null,
-$header-height:null,
-$header-padding:null,
-$header-fixed-offset:null,
-$divider-color:null,
-$item-padding:null,
-$item-color:null,
-$item-color-hover:null,
-$dropdown-item-padding:null,
-$dropdown-item-color:null,
-$dropdown-item-color-hover:null,
-$button-icon-color:null,
-$button-icon-right:null,
-$button-icon-top:null
+  $background:null,
+  $width:null,
+  $padding:null,
+  $header-color:null,
+  $header-height:null,
+  $header-padding:null,
+  $header-fixed-offset:null,
+  $divider-color:null,
+  $item-padding:null,
+  $item-color:null,
+  $item-color-hover:null,
+  $dropdown-item-padding:null,
+  $dropdown-item-color:null,
+  $dropdown-item-color-hover:null,
+  $button-icon-color:null,
+  $button-icon-right:null,
+  $button-icon-top:null
 ){
 
   background:$background;
@@ -158,6 +158,10 @@ $button-icon-top:null
     background:none;
   }
 
+  .bottom{
+    margin-top:auto;
+  }
+
 }
 
 
@@ -211,7 +215,7 @@ $button-icon-top:null
   $divider-color:map-nested-get-default($map,divider,color,#797979);
   $item-padding:map-nested-get-default($map,item,padding,.75em 1em);
   $item-color:map-nested-get-default($map,item,color,#ddd);
-  $item-color-hover:map-nested-get-default($map,item,color,#8a8a8a);
+  $item-color-hover:map-nested-get-default($map,item,color-hover,#8a8a8a);
   $dropdown-item-padding:map-nested-get-default($map,dropdown,item-padding,.5em 0 .5em 4em);
   $dropdown-item-color:map-nested-get-default($map,dropdown,item-color,#ddd);
   $dropdown-item-color-hover:map-nested-get-default($map,dropdown,item-color-hover,#8a8a8a);
@@ -222,29 +226,25 @@ $button-icon-top:null
   $tag:ui-sidebar;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _ui-sidebar(
-            $background,
-            $width,
-            $padding,
-            $header-color,
-            $header-height,
-            $header-padding,
-            $header-fixed-offset,
-            $divider-color,
-            $item-padding,
-            $item-color,
-            $item-color-hover,
-            $dropdown-item-padding,
-            $dropdown-item-color,
-            $dropdown-item-color-hover,
-            $button-icon-color,
-            $button-icon-right,
-            $button-icon-top
+                    $background,
+                    $width,
+                    $padding,
+                    $header-color,
+                    $header-height,
+                    $header-padding,
+                    $header-fixed-offset,
+                    $divider-color,
+                    $item-padding,
+                    $item-color,
+                    $item-color-hover,
+                    $dropdown-item-padding,
+                    $dropdown-item-color,
+                    $dropdown-item-color-hover,
+                    $button-icon-color,
+                    $button-icon-right,
+                    $button-icon-top
     );
     @content;
   }
 
-
 }
-
-
-

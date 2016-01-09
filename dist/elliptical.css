@@ -3905,6 +3905,7 @@ ui-container[content-placeholder] {
   top: 0;
   bottom: 0;
   width: 100%;
+  background: #fff;
   position: fixed !important;
   overflow: hidden; }
   .ui-fixed-toggle-container *:focus {
@@ -4599,7 +4600,7 @@ ui-search {
         line-height: 0.5;
         z-index: 99;
         pointer-events: none;
-        margin-top: .1em; } }
+        margin-top: 0.1em 0 0 0; } }
   @media only screen and (max-width: 1024px) and (min-width: 220px) {
     ui-search {
       position: relative;
@@ -4627,7 +4628,7 @@ ui-search {
         line-height: 1.11111;
         z-index: 99;
         pointer-events: none;
-        margin-top: .1em; }
+        margin-top: 0.1em 0 0 0; }
       ui-search > input[type=text]:focus {
         border: 0 !important; } }
 
@@ -6614,13 +6615,14 @@ ui-sidebar {
     width: 100%;
     border: 0;
     padding: 0;
-    outline: 0; }
+    outline: 0;
+    top: 0; }
   ui-sidebar ui-dropdown menu-item {
     border-radius: 0 !important; }
     ui-sidebar ui-dropdown menu-item:hover {
       background: none; }
   ui-sidebar ui-dropdown menu-item a {
-    padding: 0.5em 0 0.5em 4em;
+    padding: 0.5em 0 0.5em 4em !important;
     color: #ddd;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -7847,7 +7849,7 @@ ui-input-icon {
     line-height: 0.66667;
     z-index: 99;
     pointer-events: none;
-    margin-top: .1em; }
+    margin-top: 0.1em 0 0 0; }
 
 [template] {
   visibility: hidden !important; }

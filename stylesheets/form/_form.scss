@@ -792,12 +792,16 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   $icon: map-nested-get($map,icon,icon);
   $font-size:map-get-default($map,font-size,1.5em);
   $padding-right:map-get-default($map,padding-right,3em);
-  $right:map-get-default($map,right,.3em);
+  $line-height:map-get-default($map,line-height,null);
+  $right:map-nested-get-default($map,icon,right,.3em);
+  $top:map-nested-get-default($map,icon,top,null);
+  $margin:map-nested-get-default($map,icon,margin,null);
 
   $tag:ui-input-icon;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     @include _form-input-icon($component:$component, $font-size:$font-size, $border-radius:$border-radius,
-    $icon:$icon, $icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
+    $icon:$icon, $icon-font-family:$icon-font-family, $padding-right:$padding-right,
+    $line-height:$line-height, $right:$right,$top:$top,$margin:$margin);
     @content;
   }
 

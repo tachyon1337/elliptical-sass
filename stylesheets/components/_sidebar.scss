@@ -126,7 +126,6 @@
     }
   }
 
-
   ui-dropdown{
     position:relative;
     background:none;
@@ -135,6 +134,7 @@
     border:0;
     padding:0;
     outline:0;
+    top:0;
   }
 
   ui-dropdown menu-item{
@@ -145,7 +145,7 @@
   }
 
   ui-dropdown menu-item a{
-    padding:$dropdown-item-padding;
+    padding:$dropdown-item-padding !important;
     color:$dropdown-item-color;
     white-space:nowrap;
     text-overflow:ellipsis;

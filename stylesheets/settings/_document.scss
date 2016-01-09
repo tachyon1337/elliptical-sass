@@ -1,4 +1,5 @@
 @import "base";
+$document-background:#fff !default;
 $document-line-height: 150% !default;
 $document-font-size: 16px !default;
 $document-font-color: #777 !default;
@@ -27,6 +28,7 @@ $document-highlight-background: map-get($Base,off-white) !default;
 
 
 $Document: (
+        background:$document-background,
         line-height:$document-line-height,
         font-size:$document-font-size,
         font-color:$document-font-color,

@@ -80,9 +80,24 @@ $border-radius: null,
 $icon:null,
 $icon-font-family:null,
 $padding-right: null,
-$right: null) {
+$line-height:null,
+$right: null,
+$top:null,
+$margin:null) {
 
   $_form-input-padding:map-nested-get($Form,input,padding);
+  $_top:icon-position($_form-input-padding, $font-size);
+  @if($top !=null){
+    $_top:$top;
+  }
+  $_line-height:component-line-height($font-size, 1);
+  @if($line-height !=null){
+    $_line-height:$line-height;
+  }
+  $_margin:.1em 0 0 0;
+  @if($margin !=null){
+    $_margin:$margin;
+  }
   position: relative;
   display:block;
   @include input() {
@@ -100,13 +115,14 @@ $right: null) {
     @extend %#{$component}-icon !optional;
     font-size: $font-size;
     right: $right;
-    top: icon-position($_form-input-padding, $font-size);
-    line-height: component-line-height($font-size, 1);
+    top: $_top;
+    line-height: $_line-height;
     z-index: 99;
     pointer-events: none;
-    margin-top:.1em;
+    margin-top:$_margin;
   }
 }
+
 
 
 

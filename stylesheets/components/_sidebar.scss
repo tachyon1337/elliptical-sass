@@ -96,6 +96,7 @@
   }
 
   ui-button-dropdown{
+    @include flexbox();
     width:100%;
     flex-wrap:wrap;
     position:relative;
@@ -108,11 +109,16 @@
       right:$button-icon-right;
       top:$button-icon-top;
       font-size:24px;
+      pointer-events: none;
     }
     &.open{
       &:after{
         content:'\e613';
       }
+    }
+
+    &>a,[dropdown]{
+      @include flex-grow(4);
     }
 
     &.ui-focus{

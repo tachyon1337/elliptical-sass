@@ -25,7 +25,6 @@ $icon-margin: null) {
   @include web-component-base($component: $component, $include-font: false);
   ui-brand {
     @extend %#{$component}-font !optional;
-    //font-size: $brand-font-size;
     margin-left: auto;
     margin-right: auto;
     @include flexbox($justification: center, $alignment: center);
@@ -37,7 +36,6 @@ $icon-margin: null) {
   }
   touch-ui-brand{
     @include flexbox($justification: center, $alignment: center);
-    //font-size: $brand-font-size;
   }
   .touch-right, touch-icons {
     list-style: none;
@@ -49,7 +47,6 @@ $icon-margin: null) {
     & > touch-icon, & > li {
       display: list-item;
       @include span-icon() {
-        //font-size: $icon-font-size;
         @extend %#{$component}-icon !optional;
         margin-right: $icon-margin;
       }

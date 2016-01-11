@@ -6967,6 +6967,12 @@ ui-sidebar {
   ui-sidebar > ui-menu > * > span {
     color: #ddd; }
   ui-sidebar ui-button-dropdown {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
     width: 100%;
     flex-wrap: wrap;
     position: relative;
@@ -6979,9 +6985,13 @@ ui-sidebar {
       position: absolute;
       right: 20px;
       top: 10px;
-      font-size: 24px; }
+      font-size: 24px;
+      pointer-events: none; }
     ui-sidebar ui-button-dropdown.open:after {
       content: '\e613'; }
+    ui-sidebar ui-button-dropdown > a, ui-sidebar ui-button-dropdown [dropdown] {
+      -webkit-flex-grow: 4;
+      flex-grow: 4; }
     ui-sidebar ui-button-dropdown.ui-focus {
       outline: 0 !important; }
       ui-sidebar ui-button-dropdown.ui-focus:focus {

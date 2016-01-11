@@ -56,7 +56,7 @@
   }
 }
 
-////@private
+//// @access private
 @mixin _button-base() {
   $_icon-font-family:map-get($Icons,font-family);
   $_button-line-height:map-get($Button,line-height);

@@ -9,7 +9,7 @@ var REPO_NAME='elliptical-sass';
 
 
 gulp.task('default',function(){
-    console.log(REPO_NAME + ' ..."tasks: gulp dist|minify|sassdoc"');
+    console.log(REPO_NAME + ' ..."tasks: gulp dist|minify|copy-fonts|sassdoc"');
 });
 
 gulp.task('sassdoc', function () {
@@ -27,6 +27,10 @@ gulp.task('minify',function(){
         .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('copy-fonts', function () {
+    copyFonts();
+});
+
 ///private
 function concatStream(src,name){
     return gulp.src(src)
@@ -38,4 +42,16 @@ function compileSass(){
     gulp.src('./src/elliptical.scss')
         .pipe(sass())
         .pipe(gulp.dest('./dist'));
+}
+
+function pipeFonts(path){
+    gulp.src(path)
+        .pipe(gulp.dest('./dist/fonts'));
+}
+
+function copyFonts(){
+    pipeFonts('./node_modules/sass-ubuntu/dist/fonts/**/*.*');
+    pipeFonts('./node_modules/sass-core-icons/dist/fonts/**/*.*');
+    pipeFonts('./node_modules/sass-content-icons/dist/fonts/**/*.*');
+    pipeFonts('./node_modules/sass-social-icons/dist/fonts/**/*.*');
 }

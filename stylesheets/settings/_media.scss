@@ -1,8 +1,11 @@
 
-@import "grid";
+//breakpoints
+$breakpoint-tabs: 800px !default;
 
 //grid contain
 $media-grid: "only screen and (max-width:#{map-get($Grid,width)}) and (min-width: #{map-get($Breakpoint,desktop)})" !default;
+
+
 
 
 

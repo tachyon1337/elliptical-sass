@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _ui-carousel($component: null,
 $max-height: null,
 $min-height:null,
@@ -411,7 +411,7 @@ $indicator-icon-margin: null) {
 
 }
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {List} $tags
 /// @param {String} $class

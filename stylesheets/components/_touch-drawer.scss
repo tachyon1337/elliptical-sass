@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _touch-ui-drawer($component: null, $header-component: null, $input-component: input-component,
 $width: null,
 $header-height: null,
@@ -68,7 +68,7 @@ $search-input-icon-right: null) {
   }
 }
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $header-component,
 /// @param {String} $input-component

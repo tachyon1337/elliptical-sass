@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _ui-notification($component: null,
 $padding: null,
 $font-size: null,
@@ -94,7 +94,7 @@ $right:null
 }
 
 
-///@public
+/// @access public
 ///@param {Map} $map
 // $map:(
 //       min-width:<value>,

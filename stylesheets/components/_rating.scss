@@ -1,7 +1,7 @@
 @import "../base/common-web-component";
 
 
-///@private
+/// @access private
 @mixin _ui-rating($component:null,$divider:null,$link:null,
 $item-margin: null,
 $font-size: null,
@@ -59,7 +59,7 @@ $star-color-empty: null
 
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $divider
 /// @param {List} $tags

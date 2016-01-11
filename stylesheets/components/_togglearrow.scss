@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _toggle-arrow(
 $color:null,
 $font-size:null,
@@ -33,7 +33,7 @@ $icon-font-family:null
 }
 
 
-///@public
+/// @access public
 /// @param {List} $tags
 /// @param {String} $class
 /// @param {Map} $map

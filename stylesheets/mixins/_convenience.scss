@@ -2,82 +2,6 @@
 
 /// @access public
 @mixin mixins-convenience() {
-
-  .flex{
-    display:-webkit-flex !important;
-    display:flex !important;
-    &.center{
-      -webkit-justify-content:center;
-      justify-content:center;
-    }
-    &.end{
-      -webkit-justify-content:flex-end;
-      justify-content:flex-end;
-    }
-    &.align-center{
-      -webkit-align-items: center;
-      align-items: center;
-    }
-    &.align-end{
-      -webkit-align-items: flex-end;
-      align-items: flex-end;
-    }
-    &.space-between{
-      -webkit-justify-content:space-between;
-      justify-content:space-between;
-    }
-    &.column{
-      @include flex-direction(column);
-    }
-  }
-
-  .flex-start{
-    -webkit-justify-content:flex-start;
-    justify-content:flex-start;
-  }
-
-  .center{
-    -webkit-justify-content:center;
-    justify-content:center;
-  }
-
-  .flex-end{
-    -webkit-justify-content:flex-end;
-    justify-content:flex-end;
-  }
-
-  .space-between{
-    -webkit-justify-content:space-between;
-    justify-content:space-between;
-  }
-
-  .space-around{
-    -webkit-justify-content:space-around;
-    justify-content:space-around;
-  }
-
-  .icon-flex{
-    display:-webkit-flex !important;
-    display:flex !important;
-    -webkit-justify-content:center;
-    justify-content:center;
-    -webkit-align-items: center;
-    align-items: center;
-  }
-
-  .flex-right{
-    margin-left:auto !important;
-  }
-  .flex-left{
-    margin-right:auto !important;
-  }
-  .flex-bottom{
-    margin-top:auto !important;
-  }
-  .flex-center{
-    margin-left:auto;
-    margin-right:auto;
-  }
   .text-left {
     text-align: left !important;
   }
@@ -228,6 +152,9 @@
     &.zero{
       margin-top:0;
     }
+    &.three{
+      margin-top:3em;
+    }
   }
   .margin-bottom{
     margin-bottom:1em;
@@ -236,6 +163,9 @@
     }
     &.zero{
       margin-bottom:0;
+    }
+    &.three{
+      margin-bottom:3em;
     }
   }
 
@@ -314,73 +244,6 @@
 
   .font-large{
     font-size:1.5em;
-  }
-
-  .size-two{
-    font-size:2em;
-  }
-  .size-one{
-    font-size:1em
-  }
-
-  .size-12{
-    font-size:12px;
-  }
-
-  .size-14{
-    font-size:14px;
-  }
-
-  .size-16{
-    font-size:16px;
-  }
-
-  .size-18{
-    font-size:18px;
-  }
-
-  .size-20{
-    font-size:20px;
-  }
-
-  size-22{
-    font-size:22px;
-  }
-
-  .size-24{
-    font-size:24px;
-  }
-
-  .size-32{
-    font-size:32px !important;
-  }
-
-  .size-36{
-    font-size:36px;
-  }
-
-  .size-40{
-    font-size:40px;
-  }
-
-  .size-44{
-    font-size:44px;
-  }
-
-  .size-48{
-    font-size:48px !important;
-  }
-
-  .size-64{
-    font-size:64px !important;
-  }
-
-  .nocallout {
-    -webkit-touch-callout: none;
-  }
-
-  .pressed {
-    background-color: rgba(0, 0, 0, 0.7);
   }
 
   .opacity-0{

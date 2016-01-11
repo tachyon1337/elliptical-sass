@@ -1,27 +1,5 @@
 
-@mixin box-sizing($v:border-box){
-  -moz-box-sizing: $v;
-  -webkit-box-sizing: $v;
-  box-sizing: $v;
-}
-
-
-@mixin linear-gradient($direction:to bottom,$list:(#fff,#f2f2f2)){
-  background-image: -webkit-linear-gradient($direction,$list);
-  background-image: linear-gradient($direction,$list);
-}
-
-@mixin column-count($c){
-  -webkit-column-count: $c;
-  column-count: $c;
-}
-
-@mixin column-gap($g){
-  -webkit-column-gap: $g;
-  column-gap: $g;
-}
-
-
+/// @access public
 @mixin component-preload() {
   [ui-preload] {
     position: relative;
@@ -57,7 +35,3 @@
   }
 }
 
-@mixin content-icon($icon){
-  $icon:unquote($icon);
-  content:unquote("\"#{$icon}\"");
-}

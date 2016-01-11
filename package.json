@@ -1,7 +1,7 @@
 {
   "name": "elliptical-sass",
   "description": "Sass library for responsive web components",
-  "version": "1.1.42",
+  "version": "1.1.43",
   "author": "S. Francis",
   "license": "MIT",
   "repository": {
@@ -9,6 +9,7 @@
     "url": "https://github.com/ellipticaljs/sass.git"
   },
   "dependencies": {
+    "sass-mixins": "git+https://github.com/ellipticaljs/sass-mixins.git",
     "sass-functions": "git+https://github.com/ellipticaljs/sass-functions.git",
     "sass-flexbox": "git+https://github.com/ellipticaljs/sass-flexbox.git",
     "sass-animations": "git+https://github.com/ellipticaljs/sass-animations.git",
@@ -16,6 +17,9 @@
     "sass-component": "git+https://github.com/ellipticaljs/sass-component.git",
     "sass-semantic-components": "git+https://github.com/ellipticaljs/sass-semantic-components.git",
     "sass-visibility": "git+https://github.com/ellipticaljs/sass-visibility.git",
+    "sass-responsive-size": "git+https://github.com/ellipticaljs/sass-responsive-size.git",
+    "sass-responsive-flexbox": "git+https://github.com/ellipticaljs/sass-responsive-flexbox.git",
+    "sass-responsive-grid": "git+https://github.com/ellipticaljs/sass-responsive-grid.git",
     "sass-element-tag": "git+https://github.com/ellipticaljs/sass-element-tag.git",
     "sass-flex-grid": "git+https://github.com/ellipticaljs/sass-flex-grid.git",
     "sass-ubuntu": "git+https://github.com/ellipticaljs/sass-ubuntu.git",

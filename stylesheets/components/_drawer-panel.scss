@@ -1,3 +1,4 @@
+/// @access private
 @mixin _ui-drawer-panel(
   $height:null,
   $toggle-color:null
@@ -37,7 +38,7 @@
 
 }
 
-///@public
+/// @access public
 ///@param {Map} $map
 
 //$map:(

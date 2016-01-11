@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _ui-tabs($component: null, $active-tab: null,
 $justification: null,
 $tab-padding: null,
@@ -221,7 +221,7 @@ $breakpoint: null) {
 
 }
 
-///@private
+/// @access private
 @mixin _touch-tabs() {
   @include gutter-bleed();
   tab-items {
@@ -260,7 +260,7 @@ $breakpoint: null) {
 
 }
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $active-tab
 /// @param {List} $tags

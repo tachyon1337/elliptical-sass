@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _ui-tooltip($component: null,
 $position:null,
 $border-radius: null,
@@ -26,7 +26,7 @@ $tip-color:null
 
 
 
-/// @public
+/// @access public
 
 /// $map:(
 ///   position:<value>,

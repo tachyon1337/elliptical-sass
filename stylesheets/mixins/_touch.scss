@@ -1,0 +1,31 @@
+
+/// @access public
+@mixin mixins-touch(){
+  .nocallout {
+    -webkit-touch-callout: none;
+  }
+
+  .pressed {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .touch-scroll{
+    overflow: scoll-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @include desktop-content(){
+    .touch{
+      display:none;
+    }
+  }
+
+  @include touch-content(){
+    .desktop{
+      display:none;
+    }
+    .touch-width-full{
+      width:100% !important;
+    }
+  }
+}

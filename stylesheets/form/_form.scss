@@ -8,7 +8,7 @@
 
 ///Base Form Markup
 
-//@private
+// @access private
 @mixin _form-search($component:null,$touch-component:null,
 $border-radius: null,
 $icon-font-family:map-get($Icons,font-family),
@@ -45,7 +45,7 @@ $touch-border-radius: null){
 
 }
 
-///@public
+/// @access public
 ///@param {String} $component
 /// )
 @mixin flat-forms($component:null){
@@ -106,7 +106,7 @@ $touch-border-radius: null){
   @content;
 }
 
-///@public
+/// @access public
 ///@param {String} $input-component
 @mixin form-base($input-component: css-input) {
 
@@ -215,7 +215,7 @@ $touch-border-radius: null){
 
 }
 
-///@public
+/// @access public
 ///@param {String} $tag
 @mixin input-addon($tag:null){
 
@@ -272,7 +272,7 @@ $touch-border-radius: null){
   }
 }
 
-///@public
+/// @access public
 ///@param {String} $component
 @mixin input-checkbox($component:css-checkbox){
 
@@ -417,7 +417,7 @@ $touch-border-radius: null){
 
 }
 
-///@public
+/// @access public
 ///@param {String} $component
 ///@param {String} $toggle-component
 @mixin input-switch($component:css-switch, $toggle-component: css-switch-toggle){
@@ -481,7 +481,7 @@ $touch-border-radius: null){
 
 }
 
-///@public
+/// @access public
 ///@param {String} $component
 ///@param {String} $input-component
 ///@param {Map} $map
@@ -567,7 +567,7 @@ $touch-border-radius: null){
 
 }
 
-///@public
+/// @access public
 ///@param {String} $check-component
 ///@param {String} $switch-component
 ///@param {String} $switch-toggle-component
@@ -600,7 +600,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 }
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags
@@ -725,7 +725,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags
@@ -768,7 +768,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 }
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags

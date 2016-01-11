@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _ui-dropdown($component:null, $divider: null,
 $width:null,
 $min-width:null,
@@ -106,7 +106,7 @@ $span-icon-margin:null
 
 }
 
-///@private
+/// @access private
 @mixin _ui-mega-dropdown($component:null,
 $width:null,
 $min-width:null,
@@ -149,7 +149,7 @@ $border-radius: null
 }
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $divider
 /// @param {List} $tags

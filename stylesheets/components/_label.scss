@@ -3,7 +3,7 @@
 
 
 
-///@public
+/// @access public
 ///@param {String} $component
 @mixin ui-label($component:default){
   ui-label,.ui-label {

@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _flex-list(
   $first-child-max-width:null,
   $alt-background:null,
@@ -36,7 +36,7 @@
 
 
 
-///@private
+/// @access private
 @mixin _ui-columns(
   $count:null,
   $gap:null,
@@ -120,7 +120,7 @@
 
 }
 
-///@private
+/// @access private
 @mixin _ui-icons($component:null,
 $justification:null,
 $alignment:null,
@@ -207,152 +207,7 @@ $mark-margin:null){
 
 }
 
-@mixin reponsive-container(){
-  @include medium-content(){
-    @include flex-wrap(wrap);
-    &>*{
-      &:nth-child(odd){
-        max-width:50%;
-        width:50%;
-      }
-      &:nth-child(even){
-        //@justify-content(flex-end);
-        margin-left:auto;
-      }
-    }
-  }
-  @include small-content(){
-    @include flex-wrap(wrap);
-    &>*{
-      width:100%;
-      max-width:100%;
-    }
-  }
-}
-
-
-///@public
-@mixin flexbox-container(){
-  flex-box,.flex-box{
-    display:-webkit-flex;
-    display:flex;
-    &.stretch{
-      width:100%;
-    }
-    &.wrap{
-      width: 100%;
-      @include flex-wrap(wrap);
-    }
-    &.center{
-      @include justify-content(center);
-    }
-    &.right, &.flex-end{
-      @include justify-content(flex-end);
-    }
-    &.space-between{
-      @include justify-content(space-between);
-    }
-    &.top{
-      @include align-items(flex-start);
-    }
-    &.bottom,&.align-end{
-      @include align-items(flex-end);
-    }
-    &.align-center{
-      @include align-items(center);
-    }
-    &.align-stretch{
-      @include align-items(stretch);
-    }
-    &.align-baseline{
-      @include align-items(baseline);
-    }
-    &.space-around{
-      @include justify-content(space-around);
-    }
-    &.responsive{
-      @include reponsive-container();
-    }
-    &.responsive-center{
-      @include touch-content(){
-        @include flex-wrap(wrap);
-        @include justify-content(center);
-        @include align-items(center);
-      }
-    }
-    &.column{
-      @include flex-direction(column);
-      &.center{
-        @include align-items(center);
-      }
-      &.align-center{
-        @include justify-content(center);
-      }
-      &.top{
-        @include justify-content(flex-start);
-      }
-      &.bottom{
-        @include justify-content(flex-end);
-      }
-      &.right,&.flex-end{
-        @include align-items(flex-end);
-      }
-      &.align-space-between{
-        @include justify-content(space-between);
-      }
-    }
-    &>.right, &>.flex-end{
-      margin-left:auto;
-    }
-    &>.left, &>.flex-start{
-      margin-right:auto;
-    }
-    &.touch-column{
-      @include touch-content(){
-        @include flex-direction(column);
-        @include align-items(center);
-      }
-    }
-    &>.touch-left{
-      @include touch-content(){
-        margin-right:auto;
-      }
-    }
-    &>.touch-right{
-      @include touch-content(){
-        margin-left:auto;
-      }
-    }
-    &>.tablet-right{
-      @include tablet-content(){
-        margin-left:auto;
-      }
-    }
-    &>.tablet-left{
-      @include tablet-content(){
-        margin-right:auto;
-      }
-    }
-    &.absolute{
-      position:absolute;
-      height:100%;
-      width:100%;
-      z-index:999;
-      top:0;
-    }
-    &.relative{
-      position:relative;
-    }
-  }
-
-
-}
-
-
-
-
-
-///@public
+/// @access public
 ///@param  {String} $class
 ///@param  {Map} $map
 /// $map:(
@@ -390,7 +245,7 @@ $mark-margin:null){
 
 
 
-///@public
+/// @access public
 ///@param {String} $class
 ///@param {Map} $map
 /// $map:(
@@ -467,7 +322,7 @@ $mark-margin:null){
 }
 
 
-///@public
+/// @access public
 ///@param {String} $component
 ///@param {String} $class
 ///@param {Map} $map
@@ -546,7 +401,7 @@ $mark-margin:null){
 }
 
 
-///@public
+/// @access public
 @mixin ui-sticky-footer(){
   ////sticky bottom footer
   .ui-sticky-footer {

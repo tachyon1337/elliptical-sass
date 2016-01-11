@@ -1,7 +1,7 @@
 @import "../base/common-web-component";
 
 
-///@private
+/// @access private
 @mixin _ui-screentab($component:null,
 $height:null,
 $width:null,
@@ -74,7 +74,7 @@ $position:null
 
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags

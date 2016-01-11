@@ -5,7 +5,6 @@
 @import "settings/core";
 @import "settings/document";
 @import "settings/form";
-@import "settings/grid";
 @import "settings/icons";
 @import "settings/label";
 @import "settings/theme";
@@ -15,7 +14,7 @@
 @import "base/document";
 @import "base/common-web-component";
 @import "theme/theme";
-@import "functions/functions";
+
 
 @import "mixins/media";
 @import "mixins/classes";
@@ -24,11 +23,8 @@
 @import "mixins/convenience";
 @import "mixins/document";
 @import "mixins/form";
-@import "mixins/grid";
-@import "mixins/form";
-@import "mixins/prefixer";
+@import "mixins/touch";
 @import "typography/typography";
-@import "grid/grid";
 @import "form/form";
 
 @import "components/touch-drawer";
@@ -64,7 +60,6 @@
 @import "components/slidingpanel";
 @import "components/social";
 @import "components/stepprogress";
-@import "components/sticky";
 @import "components/table";
 @import "components/tabs";
 @import "components/tip";

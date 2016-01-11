@@ -1,7 +1,7 @@
 @import "../base/common-web-component";
 @import "touch-navbar";
 
-///@private
+/// @access private
 @mixin _ui-navbar($component:null,
 $nav-padding:null,
 $nav-column-gutter:null,
@@ -78,7 +78,7 @@ $dropdown-border-radius:null
 
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags

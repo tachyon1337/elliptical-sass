@@ -1,4 +1,4 @@
-///@public
+/// @access public
 @mixin touch-toggle-menu($toggle-component:css-toggle,$drawer-component:css-touch-drawer,$drawer-header-component:css-touch-drawer-header,$drawer-input-component:css-touch-search,$menu-component:css-touch-menu,$dropdown-component:css-touch-dropdown){
   @include touch-ui-drawer($component:$drawer-component,$header-component:$drawer-header-component , $input-component:$drawer-input-component ) {
     @include touch-ui-menu($component:$menu-component);

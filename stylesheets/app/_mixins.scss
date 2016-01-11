@@ -1,32 +1,36 @@
 
-
+/// @access public
 @mixin elliptical-icons(){
   @include core-icons();
   @include content-icons();
   @include social-icons();
 }
 
+/// @access public
 @mixin elliptical-document(){
   @include document-reset();
 }
 
-
+/// @access public
 @mixin elliptical-typography(){
   @include typography-reset();
   @include typography-header();
   @include typography-header-margins();
 }
 
+/// @access public
 @mixin elliptical-buttons(){
   @include ui-buttons();
   @include ui-dropdown();
 }
 
+/// @access public
 @mixin elliptical-notification(){
   @include ui-loading();
   @include ui-notification();
 }
 
+/// @access public
 @mixin elliptical-forms(){
   @include form-base();
   @include form-input();
@@ -34,28 +38,35 @@
   @include ui-search();
 }
 
+/// @access public
 @mixin elliptical-grid(){
   @include grid();
 }
 
+/// @access public
 @mixin elliptical-semantic(){
   @include semantic-components();
 }
 
-
+/// @access public
 @mixin elliptical-convenience-mixins(){
   @include mixins-convenience();
   @include mixins-hardware-acceleration();
   @include mixins-visibility();
 }
 
+/// @access public
 @mixin elliptical-mixins(){
   @include elliptical-convenience-mixins();
   @include mixins-classes();
-  @include mixins-grid();
+  @include grid-classes();
   @include mixins-color();
+  @include responsive-size();
+  @include responsive-flex();
+  @include mixins-touch();
 }
 
+/// @access public
 @mixin elliptical-animations(){
   @include animations-base();
   @include animations-fade();
@@ -63,6 +74,7 @@
 }
 
 //bare minimum
+/// @access public
 @mixin elliptical-skeleton(){
   @include normalize();
   @include flexbox-container();
@@ -72,7 +84,8 @@
   @include elliptical-semantic();
 }
 
-//project, minus icons,animations,notification
+///project, minus icons,animations,notification
+/// @access public
 @mixin elliptical-basic(){
   @include elliptical-skeleton();
   @include elliptical-typography();
@@ -82,7 +95,9 @@
   @include elliptical-buttons();
 }
 
-//project
+
+///project
+/// @access public
 @mixin elliptical-project(){
   @include elliptical-basic();
   @include elliptical-notification();
@@ -90,6 +105,7 @@
   @include elliptical-animations();
 }
 
+/// @access public
 @mixin elliptical-components(){
   @include elliptical-notification();
   @include ui-badge();
@@ -120,6 +136,7 @@
 
 }
 
+/// @access public
 @mixin menu-light(){
   ui-menu{
     &.default-light{
@@ -138,6 +155,7 @@
   }
 }
 
+/// @access public
 @mixin elliptical-distribution(){
   @include component-theme();
   @include elliptical-basic();

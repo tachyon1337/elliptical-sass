@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _ui-box($component:null,
 $margin:null,
 $padding:null,
@@ -71,8 +71,7 @@ $alignment:null
 }
 
 
-///@public
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {List} $tags
 /// @param {String} $class

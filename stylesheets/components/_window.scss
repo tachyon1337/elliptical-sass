@@ -2,7 +2,7 @@
 @import "../settings/button";
 
 
-///@private
+/// @access private
 @mixin _window-phone-breakpoint($tiny-padding){
   header {
     width: 100%;
@@ -42,7 +42,7 @@
   }
 }
 
-///@private
+/// @access private
 @mixin _ui-window($component:null,$header-component:null,$close-component:null,$footer-component:null,
 $border-radius:null,
 $z-index:null,
@@ -156,7 +156,7 @@ $footer-padding:null
 
 }
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $header-component
 /// @param {String} $close-component

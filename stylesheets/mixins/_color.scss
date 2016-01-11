@@ -1,6 +1,6 @@
 @import "../settings/core";
 
-///@public
+/// @access public
 @mixin mixins-color(){
   .primary{
     color:map-nested-get($Core,primary,color);

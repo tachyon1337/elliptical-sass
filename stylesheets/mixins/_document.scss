@@ -1,36 +1,7 @@
-@import "../settings/grid";
 @import "../settings/document";
 
 
-@mixin clearfix() { *zoom:1;
-  &:before, &:after { content: " "; display: table; }
-  &:after { clear: both; }
-}
-
-
-@mixin dotted-border-bottom(){
-  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABBAAAAAAZp70QAAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAJ0Uk5TAA%2FmLNCpAAAAAmJLR0QADzoyPqMAAAAJcEhZcwAAAEgAAABIAEbJaz4AAAALSURBVAjXY5j%2FHwACQAGfMSJZswAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxMy0wMS0xMlQxNjozMToyMi0wODowMBl4csUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTMtMDEtMTJUMTY6MzE6MjItMDg6MDBoJcp5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg%3D%3D) left bottom repeat-x;
-
-}
-
-@mixin dotted-border-top(){
-  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABBAAAAAAZp70QAAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAJ0Uk5TAA%2FmLNCpAAAAAmJLR0QADzoyPqMAAAAJcEhZcwAAAEgAAABIAEbJaz4AAAALSURBVAjXY5j%2FHwACQAGfMSJZswAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxMy0wMS0xMlQxNjozMToyMi0wODowMBl4csUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTMtMDEtMTJUMTY6MzE6MjItMDg6MDBoJcp5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg%3D%3D) left top repeat-x;
-
-}
-
-@mixin constrain-to-grid(){
-  margin:0 auto;
-  max-width:map-get($Grid,width) - map-get($Grid,column-gutter);
-}
-
-@mixin nav-index($index:1){
-  -webkit-nav-index:$index;
-  -moz-nav-index:$index;
-  -o-nav-index:$index;
-  -ms-nav-index:$index;
-  nav-index:$index;
-}
-
+/// @access public
 @mixin tab-focus(){
   outline: map-get($Document,outline) !important;
   @include touch-content(){
@@ -38,24 +9,10 @@
   }
 }
 
+/// @access public
 @mixin disable-focus(){
   outline:0;
   -moz-user-focus: ignore;
 }
 
-/// icon shortcut
-@mixin span-icon(){
-  span[class*='icon-'] {
-    @content;
-  }
-}
-
-@mixin ellipsis($width: 100%) {
-  display: inline-block;
-  max-width: $width;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-wrap: normal;
-}
 

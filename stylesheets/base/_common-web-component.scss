@@ -1,12 +1,9 @@
-@import "../functions/functions";
 @import "../settings/component";
 @import "../settings/core";
 @import "../settings/label";
 @import "../settings/icons";
 @import "../settings/base";
-@import "../settings/grid";
 @import "../mixins/document";
-@import "../mixins/grid";
 
 @function get-border-radius(){
    @return map-get($Component,border-radius);

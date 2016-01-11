@@ -9,7 +9,7 @@
 
 /// create sass component theme
 
-/// @private
+/// @access private
 /// create the core sass component theme from the $Core Map
 @mixin _core-theme(){
 
@@ -71,7 +71,7 @@
 }
 
 
-
+/// @access public
 /// returns a component map
 /// @param {String} $key
 /// @param {String} $touch-theme
@@ -91,6 +91,7 @@
   }
 }
 
+/// @access public
 /// returns a component map
 /// @param {String} $key
 /// @param {String} $touch-theme
@@ -106,7 +107,7 @@
   }
 }
 
-/// @private
+/// @access private
 /// create sass touch components from passed params
 /// @param {String} $touch-theme
 /// @param {Map} $touch <optional>
@@ -134,7 +135,7 @@
 
 }
 
-/// @private
+/// @access private
 /// create sass components from a passed theme
 /// @param {Map} $Theme
 @mixin _create-components-from-theme($Theme:()){
@@ -419,7 +420,7 @@
 }
 
 
-
+/// @access public
 /// create a sass component theme to apply to web components
 /// @param {Map} $theme <optional>
 /// @param {Map} $touch <optional>

@@ -2,7 +2,7 @@
 @import "../settings/button";
 
 
-///@private
+/// @access private
 @mixin _button-size($font-size, $padding, $icon-padding) {
   $_icon-next:map-get($Icons,right);
   $_icon-down:map-get($Icons,down);
@@ -35,7 +35,7 @@
   }
 }
 
-///@private
+/// @access private
 @mixin _button-dropdown($font-size, $padding, $icon-padding){
   $_icon-down:map-get($Icons,down);
   $_icon-font-family:map-get($Icons,font-family);
@@ -93,7 +93,7 @@
   }
 }
 
-///@private
+/// @access private
 @mixin _button-states($component) {
   @include web-component($component:$component);
   &.active {
@@ -102,7 +102,7 @@
   }
 }
 
-///@private
+/// @access private
 @mixin _button-sizes() {
   $_button-jumbo-font-size:map-get($Button,jumbo-font-size);
   $_button-jumbo-padding:map-get($Button,jumbo-padding);
@@ -161,6 +161,7 @@
   }
 }
 
+/// @access private
 @mixin _button-disabled-state($component) {
   &.disabled, &[disabled] {
     cursor: default !important;
@@ -171,6 +172,7 @@
   }
 }
 
+/// @access private
 @mixin _ui-button-group($component: default, $active-component: null) {
   $_button-radius:map-get($Button,border-radius);
   $_active-component: null;
@@ -261,7 +263,7 @@
   }
 }
 
-///@access public
+/// @access public
 ///@param {String} $component
 ///@param {String} $active-component
 ///@param {String} $class
@@ -283,7 +285,7 @@
 
 }
 
-///@public
+/// @access public
 /// {Map} $map
 /// $map:(
 ///        touch:(
@@ -331,7 +333,7 @@
 }
 
 
-/// @public
+/// @access public
 @mixin ui-button-dropdown(){
   $_button-font-size:map-get($Button,font-size);
   $_button-padding:map-get($Button,padding);
@@ -355,7 +357,7 @@
 }
 
 /// Shortcut: Create Base Buttons
-/// @public
+/// @access public
 @mixin ui-buttons() {
   @include ui-button(default);
   @include ui-button(primary);

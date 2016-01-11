@@ -1,5 +1,6 @@
 @import "../base/common-web-component";
 
+/// @access private
 @mixin _ui-step-progress($component:null,$icon-component:null,$complete-component:null,$complete-icon-component:null,
 $icon-font-family:null,
 $icon-size:null,
@@ -169,7 +170,7 @@ $vertical-label-margin:null
 
 }
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $icon-component
 /// @param {String} $complete-component

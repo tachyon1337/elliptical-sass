@@ -1,8 +1,9 @@
 @import "../settings/component";
 @import "../settings/icons";
 @import "../settings/form";
-@import "../functions/functions";
 
+
+/// @access public
 @mixin input() {
   input[type="text"],
   input[type="password"],
@@ -19,7 +20,7 @@
   }
 }
 
-//semantic input
+/// @access private
 @mixin _semantic-input-text($component) {
   @include input(){
     &.#{$component} {
@@ -41,6 +42,7 @@
   }
 }
 
+/// @access private
 @mixin _semantic-form-label($class, $color) {
   label {
     &.#{$class} {
@@ -49,6 +51,7 @@
   }
 }
 
+/// @access private
 @mixin _semantic-search(){
   ui-search{
     &.warning{
@@ -74,6 +77,7 @@
   }
 }
 
+/// @access private
 @mixin _form-input-icon($component: null,
 $font-size: null,
 $border-radius: null,
@@ -117,7 +121,7 @@ $margin:null) {
     right: $right;
     top: $_top;
     line-height: $_line-height;
-    z-index: 99;
+    z-index: 9;
     pointer-events: none;
     margin-top:$_margin;
   }
@@ -125,8 +129,7 @@ $margin:null) {
 
 
 
-
-
+/// @access private
 @mixin _form-search-input($component: css-desktop-input, $touch-component:css-touch-search,
 $border-radius: null,
 $icon-font-family:map-get($Icons,font-family),

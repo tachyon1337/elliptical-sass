@@ -2,9 +2,9 @@
 @import "../settings/core";
 @import "../settings/typography";
 @import "../settings/component";
-@import "../functions/functions";
 @import "../mixins/media";
 
+/// @access public
 @mixin typography-reset(){
   $_zero:map-get($Base,zero);
   $_info-color:map-nested-get($Semantic,info,font-color);

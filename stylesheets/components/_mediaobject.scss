@@ -1,7 +1,7 @@
 @import "../base/common-web-component";
 
 
-/// @private
+/// @access private
 @mixin _ui-media-object(
 $background:null,
 $padding:null,
@@ -74,7 +74,7 @@ $image-max-height:null
 
 
 
-///@public
+/// @access public
 ///@param {String} $class
 ///@param {Map} $map
 /// $map:(

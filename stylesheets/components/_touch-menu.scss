@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _touch-ui-menu($component:null,
 $z-index:null,
 $padding:null,
@@ -101,7 +101,7 @@ $icon-down:null
 
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {List} $tags
 /// @param {String} $class

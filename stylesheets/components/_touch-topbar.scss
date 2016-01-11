@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _touch-ui-topbar($component: null,
 $position: null,
 $height: null,

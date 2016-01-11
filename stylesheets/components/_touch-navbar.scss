@@ -1,5 +1,6 @@
 @import "../base/common-web-component";
 
+/// @access private
 @mixin _touch-ui-navbar($component:null,
 $position:null,
 $height:null,

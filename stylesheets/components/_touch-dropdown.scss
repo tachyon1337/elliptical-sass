@@ -1,7 +1,7 @@
 @import "../base/common-web-component";
 @import "../settings/touch";
 
-///@private
+/// @access private
 @mixin _touch-ui-dropdown($component:null,
 $item-padding:null,
 $item-font-size:null,
@@ -57,7 +57,7 @@ $item-border-bottom:null
 }
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {List} $tags
 /// @param {String} $class

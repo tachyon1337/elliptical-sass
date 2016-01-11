@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _ui-breadcrumb($component: null,
 $font-size: null,
 $padding: null,
@@ -38,8 +38,7 @@ $link-font-weight: null
 }
 
 
-///@public
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {List} $tags
 /// @param {String} $class

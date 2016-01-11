@@ -1,6 +1,6 @@
 @import "../base/common-web-component";
 
-///@private
+/// @access private
 @mixin _ui-drawer(
 $width:null,
 $header-height:null,
@@ -34,7 +34,7 @@ $background:null
 }
 
 
-///@public
+/// @access public
 ///@param {String} $class
 ///@param {Map} $map
 /// $map:(

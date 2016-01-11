@@ -1,7 +1,7 @@
 @import "../base/common-web-component";
 @import "touch-topbar";
 
-/// @private
+/// @access private
 @mixin _ui-topbar($component: null,
 $position: null,
 $padding: null,
@@ -141,7 +141,7 @@ $dropdown-top:null) {
 
 }
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $touch-component
 /// @param {List} $tags

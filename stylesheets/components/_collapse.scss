@@ -1,7 +1,7 @@
 @import "../base/common-web-component";
 
 
-///@private
+/// @access private
 @mixin _ui-collapse($component:null,$header-component:null,$section-component:null,
 $margin:null,
 $padding:null,
@@ -106,7 +106,7 @@ $item-section-border-radius:null
 
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $header-component
 /// @param {String} $section-component

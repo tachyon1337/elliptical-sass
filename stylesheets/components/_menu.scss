@@ -1,5 +1,6 @@
 @import "../base/common-web-component";
 
+/// @access private
 @mixin _first-last-of-type-link-padding(){
   &[first]{
     &>a{
@@ -13,6 +14,7 @@
   }
 }
 
+/// @access private
 @mixin _first-last-of-type-padding(){
   &[first]{
     padding-left:0 !important;
@@ -21,7 +23,8 @@
     padding-right:0 !important;
   }
 }
-///@private
+
+/// @access private
 @mixin _ui-menu($component:null,$divider:null,
 $margin:null,
 $padding:null,
@@ -164,7 +167,7 @@ $item-stacked-padding:null
 }
 
 
-///@public
+/// @access public
 /// @param {String} $component
 /// @param {String} $divider
 /// @param {List} $tags

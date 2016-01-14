@@ -1,26 +1,18 @@
 @import "../base/common-web-component";
 
 /// @access private
-@mixin _first-last-of-type-link-padding(){
-  &[first]{
-    &>a{
-      padding-left:0 !important;
-    }
-  }
-  &[last]{
-    &>a{
-      padding-right:0 !important;
-    }
-  }
-}
-
-/// @access private
 @mixin _first-last-of-type-padding(){
   &[first]{
     padding-left:0 !important;
+    &>a{
+        padding-left:0 !important;
+    }
   }
   &[last]{
     padding-right:0 !important;
+     &>a{
+      padding-right:0 !important;
+    }
   }
 }
 
@@ -84,6 +76,7 @@ $item-stacked-padding:null
     height:100%;
     position:relative;
     font-size:$item-font-size;
+    @include _first-last-of-type-padding();
     &:hover,&:focus{
       cursor:pointer;
       @extend %#{$component}-background-hover !optional;
@@ -159,7 +152,6 @@ $item-stacked-padding:null
   &.column{
     @include flex-direction(column);
     &>*{
-      //@include align-items(center);
       width:100%;
       height:auto;
     }

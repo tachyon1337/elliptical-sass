@@ -6430,7 +6430,7 @@ touch-ui-drawer touch-ui-menu {
       content: "\e612";
       top: 20px;
       right: 20px;
-      font-size: 24px; }
+      font-size: 32px; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown.close:after {
       content: "\e613"; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown > ui-dropdown, touch-ui-drawer touch-ui-menu menu-item-dropdown > touch-ui-dropdown, touch-ui-drawer touch-ui-menu menu-item-dropdown > ui-mega-dropdown {
@@ -6593,6 +6593,14 @@ ui-menu {
     height: 100%;
     position: relative;
     font-size: 1em; }
+    ui-menu > *[first] {
+      padding-left: 0 !important; }
+      ui-menu > *[first] > a {
+        padding-left: 0 !important; }
+    ui-menu > *[last] {
+      padding-right: 0 !important; }
+      ui-menu > *[last] > a {
+        padding-right: 0 !important; }
     ui-menu > *:hover, ui-menu > *:focus {
       cursor: pointer; }
     ui-menu > * > a {

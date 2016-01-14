@@ -141,7 +141,6 @@ $icon-down:null
   $icon-font-size:map-nested-get-default($map,icon,font-size,map-get($Component,touch-icon-size));
   $icon-top:map-nested-get-default($map,icon,top,20px);
   $icon-right:map-nested-get-default($map,icon,right,20px);
-  $icon-font-size:map-nested-get-default($map,icon,font-size,$_icon-size);
   $icon-font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);
   $icon-up:map-nested-get-default($map,icon,up,$_icon-up);
   $icon-down:map-nested-get-default($map,icon,down,$_icon-down);

@@ -14,7 +14,7 @@ $right:null
 
 ) {
 
-  display: inline-block;
+  display: none;
   padding: $padding;
   font-size: $font-size;
   border-radius:$border-radius;
@@ -35,8 +35,8 @@ $right:null
     width:$width;
   }
   @include web-component-base($component:$component);
-  &.visible{
-    visibility: visible;
+  &.show{
+    display:inline-block;
     opacity:1;
   }
   &.inline{

@@ -5957,7 +5957,7 @@ ui-mega-dropdown {
     animation: loading-rotation 1s linear infinite; }
 
 ui-notification {
-  display: inline-block;
+  display: none;
   padding: 1em 2em 1em 2em;
   font-size: 1em;
   border-radius: 5px;
@@ -5966,8 +5966,8 @@ ui-notification {
   left: 45%;
   z-index: 10000998;
   opacity: 0; }
-  ui-notification.visible {
-    visibility: visible;
+  ui-notification.show {
+    display: inline-block;
     opacity: 1; }
   ui-notification.inline {
     position: relative;

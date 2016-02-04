@@ -8198,7 +8198,7 @@ ui-drawer-panel + * {
 ui-drawer {
   height: 100vh;
   width: 277px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
   top: 0;

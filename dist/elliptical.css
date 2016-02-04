@@ -8199,6 +8199,7 @@ ui-drawer {
   height: 100vh;
   width: 277px;
   overflow-y: scroll;
+  overflow-x: hidden;
   position: fixed;
   top: 0;
   left: 0;

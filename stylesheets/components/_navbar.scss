@@ -6,7 +6,9 @@
 $nav-padding:null,
 $nav-column-gutter:null,
 $dropdown-top:null,
-$dropdown-border-radius:null
+$dropdown-border-radius:null,
+$header-justification:null,
+$header-alignment:null
 
 ){
 
@@ -61,7 +63,7 @@ $dropdown-border-radius:null
       }
     }
     &>header{
-      @include flexbox($justification:space-between,$alignment:flex-end);
+      @include flexbox($justification:$header-justification,$alignment:$header-alignment);
     }
     ui-dropdown,ui-mega-dropdown{
       top:$dropdown-top;
@@ -89,6 +91,10 @@ $dropdown-border-radius:null
 //                 column-gutter:<value>,
 //                 padding:<value>
 //         ),
+//         header:(
+//                 justification:<value>,
+//                 alignment:<value>
+//         ),
 //         dropdown:(
 //                 top:<value>
 //                 border-radius:<value>
@@ -114,6 +120,8 @@ $dropdown-border-radius:null
   $nav-column-gutter:map-nested-get-default($map,nav,column-gutter,false);
   $dropdown-top:map-nested-get-default($map,dropdown,top,80%);
   $dropdown-border-radius:map-nested-get-default($map,dropdown,border-radius,0);
+  $header-justification:map-nested-get-default($map,header,justification,space-between);
+  $header-alignment:map-nested-get-default($map,header,alignment,flex-end);
   $touch-position:map-nested-get-default($map,touch,position,fixed);
   $touch-height:map-nested-get-default($map,touch,height,$_touch-height);
   $touch-z-index:map-nested-get-default($map,touch,z-index,get-z-index() + 9999);
@@ -132,7 +140,9 @@ $dropdown-border-radius:null
             $nav-padding,
             $nav-column-gutter,
             $dropdown-top,
-            $dropdown-border-radius
+            $dropdown-border-radius,
+            $header-justification,
+            $header-alignment
     );
     @content;
   }
@@ -234,17 +244,3 @@ $dropdown-border-radius:null
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

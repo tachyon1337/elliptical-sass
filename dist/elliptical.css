@@ -4476,15 +4476,12 @@ textarea:focus {
 form {
   margin: 0 0 1.5em; }
   form label {
-    font-size: 1em;
-    color: #777;
     cursor: pointer;
     display: block;
-    font-weight: bold;
     margin-bottom: 0.2em;
     margin-left: 3px; }
     form label.disabled {
-      cursor: normal !important; }
+      cursor: default !important; }
     form label.checkbox {
       margin-bottom: 1em; }
     form label.radio {

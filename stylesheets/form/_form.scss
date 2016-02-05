@@ -136,14 +136,12 @@ $touch-border-radius: null){
 
     label {
       font-size: map-nested-get($Form,label,font-size);
-      color: map-nested-get($Form,label,font-color);
       cursor: pointer;
       display: block;
-      font-weight: map-nested-get($Form,label,font-weight);
       margin-bottom: map-nested-get($Form,label,margin-bottom);
       margin-left: 3px;
       &.disabled {
-        cursor: normal !important;
+        cursor: default !important;
       }
       &.checkbox {
         margin-bottom: 1em;

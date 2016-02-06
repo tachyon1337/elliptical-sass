@@ -18,7 +18,7 @@ $touch-font-size:null
   .page-info{
     font-size:$page-font-size;
     .page-no,.page-count{
-      font-weight:bold;
+
     }
   }
   ul {
@@ -51,23 +51,44 @@ $touch-font-size:null
       }
     }
     &.right {
-      @include flexbox($justification:flex-end);
+      @include flexbox($justification:flex-end,$alignment:center);
       margin-left:auto;
     }
   }
 
   @include phone-content(){
     font-size:$touch-font-size;
+    @include flex-wrap(wrap);
     .page-info{
-      display:none;
+      width:100%;
+      margin-bottom:1em;
     }
-    ul {
-      & > li {
-        &[data-touch]{
-          display:none;
+    ul.right {
+      margin:0;
+      @include justify-content(flex-start);
+      width:100%;
+      & > li[data-page] {
+       display:none;
+        &:first-of-type{
+          display:list-item;
         }
-        a {
-          box-shadow: none;
+        &:nth-of-type(2){
+          display:list-item;
+        }
+        &:nth-of-type(3){
+          display:list-item;
+        }
+        &:nth-of-type(4){
+          display:list-item;
+        }
+        &:nth-of-type(5){
+          display:list-item;
+        }
+        &:nth-of-type(6){
+          display:list-item;
+        }
+        &:nth-of-type(7){
+          display:list-item;
         }
       }
     }

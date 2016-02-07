@@ -1544,23 +1544,17 @@ summary {
   textarea[contenteditable] {
     -webkit-appearance: none; } }
 
-.text-left {
-  text-align: left !important; }
-
-.text-right {
-  text-align: right !important; }
-
 .text-center {
-  text-align: center !important; }
+  text-align: center; }
 
 .text-justify {
-  text-align: justify !important; }
+  text-align: justify; }
 
 .text-bold {
-  font-weight: bold !important; }
+  font-weight: bold; }
 
 .text-normal {
-  font-weight: normal !important; }
+  font-weight: normal; }
 
 .text-large {
   font-size: 1.5rem; }
@@ -1568,8 +1562,14 @@ summary {
 .text-small {
   font-size: .85em; }
 
-.bold {
-  font-weight: bold; }
+.capitalize {
+  text-transform: capitalize; }
+
+.lowercase {
+  text-transform: lowercase; }
+
+.uppercase {
+  text-transform: uppercase; }
 
 .hide {
   display: none; }
@@ -3095,23 +3095,17 @@ section + section {
 p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
   margin: 1em 0 .4em 0; }
 
-.text-left {
-  text-align: left !important; }
-
-.text-right {
-  text-align: right !important; }
-
 .text-center {
-  text-align: center !important; }
+  text-align: center; }
 
 .text-justify {
-  text-align: justify !important; }
+  text-align: justify; }
 
 .text-bold {
-  font-weight: bold !important; }
+  font-weight: bold; }
 
 .text-normal {
-  font-weight: normal !important; }
+  font-weight: normal; }
 
 .text-large {
   font-size: 1.5rem; }
@@ -3119,8 +3113,14 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
 .text-small {
   font-size: .85em; }
 
-.bold {
-  font-weight: bold; }
+.capitalize {
+  text-transform: capitalize; }
+
+.lowercase {
+  text-transform: lowercase; }
+
+.uppercase {
+  text-transform: uppercase; }
 
 .hide {
   display: none; }

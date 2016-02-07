@@ -1,24 +1,16 @@
-
-
 /// @access public
 @mixin mixins-convenience() {
-  .text-left {
-    text-align: left !important;
-  }
-  .text-right {
-    text-align: right !important;
-  }
   .text-center {
-    text-align: center !important;
+    text-align: center;
   }
   .text-justify {
-    text-align: justify !important;
+    text-align: justify;
   }
   .text-bold {
-    font-weight: bold !important;
+    font-weight: bold;
   }
   .text-normal {
-    font-weight: normal !important;
+    font-weight: normal;
   }
   .text-large {
     font-size: 1.5rem;
@@ -26,8 +18,14 @@
   .text-small{
     font-size:.85em;
   }
-  .bold {
-    font-weight: bold;
+  .capitalize{
+    text-transform: capitalize;
+  }
+  .lowercase{
+    text-transform: lowercase;
+  }
+  .uppercase{
+    text-transform: uppercase;
   }
   .hide {
     display: none;

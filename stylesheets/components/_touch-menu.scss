@@ -138,7 +138,7 @@ $icon-down:null
   $item-link-padding:map-nested-get-default($map,item,padding,0);
   $item-link-transform:map-nested-get-default($map,item,link-transform,none);
   $item-icon-padding:map-nested-get-default($map,icon,padding,0 10px 0 0);
-  $icon-font-size:map-nested-get-default($map,icon,font-size,map-get($Component,touch-icon-size));
+  $icon-font-size:map-nested-get-default($map,icon,font-size,$_icon-size);
   $icon-top:map-nested-get-default($map,icon,top,20px);
   $icon-right:map-nested-get-default($map,icon,right,20px);
   $icon-font-family:map-nested-get-default($map,icon,font-family,$_icon-font-family);

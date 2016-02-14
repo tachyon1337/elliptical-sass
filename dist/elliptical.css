@@ -6427,7 +6427,7 @@ touch-ui-drawer touch-ui-menu {
       content: "\e612";
       top: 20px;
       right: 20px;
-      font-size: 32px; }
+      font-size: 24px; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown.close:after {
       content: "\e613"; }
     touch-ui-drawer touch-ui-menu menu-item-dropdown > ui-dropdown, touch-ui-drawer touch-ui-menu menu-item-dropdown > touch-ui-dropdown, touch-ui-drawer touch-ui-menu menu-item-dropdown > ui-mega-dropdown {

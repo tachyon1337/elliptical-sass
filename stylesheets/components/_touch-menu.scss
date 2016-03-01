@@ -37,9 +37,6 @@ $icon-down:null
     display:list-item;
     @extend %#{$component}-font !optional;
     @extend %#{$component}-border !optional;
-    &:last-child {
-      border-bottom: 0;
-    }
     a {
       text-decoration: none !important;
       padding: $item-link-padding;

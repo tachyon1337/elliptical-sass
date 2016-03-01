@@ -35,15 +35,15 @@ $component-toggle-black-box-shadow: none !default;
 
 
 //drawer-header-black
-$component-drawer-header-black-background: $_dark-light,$_black !default;
+$component-drawer-header-black-background: $_black,$_black !default;
 $component-drawer-header-black-font-color: $white !default;
 $component-drawer-header-black-text-shadow:rgba(0, 0, 0, 1) 0 1px 1px !default;
 $component-drawer-header-black-border:0 !default;
 $component-drawer-header-black-box-shadow:none !default;
 
 //drawer-black
-$component-drawer-black-background: $_off-white !default;
-$component-drawer-black-font-color: $_gray-medium !default;
+$component-drawer-black-background: #f7f7f7 !default;
+$component-drawer-black-font-color: $_gray !default;
 $component-drawer-black-text-shadow:none !default;
 $component-drawer-black-border:0 !default;
 $component-drawer-black-box-shadow:none !default;
@@ -71,7 +71,7 @@ $component-drawer-header-white-border:0 !default;
 $component-drawer-header-white-box-shadow:none !default;
 
 //drawer-white
-$component-drawer-white-background: $_off-white !default;
+$component-drawer-white-background: #f7f7f7 !default;
 $component-drawer-white-font-color: $_gray !default;
 $component-drawer-white-text-shadow:none !default;
 $component-drawer-white-border:0 !default;

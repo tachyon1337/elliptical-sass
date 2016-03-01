@@ -411,7 +411,7 @@ $mark-margin:null){
     @include flex-direction(column);
     & > *:not([data-role=footer]) {
       //@include flex(1);
-      @include flex(1 0 auto);//ie workaround
+      //@include flex(1 0 auto);//ie workaround
     }
     &.ns{
       height:900px;//not supported workaround

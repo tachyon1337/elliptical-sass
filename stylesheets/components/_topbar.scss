@@ -286,15 +286,12 @@ $dropdown-top:null) {
     margin-top:0;
   }
 
-  ui-topbar{
-    &>touch-bar,&>touch-drawer{
-      display:none;
-    }
-  }
-
   @include desktop-content(){
     ui-topbar{
       touch-ui-brand,touch-icons{
+        display:none;
+      }
+      &>touch-bar,&>touch-drawer{
         display:none;
       }
     }

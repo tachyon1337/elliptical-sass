@@ -1786,7 +1786,7 @@ summary {
   cursor: pointer; }
 
 .touch-scroll {
-  overflow: scoll-y;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch; }
 
 @media only screen and (min-width: 1025px) {
@@ -3364,7 +3364,7 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
   cursor: pointer; }
 
 .touch-scroll {
-  overflow: scoll-y;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch; }
 
 @media only screen and (min-width: 1025px) {

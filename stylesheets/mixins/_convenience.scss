@@ -296,7 +296,7 @@
   }
 
   .touch-scroll{
-    overflow: scoll-y;
+    overflow-y:auto;
     -webkit-overflow-scrolling: touch;
   }
 

@@ -511,7 +511,7 @@ $indicator-icon-margin: null) {
   $_z-index: get-z-index();
   $_white: map-get($Base, white);
 
-  $include-touch-media-queries: map-get-default($map, include-touch-media-queries, true);
+  $include-touch-media-queries: map-get-default($map, include-touch-media-queries, false);
   $constrain-image-to-width: map-get-default($map, constrain-image-to-width, true);
   $z-index: map-get-default($map, z-index, $_z-index + 99);
   $max-height: map-get($map, height);

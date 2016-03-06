@@ -4040,7 +4040,39 @@ ui-tooltip {
   .touch-min-height-400 {
     min-height: 400px; }
   .touch-min-height-500 {
-    min-height: 500px; } }
+    min-height: 500px; }
+  .touch-margin-top {
+    margin-top: 1em; }
+    .touch-margin-top.two {
+      margin-top: 2em; }
+  .touch-margin-bottom {
+    margin-bottom: 1em; }
+    .touch-margin-bottom.two {
+      margin-bottom: 2em; }
+  .touch-margin-left {
+    margin-left: 1em; }
+    .touch-margin-left.two {
+      margin-left: 2em; }
+  .touch-margin-right {
+    margin-right: 1em; }
+    .touch-margin-right.two {
+      margin-right: 2em; }
+  .touch-padding-top {
+    padding-top: 1em; }
+    .touch-padding-top.two {
+      padding-top: 2em; }
+  .touch-padding-bottom {
+    padding-bottom: 1em; }
+    .touch-padding-bottom.two {
+      padding-bottom: 2em; }
+  .touch-padding-left {
+    padding-left: 1em; }
+    .touch-padding-left.two {
+      padding-left: 2em; }
+  .touch-padding-right {
+    padding-right: 1em; }
+    .touch-padding-right.two {
+      padding-right: 2em; } }
 
 @media only screen and (max-width: 640px) {
   .phone-height-50 {
@@ -6310,27 +6342,11 @@ ui-carousel {
       ui-carousel[animation=fade] carousel-items > carousel-item img {
         max-width: 100%;
         height: auto; }
-      @media only screen and (max-width: 1024px) and (min-width: 640px) {
-        ui-carousel[animation=fade] carousel-items > carousel-item img {
-          max-width: 150% !important;
-          margin-left: -25% !important; } }
-      @media only screen and (max-width: 640px) {
-        ui-carousel[animation=fade] carousel-items > carousel-item img {
-          max-width: 200% !important;
-          margin-left: -50% !important; } }
   ui-carousel[animation=slide] {
     overflow: hidden; }
     ui-carousel[animation=slide] carousel-items > carousel-item {
       max-width: 100%;
       min-width: 100%; }
-      @media only screen and (max-width: 1024px) and (min-width: 640px) {
-        ui-carousel[animation=slide] carousel-items > carousel-item img {
-          max-width: 150% !important;
-          margin-left: -25% !important; } }
-      @media only screen and (max-width: 640px) {
-        ui-carousel[animation=slide] carousel-items > carousel-item img {
-          max-width: 200% !important;
-          margin-left: -50% !important; } }
   @media only screen and (max-width: 1024px) and (min-width: 220px) {
     ui-carousel {
       width: auto;
@@ -6784,7 +6800,7 @@ ui-navbar {
   ui-navbar {
     margin: 0;
     position: fixed;
-    z-index: 10998;
+    z-index: 1998;
     top: 0;
     left: 0;
     font-size: 1em; }

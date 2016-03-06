@@ -124,7 +124,7 @@ $header-alignment:null
   $header-alignment:map-nested-get-default($map,header,alignment,flex-end);
   $touch-position:map-nested-get-default($map,touch,position,fixed);
   $touch-height:map-nested-get-default($map,touch,height,$_touch-height);
-  $touch-z-index:map-nested-get-default($map,touch,z-index,get-z-index() + 9999);
+  $touch-z-index:map-nested-get-default($map,touch,z-index,get-z-index() + 999);
   $touch-font-size:map-nested-get-default($map,touch,font-size,1em);
   $touch-brand-font:map-nested-get-default($map,touch,brand-font,inherit);
   $touch-brand-margin:map-nested-get-default($map,touch,brand-margin,0);

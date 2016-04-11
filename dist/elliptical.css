@@ -2979,39 +2979,16 @@ small {
 .inset {
   text-shadow: 0 1px 0 #fff; }
 
-blockquote, blockquote p {
+blockquote {
   line-height: 1.6;
   margin: 1em 0;
-  padding: 1em;
+  padding: 1em 4em;
   border: 0; }
-  blockquote.center, blockquote p.center {
-    text-align: center; }
-  blockquote cite, blockquote p cite {
-    display: block;
-    font-size: 0.8em;
-    font-style: normal; }
-    blockquote cite:before, blockquote p cite:before {
-      content: "\2014 \0020 "; }
-  blockquote.info, blockquote p.info {
-    border-left: 6px solid #3a87ad !important;
-    background: #d9edf7; }
-    blockquote.info:hover, blockquote.info:active, blockquote.info.active, blockquote p.info:hover, blockquote p.info:active, blockquote p.info.active {
-      border-left: 6px solid #3a87ad !important; }
-  blockquote.warning, blockquote p.warning {
-    border-left: 6px solid #c09853 !important;
-    background: #fcf8e3; }
-    blockquote.warning:hover, blockquote.warning:active, blockquote.warning.active, blockquote p.warning:hover, blockquote p.warning:active, blockquote p.warning.active {
-      border-left: 6px solid #c09853 !important; }
-  blockquote.success, blockquote p.success {
-    border-left: 6px solid #468847 !important;
-    background: #dff0d8; }
-    blockquote.success:hover, blockquote.success:active, blockquote.success.active, blockquote p.success:hover, blockquote p.success:active, blockquote p.success.active {
-      border-left: 6px solid #468847 !important; }
-  blockquote.error, blockquote p.error {
-    border-left: 6px solid #bc5251 !important;
-    background: #f2dede; }
-    blockquote.error:hover, blockquote.error:active, blockquote.error.active, blockquote p.error:hover, blockquote p.error:active, blockquote p.error.active {
-      border-left: 6px solid #bc5251 !important; }
+
+cite {
+  display: block;
+  font-size: 0.8em;
+  font-style: normal; }
 
 a.disabled, a [disabled] {
   color: #e1e1e1; }
@@ -4624,8 +4601,7 @@ input[type="tel"].error,
 input[type="time"].error,
 input[type="url"].error,
 textarea.error {
-  outline: none;
-  font-weight: bold; }
+  outline: none; }
   input[type="text"].error:focus,
   input[type="password"].error:focus,
   input[type="date"].error:focus,
@@ -4637,8 +4613,7 @@ textarea.error {
   input[type="time"].error:focus,
   input[type="url"].error:focus,
   textarea.error:focus {
-    outline: none;
-    font-weight: bold; }
+    outline: none; }
 
 input[type="text"].info,
 input[type="password"].info,
@@ -4651,8 +4626,7 @@ input[type="tel"].info,
 input[type="time"].info,
 input[type="url"].info,
 textarea.info {
-  outline: none;
-  font-weight: bold; }
+  outline: none; }
   input[type="text"].info:focus,
   input[type="password"].info:focus,
   input[type="date"].info:focus,
@@ -4664,8 +4638,7 @@ textarea.info {
   input[type="time"].info:focus,
   input[type="url"].info:focus,
   textarea.info:focus {
-    outline: none;
-    font-weight: bold; }
+    outline: none; }
 
 input[type="text"].warning,
 input[type="password"].warning,
@@ -4678,8 +4651,7 @@ input[type="tel"].warning,
 input[type="time"].warning,
 input[type="url"].warning,
 textarea.warning {
-  outline: none;
-  font-weight: bold; }
+  outline: none; }
   input[type="text"].warning:focus,
   input[type="password"].warning:focus,
   input[type="date"].warning:focus,
@@ -4691,8 +4663,7 @@ textarea.warning {
   input[type="time"].warning:focus,
   input[type="url"].warning:focus,
   textarea.warning:focus {
-    outline: none;
-    font-weight: bold; }
+    outline: none; }
 
 input[type="text"].success,
 input[type="password"].success,
@@ -4705,8 +4676,7 @@ input[type="tel"].success,
 input[type="time"].success,
 input[type="url"].success,
 textarea.success {
-  outline: none;
-  font-weight: bold; }
+  outline: none; }
   input[type="text"].success:focus,
   input[type="password"].success:focus,
   input[type="date"].success:focus,
@@ -4718,8 +4688,7 @@ textarea.success {
   input[type="time"].success:focus,
   input[type="url"].success:focus,
   textarea.success:focus {
-    outline: none;
-    font-weight: bold; }
+    outline: none; }
 
 ui-search.warning:after {
   color: #c09853 !important; }

@@ -13,14 +13,12 @@
       @extend %#{$component}-border !optional;
       @extend %#{$component}-font !optional;
       outline: none;
-      font-weight: bold;
       @extend %#{$component}-placeholder !optional;
       &:focus{
         @extend %#{$component}-background-hover !optional;
         @extend %#{$component}-border-hover !optional;
         @extend %#{$component}-font !optional;
         outline: none;
-        font-weight: bold;
         @extend %#{$component}-placeholder !optional;
       }
     }

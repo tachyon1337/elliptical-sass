@@ -84,50 +84,17 @@
     text-shadow: #{map-get($Typography,inset)};
   }
 
-  blockquote, blockquote p {
+  blockquote{
     line-height: map-get($Typography,blockquote-line-height);
     margin: map-get($Typography,blockquote-margin);
     padding: map-get($Typography,blockquote-padding);
     border: map-get($Typography,blockquote-border);
-    &.center{
-      text-align: center;
-    }
-    cite {
-      display: block;
-      font-size: map-get($Typography,cite-font-size);
-      font-style: map-get($Typography,cite-font-style);
-      &:before {
-        @include content-icon(map-get($Typography,cite-before));
-      }
-    }
-    &.info{
-      border-left:map-get($Typography,blockquote-border-left) $_info-color !important;
-      background:$_info-background;
-      &:hover,&:active,&.active{
-        border-left:map-get($Typography,blockquote-border-left) $_info-color !important;
-      }
-    }
-    &.warning{
-      border-left:map-get($Typography,blockquote-border-left) $_warning-color !important;
-      background:$_warning-background;
-      &:hover,&:active,&.active{
-        border-left:map-get($Typography,blockquote-border-left) $_warning-color !important;
-      }
-    }
-    &.success{
-      border-left:map-get($Typography,blockquote-border-left) $_success-color !important;
-      background:$_success-background;
-      &:hover,&:active,&.active{
-        border-left:map-get($Typography,blockquote-border-left) $_success-color !important;
-      }
-    }
-    &.error{
-      border-left:map-get($Typography,blockquote-border-left) $_error-color !important;
-      background:$_error-background;
-      &:hover,&:active,&.active{
-        border-left:map-get($Typography,blockquote-border-left) $_error-color !important;
-      }
-    }
+  }
+
+  cite {
+    display: block;
+    font-size: map-get($Typography,cite-font-size);
+    font-style: map-get($Typography,cite-font-style);
   }
 
   a{
@@ -273,6 +240,65 @@
   @content;
 }
 
+
+@mixin typography-blockquote(){
+  $_zero:map-get($Base,zero);
+  $_info-color:map-nested-get($Semantic,info,font-color);
+  $_info-background:map-nested-get($Semantic,info,background);
+  $_error-color:map-nested-get($Semantic,error,font-color);
+  $_error-background:map-nested-get($Semantic,error,background);
+  $_success-color:map-nested-get($Semantic,success,font-color);
+  $_success-background:map-nested-get($Semantic,success,background);
+  $_warning-color:map-nested-get($Semantic,warning,font-color);
+  $_warning-background:map-nested-get($Semantic,warning,background);
+
+  blockquote, blockquote p {
+    line-height: map-get($Typography,blockquote-line-height);
+    margin: map-get($Typography,blockquote-margin);
+    padding: map-get($Typography,blockquote-padding);
+    border: map-get($Typography,blockquote-border);
+    &.center{
+      text-align: center;
+    }
+    cite {
+      display: block;
+      font-size: map-get($Typography,cite-font-size);
+      font-style: map-get($Typography,cite-font-style);
+      &:before {
+        @include content-icon(map-get($Typography,cite-before));
+      }
+    }
+    &.info{
+      border-left:map-get($Typography,blockquote-border-left) $_info-color !important;
+      background:$_info-background;
+      &:hover,&:active,&.active{
+        border-left:map-get($Typography,blockquote-border-left) $_info-color !important;
+      }
+    }
+    &.warning{
+      border-left:map-get($Typography,blockquote-border-left) $_warning-color !important;
+      background:$_warning-background;
+      &:hover,&:active,&.active{
+        border-left:map-get($Typography,blockquote-border-left) $_warning-color !important;
+      }
+    }
+    &.success{
+      border-left:map-get($Typography,blockquote-border-left) $_success-color !important;
+      background:$_success-background;
+      &:hover,&:active,&.active{
+        border-left:map-get($Typography,blockquote-border-left) $_success-color !important;
+      }
+    }
+    &.error{
+      border-left:map-get($Typography,blockquote-border-left) $_error-color !important;
+      background:$_error-background;
+      &:hover,&:active,&.active{
+        border-left:map-get($Typography,blockquote-border-left) $_error-color !important;
+      }
+    }
+  }
+
+}
 
 
 

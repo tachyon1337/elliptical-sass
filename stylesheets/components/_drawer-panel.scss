@@ -1,11 +1,12 @@
 /// @access private
 @mixin _ui-drawer-panel(
   $height:null,
-  $toggle-color:null
+  $toggle-color:null,
+  $position:null
 ) {
 
   display: block;
-  position: fixed;
+  position: $position;
   top: 0;
   left: 0;
   height: $height;
@@ -57,20 +58,24 @@
   $drawer-z-index:map-nested-get-default($map, drawer,z-index, 2500);
   $height: map-get-default($map, height, 50px);
   $toggle-color: map-nested-get-default($map, toggle,color, #333);
+  $position:map-get-default($map,position,fixed);
 
   $tag: ui-drawer-panel;
   @include element-tag($tag: $tag, $tags: null, $class: null) {
     @include _ui-drawer-panel(
                     $height,
-                    $toggle-color
+                    $toggle-color,
+                    $position
     );
 
     @content;
   }
-
-  ui-drawer-panel + * {
-    margin-top: $height !important;
+  @if $position==fixed{
+    ui-drawer-panel + * {
+      margin-top: $height !important;
+    }
   }
+
   ui-drawer {
     height: 100vh;
     width:$drawer-width;

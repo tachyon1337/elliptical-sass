@@ -241,7 +241,7 @@
   $_include-component-animation:map-get($Component,include-animation);
   $_component-animation:map-get($Component,animation);
 
-  .ui-button,ui-button{
+  .ui-button{
     @if($component == default){
       @include _button-base();
       @if $_include-component-animation == true{
@@ -311,7 +311,7 @@
         @include flex(1 1 0);
         & > li, &>button-item {
           @include flex(1 1 0);
-          .ui-button,ui-button {
+          .ui-button {
             width: 100%;
             padding-left: 1px;
             padding-right: 1px;

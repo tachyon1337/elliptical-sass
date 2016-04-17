@@ -9,7 +9,7 @@ var REPO_NAME='elliptical-sass';
 
 
 gulp.task('default',function(){
-    console.log(REPO_NAME + ' ..."tasks: gulp dist|minify|copy-fonts|sassdoc"');
+    console.log(REPO_NAME + ' ..."tasks: gulp dist|minify|buttons|copy-fonts|sassdoc"');
 });
 
 gulp.task('sassdoc', function () {
@@ -19,6 +19,10 @@ gulp.task('sassdoc', function () {
 
 gulp.task('dist', function () {
     compileSass();
+});
+
+gulp.task('buttons', function () {
+    compileSassButtons();
 });
 
 gulp.task('minify',function(){
@@ -40,6 +44,12 @@ function concatStream(src,name){
 
 function compileSass(){
     gulp.src('./src/elliptical.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./dist'));
+}
+
+function compileSassButtons(){
+    gulp.src('./src/ui.buttons.scss')
         .pipe(sass())
         .pipe(gulp.dest('./dist'));
 }

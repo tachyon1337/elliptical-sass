@@ -1,56 +1,56 @@
 @import "base";
 
 //default
-$core-default-background: #fff, #f2f2f2 !default;
+$core-default-color: #fff, #f2f2f2 !default;
 $core-default-font-color: #777 !default;
 $core-default-text-shadow: 0 1px 0 $white !default;
 $core-default-border: #ddd #ddd #bbb #ddd !default;
 
 
 //primary
-$core-primary-background: #2b9af3 !default;
+$core-primary-color: #2b9af3 !default;
 $core-primary-font-color: #fff !default;
 $core-primary-text-shadow: none !default;
 $core-primary-border: #2b9af3 !default;
 
 //inverse
-$core-inverse-background: #828282 !default;
+$core-inverse-color: #828282 !default;
 $core-inverse-font-color: #fff !default;
 $core-inverse-text-shadow: none !default;
 $core-inverse-border: #828282 !default;
 
 //secondary
-$core-secondary-background: #63a647 !default;
+$core-secondary-color: #63a647 !default;
 $core-secondary-font-color: #fff !default;
 $core-secondary-text-shadow: none !default;
 $core-secondary-border: #63a647 !default;
 
 $Core: (
-        background:$core-default-background,
+        background:$core-default-color,
         font-color:$core-default-font-color,
         text-shadow:$core-default-text-shadow,
         border:$core-default-border,
-        color:color-get($core-default-background),
+        color:color-get($core-default-color),
         primary:(
-                background:$core-primary-background,
+                background:$core-primary-color,
                 font-color:$core-primary-font-color,
                 text-shadow:$core-primary-text-shadow,
                 border:$core-primary-border,
-                color:color-get($core-primary-background)
+                color:color-get($core-primary-color)
         ),
         secondary:(
-                background:$core-secondary-background,
+                background:$core-secondary-color,
                 font-color:$core-secondary-font-color,
                 text-shadow:$core-secondary-text-shadow,
                 border:$core-secondary-border,
-                color:color-get($core-secondary-background)
+                color:color-get($core-secondary-color)
         ),
         inverse:(
-                background:$core-inverse-background,
+                background:$core-inverse-color,
                 font-color:$core-inverse-font-color,
                 text-shadow:$core-inverse-text-shadow,
                 border:$core-inverse-border,
-                color:color-get($core-inverse-background)
+                color:color-get($core-inverse-color)
         )
 );
 

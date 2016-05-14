@@ -1771,20 +1771,6 @@ summary {
 [hover] {
   cursor: pointer; }
 
-.touch-scroll {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
-
-@media only screen and (min-width: 1025px) {
-  .touch {
-    display: none; } }
-
-@media only screen and (max-width: 1024px) and (min-width: 220px) {
-  .desktop {
-    display: none; }
-  .touch-width-full {
-    width: 100% !important; } }
-
 .ui-hardware-accelerated, .hardware-accelerated, .hardware-accelerate {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
@@ -3326,20 +3312,6 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
 [hover] {
   cursor: pointer; }
 
-.touch-scroll {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
-
-@media only screen and (min-width: 1025px) {
-  .touch {
-    display: none; } }
-
-@media only screen and (max-width: 1024px) and (min-width: 220px) {
-  .desktop {
-    display: none; }
-  .touch-width-full {
-    width: 100% !important; } }
-
 .ui-hardware-accelerated, .hardware-accelerated, .hardware-accelerate {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
@@ -4474,11 +4446,11 @@ ui-tooltip {
   -webkit-overflow-scrolling: touch; }
 
 @media only screen and (min-width: 1025px) {
-  .touch {
+  .touch-hide {
     display: none; } }
 
 @media only screen and (max-width: 1024px) and (min-width: 220px) {
-  .desktop {
+  .desktop-hide {
     display: none; }
   .touch-width-full {
     width: 100% !important; } }

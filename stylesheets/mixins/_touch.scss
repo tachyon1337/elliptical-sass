@@ -15,13 +15,13 @@
   }
 
   @include desktop-content(){
-    .touch{
+    .touch-hide{
       display:none;
     }
   }
 
   @include touch-content(){
-    .desktop{
+    .desktop-hide{
       display:none;
     }
     .touch-width-full{

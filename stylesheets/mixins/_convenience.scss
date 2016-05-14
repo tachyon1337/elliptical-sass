@@ -295,24 +295,4 @@
     cursor:pointer;
   }
 
-  .touch-scroll{
-    overflow-y:auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  @include desktop-content(){
-    .touch{
-      display:none;
-    }
-  }
-
-  @include touch-content(){
-    .desktop{
-      display:none;
-    }
-    .touch-width-full{
-      width:100% !important;
-    }
-  }
-
 }

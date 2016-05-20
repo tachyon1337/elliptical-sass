@@ -7432,11 +7432,9 @@ ui-tabs {
     ui-tabs > content-items > tab-content {
       padding: 1.5em;
       display: none;
-      width: 100%;
-      -webkit-flex: 1 1 auto;
-      flex: 1 1 auto; }
+      width: 100%; }
       ui-tabs > content-items > tab-content.active {
-        display: inherit; }
+        display: block; }
     ui-tabs > content-items .loading {
       margin: auto; }
   ui-tabs.stacked {
@@ -7636,11 +7634,9 @@ ui-tabs {
     ui-tabs > content-items > tab-content {
       padding: 1.5em;
       display: none;
-      width: 100%;
-      -webkit-flex: 1 1 auto;
-      flex: 1 1 auto; }
+      width: 100%; }
       ui-tabs > content-items > tab-content.active {
-        display: inherit; }
+        display: block; }
     ui-tabs > content-items .loading {
       margin: auto; }
   ui-tabs.stacked {

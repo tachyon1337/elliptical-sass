@@ -144,9 +144,9 @@ $breakpoint: null) {
       display: none;
       width: 100%;
       &.active {
-        display: inherit;
+        display: block;
       }
-      @include flex(1 1 auto);
+      //@include flex(1 1 auto);
     }
     .loading {
       margin: auto;

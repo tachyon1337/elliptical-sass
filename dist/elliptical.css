@@ -5020,7 +5020,7 @@ ui-checkbox {
     ui-checkbox input[type="checkbox"] + label.inline {
       display: inline-block; }
   ui-checkbox input[type="checkbox"]:checked + label:before {
-    content: "\e912";
+    content: "\e035";
     font-family: elliptical;
     font-size: 1em; }
   ui-checkbox input[type="checkbox"]:disabled + label {

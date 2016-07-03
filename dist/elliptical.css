@@ -1582,6 +1582,12 @@ summary {
 .inline-important {
   display: inline !important; }
 
+.inline-block {
+  display: inline-block; }
+
+.block {
+  display: block; }
+
 .absolute {
   position: absolute; }
 
@@ -3253,6 +3259,12 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
 
 .inline-important {
   display: inline !important; }
+
+.inline-block {
+  display: inline-block; }
+
+.block {
+  display: block; }
 
 .absolute {
   position: absolute; }

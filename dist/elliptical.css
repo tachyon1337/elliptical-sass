@@ -5899,7 +5899,10 @@ grid-columns.no-gutter {
     grid-row.overflow {
       overflow-x: visible; }
     grid-row.padding {
-      padding-bottom: 1em; } }
+      padding-bottom: 1em; }
+  grid-columns.no-gutter {
+    padding-left: 0;
+    padding-right: 0; } }
 
 .ui-button {
   padding: 0.7em 1em 0.7em 1em;

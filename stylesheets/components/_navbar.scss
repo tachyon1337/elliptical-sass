@@ -166,6 +166,9 @@ $header-alignment:null
         }
       }
     }
+    ui-navbar ui-search{
+      display:none;
+    }
   }
 
   @include touch-content(){

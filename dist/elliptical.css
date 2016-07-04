@@ -7004,7 +7004,9 @@ ui-navbar {
     outline: 0 !important; }
     ui-search > input[type=text]:focus {
       border: 0 !important;
-      outline: 0 !important; } }
+      outline: 0 !important; }
+  ui-navbar ui-search {
+    display: none; } }
 
 @media only screen and (max-width: 1024px) and (min-width: 220px) {
   ui-navbar ui-topbar + * {
@@ -8270,7 +8272,9 @@ ui-tip {
     outline: 0 !important; }
     ui-search > input[type=text]:focus {
       border: 0 !important;
-      outline: 0 !important; } }
+      outline: 0 !important; }
+  ui-topbar ui-search {
+    display: none; } }
 
 @media only screen and (min-width: 1025px) {
   [data-role=navigation] + * {

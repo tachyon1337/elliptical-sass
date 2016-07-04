@@ -271,6 +271,9 @@ $dropdown-top:null) {
         }
       }
     }
+    ui-topbar ui-search{
+      display:none;
+    }
   }
 
   ///if fixed position, margin of next element =topbar height + 1em

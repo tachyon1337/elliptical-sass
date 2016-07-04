@@ -154,6 +154,20 @@ $header-alignment:null
       }
     }
   }
+
+  @include touch-content(){
+    ui-search{
+      &>input[type=text]{
+        border:0 !important;
+        outline:0 !important;
+        &:focus{
+          border:0 !important;
+          outline:0 !important;
+        }
+      }
+    }
+  }
+
   @include touch-content(){
     ui-navbar ui-topbar + *{
       margin-top:0 !important;

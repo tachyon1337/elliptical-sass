@@ -260,6 +260,19 @@ $dropdown-top:null) {
     }
   }
 
+  @include touch-content(){
+    ui-search{
+      &>input[type=text]{
+        border:0 !important;
+        outline:0 !important;
+        &:focus{
+          border:0 !important;
+          outline:0 !important;
+        }
+      }
+    }
+  }
+
   ///if fixed position, margin of next element =topbar height + 1em
   @if $position != relative {
     @include desktop-content(){

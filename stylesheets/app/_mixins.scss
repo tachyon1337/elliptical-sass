@@ -3,7 +3,6 @@
 @mixin elliptical-icons(){
   @include core-icons();
   @include content-icons();
-  @include social-icons();
 }
 
 /// @access public

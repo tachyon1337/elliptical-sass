@@ -150,3 +150,11 @@ $touch-border-radius: null
 
   }
 }
+
+/// @access private
+@mixin _input-icon-after($font,$size){
+  &:after{
+    font-family:'#{$font}';
+    font-size:$size;
+  }
+}

@@ -5549,7 +5549,7 @@ ui-input-addon {
     ui-input-addon .ui-button:not(:active), ui-input-addon ui-button:not(:active) {
       box-shadow: none; }
   ui-input-addon input, ui-input-addon .ui-button, ui-input-addon ui-button {
-    padding: 0.6em 0.75em; }
+    padding: 0.3em 0.55em; }
     ui-input-addon input:first-child, ui-input-addon .ui-button:first-child, ui-input-addon ui-button:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0; }
@@ -9118,6 +9118,18 @@ ui-input-icon {
     z-index: 9;
     pointer-events: none;
     margin-top: 0.1em 0 0 0; }
+  ui-input-icon.content:after {
+    font-family: "content";
+    font-size: 24px; }
+  ui-input-icon.content.large:after {
+    font-family: "content";
+    font-size: 48px; }
+  ui-input-icon.material:after {
+    font-family: "material";
+    font-size: 24px; }
+  ui-input-icon.material.large:after {
+    font-family: "material";
+    font-size: 48px; }
 
 [template] {
   visibility: hidden !important; }

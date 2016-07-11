@@ -239,7 +239,7 @@ $touch-border-radius: null){
       }
     }
     input, .ui-button,ui-button {
-      padding: 0.6em 0.75em;
+      padding: 0.3em 0.55em;
       &:first-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -801,6 +801,18 @@ $number-component:default,$input-component:css-input-number,$map:()) {
     $icon:$icon, $icon-font-family:$icon-font-family, $padding-right:$padding-right,
     $line-height:$line-height, $right:$right,$top:$top,$margin:$margin);
     @content;
+    &.content{
+      @include _input-icon-after($font:content,$size:24px);
+      &.large{
+        @include _input-icon-after($font:content,$size:48px);
+      }
+    }
+    &.material{
+      @include _input-icon-after($font:material,$size:24px);
+      &.large{
+        @include _input-icon-after($font:material,$size:48px);
+      }
+    }
   }
 
 }

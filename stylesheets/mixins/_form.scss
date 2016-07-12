@@ -103,8 +103,8 @@ $margin:null) {
     font-size: $font-size;
     right: $right;
     top: $_top;
-    line-height: $_line-height;
-    z-index: 9;
+    //line-height: $_line-height;
+    z-index: 99;
     pointer-events: none;
     margin-top:$_margin;
   }

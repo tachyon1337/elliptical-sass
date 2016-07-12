@@ -5828,8 +5828,7 @@ ui-search {
         font-size: 2em;
         right: 0.3em;
         top: 0.25em;
-        line-height: 0.5;
-        z-index: 9;
+        z-index: 99;
         pointer-events: none;
         margin-top: 0.1em 0 0 0; } }
   @media only screen and (max-width: 1024px) and (min-width: 220px) {
@@ -5856,8 +5855,7 @@ ui-search {
         font-size: 0.9em;
         right: 0.5em;
         top: 0.55556em;
-        line-height: 1.11111;
-        z-index: 9;
+        z-index: 99;
         pointer-events: none;
         margin-top: 0.1em 0 0 0; }
       ui-search > input[type=text]:focus {
@@ -9114,8 +9112,7 @@ ui-input-icon {
     font-size: 1.5em;
     right: 0.3em;
     top: 0.33333em;
-    line-height: 0.66667;
-    z-index: 9;
+    z-index: 99;
     pointer-events: none;
     margin-top: 0.1em 0 0 0; }
   ui-input-icon.content:after {

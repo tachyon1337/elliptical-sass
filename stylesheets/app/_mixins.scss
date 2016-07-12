@@ -157,6 +157,7 @@
 @mixin elliptical-distribution(){
   @include component-theme();
   @include elliptical-basic();
+  @include typography-blockquote();
   @include elliptical-components();
   @include ui-input-icon();
   @include mixins-template();

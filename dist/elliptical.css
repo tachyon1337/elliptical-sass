@@ -6749,6 +6749,40 @@ ui-mega-dropdown {
   ui-mega-dropdown.visible {
     visibility: visible !important; }
 
+blockquote, blockquote p {
+  line-height: 1.6;
+  margin: 1em 0;
+  padding: 1em 4em;
+  border: 0; }
+  blockquote.center, blockquote p.center {
+    text-align: center; }
+  blockquote cite, blockquote p cite {
+    display: block;
+    font-size: 0.8em;
+    font-style: normal; }
+    blockquote cite:before, blockquote p cite:before {
+      content: "\2014 \0020 "; }
+  blockquote.info, blockquote p.info {
+    border-left: 6px solid #3a87ad !important;
+    background: #d9edf7; }
+    blockquote.info:hover, blockquote.info:active, blockquote.info.active, blockquote p.info:hover, blockquote p.info:active, blockquote p.info.active {
+      border-left: 6px solid #3a87ad !important; }
+  blockquote.warning, blockquote p.warning {
+    border-left: 6px solid #c09853 !important;
+    background: #fcf8e3; }
+    blockquote.warning:hover, blockquote.warning:active, blockquote.warning.active, blockquote p.warning:hover, blockquote p.warning:active, blockquote p.warning.active {
+      border-left: 6px solid #c09853 !important; }
+  blockquote.success, blockquote p.success {
+    border-left: 6px solid #468847 !important;
+    background: #dff0d8; }
+    blockquote.success:hover, blockquote.success:active, blockquote.success.active, blockquote p.success:hover, blockquote p.success:active, blockquote p.success.active {
+      border-left: 6px solid #468847 !important; }
+  blockquote.error, blockquote p.error {
+    border-left: 6px solid #bc5251 !important;
+    background: #f2dede; }
+    blockquote.error:hover, blockquote.error:active, blockquote.error.active, blockquote p.error:hover, blockquote p.error:active, blockquote p.error.active {
+      border-left: 6px solid #bc5251 !important; }
+
 @-webkit-keyframes loading-rotation {
   0% {
     -webkit-transform: rotate(0deg); }

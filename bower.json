@@ -1,7 +1,7 @@
 {
   "name": "elliptical-sass",
   "description": "Sass library for responsive web components",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "main": "dist/elliptical.css",
   "authors": [
     "S. Francis"
@@ -50,6 +50,6 @@
     "sass-content-icons": "~1.0.4",
     "sass-social-icons": "~1.0.3",
     "sass-ubuntu": "~1.0.2",
-    "elliptical-css-register": "~1.0.2"
+    "Elliptical-micro": "~1.0.2"
   }
 }

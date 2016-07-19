@@ -26,7 +26,7 @@ $search-input-icon-right: null) {
     width: $width;
     z-index: 999;
     @include web-component-default($component: $header-component, $include-disabled: false);
-    & > .ui-search, & > ui-search {
+    ui-search {
       margin: $search-margin;
       width: $search-width;
       position: relative;
@@ -47,9 +47,11 @@ $search-input-icon-right: null) {
       }
       &:after {
         font-size: $search-font-size;
-        top: $search-input-icon-top;
+        //top: $search-input-icon-top;
+        top:.3em;
         right: $search-input-icon-right;
-        @extend %#{$component}-icon !optional;
+        //@extend %#{$component}-icon !optional;
+        color:#999;
       }
     }
   }

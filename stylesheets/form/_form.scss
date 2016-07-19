@@ -33,7 +33,7 @@ $touch-border-radius: null){
     }
     $padding-right: 2em;
     $right: .5em;
-    $font-size: .9em;
+    $font-size: 1em;
     @include _form-input-icon($component:$touch-component, $font-size:$font-size, $border-radius:$touch-border-radius,
     $icon:$icon,$icon-font-family:$icon-font-family, $padding-right:$padding-right, $right:$right);
     &>input[type=text]{

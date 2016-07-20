@@ -223,7 +223,7 @@ $touch-border-radius: null){
   }
   #{$_tag} {
     @include flexbox();
-    margin: 0 0 1em 0;
+    margin: 0;
     position:relative;
     width:100%;
     align-items:stretch;

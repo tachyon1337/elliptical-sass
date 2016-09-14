@@ -45,6 +45,9 @@ $item-border-bottom:null
         text-decoration:none;
       }
     }
+    &:last-of-type{
+      border-bottom:1px solid transparent;
+    }
   }
 }
 

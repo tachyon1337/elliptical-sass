@@ -694,7 +694,7 @@ ui-tabs > tab-items > tab-item.disabled, ui-tabs > tab-items > tab-item[disabled
   ui-search textarea:-ms-input-placeholder {
     color: #d4d4d4 !important; } }
 
-ui-menu > menu-divider {
+ui-menu > menu-divider, content-menu > menu-divider, content-sidebar-menu > menu-divider {
   border: 1px solid;
   border-color: #7b7b7b; }
 
@@ -7336,7 +7336,9 @@ touch-ui-drawer touch-ui-menu {
         touch-ui-drawer touch-ui-dropdown menu-item a:active {
           text-decoration: none; }
         touch-ui-drawer touch-ui-dropdown menu-item a.active {
-          text-decoration: none; } }
+          text-decoration: none; }
+      touch-ui-drawer touch-ui-dropdown menu-item:last-of-type {
+        border-bottom: 1px solid transparent; } }
 
 touch-ui-drawer touch-ui-menu {
   min-height: 102%; }
@@ -7432,7 +7434,7 @@ ui-label, .ui-label {
     order: 1;
     margin: 0 0 0 1em; }
 
-ui-menu {
+ui-menu, content-menu, content-sidebar-menu {
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: flex-start;
@@ -7444,11 +7446,11 @@ ui-menu {
   padding: 0;
   width: auto;
   height: inherit; }
-  ui-menu.flush-left > menu-item:first-of-type > a {
+  ui-menu.flush-left > menu-item:first-of-type > a, content-menu.flush-left > menu-item:first-of-type > a, content-sidebar-menu.flush-left > menu-item:first-of-type > a {
     padding-left: 0; }
-  ui-menu.flush-right > menu-item:last-of-type > a {
+  ui-menu.flush-right > menu-item:last-of-type > a, content-menu.flush-right > menu-item:last-of-type > a, content-sidebar-menu.flush-right > menu-item:last-of-type > a {
     padding-right: 0; }
-  ui-menu > * {
+  ui-menu > *, content-menu > *, content-sidebar-menu > * {
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: flex-start;
@@ -7459,50 +7461,50 @@ ui-menu {
     height: 100%;
     position: relative;
     font-size: 1em; }
-    ui-menu > *[first] {
+    ui-menu > *[first], content-menu > *[first], content-sidebar-menu > *[first] {
       padding-left: 0 !important; }
-      ui-menu > *[first] > a {
+      ui-menu > *[first] > a, content-menu > *[first] > a, content-sidebar-menu > *[first] > a {
         padding-left: 0 !important; }
-    ui-menu > *[last] {
+    ui-menu > *[last], content-menu > *[last], content-sidebar-menu > *[last] {
       padding-right: 0 !important; }
-      ui-menu > *[last] > a {
+      ui-menu > *[last] > a, content-menu > *[last] > a, content-sidebar-menu > *[last] > a {
         padding-right: 0 !important; }
-    ui-menu > *:hover, ui-menu > *:focus {
+    ui-menu > *:hover, ui-menu > *:focus, content-menu > *:hover, content-menu > *:focus, content-sidebar-menu > *:hover, content-sidebar-menu > *:focus {
       cursor: pointer; }
-    ui-menu > * > a {
+    ui-menu > * > a, content-menu > * > a, content-sidebar-menu > * > a {
       font-size: 1em;
       padding: 0.5em 1em; }
-    ui-menu > * > span[class*='icon-'] {
+    ui-menu > * > span[class*='icon-'], content-menu > * > span[class*='icon-'], content-sidebar-menu > * > span[class*='icon-'] {
       margin-left: .5em; }
-  ui-menu > menu-divider {
+  ui-menu > menu-divider, content-menu > menu-divider, content-sidebar-menu > menu-divider {
     width: 0;
     height: 100%;
     border: 0;
     border-right: 1px solid;
     padding: 0;
     margin: 0; }
-  ui-menu > menu-item-dropdown.static {
+  ui-menu > menu-item-dropdown.static, content-menu > menu-item-dropdown.static, content-sidebar-menu > menu-item-dropdown.static {
     position: static; }
-    ui-menu > menu-item-dropdown.static.inactive:hover > ui-dropdown, ui-menu > menu-item-dropdown.static.inactive:hover > ui-mega-dropdown, ui-menu > menu-item-dropdown.static.inactive:focus > ui-dropdown, ui-menu > menu-item-dropdown.static.inactive:focus > ui-mega-dropdown {
+    ui-menu > menu-item-dropdown.static.inactive:hover > ui-dropdown, ui-menu > menu-item-dropdown.static.inactive:hover > ui-mega-dropdown, ui-menu > menu-item-dropdown.static.inactive:focus > ui-dropdown, ui-menu > menu-item-dropdown.static.inactive:focus > ui-mega-dropdown, content-menu > menu-item-dropdown.static.inactive:hover > ui-dropdown, content-menu > menu-item-dropdown.static.inactive:hover > ui-mega-dropdown, content-menu > menu-item-dropdown.static.inactive:focus > ui-dropdown, content-menu > menu-item-dropdown.static.inactive:focus > ui-mega-dropdown, content-sidebar-menu > menu-item-dropdown.static.inactive:hover > ui-dropdown, content-sidebar-menu > menu-item-dropdown.static.inactive:hover > ui-mega-dropdown, content-sidebar-menu > menu-item-dropdown.static.inactive:focus > ui-dropdown, content-sidebar-menu > menu-item-dropdown.static.inactive:focus > ui-mega-dropdown {
       display: none !important; }
-  ui-menu > menu-item-dropdown > ui-dropdown, ui-menu > menu-item-dropdown > ui-mega-dropdown {
+  ui-menu > menu-item-dropdown > ui-dropdown, ui-menu > menu-item-dropdown > ui-mega-dropdown, content-menu > menu-item-dropdown > ui-dropdown, content-menu > menu-item-dropdown > ui-mega-dropdown, content-sidebar-menu > menu-item-dropdown > ui-dropdown, content-sidebar-menu > menu-item-dropdown > ui-mega-dropdown {
     display: none !important; }
-  ui-menu > menu-item-dropdown:hover, ui-menu > menu-item-dropdown:focus {
+  ui-menu > menu-item-dropdown:hover, ui-menu > menu-item-dropdown:focus, content-menu > menu-item-dropdown:hover, content-menu > menu-item-dropdown:focus, content-sidebar-menu > menu-item-dropdown:hover, content-sidebar-menu > menu-item-dropdown:focus {
     cursor: pointer; }
-    ui-menu > menu-item-dropdown:hover > ui-dropdown, ui-menu > menu-item-dropdown:focus > ui-dropdown {
+    ui-menu > menu-item-dropdown:hover > ui-dropdown, ui-menu > menu-item-dropdown:focus > ui-dropdown, content-menu > menu-item-dropdown:hover > ui-dropdown, content-menu > menu-item-dropdown:focus > ui-dropdown, content-sidebar-menu > menu-item-dropdown:hover > ui-dropdown, content-sidebar-menu > menu-item-dropdown:focus > ui-dropdown {
       display: list-item !important; }
-    ui-menu > menu-item-dropdown:hover > ui-mega-dropdown, ui-menu > menu-item-dropdown:focus > ui-mega-dropdown {
+    ui-menu > menu-item-dropdown:hover > ui-mega-dropdown, ui-menu > menu-item-dropdown:focus > ui-mega-dropdown, content-menu > menu-item-dropdown:hover > ui-mega-dropdown, content-menu > menu-item-dropdown:focus > ui-mega-dropdown, content-sidebar-menu > menu-item-dropdown:hover > ui-mega-dropdown, content-sidebar-menu > menu-item-dropdown:focus > ui-mega-dropdown {
       display: block !important; }
-      ui-menu > menu-item-dropdown:hover > ui-mega-dropdown.hide, ui-menu > menu-item-dropdown:focus > ui-mega-dropdown.hide {
+      ui-menu > menu-item-dropdown:hover > ui-mega-dropdown.hide, ui-menu > menu-item-dropdown:focus > ui-mega-dropdown.hide, content-menu > menu-item-dropdown:hover > ui-mega-dropdown.hide, content-menu > menu-item-dropdown:focus > ui-mega-dropdown.hide, content-sidebar-menu > menu-item-dropdown:hover > ui-mega-dropdown.hide, content-sidebar-menu > menu-item-dropdown:focus > ui-mega-dropdown.hide {
         display: none !important; }
-  ui-menu.left {
+  ui-menu.left, content-menu.left, content-sidebar-menu.left {
     margin-right: auto; }
-  ui-menu.right {
+  ui-menu.right, content-menu.right, content-sidebar-menu.right {
     margin-left: auto; }
-  ui-menu.column {
+  ui-menu.column, content-menu.column, content-sidebar-menu.column {
     -webkit-flex-direction: column;
     flex-direction: column; }
-    ui-menu.column > * {
+    ui-menu.column > *, content-menu.column > *, content-sidebar-menu.column > * {
       width: 100%;
       height: auto; }
 
@@ -7565,10 +7567,10 @@ ui-navbar {
       justify-content: center;
       -webkit-align-items: center;
       align-items: center; }
-      ui-navbar > nav > section > ui-menu {
+      ui-navbar > nav > section > ui-menu, ui-navbar > nav > sectioncontent-menu {
         width: 1300px;
         max-width: 100%; }
-        ui-navbar > nav > section > ui-menu.auto {
+        ui-navbar > nav > section > ui-menu.auto, ui-navbar > nav > sectioncontent-menu.auto {
           width: auto; }
       ui-navbar > nav > section > div {
         width: 1300px;
@@ -7670,7 +7672,7 @@ ui-navbar {
         height: 100%; }
         ui-navbar > touch-bar .touch-right > touch-icon, ui-navbar > touch-bar touch-icons > touch-icon {
           display: list-item; }
-    ui-navbar ui-menu {
+    ui-navbar ui-menu, ui-navbar content-menu {
       display: none; }
   [data-role=navigation] + * {
     padding-top: 50px; }
@@ -7856,17 +7858,17 @@ ui-sidebar {
     width: 100%; }
     ui-sidebar hr.border {
       margin-top: 0; }
-  ui-sidebar > ui-menu {
+  ui-sidebar > ui-menu, ui-sidebar > content-sidebar-menu {
     width: 100% !important; }
-  ui-sidebar > ui-menu > * > a {
+  ui-sidebar > ui-menu > * > a, ui-sidebar > content-sidebar-menu > * > a {
     padding: 0.75em 1em !important;
     color: #ddd;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden; }
-    ui-sidebar > ui-menu > * > a:hover {
+    ui-sidebar > ui-menu > * > a:hover, ui-sidebar > content-sidebar-menu > * > a:hover {
       color: #8a8a8a; }
-  ui-sidebar > ui-menu > * > span {
+  ui-sidebar > ui-menu > * > span, ui-sidebar > content-sidebar-menu > * > span {
     color: #ddd; }
   ui-sidebar ui-button-dropdown {
     display: -webkit-flex;
@@ -8897,7 +8899,7 @@ ui-topbar.relative + * {
 @media only screen and (max-width: 1024px) and (min-width: 220px) {
   ui-topbar + * {
     padding-top: 50px; }
-  ui-topbar ui-menu {
+  ui-topbar ui-menu, ui-topbar content-menu {
     display: none; } }
 
 ui-window {

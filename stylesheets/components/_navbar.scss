@@ -49,7 +49,7 @@ $header-alignment:null
     &>section{
       width:100% !important;
       @include flexbox($justification:center,$alignment:center);
-      &>ui-menu{
+      &>ui-menu,&content-menu{
         width: $_ui-navbar-contained-to-grid;
         max-width:100%;
         &.auto{
@@ -219,7 +219,7 @@ $header-alignment:null
         );
       }
 
-      ui-menu{
+      ui-menu,content-menu{
         display:none;
       }
 

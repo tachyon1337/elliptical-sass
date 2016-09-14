@@ -76,11 +76,11 @@
     }
   }
 
-  &> ui-menu{
+  &> ui-menu,&>content-sidebar-menu{
     width:100% !important;
   }
 
-  &> ui-menu > * > a{
+  &> ui-menu > * > a,&> content-sidebar-menu > * > a{
     padding:$item-padding !important;
     color:$item-color;
     &:hover{
@@ -91,7 +91,7 @@
     overflow:hidden;
   }
 
-  &> ui-menu > * > span{
+  &> ui-menu > * > span, &> content-sidebar-menu > * > span{
     color:$item-color;
   }
 

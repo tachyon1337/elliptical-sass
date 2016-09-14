@@ -218,6 +218,7 @@ $item-stacked-padding:null
 
 
   $tag:ui-menu;
+  $tags:(content-menu,content-sidebar-menu);
   @include element-tag($tag:$tag,$tags:$tags,$class:$class) {
     @include _ui-menu($component,$divider,
             $margin,

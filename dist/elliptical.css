@@ -7568,6 +7568,12 @@ ui-navbar {
       -webkit-align-items: center;
       align-items: center; }
       ui-navbar > nav > section > ui-menu, ui-navbar > nav > sectioncontent-menu {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-align-items: center;
+        align-items: center;
         width: 1300px;
         max-width: 100%; }
         ui-navbar > nav > section > ui-menu.auto, ui-navbar > nav > sectioncontent-menu.auto {

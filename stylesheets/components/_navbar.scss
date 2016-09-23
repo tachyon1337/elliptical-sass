@@ -50,6 +50,7 @@ $header-alignment:null
       width:100% !important;
       @include flexbox($justification:center,$alignment:center);
       &>ui-menu,&content-menu{
+        @include flexbox($justification:center,$alignment:center);
         width: $_ui-navbar-contained-to-grid;
         max-width:100%;
         &.auto{

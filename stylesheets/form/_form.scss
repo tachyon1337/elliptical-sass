@@ -645,7 +645,10 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   $_margin:map-get-default($map,margin,0 0 1em 0);
 
   $tag:ui-select;
-
+  $_tags:(state-select,country-select);
+  @if $tags==null{
+    $tags:$_tags;
+  }
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
     position: relative;
     @include web-component-default($component:$component);

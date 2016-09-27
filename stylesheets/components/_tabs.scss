@@ -47,10 +47,7 @@ $breakpoint: null) {
       margin: $tab-margin;
       border-bottom-width: 0 !important;
       @include web-component-base($component: $component, $include-font: false);
-      @include media-breakpoint($breakpoint) {
-        border-left: 0 !important;
-        border-right: 0 !important;
-      }
+
       & > a {
         font-size: $font-size;
       }
@@ -70,10 +67,6 @@ $breakpoint: null) {
           @include web-component-base($component: $component, $include-font: false, $state: active);
         } @else {
           @include web-component-base($component: $active-tab, $include-font: false);
-        }
-        @include media-breakpoint($breakpoint) {
-          border-left: 0 !important;
-          border-right: 0 !important;
         }
         top: 1px;
         position: relative;
@@ -185,20 +178,12 @@ $breakpoint: null) {
         padding: $stacked-tab-padding;
         border-bottom-width: 1px !important;
         border-right: 0 !important;
-        @include media-breakpoint($breakpoint) {
-          border-left: 0 !important;
-          border-right: 0 !important;
-        }
         &:last-child {
           margin: 0;
         }
         &.active {
           border-bottom-width: 1px !important;
           border-right: 0 !important;
-          @include media-breakpoint($breakpoint) {
-            border-left: 0 !important;
-            border-right: 0 !important;
-          }
           a {
             display: inline;
           }
@@ -222,7 +207,7 @@ $breakpoint: null) {
 }
 
 /// @access private
-@mixin _touch-tabs() {
+@mixin _touch-tabs($breakpoint) {
   @include gutter-bleed();
   tab-items {
     width: 100%;
@@ -233,6 +218,16 @@ $breakpoint: null) {
       min-width: 100%;
       max-width: none;
       border-radius: 0 !important;
+      @include media-breakpoint($breakpoint) {
+        border-left: 0 !important;
+        border-right: 0 !important;
+      }
+      &.active{
+        @include media-breakpoint($breakpoint) {
+          border-left: 0 !important;
+          border-right: 0 !important;
+        }
+      }
     }
   }
   content-items {
@@ -322,7 +317,7 @@ $breakpoint: null) {
   $stacked-content-min-height: map-nested-get-default($map, stacked, content-min-height, 16.25em);
   $stacked-content-padding: map-nested-get-default($map, stacked, content-padding, 2em);
   $stacked-content-border-radius: map-nested-get-default($map, stacked, content-border-radius, $content-border-radius);
-  $touch-enabled: map-nested-get-default($map, touch, enabled, $_touch-enabled);
+  $touch-enabled: map-nested-get-default($map, touch, enabled, false);
   $breakpoint: map-nested-get-default($map, touch, breakpoint, $_breakpoint);
 
   $tag: ui-tabs;
@@ -333,7 +328,7 @@ $breakpoint: null) {
     @content;
     @if ($touch-enabled==true) {
       @include media-breakpoint($breakpoint) {
-        @include _touch-tabs();
+        @include _touch-tabs($breakpoint);
       }
     }
   }

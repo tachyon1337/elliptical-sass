@@ -7668,7 +7668,7 @@ ui-navbar {
         list-style: none;
         position: absolute;
         top: 0;
-        right: 25px;
+        right: 10px;
         display: -webkit-flex;
         display: flex;
         -webkit-justify-content: center;
@@ -8747,7 +8747,7 @@ ui-tip {
       list-style: none;
       position: absolute;
       top: 0;
-      right: 5px;
+      right: 10px;
       display: -webkit-flex;
       display: flex;
       -webkit-justify-content: center;

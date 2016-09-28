@@ -41,7 +41,7 @@ $icon-margin: null) {
     list-style: none;
     position: absolute;
     top: 0;
-    right: 5px;
+    right: 10px;
     @include flexbox($justification: center, $alignment: center);
     height: 100%;
     & > touch-icon, & > li {

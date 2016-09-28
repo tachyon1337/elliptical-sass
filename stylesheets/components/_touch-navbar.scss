@@ -48,7 +48,7 @@ $icon-alignment:null
       list-style: none;
       position:absolute;
       top:0;
-      right:25px;
+      right:10px;
       @include flexbox($justification: center, $alignment:$icon-alignment);
       height:100%;
       &>touch-icon{

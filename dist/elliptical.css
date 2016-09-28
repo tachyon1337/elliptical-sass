@@ -7105,7 +7105,7 @@ ui-carousel {
     ui-carousel[animation=multi-slide] carousel-inner-container carousel-items {
       -webkit-align-items: flex-end;
       align-items: flex-end;
-      width: auto; }
+      min-width: 3000px; }
       ui-carousel[animation=multi-slide] carousel-inner-container carousel-items > carousel-item {
         display: -webkit-flex;
         display: flex;

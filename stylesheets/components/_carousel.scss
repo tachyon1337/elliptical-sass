@@ -304,11 +304,7 @@ $indicator-icon-margin: null) {
       width:$inner-container-multi-width;
       carousel-items {
         @include align-items($items-multi-alignment);
-        @if($item-multi-height !=null) {
-          min-width: $items-multi-min-width;
-        }@else{
-          width: auto;
-        }
+        min-width: $items-multi-min-width;
         & > carousel-item {
           @include flexbox-column($justification: $item-justification, $alignment: $item-alignment);
           @if($item-multi-height !=null) {

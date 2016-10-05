@@ -347,3 +347,31 @@ $dropdown-top:null) {
   }
 
 }
+
+@mixin topbar-search($class,$map){
+  $placeholder:map-get-default($map,placeholder,#666);
+  .search-overlay.#{$class}{
+    background: map-get-default($map,background,rgba(33,34,34,.96));
+    &>.search-overlay-inner textarea{
+      color: map-get-default($map,color,#f2f2f2);
+    }
+    &>.search-overlay-inner textarea::placeholder{
+      color:$placeholder !important;
+    }
+    &>.search-overlay-inner textarea::-webkit-input-placeholder{
+      color:$placeholder !important;
+    }
+    &>.search-overlay-inner textarea::-moz-placeholder{
+      color:$placeholder !important;
+    }
+    &>.search-overlay-inner textarea:-ms-input-placeholder{
+      color:$placeholder !important;
+    }
+    &>.search-overlay-inner .search-icon{
+      color:map-get-default($map,icon,#7A7B7B);
+      &:hover{
+        color:map-get-default($map,icon-hover,#fff);
+      }
+    }
+  }
+}

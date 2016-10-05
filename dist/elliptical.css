@@ -1644,6 +1644,12 @@ summary {
   .margin.two {
     margin: 2em 0 2em 0; }
 
+.no-margin-bottom {
+  margin-bottom: 0 !important; }
+
+.no-margin-top {
+  margin-top: 0 !important; }
+
 .margin-left {
   margin-left: 1em; }
   .margin-left.two {
@@ -3606,6 +3612,12 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
   margin: 1em 0 1em 0; }
   .margin.two {
     margin: 2em 0 2em 0; }
+
+.no-margin-bottom {
+  margin-bottom: 0 !important; }
+
+.no-margin-top {
+  margin-top: 0 !important; }
 
 .margin-left {
   margin-left: 1em; }

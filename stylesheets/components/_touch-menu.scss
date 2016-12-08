@@ -43,6 +43,7 @@ $icon-down:null
       @extend %#{$component}-font !optional;
       &:hover, &:focus {
         text-decoration: none !important;
+        @extend %#{$component}-font !optional;
       }
       &:active {
         text-decoration: none !important;

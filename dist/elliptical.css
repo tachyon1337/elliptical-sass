@@ -825,7 +825,7 @@ ui-collapse collapse-item > section {
 @media only screen and (max-width: 1024px) and (min-width: 220px) {
   touch-ui-drawer touch-ui-menu {
     background: #f7f7f7; }
-  touch-ui-drawer touch-ui-menu menu-item-dropdown:after, touch-ui-drawer touch-ui-menu menu-item, touch-ui-drawer touch-ui-menu menu-item-dropdown, touch-ui-drawer touch-ui-menu menu-item a, touch-ui-drawer touch-ui-menu menu-item-dropdown a {
+  touch-ui-drawer touch-ui-menu menu-item-dropdown:after, touch-ui-drawer touch-ui-menu menu-item, touch-ui-drawer touch-ui-menu menu-item-dropdown, touch-ui-drawer touch-ui-menu menu-item a, touch-ui-drawer touch-ui-menu menu-item-dropdown a, touch-ui-drawer touch-ui-menu menu-item a:hover, touch-ui-drawer touch-ui-menu menu-item a:focus, touch-ui-drawer touch-ui-menu menu-item-dropdown a:hover, touch-ui-drawer touch-ui-menu menu-item-dropdown a:focus {
     color: #666;
     text-shadow: none; }
   touch-ui-drawer touch-ui-menu menu-item, touch-ui-drawer touch-ui-menu menu-item-dropdown {

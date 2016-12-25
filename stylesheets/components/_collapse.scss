@@ -1,5 +1,6 @@
 @import "../base/common-web-component";
 
+@include component(simple-collapse,());
 
 /// @access private
 @mixin _ui-collapse($component:null,$header-component:null,$section-component:null,
@@ -172,6 +173,43 @@ $item-section-border-radius:null
             $item-section-border-radius
     );
     @content;
+  }
+
+  ui-collapse{
+    &.simple{
+      @include _ui-collapse(simple-collapse,simple-collapse,simple-collapse,
+              $margin,
+              $padding,
+              $border-radius,
+              $width,
+              $font-size,
+              $item-header-height,
+              $item-header-expand-margin,
+              $item-header-padding,
+              $item-header-justification,
+              $item-header-alignment,
+              $item-header-border-radius,
+              $item-section-padding,
+              $item-section-margin,
+              $item-section-min-height,
+              $item-section-border-radius
+      );
+      background:none;
+      collapse-item > header {
+        background: none;
+      }
+      collapse-item.expand > header {
+        background: none;
+      }
+      collapse-item > header, collapse-item > section {
+        color: inherit;
+      }
+      collapse-item.expand > header [data-role=toggle], collapse-item.expand > header [toggle], collapse-item > header [data-role=toggle], collapse-item > header [toggle] {
+        color: inherit;
+      }
+
+      @content;
+    }
   }
 
 }

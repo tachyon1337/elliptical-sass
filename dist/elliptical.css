@@ -1,3 +1,17 @@
+ui-collapse.simple collapse-item > header, ui-collapse.simple collapse-item > section {
+  color: #fff;
+  text-shadow: none; }
+
+ui-collapse.simple collapse-item.expand > header [data-role=toggle], ui-collapse.simple collapse-item.expand > header [toggle], ui-collapse.simple collapse-item > header [data-role=toggle], ui-collapse.simple collapse-item > header [toggle] {
+  color: #fff;
+  text-shadow: none; }
+
+ui-collapse.simple, ui-collapse.simple collapse-item > header, ui-collapse.simple collapse-item > section {
+  border: none; }
+
+ui-collapse.simple collapse-item > header {
+  box-shadow: none; }
+
 ui-input-number label .input-number > div, .ui-button, ui-label, .ui-label, ui-pagination ul > li > a {
   background-image: -webkit-linear-gradient(to bottom, #fff, #f2f2f2);
   background-image: linear-gradient(to bottom, #fff, #f2f2f2); }
@@ -7225,6 +7239,67 @@ ui-collapse {
     margin-bottom: 0; }
   ui-collapse.hide-expanded-headers collapse-item.expand > header {
     display: none; }
+
+ui-collapse.simple {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: block;
+  border-radius: 5px;
+  font-size: 1em;
+  width: auto;
+  background: none; }
+  ui-collapse.simple collapse-item > header {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 3em;
+    border-radius: 3px;
+    padding: 0 3em 0 1em; }
+    ui-collapse.simple collapse-item > header button, ui-collapse.simple collapse-item > header .ui-button {
+      margin: 0; }
+    @media only screen and (max-width: 600px) {
+      ui-collapse.simple collapse-item > header {
+        border-radius: 0; } }
+    ui-collapse.simple collapse-item > header [data-role=toggle], ui-collapse.simple collapse-item > header [toggle] {
+      cursor: pointer; }
+  ui-collapse.simple collapse-item > section {
+    margin: 0 0 1px 0;
+    padding: 0;
+    position: relative;
+    border-radius: 3px; }
+    ui-collapse.simple collapse-item > section > * {
+      margin: 1em; }
+    @media only screen and (max-width: 600px) {
+      ui-collapse.simple collapse-item > section {
+        border-radius: 0; } }
+  ui-collapse.simple collapse-item.expand > header [data-role=toggle], ui-collapse.simple collapse-item.expand > header [toggle] {
+    cursor: pointer; }
+  ui-collapse.simple collapse-item header + section {
+    height: 0;
+    display: block;
+    overflow: hidden; }
+  ui-collapse.simple collapse-item.expand header + section {
+    height: auto;
+    overflow: hidden; }
+  ui-collapse.simple collapse-item.expand > header {
+    margin: 0 0 1px 0; }
+  ui-collapse.simple collapse-item:last-child > section {
+    margin-bottom: 0; }
+  ui-collapse.simple.hide-expanded-headers collapse-item.expand > header {
+    display: none; }
+  ui-collapse.simple collapse-item > header {
+    background: none; }
+  ui-collapse.simple collapse-item.expand > header {
+    background: none; }
+  ui-collapse.simple collapse-item > header, ui-collapse.simple collapse-item > section {
+    color: inherit; }
+  ui-collapse.simple collapse-item.expand > header [data-role=toggle], ui-collapse.simple collapse-item.expand > header [toggle], ui-collapse.simple collapse-item > header [data-role=toggle], ui-collapse.simple collapse-item > header [toggle] {
+    color: inherit; }
 
 @media only screen and (min-width: 1025px) {
   touch-ui-drawer {

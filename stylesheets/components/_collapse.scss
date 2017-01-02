@@ -28,8 +28,8 @@ $item-section-border-radius:null
   border-radius:$border-radius;
   font-size:$font-size;
   width:$width;
-  @extend %#{$component}-background;
-  @extend %#{$component}-border;
+  @extend %#{$component}-background !optional;
+  @extend %#{$component}-border !optional;
   collapse-item{
     &>header{
       @include flexbox($justification:$item-header-justification,$alignment:$item-header-alignment);
@@ -46,7 +46,7 @@ $item-section-border-radius:null
       }
       [data-role=toggle],[toggle]{
         cursor:pointer;
-        @extend %#{$header-component}-font-hover;
+        @extend %#{$header-component}-font-hover !optional;
       }
     }
     &>section {
@@ -65,10 +65,10 @@ $item-section-border-radius:null
 
     &.expand{
       &>header{
-        @extend %#{$component}-background-active;
+        @extend %#{$component}-background-active !optional;
         [data-role=toggle],[toggle]{
           cursor:pointer;
-          @extend %#{$header-component}-font-active;
+          @extend %#{$header-component}-font-active !optional;
         }
       }
     }
@@ -79,8 +79,8 @@ $item-section-border-radius:null
       overflow: hidden;
     }
     &.expand header + section{
-         height:auto;
-         overflow: hidden;
+      height:auto;
+      overflow: hidden;
     }
     &.expand{
       &>header{

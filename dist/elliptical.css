@@ -7293,7 +7293,9 @@ ui-collapse.simple {
   ui-collapse.simple.hide-expanded-headers collapse-item.expand > header {
     display: none; }
   ui-collapse.simple collapse-item > header {
-    background: none; }
+    background: none;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start; }
   ui-collapse.simple collapse-item.expand > header {
     background: none; }
   ui-collapse.simple collapse-item > header, ui-collapse.simple collapse-item > section {

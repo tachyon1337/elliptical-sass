@@ -199,6 +199,7 @@ $item-section-border-radius:null
         background: none;
         -webkit-justify-content:flex-start;
         justify-content:flex-start;
+        padding:0;
       }
       collapse-item.expand > header {
         background: none;
@@ -208,6 +209,9 @@ $item-section-border-radius:null
       }
       collapse-item.expand > header [data-role=toggle], collapse-item.expand > header [toggle], collapse-item > header [data-role=toggle], collapse-item > header [toggle] {
         color: inherit;
+      }
+      collapse-item > section > *:not(p) {
+        margin:0;
       }
 
       @content;

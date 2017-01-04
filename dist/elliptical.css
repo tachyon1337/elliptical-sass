@@ -7295,13 +7295,16 @@ ui-collapse.simple {
   ui-collapse.simple collapse-item > header {
     background: none;
     -webkit-justify-content: flex-start;
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    padding: 0; }
   ui-collapse.simple collapse-item.expand > header {
     background: none; }
   ui-collapse.simple collapse-item > header, ui-collapse.simple collapse-item > section {
     color: inherit; }
   ui-collapse.simple collapse-item.expand > header [data-role=toggle], ui-collapse.simple collapse-item.expand > header [toggle], ui-collapse.simple collapse-item > header [data-role=toggle], ui-collapse.simple collapse-item > header [toggle] {
     color: inherit; }
+  ui-collapse.simple collapse-item > section > *:not(p) {
+    margin: 0; }
 
 @media only screen and (min-width: 1025px) {
   touch-ui-drawer {

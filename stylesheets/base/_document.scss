@@ -3,6 +3,13 @@
 @import "../mixins/document";
 
 
+/// Document border box box sizing
+/// @access public
+@mixin document-box-sizing(){
+  *, *:before, *:after {
+    @include box-sizing(border-box);
+  }
+}
 
 /// Document Reset & Standards
 /// @access public

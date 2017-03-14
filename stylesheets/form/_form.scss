@@ -635,8 +635,8 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   $icon:map-nested-get-default($map,icon,down,$_default-select-icon);
   $_icon-font-family:map-nested-get-default($map,icon,font-family,$_default-font-family);
   $icon-font-size:map-nested-get-default($map,icon,font-size,1em);
-  $icon-top:map-nested-get-default($map,icon,top,.7em);
-  $icon-right:map-nested-get-default($map,icon,right,.6em);
+  $icon-top:map-nested-get-default($map,icon,top,0);
+  $icon-right:map-nested-get-default($map,icon,right,0);
   $option-color:map-get($Base,black);
   $touch-select-breakpoint:map-nested-get-default($map,touch,select-breakpoint,450px);
   $touch-select-font-size:map-nested-get-default($map,touch,select-font-size,.8em);
@@ -693,16 +693,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
 
     }
     @content;
-    @include media-breakpoint($touch-select-breakpoint){
-      &>select{
-        font-size:$touch-select-font-size;
-      }
-      &:after{
-        font-size:$touch-icon-font-size;
-        top:$touch-icon-top;
-      }
 
-    }
   }
 
 

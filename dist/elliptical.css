@@ -5800,20 +5800,14 @@ ui-select, state-select, country-select {
   ui-select ::-ms-expand, state-select ::-ms-expand, country-select ::-ms-expand {
     display: none; }
   ui-select:after, state-select:after, country-select:after {
-    content: "\e903";
+    content: "\e00f";
     font-family: elliptical;
     font-size: 1em;
     position: absolute;
-    right: 0.6em;
-    top: 0.7em;
+    right: 0;
+    top: 0;
     line-height: 1;
     pointer-events: none; }
-  @media only screen and (max-width: 450px) {
-    ui-select > select, state-select > select, country-select > select {
-      font-size: 0.8em; }
-    ui-select:after, state-select:after, country-select:after {
-      font-size: 0.8em;
-      top: 1em; } }
 
 @-moz-document url-prefix() {
   ui-select select, state-select select, country-select select {

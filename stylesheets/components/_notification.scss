@@ -72,7 +72,7 @@ $right:null
   $padding:map-get-default($map,padding,1em 2em 1em 2em);
   $font-size:map-get-default($map,font-size,1em);
   $border-radius:map-get-default($map,border-radius,get-border-radius());
-  $z-index: map-get-default($map,z-index,get-z-index() + 9999999);
+  $z-index: map-get-default($map,z-index,get-z-index() + 100000000);
   $width:map-get($map,width);
   $top:map-get-default($map,top,25%);
   $left:map-get-default($map,left,45%);

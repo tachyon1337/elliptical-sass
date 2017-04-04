@@ -232,14 +232,17 @@ $touch-border-radius: null){
       margin: 0 !important;
       border-right:0 !important;
     }
-    .ui-button,ui-button {
+    .ui-button{
       margin: 0;
+      padding:0 !important;
       &:not(:active) {
         box-shadow: none;
       }
+      min-width:50px;
+      @include flexbox($justification:center,$alignment:center);
     }
-    input, .ui-button,ui-button {
-      padding: 0.3em 0.55em;
+    input, .ui-button{
+      //padding: 0.3em 0.55em;
       &:first-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -249,26 +252,10 @@ $touch-border-radius: null){
         border-bottom-left-radius: 0;
       }
     }
-    &.large-icon{
-      input,.ui-button,ui-button{
-        padding:0.25em 0.375em;
-      }
-      .ui-button,ui-button{
-        &>span{
-          font-size:2em;
-          padding-left:.5em;
-          padding-right:.5em;
-        }
-      }
-    }
     @content;
-    &[icon-padding]{
-      &>ui-button{
-        padding:.2em .5em .2em 1em;
-      }
-    }
   }
 }
+
 
 /// @access public
 ///@param {String} $component

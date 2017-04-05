@@ -40,12 +40,12 @@ $touch-font-size:null
         position: relative;
         cursor: pointer;
         font-size:1em;
-        border-radius: $border-radius;
-        @include web-component($component,$include-active:false);
+        //border-radius: $border-radius;
+        //@include web-component($component,$include-active:false);
         &.active,&:active{
-          @include web-component-base($active-component);
+          //@include web-component-base($active-component);
           &:hover{
-            @include web-component-base($active-component);
+            //@include web-component-base($active-component);
           }
         }
       }

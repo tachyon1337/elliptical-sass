@@ -12,37 +12,37 @@ ui-collapse.simple, ui-collapse.simple collapse-item > header, ui-collapse.simpl
 ui-collapse.simple collapse-item > header {
   box-shadow: none; }
 
-ui-input-number label .input-number > div, .ui-button, ui-label, .ui-label, ui-pagination ul > li > a {
+ui-input-number label .input-number > div, .ui-button, ui-label, .ui-label {
   background-image: -webkit-linear-gradient(to bottom, #fff, #f2f2f2);
   background-image: linear-gradient(to bottom, #fff, #f2f2f2); }
 
-ui-input-number label .input-number > div:active, ui-input-number label .input-number > div.active, .ui-button:active, .ui-button.active, ui-input-number label .input-number > div:hover, .ui-button:hover, ui-pagination ul > li > a:hover {
+ui-input-number label .input-number > div:active, ui-input-number label .input-number > div.active, .ui-button:active, .ui-button.active, ui-input-number label .input-number > div:hover, .ui-button:hover {
   background-image: -webkit-linear-gradient(to bottom, whitesmoke, #e8e8e8);
   background-image: linear-gradient(to bottom, whitesmoke, #e8e8e8); }
 
-ui-select:after, state-select:after, country-select:after, ui-input-number label .input-number > .plus:before, ui-input-number label .input-number > .minus:before, ui-select, state-select, country-select, ui-select > select, state-select > select, country-select > select, .ui-button, ui-label, .ui-label, ui-pagination ul > li > a {
+ui-select:after, state-select:after, country-select:after, ui-input-number label .input-number > .plus:before, ui-input-number label .input-number > .minus:before, ui-select, state-select, country-select, ui-select > select, state-select > select, country-select > select, .ui-button, ui-label, .ui-label {
   color: #777;
   text-shadow: none; }
 
-ui-input-number label .input-number > div:active, ui-input-number label .input-number > div.active, .ui-button:active, .ui-button.active, .ui-button:hover, ui-pagination ul > li > a:hover {
+ui-input-number label .input-number > div:active, ui-input-number label .input-number > div.active, .ui-button:active, .ui-button.active, .ui-button:hover {
   color: #777;
   text-shadow: none; }
 
-ui-input-number label .input-number > div, .ui-button, ui-label, .ui-label, ui-pagination ul > li > a {
+ui-input-number label .input-number > div, .ui-button, ui-label, .ui-label {
   border: 1px solid;
   border-color: #ddd #ddd #bbb #ddd; }
 
-ui-input-number label .input-number > div:active, ui-input-number label .input-number > div.active, .ui-button:active, .ui-button.active, ui-input-number label .input-number > div:hover, .ui-button:hover, ui-pagination ul > li > a:hover {
+ui-input-number label .input-number > div:active, ui-input-number label .input-number > div.active, .ui-button:active, .ui-button.active, ui-input-number label .input-number > div:hover, .ui-button:hover {
   border: 1px solid;
   border-color:  lightgray lightgray #b1b1b1 lightgray; }
 
-.ui-button:hover, ui-pagination ul > li > a:hover, .ui-button, ui-label, .ui-label, ui-pagination ul > li > a {
+.ui-button:hover, .ui-button, ui-label, .ui-label {
   box-shadow: none; }
 
 ui-input-number label .input-number > div:active, ui-input-number label .input-number > div.active, .ui-button:active, .ui-button.active {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.175); }
 
-ui-select.disabled, ui-select[disabled], state-select.disabled, state-select[disabled], country-select.disabled, country-select[disabled], .ui-button.disabled, .ui-button[disabled], .ui-button.disabled:hover, .ui-button[disabled]:hover, ui-label.disabled, ui-label[disabled], .ui-label.disabled, .ui-label[disabled], ui-pagination ul > li > a.disabled, ui-pagination ul > li > a[disabled] {
+ui-select.disabled, ui-select[disabled], state-select.disabled, state-select[disabled], country-select.disabled, country-select[disabled], .ui-button.disabled, .ui-button[disabled], .ui-button.disabled:hover, .ui-button[disabled]:hover, ui-label.disabled, ui-label[disabled], .ui-label.disabled, .ui-label[disabled] {
   background: #eee !important;
   text-shadow: none !important;
   outline: none !important;
@@ -50,19 +50,19 @@ ui-select.disabled, ui-select[disabled], state-select.disabled, state-select[dis
   border: 1px solid transparent !important;
   cursor: default !important;
   color: #e1e1e1 !important; }
-  ui-select.disabled:after, ui-select[disabled]:after, state-select.disabled:after, state-select[disabled]:after, country-select.disabled:after, country-select[disabled]:after, .ui-button.disabled:after, .ui-button[disabled]:after, .ui-button.disabled:hover:after, .ui-button[disabled]:hover:after, ui-label.disabled:after, ui-label[disabled]:after, .ui-label.disabled:after, .ui-label[disabled]:after, ui-pagination ul > li > a.disabled:after, ui-pagination ul > li > a[disabled]:after {
+  ui-select.disabled:after, ui-select[disabled]:after, state-select.disabled:after, state-select[disabled]:after, country-select.disabled:after, country-select[disabled]:after, .ui-button.disabled:after, .ui-button[disabled]:after, .ui-button.disabled:hover:after, .ui-button[disabled]:hover:after, ui-label.disabled:after, ui-label[disabled]:after, .ui-label.disabled:after, .ui-label[disabled]:after {
     background: none !important;
     color: #e1e1e1 !important; }
-  ui-select.disabled:before, ui-select[disabled]:before, state-select.disabled:before, state-select[disabled]:before, country-select.disabled:before, country-select[disabled]:before, .ui-button.disabled:before, .ui-button[disabled]:before, .ui-button.disabled:hover:before, .ui-button[disabled]:hover:before, ui-label.disabled:before, ui-label[disabled]:before, .ui-label.disabled:before, .ui-label[disabled]:before, ui-pagination ul > li > a.disabled:before, ui-pagination ul > li > a[disabled]:before {
+  ui-select.disabled:before, ui-select[disabled]:before, state-select.disabled:before, state-select[disabled]:before, country-select.disabled:before, country-select[disabled]:before, .ui-button.disabled:before, .ui-button[disabled]:before, .ui-button.disabled:hover:before, .ui-button[disabled]:hover:before, ui-label.disabled:before, ui-label[disabled]:before, .ui-label.disabled:before, .ui-label[disabled]:before {
     background: none !important;
     color: #e1e1e1 !important; }
-  ui-select.disabled::-webkit-input-placeholder, ui-select[disabled]::-webkit-input-placeholder, state-select.disabled::-webkit-input-placeholder, state-select[disabled]::-webkit-input-placeholder, country-select.disabled::-webkit-input-placeholder, country-select[disabled]::-webkit-input-placeholder, .ui-button.disabled::-webkit-input-placeholder, .ui-button[disabled]::-webkit-input-placeholder, .ui-button.disabled:hover::-webkit-input-placeholder, .ui-button[disabled]:hover::-webkit-input-placeholder, ui-label.disabled::-webkit-input-placeholder, ui-label[disabled]::-webkit-input-placeholder, .ui-label.disabled::-webkit-input-placeholder, .ui-label[disabled]::-webkit-input-placeholder, ui-pagination ul > li > a.disabled::-webkit-input-placeholder, ui-pagination ul > li > a[disabled]::-webkit-input-placeholder {
+  ui-select.disabled::-webkit-input-placeholder, ui-select[disabled]::-webkit-input-placeholder, state-select.disabled::-webkit-input-placeholder, state-select[disabled]::-webkit-input-placeholder, country-select.disabled::-webkit-input-placeholder, country-select[disabled]::-webkit-input-placeholder, .ui-button.disabled::-webkit-input-placeholder, .ui-button[disabled]::-webkit-input-placeholder, .ui-button.disabled:hover::-webkit-input-placeholder, .ui-button[disabled]:hover::-webkit-input-placeholder, ui-label.disabled::-webkit-input-placeholder, ui-label[disabled]::-webkit-input-placeholder, .ui-label.disabled::-webkit-input-placeholder, .ui-label[disabled]::-webkit-input-placeholder {
     color: #e1e1e1 !important; }
-  ui-select.disabled::-moz-placeholder, ui-select[disabled]::-moz-placeholder, state-select.disabled::-moz-placeholder, state-select[disabled]::-moz-placeholder, country-select.disabled::-moz-placeholder, country-select[disabled]::-moz-placeholder, .ui-button.disabled::-moz-placeholder, .ui-button[disabled]::-moz-placeholder, .ui-button.disabled:hover::-moz-placeholder, .ui-button[disabled]:hover::-moz-placeholder, ui-label.disabled::-moz-placeholder, ui-label[disabled]::-moz-placeholder, .ui-label.disabled::-moz-placeholder, .ui-label[disabled]::-moz-placeholder, ui-pagination ul > li > a.disabled::-moz-placeholder, ui-pagination ul > li > a[disabled]::-moz-placeholder {
+  ui-select.disabled::-moz-placeholder, ui-select[disabled]::-moz-placeholder, state-select.disabled::-moz-placeholder, state-select[disabled]::-moz-placeholder, country-select.disabled::-moz-placeholder, country-select[disabled]::-moz-placeholder, .ui-button.disabled::-moz-placeholder, .ui-button[disabled]::-moz-placeholder, .ui-button.disabled:hover::-moz-placeholder, .ui-button[disabled]:hover::-moz-placeholder, ui-label.disabled::-moz-placeholder, ui-label[disabled]::-moz-placeholder, .ui-label.disabled::-moz-placeholder, .ui-label[disabled]::-moz-placeholder {
     color: #e1e1e1 !important; }
-  ui-select.disabled::-o-placeholder, ui-select[disabled]::-o-placeholder, state-select.disabled::-o-placeholder, state-select[disabled]::-o-placeholder, country-select.disabled::-o-placeholder, country-select[disabled]::-o-placeholder, .ui-button.disabled::-o-placeholder, .ui-button[disabled]::-o-placeholder, .ui-button.disabled:hover::-o-placeholder, .ui-button[disabled]:hover::-o-placeholder, ui-label.disabled::-o-placeholder, ui-label[disabled]::-o-placeholder, .ui-label.disabled::-o-placeholder, .ui-label[disabled]::-o-placeholder, ui-pagination ul > li > a.disabled::-o-placeholder, ui-pagination ul > li > a[disabled]::-o-placeholder {
+  ui-select.disabled::-o-placeholder, ui-select[disabled]::-o-placeholder, state-select.disabled::-o-placeholder, state-select[disabled]::-o-placeholder, country-select.disabled::-o-placeholder, country-select[disabled]::-o-placeholder, .ui-button.disabled::-o-placeholder, .ui-button[disabled]::-o-placeholder, .ui-button.disabled:hover::-o-placeholder, .ui-button[disabled]:hover::-o-placeholder, ui-label.disabled::-o-placeholder, ui-label[disabled]::-o-placeholder, .ui-label.disabled::-o-placeholder, .ui-label[disabled]::-o-placeholder {
     color: #e1e1e1 !important; }
-  ui-select.disabled:-ms-input-placeholder, ui-select[disabled]:-ms-input-placeholder, state-select.disabled:-ms-input-placeholder, state-select[disabled]:-ms-input-placeholder, country-select.disabled:-ms-input-placeholder, country-select[disabled]:-ms-input-placeholder, .ui-button.disabled:-ms-input-placeholder, .ui-button[disabled]:-ms-input-placeholder, ui-label.disabled:-ms-input-placeholder, ui-label[disabled]:-ms-input-placeholder, .ui-label.disabled:-ms-input-placeholder, .ui-label[disabled]:-ms-input-placeholder, ui-pagination ul > li > a.disabled:-ms-input-placeholder, ui-pagination ul > li > a[disabled]:-ms-input-placeholder {
+  ui-select.disabled:-ms-input-placeholder, ui-select[disabled]:-ms-input-placeholder, state-select.disabled:-ms-input-placeholder, state-select[disabled]:-ms-input-placeholder, country-select.disabled:-ms-input-placeholder, country-select[disabled]:-ms-input-placeholder, .ui-button.disabled:-ms-input-placeholder, .ui-button[disabled]:-ms-input-placeholder, ui-label.disabled:-ms-input-placeholder, ui-label[disabled]:-ms-input-placeholder, .ui-label.disabled:-ms-input-placeholder, .ui-label[disabled]:-ms-input-placeholder {
     color: #e1e1e1 !important; }
 
 .ui-button.primary {
@@ -167,13 +167,13 @@ ui-select.disabled, ui-select[disabled], state-select.disabled, state-select[dis
   .ui-button.secondary.disabled:-ms-input-placeholder, .ui-button.secondary[disabled]:-ms-input-placeholder {
     color: #e1e1e1 !important; }
 
-.ui-button.inverse, ui-notification, ui-pagination ul > li > a.active, ui-pagination ul > li > a:active, ui-pagination ul > li > a.active:hover, ui-pagination ul > li > a:active:hover, .data-tooltip {
+.ui-button.inverse, ui-notification, .data-tooltip {
   background: #828282; }
 
 .ui-button.inverse:active, .ui-button.inverse.active, .ui-button.inverse:hover {
   background: #787878; }
 
-.ui-button.inverse, ui-notification, ui-pagination ul > li > a.active, ui-pagination ul > li > a:active, ui-pagination ul > li > a.active:hover, ui-pagination ul > li > a:active:hover, .data-tooltip {
+.ui-button.inverse, ui-notification, .data-tooltip {
   color: #fff;
   text-shadow: none; }
 
@@ -181,7 +181,7 @@ ui-select.disabled, ui-select[disabled], state-select.disabled, state-select[dis
   color: #fff;
   text-shadow: none; }
 
-.ui-button.inverse, ui-notification, ui-pagination ul > li > a.active, ui-pagination ul > li > a:active, ui-pagination ul > li > a.active:hover, ui-pagination ul > li > a:active:hover, .data-tooltip {
+.ui-button.inverse, ui-notification, .data-tooltip {
   border: 1px solid;
   border-color: #828282; }
 
@@ -189,7 +189,7 @@ ui-select.disabled, ui-select[disabled], state-select.disabled, state-select[dis
   border: 1px solid;
   border-color:  #787878; }
 
-.ui-button.inverse:hover, .ui-button.inverse, ui-notification, ui-pagination ul > li > a.active, ui-pagination ul > li > a:active, ui-pagination ul > li > a.active:hover, ui-pagination ul > li > a:active:hover, .data-tooltip {
+.ui-button.inverse:hover, .ui-button.inverse, ui-notification, .data-tooltip {
   box-shadow: none; }
 
 .ui-button.inverse:active, .ui-button.inverse.active {
@@ -5567,26 +5567,24 @@ ui-input-addon {
     flex: 1;
     margin: 0 !important;
     border-right: 0 !important; }
-  ui-input-addon .ui-button, ui-input-addon ui-button {
-    margin: 0; }
-    ui-input-addon .ui-button:not(:active), ui-input-addon ui-button:not(:active) {
+  ui-input-addon .ui-button {
+    margin: 0;
+    padding: 0 !important;
+    min-width: 50px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center; }
+    ui-input-addon .ui-button:not(:active) {
       box-shadow: none; }
-  ui-input-addon input, ui-input-addon .ui-button, ui-input-addon ui-button {
-    padding: 0.3em 0.55em; }
-    ui-input-addon input:first-child, ui-input-addon .ui-button:first-child, ui-input-addon ui-button:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0; }
-    ui-input-addon input:last-child, ui-input-addon .ui-button:last-child, ui-input-addon ui-button:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0; }
-  ui-input-addon.large-icon input, ui-input-addon.large-icon .ui-button, ui-input-addon.large-icon ui-button {
-    padding: 0.25em 0.375em; }
-  ui-input-addon.large-icon .ui-button > span, ui-input-addon.large-icon ui-button > span {
-    font-size: 2em;
-    padding-left: .5em;
-    padding-right: .5em; }
-  ui-input-addon[icon-padding] > ui-button {
-    padding: .2em .5em .2em 1em; }
+  ui-input-addon input:first-child, ui-input-addon .ui-button:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+  ui-input-addon input:last-child, ui-input-addon .ui-button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
 
 ui-checkbox {
   display: block;
@@ -6867,7 +6865,7 @@ ui-notification {
   position: fixed;
   top: 25%;
   left: 45%;
-  z-index: 10000998;
+  z-index: 100000999;
   opacity: 0; }
   ui-notification.show {
     display: inline-block;
@@ -7797,13 +7795,7 @@ ui-pagination {
       margin: 0 0 0 0.5em;
       position: relative;
       cursor: pointer;
-      font-size: 1em;
-      border-radius: 5px; }
-      ui-pagination ul > li > a:focus {
-        outline: thin dotted #ccc !important; }
-        @media only screen and (max-width: 1024px) and (min-width: 220px) {
-          ui-pagination ul > li > a:focus {
-            outline: thin solid transparent !important; } }
+      font-size: 1em; }
     ui-pagination ul.right {
       display: -webkit-flex;
       display: flex;

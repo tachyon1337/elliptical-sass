@@ -164,3 +164,18 @@
   @include menu-light();
 }
 
+@mixin elliptical-minimal(){
+  @include normalize();
+  @include elliptical-grid();
+  @include flexbox-container();
+  @include component-theme();
+  @include elliptical-icons();
+  @include elliptical-buttons();
+}
+
+@mixin elliptical-minimal-semantic(){
+  @include elliptical-minimal();
+  @include elliptical-semantic();
+  @include elliptical-convenience-mixins();
+}
+

@@ -264,8 +264,8 @@ $touch-border-radius: null){
   ui-checkbox{
     display:block;
     position:relative;
-     &:hover{
-        cursor:pointer;
+    &:hover{
+      cursor:pointer;
     }
     input[type="checkbox"] {
       position: absolute;
@@ -341,7 +341,7 @@ $touch-border-radius: null){
     display:block;
     position:relative;
     &:hover{
-        cursor:pointer;
+      cursor:pointer;
     }
     input[type="radio"] {
       opacity: 0;
@@ -740,7 +740,7 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   }
   ui-search{
     &:after{
-       @include content-icon($search-icon);
+      @include content-icon($search-icon);
     }
   }
 
@@ -797,7 +797,4 @@ $number-component:default,$input-component:css-input-number,$map:()) {
   }
 
 }
-
-
-
 

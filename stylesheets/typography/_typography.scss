@@ -204,7 +204,7 @@
       font-size: $tablet-factor*map-get($Typography,header-3);
     }
     h4 {
-      font-size: $tablet-factor*map-get($Typography,header-4);
+      font-size: 1.1em;
     }
   }
 
@@ -220,7 +220,7 @@
       font-size: $phone-factor*map-get($Typography,header-3);
     }
     h4 {
-      font-size: $tablet-factor*map-get($Typography,header-4);
+      font-size: 1.1em;
     }
 
   }

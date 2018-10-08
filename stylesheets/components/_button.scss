@@ -85,7 +85,7 @@
       position: absolute;
     }
   }
-  ui-button-dropdown{
+  ui-button-dropdown,.ui-button-dropdown{
     &:after {
       font-family: $_icon-font-family;
       position: absolute;
@@ -347,7 +347,7 @@
   $_button-tiny-font-size:map-get($Button,tiny-font-size);
   $_button-tiny-padding:map-get($Button,tiny-padding);
 
-  ui-button-dropdown{
+  ui-button-dropdown,.ui-button-dropdown{
     position:relative;
     &:focus{
       @include tab-focus();

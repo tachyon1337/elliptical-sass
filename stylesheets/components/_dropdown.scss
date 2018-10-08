@@ -206,8 +206,15 @@ $border-radius: null
 
 
 
-  $tag:ui-dropdown;
+  /*$tag:ui-dropdown;
   @include element-tag($tag:$tag,$tags:$tags,$class:$class){
+    @include _ui-dropdown($component, $divider, $width,$min-width, $top, $margin,$padding, $float, $z-index, $font-size, $border, $item-padding,
+            $item-divider-margin, $border-radius, $span-icon-margin
+    );
+    @content;
+  }*/
+
+  ui-dropdown,.ui-dropdown{
     @include _ui-dropdown($component, $divider, $width,$min-width, $top, $margin,$padding, $float, $z-index, $font-size, $border, $item-padding,
             $item-divider-margin, $border-radius, $span-icon-margin
     );
@@ -215,7 +222,7 @@ $border-radius: null
   }
 
   @-moz-document url-prefix() {
-    ui-dropdown{
+    ui-dropdown,.ui-dropdown{
       &>menu-item{
         padding: $item-padding;
         &>a{
@@ -234,5 +241,11 @@ $border-radius: null
 
 }
 
-
+.ui-button-dropdown .ui-dropdown {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  border: 0;
+  left: -18px;
+  padding-top: 10px;
+  min-width: 10em;
+}
 
